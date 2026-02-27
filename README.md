@@ -89,7 +89,7 @@ Each module has a prompt + YAML template in [`templates/`](templates/).
 | **Dark signal** | Structural absence — designed restriction that functions as a signal |
 | **Spectral profile** | Observer's sensitivity, weights, and tolerances across 8 dimensions |
 | **Perception cloud** | Probabilistic cluster of signals forming in an observer's mind |
-| **Conviction collapse** | Threshold event where a cloud crystallizes into a stable brand belief |
+| **Conviction collapse** | Threshold event where a cloud crystallizes into a stable brand conviction |
 | **Re-collapse** | Full rebuild of brand conviction from scratch when contradicting evidence arrives |
 | **D/A ratio** | Designed vs. ambient signal balance (optimal zone: 55-65% designed) |
 | **Coherence type** | Structural category of brand architecture (5 types, each with different resilience) |
