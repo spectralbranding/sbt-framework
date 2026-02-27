@@ -16,3 +16,12 @@ keywords:
   - brand perception
   - observer heterogeneity
 license: MIT
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Zharnikov
+      given-names: Dmitry
+      email: dmitry@spectralbranding.com
+  title: "Spectral Brand Theory: A Computational Framework for Multi-Dimensional Brand Perception"
+  year: 2026
+  url: "[SSRN_URL]"
