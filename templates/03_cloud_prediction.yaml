@@ -1,0 +1,248 @@
+# Spectral Brand Theory — Module 3: Cloud Prediction Output Template
+# Version: 2.0 (Post-Track-0 Validation)
+#
+# This template structures the predicted brand clouds per observer cohort.
+# Clouds are probabilistic perception clusters — how signals assemble in an observer's mind.
+#
+# v2.0 additions:
+#   - cloud_formation_mode (standard | mediated | stalled)
+#   - cloud_valence (positive | negative | ambivalent)
+#   - valence_resilience scoring
+#   - weight_confidence_band for dimensional weights
+#
+# Track 0 findings integrated:
+#   - Mediated clouds form via screens without direct encounter (Erewhon finding)
+#   - Negative clouds STRENGTHEN during disruption (Tesla finding)
+#   - Evidence-free convictions can be stronger than evidence-rich ones (Tesla finding)
+#
+# Frameworks referenced:
+#   - SWOT (cloud strength/risk mapping)
+#   - Perceptual Mapping (competitive positioning of clouds)
+#   - See templates/FRAMEWORKS.md for alternatives
+
+brand:
+  name: "Tesla"
+  analysis_date: "2026-02-25"
+
+# --- Per-Cohort Cloud Predictions ---
+
+clouds:
+  - cohort: "Tech-Forward Early Adopter"
+
+    # VISIBLE SIGNALS: which signals from the inventory pass this cohort's spectrum
+    visible_signals:
+      strong:                             # High spectrum sensitivity + high salience
+        - "Full self-driving capability"
+        - "Over-the-air software updates"
+        - "Supercharger network"
+        - "Cybertruck design statement"
+      moderate:                           # Perceived but not dominant
+        - "Elon Musk founder narrative"
+        - "Premium pricing"
+        - "Early-adopter community"
+      dim:                                # Low sensitivity — barely registers
+        - "Manufacturing labor practices"
+        - "Political controversies"
+
+    # DOMINANT DIMENSIONS: the 2-3 dimensions shaping this cloud
+    dominant_dimensions:
+      - dimension: experiential
+        weight_in_cloud: 0.35             # How much this dimension shapes the overall cloud
+        key_signals: ["FSD", "OTA updates", "acceleration performance"]
+      - dimension: social
+        weight_in_cloud: 0.25
+        key_signals: ["Tech tribe membership", "early-adopter status"]
+      - dimension: narrative
+        weight_in_cloud: 0.20
+        key_signals: ["Disruption story", "mission to accelerate sustainable energy"]
+
+    # CLOUD DESCRIPTION: 1-2 sentence summary of the proto-brand-image forming
+    cloud_description: >
+      A cutting-edge technology platform that happens to be a car. The strongest
+      signal cluster is around product innovation and software-defined experience,
+      reinforced by social belonging to an early-adopter tribe.
+
+    # CLOUD CONFIDENCE: how strong/stable is this cloud?
+    cloud_confidence:
+      level: strong                       # weak | moderate | strong
+      score: 0.82                         # 0.0-1.0 numeric confidence
+      confidence_band: strong             # weak (0.0-0.4) | moderate (0.4-0.7) | strong (0.7-1.0)
+      basis: "Consistent experiential signals + reinforcing social proof"
+
+    # CLOUD FORMATION MODE (v2.0): how did this cloud form?
+    # standard: direct product/brand encounter (most common)
+    # mediated: formed via screens/content without direct encounter (Erewhon Digital Observer)
+    # stalled: contradictory signals prevent cloud development (Tesla Boycotter's political cloud)
+    cloud_formation_mode: standard        # standard | mediated | stalled
+
+    # CLOUD VALENCE (v2.0): is this a positive, negative, or ambivalent cloud?
+    # Track 0 finding: negative clouds STRENGTHEN during brand disruption.
+    # Evidence-free negative convictions can be more stable than evidence-rich positive ones.
+    cloud_valence:
+      valence: positive                   # positive | negative | ambivalent
+      valence_resilience: moderate        # low | moderate | high
+      # high = cloud strengthens under disruption (typical of negative clouds)
+      # moderate = cloud is stable but can shift
+      # low = cloud weakens under pressure
+      notes: "Positive cloud anchored in experiential evidence"
+
+    # COLLAPSE PREDICTION: will this cloud collapse into a conviction? What conviction?
+    collapse_prediction:
+      will_collapse: true
+      predicted_fact: "Tesla IS the most technologically advanced car brand"
+      fact_confidence: 0.78               # 0.0-1.0
+      collapse_state: confirmed           # forming | partial | confirmed
+      blocking_factors: []                # What prevents collapse (empty if none)
+
+    # RISK FACTORS: what could distort or scatter this cloud
+    risk_factors:
+      - risk: "FSD promises repeatedly delayed"
+        dimension: experiential
+        severity: high                    # low | medium | high
+        mechanism: "Core signal loses credibility → cloud weakens"
+      - risk: "CEO controversy spills into product perception"
+        dimension: narrative
+        severity: medium
+        mechanism: "Social proof weakens if tribe association becomes embarrassing"
+
+    # Optional: SWOT-style cloud assessment
+    # Maps cloud dynamics to familiar strategic framework
+    swot_mapping:
+      framework: swot                     # swot | force_field | opportunity_threat
+      strengths:
+        - "Strong experiential signal cluster — product backs up claims"
+        - "Self-reinforcing social tribe dynamics"
+      weaknesses:
+        - "Over-reliance on founder narrative (single point of failure)"
+        - "Experiential signals must keep pace with competition"
+      opportunities:
+        - "Robotaxi launch could massively reinforce tech-leader cloud"
+        - "Energy products (Powerwall, Solar) could broaden experiential cluster"
+      threats:
+        - "BYD, Rivian closing tech gap — experiential differentiation eroding"
+        - "CEO fatigue — narrative pollution from non-automotive ventures"
+
+  - cohort: "Environmental Activist"
+
+    visible_signals:
+      strong:
+        - "Original EV mission statement"
+        - "CEO political activities"
+        - "Labor practice reports"
+        - "Greenwashing accusations"
+      moderate:
+        - "Vehicle emissions reduction data"
+        - "Competitor EV offerings"
+      dim:
+        - "Software features"
+        - "Design aesthetics"
+        - "Supercharger network"
+
+    dominant_dimensions:
+      - dimension: ideological
+        weight_in_cloud: 0.50
+        key_signals: ["Mission statement", "CEO politics", "labor practices"]
+      - dimension: narrative
+        weight_in_cloud: 0.25
+        key_signals: ["Fallen hero arc", "mission drift"]
+
+    cloud_description: >
+      A once-promising environmental brand whose cloud has become dominated by
+      ideological contradictions. The founder's political positioning emits signals
+      that directly conflict with the environmental mission, creating an unstable
+      cloud with no clear resolution.
+
+    cloud_confidence:
+      level: weak
+      score: 0.35
+      confidence_band: weak
+      basis: "Contradicting signals prevent cluster formation"
+
+    cloud_formation_mode: mediated        # Formed via media coverage, not direct encounter
+
+    cloud_valence:
+      valence: negative
+      valence_resilience: high            # Negative clouds strengthen under disruption
+      notes: "Evidence-free negative conviction — no product experience to contradict"
+
+    collapse_prediction:
+      will_collapse: false
+      predicted_fact: null
+      fact_confidence: 0.0
+      collapse_state: forming
+      blocking_factors:
+        - "Ideological contradiction between mission and CEO behavior"
+        - "Narrative incoherence — origin story contradicts current trajectory"
+
+    risk_factors:
+      - risk: "Any additional CEO controversy"
+        dimension: ideological
+        severity: high
+        mechanism: "Could tip cloud from 'conflicted' to 'negative conviction'"
+      - risk: "Competitor launches genuinely mission-aligned EV brand"
+        dimension: ideological
+        severity: high
+        mechanism: "Gives activists a clear alternative, crystallizing Tesla rejection"
+
+    swot_mapping:
+      framework: swot
+      strengths:
+        - "Original mission has residual goodwill"
+      weaknesses:
+        - "CEO signals dominate ideological dimension — brand has lost narrative control"
+        - "Zero authenticity tolerance means no room for recovery while contradictions persist"
+      opportunities:
+        - "CEO steps back → immediate cloud restabilization"
+      threats:
+        - "Permanent inversion: Tesla becomes symbol of greenwashing"
+
+# --- Cloud Divergence Map ---
+# Compares clouds across all cohorts to identify coherence problems.
+
+divergence_map:
+  cohort_pairs:
+    - cohort_a: "Tech-Forward Early Adopter"
+      cohort_b: "Environmental Activist"
+      divergence_level: extreme           # low | moderate | high | extreme
+      divergent_dimensions:
+        - dimension: ideological
+          cohort_a_weight: 0.15
+          cohort_b_weight: 0.40
+          gap: 0.25
+        - dimension: experiential
+          cohort_a_weight: 0.25
+          cohort_b_weight: 0.05
+          gap: 0.20
+      convergent_dimensions:
+        - dimension: narrative
+          note: "Both engage with the Tesla story, but derive opposite conclusions"
+      summary: "These cohorts are perceiving fundamentally different brands from the same signals"
+
+# --- Coherence Score ---
+# Overall alignment of clouds across all cohorts.
+# 1 = completely divergent (each cohort sees a different brand)
+# 10 = fully coherent (all cohorts form similar clouds)
+
+coherence:
+  score: 3                                # 1-10
+  grade: "Low"                            # Low (1-3) | Moderate (4-6) | High (7-10)
+  coherence_type: incoherent              # ecosystem | signal | identity | experiential_asymmetry | incoherent (v2.0)
+  critical_divergences:
+    - "Ideological dimension: one cohort ignores it, the other builds their entire cloud on it"
+    - "Same CEO signals read as 'visionary' vs 'hypocrite' depending on spectral profile"
+  implication: >
+    Tesla does not have a single brand — it has two incompatible brands coexisting
+    under the same identity gate. Emission strategy must either accept this divergence
+    or structurally resolve the ideological contradiction.
+
+# --- Framework Configuration ---
+frameworks_used:
+  cloud_assessment: "SWOT Analysis"
+  positioning_context: "Perceptual Mapping"
+  alternatives_considered:
+    - name: "Force Field Analysis (Lewin)"
+      when_to_use: "When focusing on driving vs restraining forces in cloud formation"
+    - name: "Stakeholder Mapping (Mendelow)"
+      when_to_use: "When cloud importance needs to be weighted by cohort influence/power"
+    - name: "Blue Ocean Strategy Canvas"
+      when_to_use: "When comparing spectral signatures against competitors"

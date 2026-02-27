@@ -1,0 +1,268 @@
+# Spectral Brand Theory — Module 1: Brand Decomposition Output Template
+# Version: 2.0 (Post-Track-0 Validation)
+#
+# This template structures the output of a brand decomposition analysis.
+# AI should fill this structure when running Module 1.
+#
+# v2.0 additions:
+#   - emission_type field per atom (positive | null | structural_absence)
+#   - temporal_mode field (heritage | currency | dormant)
+#   - weight_confidence bands for dimensional strengths
+#   - dark_signals section for structural absence inventory
+#
+# Frameworks referenced:
+#   - ISO 20671:2021 (Brand evaluation — Principles and fundamentals)
+#   - Interbrand Brand Strength model (10 factors)
+#   - See templates/FRAMEWORKS.md for alternatives
+
+brand:
+  name: "Patagonia"                       # Brand being analyzed
+  category: "Outdoor apparel & gear"      # Industry/category
+  analysis_date: "2026-02-25"
+
+# --- Dimension Inventory ---
+# Each of the 8 SBT dimensions with strength rating, atoms, and gap notes.
+# Strength scale: 0-5 (0 = silent, 5 = dominant emitter on this dimension)
+# Source types: designed | ambient | synthetic
+
+dimensions:
+  semiotic:
+    strength: 4                           # 0-5 stars
+    description: "Visual and auditory identity signals"
+    atoms:
+      - signal: "Mountain silhouette logo"
+        source: designed                  # designed | ambient | synthetic
+        emission_type: positive           # positive | null | structural_absence
+        salience: high                    # high | medium | low
+        notes: "Instantly recognizable, outdoor coded"
+      - signal: "Earth-tone color palette"
+        source: designed
+        emission_type: positive
+        salience: high
+        notes: "Browns, greens, natural tones across all touchpoints"
+      - signal: "'Don't Buy This Jacket' headline"
+        source: designed
+        emission_type: positive
+        salience: high
+        notes: "Became a cultural artifact, now ambient"
+      # Add 2-5 atoms per dimension
+      # emission_type: positive = signal present, null = unintentional absence,
+      # structural_absence = designed scarcity that functions as signal (dark signals)
+    gap_note: null                        # null if no gap; string describing weakness
+
+  narrative:
+    strength: 3
+    description: "Stories, myths, temporal structures"
+    atoms:
+      - signal: "Yvon Chouinard founder story"
+        source: designed
+        salience: high
+        notes: "Climber-turned-reluctant-businessman myth"
+      - signal: "Giving away the company (2022)"
+        source: ambient
+        salience: high
+        notes: "Massive narrative event, widely covered"
+    gap_note: "Day-to-day narrative cadence is weak between landmark events"
+
+  ideological:
+    strength: 5
+    description: "Values, ethics, purpose, positions"
+    atoms:
+      - signal: "'We're in business to save our home planet'"
+        source: designed
+        salience: high
+        notes: "Explicit purpose statement"
+      - signal: "1% for the Planet commitment"
+        source: designed
+        salience: high
+        notes: "Financial commitment backing stated values"
+      - signal: "Bears Ears lawsuit against administration"
+        source: ambient
+        salience: medium
+        notes: "Political positioning through action"
+    gap_note: null
+
+  experiential:
+    strength: 4
+    description: "Touchpoints, interactions, product encounters"
+    atoms:
+      - signal: "Product durability and Ironclad Guarantee"
+        source: designed
+        salience: high
+        notes: "Lifetime repair/replace policy"
+      - signal: "Worn Wear program"
+        source: designed
+        salience: medium
+        notes: "Resale and repair as experience"
+    gap_note: null
+
+  social:
+    strength: 3
+    description: "Community, status, belonging signals"
+    atoms:
+      - signal: "Outdoor tribe identification"
+        source: ambient
+        salience: high
+        notes: "Wearing Patagonia signals 'outdoors person'"
+      - signal: "Activist community via Action Works"
+        source: designed
+        salience: medium
+        notes: "Platform for environmental activism"
+    gap_note: "Status signal is ambiguous — luxury-adjacent or anti-luxury?"
+
+  economic:
+    strength: 3
+    description: "Price, value, financial signals"
+    atoms:
+      - signal: "Premium price point ($200+ jackets)"
+        source: designed
+        salience: high
+        notes: "Signals quality, but excludes budget cohorts"
+      - signal: "Anti-consumption messaging"
+        source: designed
+        salience: medium
+        notes: "Contradiction: premium brand saying 'buy less'"
+    gap_note: "Price-value tension unresolved — is premium justified by durability or ideology?"
+
+  cultural:
+    strength: 4
+    description: "Aesthetic codes, references, taste"
+    atoms:
+      - signal: "Functional minimalism aesthetic"
+        source: designed
+        salience: high
+        notes: "Anti-fashion positioning"
+      - signal: "Silicon Valley uniform status"
+        source: ambient
+        salience: high
+        notes: "Tech-bro fleece meme — unintended cultural coding"
+    gap_note: null
+
+  temporal:
+    strength: 2
+    description: "Heritage, evolution, era associations"
+    atoms:
+      - signal: "50+ year heritage (founded 1973)"
+        source: designed
+        salience: low
+        notes: "Rarely emphasized in communications"
+    gap_note: "Heritage under-leveraged. Temporal dimension is weakest"
+
+# --- Heat Map ---
+# Dimensions ranked by emission strength (strongest first).
+# Maps to ISO 20671 principle of multi-dimensional brand evaluation.
+
+heat_map:
+  - dimension: ideological
+    strength: 5
+    rank: 1
+  - dimension: semiotic
+    strength: 4
+    rank: 2
+  - dimension: experiential
+    strength: 4
+    rank: 3
+  - dimension: cultural
+    strength: 4
+    rank: 4
+  - dimension: narrative
+    strength: 3
+    rank: 5
+  - dimension: social
+    strength: 3
+    rank: 6
+  - dimension: economic
+    strength: 3
+    rank: 7
+  - dimension: temporal
+    strength: 2
+    rank: 8
+
+# --- Emission Signature ---
+# Approximate ratio of dimensional emphasis across all brand signals.
+# Must sum to 100. Represents the brand's spectral fingerprint.
+
+emission_signature:
+  ideological: 25
+  experiential: 20
+  cultural: 15
+  semiotic: 15
+  narrative: 10
+  social: 8
+  economic: 5
+  temporal: 2
+  _total: 100                             # Validation: must equal 100
+
+# --- Key Gaps ---
+# Dimensions where the brand under-emits or has contradictions.
+# Maps to Interbrand's "Relevance" and "Consistency" factors.
+
+key_gaps:
+  - dimension: temporal
+    gap_type: under_emission               # under_emission | contradiction | scatter
+    severity: medium                       # low | medium | high
+    description: "50-year heritage barely referenced. Missing temporal depth."
+  - dimension: economic
+    gap_type: contradiction
+    severity: medium
+    description: "Premium pricing vs anti-consumption messaging creates mixed signals."
+  - dimension: social
+    gap_type: scatter
+    severity: low
+    description: "Tribe signal split between outdoors community and tech-sector status."
+
+# --- Source Balance ---
+# Ratio of signal sources across the full inventory.
+# High ambient ratio may indicate loss of narrative control.
+
+source_balance:
+  designed: 65                            # Percentage of total signals
+  ambient: 30
+  synthetic: 5
+  _total: 100
+
+# --- Temporal Mode (v2.0) ---
+# Heritage: brand draws value from accumulated history (compounds over time)
+# Currency: brand draws value from present-moment cultural relevance (depreciates over time)
+# Dormant: temporal dimension is inactive/under-leveraged
+# Track 0 finding: heritage compounds non-linearly (20yr=supplementary, 50yr=moderate,
+# 80yr=approaching threshold, 180yr+=foundational architecture)
+
+temporal_mode:
+  mode: heritage                          # heritage | currency | dormant
+  depth_years: 53                         # Approximate brand age in years
+  deployment_level: under_leveraged       # active_weapon | under_leveraged | dormant
+  compounding_stage: moderate             # supplementary (<30yr) | moderate (30-70yr) |
+                                          # approaching_threshold (70-120yr) | foundational (120yr+)
+  notes: "50-year heritage barely referenced. Approaching threshold but not deployed."
+
+# --- Dark Signals / Structural Absence Inventory (v2.0) ---
+# Structural absence: designed scarcity that functions as a signal — like dark matter,
+# invisible but gravitationally active. The empty shelf IS the signal.
+# Three emission types: positive (present), null (unintentional absence),
+# structural_absence (designed scarcity as signal)
+#
+# Operates primarily on: social (exclusivity), economic (no discounts),
+# experiential (geographic scarcity). Cannot operate on semiotic (no "absent logo")
+# or narrative (absence of story is just absence).
+#
+# Formula: Cloud = Σ(emitted_atoms × weights) + Σ(absent_atoms × scarcity_multiplier × weights)
+
+dark_signals:
+  structural_absence_present: false       # Does this brand use designed scarcity as strategy?
+  absent_signals: []                      # List of designed absences that function as signals
+  # Example for scarcity brand (e.g., Hermès):
+  # absent_signals:
+  #   - absence: "No online sales for core products"
+  #     dimensions_affected: [experiential, social, economic]
+  #     scarcity_multiplier: high          # low | medium | high
+  #     mechanism: "Geographic restriction creates exclusivity signal"
+  #   - absence: "Never discounting"
+  #     dimensions_affected: [economic, social]
+  #     scarcity_multiplier: high
+  #     mechanism: "Price stability signals value permanence"
+  scarcity_strategy_assessment: |
+    Patagonia does not use structural absence as a primary strategy.
+    Anti-consumption messaging ("Don't Buy This Jacket") has a dark-signal
+    quality — but it is an EXPLICIT signal, not an absence. The brand
+    is accessible, widely distributed, and does not restrict purchase.

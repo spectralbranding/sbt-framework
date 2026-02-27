@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this framework, please cite it as below."
+authors:
+  - family-names: Zharnikov
+    given-names: Dmitry
+    email: dmitry@spectralbranding.com
+title: "Spectral Brand Theory: AI-Native Brand Analysis Toolkit"
+version: 2.0.0
+date-released: 2026-02-27
+url: "https://github.com/spectralbranding/sbt-framework"
+keywords:
+  - brand analysis
+  - spectral brand theory
+  - AI-native
+  - prompt engineering
+  - brand perception
+  - observer heterogeneity
+license: MIT

@@ -1,0 +1,186 @@
+# Spectral Brand Theory — Module 2: Observer Mapping Output Template
+# Version: 1.0
+#
+# This template structures observer cohort profiles.
+# Each cohort is a group that perceives brands through a similar spectral profile.
+#
+# Frameworks referenced:
+#   - Maslow's Hierarchy of Needs (dimension weight derivation)
+#   - VALS Psychographic Segments (cohort archetypes)
+#   - Schwartz Theory of Basic Human Values (tolerance calibration)
+#   - See templates/FRAMEWORKS.md for alternatives
+
+brand:
+  name: "Tesla"
+  category: "Electric vehicles / technology"
+  analysis_date: "2026-02-25"
+
+cohorts:
+  - name: "Tech-Forward Early Adopter"
+    description: "High-income tech professionals who view cars as technology platforms. Early majority in Rogers' adoption curve."
+    size_estimate: "15-20% of addressable market"
+
+    # SPECTRUM: sensitivity 0.0-1.0 per dimension
+    # What the observer CAN perceive. 0.0 = invisible, 1.0 = fully attuned.
+    # Derivation hint: Maslow self-actualization seekers → high experiential/social sensitivity
+    spectrum:
+      semiotic: 0.6
+      narrative: 0.8
+      ideological: 0.7
+      experiential: 0.9
+      social: 0.8
+      economic: 0.6
+      cultural: 0.7
+      temporal: 0.5
+
+    # WEIGHTS: importance per dimension. Must sum to 1.0.
+    # What MATTERS to this cohort. High weight = drives brand conviction.
+    # Derivation hint: VALS "Innovators" → experiential + social weighted high
+    weights:
+      semiotic: 0.05
+      narrative: 0.15
+      ideological: 0.15
+      experiential: 0.25
+      social: 0.20
+      economic: 0.10
+      cultural: 0.05
+      temporal: 0.05
+      _total: 1.0                         # Validation: must equal 1.0
+
+    # TOLERANCES: how much inconsistency they accept (0.0-1.0)
+    # 0.0 = zero tolerance (any contradiction triggers re-collapse)
+    # 1.0 = anything goes
+    # Derivation hint: Schwartz "Openness to Change" → higher consistency tolerance,
+    #                   but "Self-Enhancement" → lower authenticity tolerance
+    tolerances:
+      consistency: 0.6                    # How much internal contradiction they accept
+      authenticity: 0.4                   # How much gap between stated and actual values
+      ideology_match: 0.3                 # How much misalignment with their own values
+
+    # PRIORS: existing convictions about this brand
+    # Strength: none | weak | moderate | strong
+    priors:
+      strength: strong
+      content: "Innovative tech company disrupting the auto industry"
+      stability: high                     # high | medium | low — how resistant to change
+      source: "Direct product experience + tech media"
+
+    # IDENTITY GATE: can this cohort recognize the brand?
+    # Status: open | partial | closed
+    identity_gate:
+      status: open
+      recognition_trigger: "Tesla name, T logo, Cybertruck silhouette"
+      channel_dependency: null            # null if always recognized; channel name if context-dependent
+
+    # PERCEPTION DRIVERS: the 2-3 dimensions that dominate this cohort's brand perception
+    perception_drivers:
+      - dimension: experiential
+        role: "Driving experience, software features, tech integration"
+      - dimension: social
+        role: "Status signal, tribe membership, early-adopter identity"
+
+    # BLIND SPOTS: dimensions this cohort under-perceives
+    blind_spots:
+      - dimension: temporal
+        reason: "Future-oriented; heritage is irrelevant to them"
+      - dimension: semiotic
+        reason: "Care about product design, not visual identity system per se"
+
+    # Optional: needs framework mapping
+    # Maps this cohort's priorities to Maslow's hierarchy or alternative framework
+    needs_mapping:
+      framework: maslow                   # maslow | jobs_to_be_done | vals
+      primary_level: "Self-actualization" # Maslow level driving brand engagement
+      secondary_level: "Esteem"
+      notes: "Technology as self-expression and status"
+
+  - name: "Environmental Activist"
+    description: "Values-driven consumers who evaluate every brand through an ideological lens. Low tolerance for perceived hypocrisy."
+    size_estimate: "8-12% of addressable market"
+
+    spectrum:
+      semiotic: 0.3
+      narrative: 0.8
+      ideological: 0.95
+      experiential: 0.4
+      social: 0.7
+      economic: 0.5
+      cultural: 0.6
+      temporal: 0.4
+
+    weights:
+      semiotic: 0.02
+      narrative: 0.20
+      ideological: 0.40
+      experiential: 0.05
+      social: 0.10
+      economic: 0.10
+      cultural: 0.10
+      temporal: 0.03
+      _total: 1.0
+
+    tolerances:
+      consistency: 0.1
+      authenticity: 0.0                   # Zero tolerance: any inauthenticity triggers re-collapse
+      ideology_match: 0.0                 # Zero tolerance: brand must fully align
+
+    priors:
+      strength: moderate
+      content: "EV mission is good, CEO behavior is deeply problematic"
+      stability: low                      # Actively in flux — prior is contested
+      source: "News media + activist community discourse"
+
+    identity_gate:
+      status: open
+      recognition_trigger: "Impossible to not know Tesla"
+      channel_dependency: null
+
+    perception_drivers:
+      - dimension: ideological
+        role: "Environmental mission vs CEO's political actions and labor practices"
+      - dimension: narrative
+        role: "Origin story (save the planet) vs current reality (culture wars)"
+
+    blind_spots:
+      - dimension: semiotic
+        reason: "Visual identity is irrelevant to ideological evaluation"
+      - dimension: temporal
+        reason: "Heritage doesn't factor into values-based assessment"
+
+    needs_mapping:
+      framework: maslow
+      primary_level: "Self-transcendence"
+      secondary_level: "Belonging"
+      notes: "Brand must serve a cause larger than self"
+
+# --- Cohort Comparison Matrix ---
+# Quick-reference table showing how cohorts differ on key dimensions.
+# Enables fast identification of divergence risk.
+
+cohort_comparison:
+  dimensions_of_divergence:
+    - dimension: ideological
+      variance: extreme                   # extreme | high | moderate | low
+      note: "0.15 weight (Early Adopter) vs 0.40 weight (Activist)"
+    - dimension: experiential
+      variance: extreme
+      note: "0.25 weight vs 0.05 weight — completely different priorities"
+  convergence_dimensions:
+    - dimension: narrative
+      note: "Both cohorts care about the Tesla story, but interpret it differently"
+
+# --- Framework Configuration ---
+# Documents which frameworks were used for this analysis.
+# Users can swap frameworks by changing these references and re-deriving profiles.
+
+frameworks_used:
+  cohort_segmentation: "VALS Psychographic Segments"
+  needs_derivation: "Maslow's Hierarchy of Needs"
+  values_calibration: "Schwartz Theory of Basic Human Values"
+  alternatives_considered:
+    - name: "Jobs-to-be-Done (Christensen)"
+      when_to_use: "When analyzing functional rather than identity-driven brands"
+    - name: "Personas (Cooper)"
+      when_to_use: "When demographic detail matters more than psychographic profile"
+    - name: "Sinus-Milieus"
+      when_to_use: "For German/European market segmentation with social class overlay"

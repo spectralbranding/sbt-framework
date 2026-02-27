@@ -1,0 +1,279 @@
+# Spectral Brand Theory — Module 6: Re-collapse Simulation Output Template
+# Version: 1.0
+#
+# This template structures the output of a disruption simulation.
+# Models how brand convictions destabilize and re-collapse under scenarios.
+#
+# Frameworks referenced:
+#   - PESTEL (disruption categorization)
+#   - Risk Matrix (likelihood x impact)
+#   - Scenario Planning (Shell method)
+#   - See templates/FRAMEWORKS.md for alternatives
+
+brand:
+  name: "Tesla"
+  analysis_date: "2026-02-25"
+
+# --- Scenario Definition ---
+# Each disruption scenario with structured analysis.
+
+scenarios:
+  - id: 1
+    title: "Major autonomous driving accident with fatalities"
+    category: product_failure             # From PESTEL-aligned categories below
+    probability: medium                   # low | medium | high
+    description: >
+      A Tesla in Full Self-Driving mode causes a fatal multi-vehicle accident.
+      NTSB investigation concludes software defect. National media coverage for 2+ weeks.
+
+    # SIGNAL ANALYSIS: what new signals does this disruption introduce?
+    disruption_signals:
+      - dimension: experiential
+        signal: "FSD technology is dangerous"
+        source: ambient                   # Disruptions are almost always ambient
+        salience: extreme                 # low | medium | high | extreme
+        duration: sustained               # flash (hours) | sustained (weeks) | permanent
+
+      - dimension: ideological
+        signal: "Tesla prioritized speed-to-market over safety"
+        source: ambient
+        salience: high
+        duration: sustained
+
+      - dimension: narrative
+        signal: "Innovation hubris — Icarus story"
+        source: ambient
+        salience: high
+        duration: permanent               # This narrative will persist
+
+      - dimension: economic
+        signal: "FSD premium was not worth it"
+        source: ambient
+        salience: medium
+        duration: sustained
+
+    # VULNERABILITY MAP: per-cohort exposure assessment
+    vulnerability_map:
+      - cohort: "Tech-Forward Early Adopter"
+        exposure: high                    # immune | low | medium | high | critical
+        rationale: >
+          Experiential dimension is their highest-weight dimension (0.25).
+          This disruption directly attacks the core of their brand cloud.
+          However, moderate tolerance (0.6) and strong priors provide some buffer.
+        dimensions_hit:
+          - dimension: experiential
+            weight: 0.25
+            sensitivity: 0.9
+            combined_exposure: 0.225      # weight x sensitivity
+
+      - cohort: "Environmental Activist"
+        exposure: medium
+        rationale: >
+          Already in scattered cloud state. Experiential dimension has low weight (0.05).
+          But ideological signal ("safety over mission") reinforces existing negative signals.
+        dimensions_hit:
+          - dimension: ideological
+            weight: 0.40
+            sensitivity: 0.95
+            combined_exposure: 0.38
+
+      - cohort: "Mainstream Buyer"
+        exposure: critical
+        rationale: >
+          Safety is a non-negotiable for this cohort. Experiential and economic
+          signals are both in their top-3 weights. Low tolerance for product risk.
+        dimensions_hit:
+          - dimension: experiential
+            weight: 0.30
+            sensitivity: 0.8
+            combined_exposure: 0.24
+          - dimension: economic
+            weight: 0.20
+            sensitivity: 0.7
+            combined_exposure: 0.14
+
+    # RE-COLLAPSE PREDICTION: per-cohort outcome
+    recollapse_predictions:
+      - cohort: "Tech-Forward Early Adopter"
+        outcome: drift                    # reinforcement | drift | destabilization | inversion | fragmentation
+        confidence: 0.6                   # How confident we are in this prediction
+        mechanism: >
+          Cloud shifts from "cutting-edge and bold" to "cutting-edge but risky."
+          Core conviction survives but is qualified. Some members may defect
+          to competitors (Rivian, Mercedes EQ) if comparable tech signals emerge.
+        new_conviction: "Tesla IS technologically advanced, but pushes too fast"
+        timeline: "2-4 weeks for initial drift; 2-3 months for stabilization"
+
+      - cohort: "Environmental Activist"
+        outcome: reinforcement            # Paradoxically reinforces existing negative trajectory
+        confidence: 0.8
+        mechanism: >
+          Confirms existing narrative of "reckless company." Accelerates
+          trajectory toward permanent negative conviction. Low-weight experiential
+          dimension means the accident itself matters less than the ideological
+          ammunition it provides.
+        new_conviction: "Tesla is a reckless company masquerading as a mission"
+        timeline: "Days — this cohort was already primed"
+
+      - cohort: "Mainstream Buyer"
+        outcome: destabilization
+        confidence: 0.7
+        mechanism: >
+          "Interesting but risky" conviction destabilizes toward "too risky."
+          Safety is a binary gate for mainstream buyers — you either pass or fail.
+          Cloud scatters because positive experiential signals (performance, features)
+          can no longer compensate for safety question.
+        new_conviction: null              # No stable conviction forms — cloud scattered
+        timeline: "1-2 weeks; purchase consideration drops immediately"
+
+    # CASCADE RISK: does re-collapse in one cohort trigger re-collapse in others?
+    cascade_risk:
+      risk_level: high                    # low | medium | high
+      mechanism: >
+        Mainstream buyer defection reduces the installed base, weakening the
+        social proof signal that sustains the tech-adopter cohort. Media coverage
+        of owner regret and resale value drops creates ambient economic signals
+        that affect all cohorts. Activist cohort amplifies the safety narrative
+        across social media, increasing ambient signal volume for mainstream cohort.
+      cascade_path:
+        - "Mainstream Buyer destabilization → reduced social proof"
+        - "Activist amplification → ambient signal flood"
+        - "Tech Adopter drift → weakened tribe signal"
+
+    # DEFENSIVE STRATEGY: counter-signals to steer re-collapse
+    defensive_strategy:
+      immediate:                          # Hours to days
+        - action: "CEO statement accepting responsibility + specific remediation steps"
+          dimension: narrative
+          target: "All cohorts"
+          risk: "CEO credibility already low in activist cohort — may backfire there"
+        - action: "Voluntary recall and software update with independent safety audit"
+          dimension: experiential
+          target: "Mainstream Buyer, Tech Adopter"
+          risk: "Implicitly admits the problem was known"
+
+      short_term:                         # Days to weeks
+        - action: "Open-source FSD safety data to independent researchers"
+          dimension: ideological
+          target: "Environmental Activist, Tech Adopter"
+          risk: "May reveal additional issues"
+        - action: "Accelerate driver monitoring system deployment"
+          dimension: experiential
+          target: "Mainstream Buyer"
+          risk: "Low — universally positive signal"
+
+      structural:                         # Months
+        - action: "Create independent safety board with public reporting"
+          dimension: ideological
+          target: "All cohorts"
+          risk: "Governance cost, but high credibility signal"
+        - action: "Partner with safety-focused institution (e.g., IIHS) for ongoing validation"
+          dimension: experiential
+          target: "Mainstream Buyer"
+          risk: "Low"
+
+    # PESTEL classification of the disruption
+    pestel_mapping:
+      framework: pestel                   # pestel | steep | destep
+      primary_category: technological
+      secondary_categories: [legal, social]
+      notes: "Technology failure with legal liability and social trust implications"
+
+    # RISK MATRIX position
+    risk_matrix:
+      likelihood: medium                  # low | medium | high
+      impact: critical                    # negligible | minor | moderate | major | critical
+      risk_rating: high                   # low | medium | high | extreme
+      notes: "High-impact, medium-likelihood — standard crisis scenario"
+
+# --- Resilience Scorecard ---
+# Updated re-collapse resistance scores per cohort after simulation.
+
+resilience_scorecard:
+  - cohort: "Tech-Forward Early Adopter"
+    pre_simulation: 6                     # 1-10
+    post_simulation: 4
+    change: -2
+    notes: "Core conviction survives but is weakened. Further disruptions could tip to destabilization."
+
+  - cohort: "Environmental Activist"
+    pre_simulation: 2
+    post_simulation: 1
+    change: -1
+    notes: "Already fragile. This scenario accelerates existing negative trajectory."
+
+  - cohort: "Mainstream Buyer"
+    pre_simulation: 4
+    post_simulation: 2
+    change: -2
+    notes: "Safety disruption is maximally damaging for this cohort. Recovery requires structural action."
+
+# --- Priority Actions ---
+# Ranked immediate responses based on simulation findings.
+
+priority_actions:
+  - rank: 1
+    action: "Voluntary recall + independent safety audit"
+    urgency: immediate                    # immediate | days | weeks | months
+    impact: high
+    rationale: "Experiential dimension is the most damaging vector. Address directly."
+
+  - rank: 2
+    action: "Decouple CEO personal response from corporate response"
+    urgency: immediate
+    impact: high
+    rationale: "CEO statement can help tech cohort but will hurt activist cohort. Separate the signals."
+
+  - rank: 3
+    action: "Proactive outreach to existing owners (service, reassurance, data)"
+    urgency: days
+    impact: medium
+    rationale: "Prevent cascade from mainstream buyer destabilization to social proof erosion."
+
+# --- Structural Recommendations ---
+# Long-term changes to increase future resilience.
+
+structural_recommendations:
+  - recommendation: "Diversify experiential signal sources beyond FSD"
+    dimension: experiential
+    rationale: "Single-point-of-failure: too much of the tech cloud depends on autonomy claims"
+    timeframe: "3-6 months"
+
+  - recommendation: "Build temporal heritage signals for stability"
+    dimension: temporal
+    rationale: "Heritage signals act as anchors during disruption — 'we've been here 20 years' provides continuity"
+    timeframe: "1-3 months"
+
+  - recommendation: "Establish ambient monitoring + rapid response capability"
+    dimension: all
+    rationale: "Early warning system for emerging disruption signals before they cascade"
+    timeframe: "1-2 months"
+
+# --- Disruption Category Reference ---
+# PESTEL-aligned categories for classifying disruption scenarios.
+# Users may substitute STEEP or DESTEP frameworks.
+
+disruption_categories:
+  political: "Government action, regulation, sanctions, political controversy"
+  economic: "Market crash, competitor pricing, cost changes, inflation"
+  social: "Cultural backlash, viral content, demographic shifts, social movements"
+  technological: "Product failure, competitor innovation, platform changes, security breaches"
+  environmental: "Climate events, sustainability challenges, resource constraints"
+  legal: "Lawsuits, regulatory fines, compliance failures, IP disputes"
+
+# --- Framework Configuration ---
+frameworks_used:
+  disruption_classification: "PESTEL Analysis"
+  risk_assessment: "Risk Matrix (Likelihood x Impact)"
+  scenario_methodology: "Scenario Planning (Shell method)"
+  alternatives_considered:
+    - name: "STEEP / DESTEP"
+      when_to_use: "Equivalent to PESTEL with different grouping. Use org's preferred variant"
+    - name: "VUCA Framework (Volatility/Uncertainty/Complexity/Ambiguity)"
+      when_to_use: "When characterizing the operating environment rather than specific disruptions"
+    - name: "Black Swan Theory (Taleb)"
+      when_to_use: "When modeling low-probability, extreme-impact disruptions"
+    - name: "Cynefin Framework (Snowden)"
+      when_to_use: "When classifying disruption complexity (simple/complicated/complex/chaotic)"
+    - name: "Bowtie Analysis"
+      when_to_use: "When mapping prevention barriers (left) and mitigation barriers (right) for a specific disruption"

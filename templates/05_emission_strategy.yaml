@@ -1,0 +1,257 @@
+# Spectral Brand Theory — Module 5: Emission Strategy Output Template
+# Version: 1.0
+#
+# This template structures the emission strategy — the plan for what signals
+# to emit, on which dimensions, to which cohorts, through which channels.
+#
+# Frameworks referenced:
+#   - RACE (Reach / Act / Convert / Engage)
+#   - Ansoff Growth Matrix (strategic direction)
+#   - AIDA (channel planning)
+#   - See templates/FRAMEWORKS.md for alternatives
+
+brand:
+  name: "Tesla"
+  analysis_date: "2026-02-25"
+  strategic_goal: "Stabilize brand perception across divergent cohorts while maintaining tech-leader position"
+
+# --- Target Conviction Map ---
+# For each priority cohort, the desired brand conviction (collapsed fact).
+# This replaces traditional "positioning statement" with observer-specific targets.
+
+target_convictions:
+  - cohort: "Tech-Forward Early Adopter"
+    current_conviction: "Tesla IS the most technologically advanced car brand"
+    target_conviction: "Tesla IS the technology platform defining the future of transportation"
+    gap: "Broaden from 'car' to 'platform' — energy, autonomy, robotics"
+    priority: high                        # high | medium | low
+
+  - cohort: "Environmental Activist"
+    current_conviction: null              # No stable conviction (cloud is scattered)
+    target_conviction: "Tesla's technology has measurably accelerated the global EV transition"
+    gap: "Shift from ideological evaluation (CEO) to measurable impact data"
+    priority: critical
+
+  - cohort: "Mainstream Buyer"
+    current_conviction: "Tesla is an interesting but risky purchase"
+    target_conviction: "Tesla IS the smart, reliable choice for an electric vehicle"
+    gap: "Strengthen experiential signals (reliability, service) and economic signals (TCO)"
+    priority: high
+
+# --- Dimensional Strategy ---
+# Which dimensions to dominate, be present on, or deprioritize.
+# Replaces traditional "positioning" with multi-dimensional emission planning.
+
+dimensional_strategy:
+  primary_dimensions:                     # 2-3 dimensions to DOMINATE
+    - dimension: experiential
+      rationale: "Product experience is the strongest, least contested signal cluster"
+      competitive_position: "Currently leading, must maintain"
+    - dimension: narrative
+      rationale: "Must reclaim narrative from ambient CEO signals"
+      competitive_position: "Currently contested — need to shift from founder to mission"
+    - dimension: temporal
+      rationale: "Under-leveraged heritage dimension. 20+ year EV pioneer story is uncontested"
+      competitive_position: "No competitor can claim EV heritage at this scale"
+
+  secondary_dimensions:                   # 2-3 dimensions to maintain presence
+    - dimension: social
+      rationale: "Community and tribe dynamics are self-reinforcing — maintain, don't push"
+    - dimension: economic
+      rationale: "Resolve premium vs value tension; clarify TCO narrative"
+    - dimension: ideological
+      rationale: "Cannot dominate (CEO conflict), but must maintain mission credibility"
+
+  deprioritized_dimensions:               # Intentional under-emission
+    - dimension: semiotic
+      rationale: "Visual identity is functional. No ROI in semiotic investment right now"
+    - dimension: cultural
+      rationale: "Cybertruck cultural polarization is not resolvable — minimize exposure"
+
+# --- Emission Signature Redesign ---
+# Before/after comparison of dimensional emphasis ratios.
+
+emission_signature:
+  before:
+    experiential: 30
+    narrative: 20
+    ideological: 15
+    social: 15
+    economic: 10
+    cultural: 5
+    semiotic: 3
+    temporal: 2
+    _total: 100
+
+  after:
+    experiential: 28
+    narrative: 22
+    temporal: 15                          # Major increase: from 2% to 15%
+    social: 12
+    economic: 10
+    ideological: 8                        # Deliberate reduction: remove brand from CEO battleground
+    cultural: 3
+    semiotic: 2
+    _total: 100
+
+  key_shifts:
+    - dimension: temporal
+      change: "+13 percentage points"
+      rationale: "Activate dormant heritage dimension to add stability across all cohorts"
+    - dimension: ideological
+      change: "-7 percentage points"
+      rationale: "Reduce exposure to CEO ideological controversy by shifting budget elsewhere"
+
+# --- Action Plan ---
+# Prioritized list of specific signal-creation actions.
+# Each action maps to a dimension, channel, cohort, and RACE stage.
+
+action_plan:
+  - rank: 1
+    action: "Launch '20 Years of EV' heritage campaign"
+    dimension: temporal
+    source: designed                      # designed | ambient_influence | synthetic
+    target_cohort: "All cohorts"
+    channel: "Owned media, earned media pitches, social content series"
+    race_stage: reach                     # reach | act | convert | engage
+    effort: medium                        # low | medium | high
+    timeline: "Month 1-2"
+    expected_outcome: "Activate temporal dimension in all clouds. Adds stability signal."
+
+  - rank: 2
+    action: "Publish quarterly EV Impact Report with verified emissions data"
+    dimension: ideological
+    source: designed
+    target_cohort: "Environmental Activist"
+    channel: "Website, sustainability publications, third-party verification"
+    race_stage: act
+    effort: medium
+    timeline: "Month 2-3, then quarterly"
+    expected_outcome: "Shift activist cloud from 'CEO says' to 'data shows'. Counter narrative with evidence."
+
+  - rank: 3
+    action: "Elevate non-CEO engineering voices in brand storytelling"
+    dimension: narrative
+    source: designed
+    target_cohort: "Tech-Forward Early Adopter, Mainstream Buyer"
+    channel: "YouTube, podcasts, engineering blog"
+    race_stage: engage
+    effort: low
+    timeline: "Month 1, ongoing"
+    expected_outcome: "Diversify narrative sources. Reduce CEO single-point-of-failure."
+
+  - rank: 4
+    action: "Service quality improvement program with transparent tracking"
+    dimension: experiential
+    source: designed
+    target_cohort: "Mainstream Buyer"
+    channel: "In-app reporting, service center experience, owner community"
+    race_stage: convert
+    effort: high
+    timeline: "Month 1-6"
+    expected_outcome: "Reduce ambient negative experiential signals. Strengthen reliability cloud."
+
+  - rank: 5
+    action: "Total Cost of Ownership calculator with real-world data"
+    dimension: economic
+    source: designed
+    target_cohort: "Mainstream Buyer"
+    channel: "Website, dealer tools, comparison sites"
+    race_stage: act
+    effort: low
+    timeline: "Month 1-2"
+    expected_outcome: "Resolve premium vs value tension with transparent economics."
+
+# --- Channel Map ---
+# Maps encounter bundle types to dimensions, cohorts, and signals.
+#
+# Encounter bundle types (from SBT taxonomy):
+#   advertising, owned_content, earned_media, product_experience,
+#   retail_environment, digital_interaction, word_of_mouth
+
+channel_map:
+  - channel: owned_content
+    primary_dimension: narrative
+    secondary_dimension: temporal
+    target_cohorts: ["Tech-Forward Early Adopter", "Mainstream Buyer"]
+    signal_types: ["Engineering stories", "Heritage content", "Impact data"]
+    race_stages: [reach, engage]
+
+  - channel: earned_media
+    primary_dimension: temporal
+    secondary_dimension: ideological
+    target_cohorts: ["Environmental Activist", "Mainstream Buyer"]
+    signal_types: ["20 Years of EV pitches", "Impact Report coverage"]
+    race_stages: [reach, act]
+
+  - channel: product_experience
+    primary_dimension: experiential
+    secondary_dimension: economic
+    target_cohorts: ["Mainstream Buyer", "Tech-Forward Early Adopter"]
+    signal_types: ["Service quality", "Software updates", "TCO evidence"]
+    race_stages: [convert, engage]
+
+  - channel: digital_interaction
+    primary_dimension: social
+    secondary_dimension: narrative
+    target_cohorts: ["Tech-Forward Early Adopter"]
+    signal_types: ["Community features", "Owner stories", "Engineering deep-dives"]
+    race_stages: [engage]
+
+# --- Timeline ---
+# Phased approach with quick wins, medium-term, and structural changes.
+
+timeline:
+  quick_wins:                             # Month 1-2
+    - "TCO calculator (economic signal)"
+    - "Engineering voices content series (narrative signal)"
+    - "Heritage campaign kickoff (temporal signal)"
+
+  medium_term:                            # Month 2-6
+    - "Quarterly Impact Report (ideological signal)"
+    - "Service quality program launch (experiential signal)"
+    - "Community feature expansion (social signal)"
+
+  structural:                             # Month 6+
+    - "Organizational narrative diversification (reduce CEO dependency)"
+    - "Brand architecture review (product brand vs corporate brand separation)"
+    - "Ambient signal monitoring and response system"
+
+# --- Measurement ---
+# How to track whether clouds are forming as intended.
+
+measurement:
+  - metric: "Cloud coherence score"
+    method: "Re-run Module 4 audit quarterly"
+    target: "Improve from 3/10 to 5/10 within 6 months"
+    tool: "SBT prompt kit Module 4"
+
+  - metric: "Temporal dimension activation"
+    method: "Track heritage-related mentions in earned media + social"
+    target: "From near-zero to measurable presence in brand association studies"
+    tool: "Social listening + brand tracking survey"
+
+  - metric: "Activist cohort conviction stability"
+    method: "Monitor ideological cloud scatter score in Module 3 re-runs"
+    target: "Move from 'forming' to 'partial' collapse state"
+    tool: "SBT prompt kit Module 3 + sentiment tracking"
+
+  - metric: "CEO-brand signal separation"
+    method: "Ratio of CEO-attributed vs brand-attributed media mentions"
+    target: "Shift from 70:30 (CEO-dominated) to 50:50"
+    tool: "Media monitoring"
+
+# --- Framework Configuration ---
+frameworks_used:
+  channel_planning: "RACE (Reach / Act / Convert / Engage)"
+  strategic_direction: "Ansoff Growth Matrix"
+  funnel_mapping: "AIDA (Awareness / Interest / Desire / Action)"
+  alternatives_considered:
+    - name: "SOSTAC (Smith)"
+      when_to_use: "When a full situation-objectives-strategy-tactics-action-control plan is needed"
+    - name: "Blue Ocean Strategy Canvas"
+      when_to_use: "When the goal is creating uncontested spectral space vs competitors"
+    - name: "McKinsey 3 Horizons"
+      when_to_use: "When phasing innovation vs core brand maintenance"
+    - name: "Porter's Generic Strategies"
+      when_to_use: "When dimensional strategy maps to cost-leadership vs differentiation"

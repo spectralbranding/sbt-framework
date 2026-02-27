@@ -1,0 +1,232 @@
+# Spectral Brand Theory — Module 4: Coherence Audit Output Template
+# Version: 2.0 (Post-Track-0 Validation)
+#
+# This template structures the spectral health scorecard for a brand.
+# All 7 SBT metrics are scored, graded, and mapped to evidence.
+#
+# v2.0 additions:
+#   - coherence_type taxonomy (5 types discovered in Track 0)
+#   - cohort_interdependence metric
+#   - structural_absence_efficiency metric
+#
+# Track 0 findings integrated:
+#   - Coherence has TYPES, not just levels (5-type taxonomy)
+#   - Brand health and brand power are independent variables
+#   - D/A Goldilocks zone: 55-65% designed is optimal
+#   - Structural absence (dark signals) is more efficient than positive emission
+#
+# Frameworks referenced:
+#   - ISO 10668:2010 (Monetary brand valuation — requirements)
+#   - ISO 20671:2021 (Brand evaluation — principles and fundamentals)
+#   - BrandAsset Valuator / BAV (4-pillar model)
+#   - Balanced Scorecard (Kaplan/Norton) for metric structure
+#   - See templates/FRAMEWORKS.md for alternatives
+
+brand:
+  name: "Tesla"
+  analysis_date: "2026-02-25"
+
+# --- Scorecard ---
+# 7 SBT metrics, each scored 1-10 with evidence and framework mapping.
+#
+# Optional ISO 20671 mapping shows how each SBT metric corresponds to
+# standard brand evaluation dimensions. Users working within ISO compliance
+# can use this mapping to bridge SBT analysis with existing frameworks.
+
+scorecard:
+  - metric: "Dimensional Coverage"
+    description: "How many of the 8 dimensions does the brand actively emit on?"
+    score: 6                              # 1-10
+    band: moderate                        # narrow (1-3) | moderate (4-6) | broad (7-10)
+    evidence: "6 dimensions active; temporal and semiotic significantly under-leveraged"
+    iso_20671_mapping: "Relevance — breadth of brand meaning"
+    bav_mapping: "Differentiation + Relevance"
+
+  - metric: "Gate Permeability"
+    description: "What % of target cohorts can recognize the brand?"
+    score: 9
+    band: high                            # low (1-3) | moderate (4-6) | high (7-10)
+    evidence: "Near-universal recognition. Identity gate is open for virtually all cohorts"
+    iso_20671_mapping: "Knowledge — brand awareness level"
+    bav_mapping: "Knowledge"
+
+  - metric: "Cloud Coherence"
+    description: "How similar are brand clouds across target cohorts?"
+    score: 3
+    band: scattered                       # scattered (1-3) | moderate (4-6) | tight (7-10)
+    evidence: "Tech cohort and activist cohort perceive fundamentally different brands"
+    iso_20671_mapping: "Consistency — unified perception across audiences"
+    bav_mapping: null                     # No direct BAV equivalent
+
+  - metric: "Collapse Strength"
+    description: "How confident are collapsed brand convictions?"
+    score: 5
+    band: moderate                        # weak (1-3) | moderate (4-6) | strong (7-10)
+    evidence: "Strong in tech cohort (confirmed), forming/unstable in activist cohort"
+    iso_20671_mapping: "Regard — esteem and quality perception"
+    bav_mapping: "Esteem"
+
+  - metric: "Re-collapse Resistance"
+    description: "How stable are brand convictions under contradicting signals?"
+    score: 4
+    band: moderate                        # fragile (1-3) | moderate (4-6) | resilient (7-10)
+    evidence: "Tech cohort moderately resilient; activist cohort actively re-collapsing"
+    iso_20671_mapping: "Protection — brand defensibility"
+    bav_mapping: null
+
+  - metric: "Emission Efficiency"
+    description: "What ratio of designed signals successfully cluster vs scatter?"
+    score: 6
+    band: moderate                        # wasteful (1-3) | moderate (4-6) | efficient (7-10)
+    evidence: "Product signals cluster well; corporate comms often scatter or backfire"
+    iso_20671_mapping: "Performance — effectiveness of brand delivery"
+    bav_mapping: "Relevance"
+
+  - metric: "Designed/Ambient Ratio"
+    description: "Is the brand's cloud shaped more by its own signals or by ambient ones?"
+    score: 4
+    band: balanced                        # ambient_dominated (1-3) | balanced (4-6) | designed_dominated (7-10)
+    evidence: "Product experience is designed-dominated; brand narrative is ambient-dominated (CEO media coverage, social discourse)"
+    iso_20671_mapping: "Governance — brand narrative control"
+    bav_mapping: null
+
+# --- Overall Grade ---
+# Composite assessment. Not a simple average — weights reflect strategic importance.
+
+overall:
+  grade: "C+"                             # A+ through F
+  score_average: 5.3                      # Mean of 7 metrics
+  weighted_score: 4.8                     # Weighted by strategic importance
+  summary: >
+    High awareness brand with significant coherence problems. Strong experiential
+    signals are undermined by ideological contradictions and loss of narrative control.
+    The brand is effectively two different brands depending on the observer's spectral profile.
+
+# --- Coherence Type (v2.0) ---
+# Track 0 discovered 5 distinct coherence types, each with different structural
+# properties and resilience profiles. The type matters MORE than the score.
+#
+# Types (ranked by structural sophistication):
+#   ecosystem:              Different clouds reinforce each other through functional
+#                           interdependence. Selective resilience — can absorb disruption
+#                           by purification. (Hermès: A+)
+#   signal:                 Consistent designed signals produce consistent clouds.
+#                           Uniform resilience — transmits disruption evenly. (IKEA: A-)
+#   identity:               Strong ideological core creates coherence for aligned cohorts
+#                           but repels misaligned ones. Binary resilience — divides under
+#                           stress. (Patagonia: B+)
+#   experiential_asymmetry: Extreme experiential variance across cohorts — local access
+#                           vs remote/mediated. Geographic resilience pattern. (Erewhon: B-)
+#   incoherent:             Strong but contradictory signals produce irreconcilable clouds.
+#                           Amplifies disruption. (Tesla: C-)
+
+coherence_type:
+  type: incoherent                        # ecosystem | signal | identity | experiential_asymmetry | incoherent
+  interdependence: low                    # low | medium | high
+  # interdependence: how much one cohort's cloud depends on another's behavior
+  # high = ecosystem (Hermès: Observer powers Achiever's status)
+  # medium = signal/identity (some cross-cohort effects)
+  # low = incoherent (cohorts operate independently or antagonistically)
+  resilience_profile: amplifying          # selective | uniform | binary | geographic | amplifying
+  # selective = disruption purifies (ecosystem)
+  # uniform = disruption transmits evenly (signal)
+  # binary = disruption divides along ideological line (identity)
+  # geographic = disruption affects local/remote differently (experiential_asymmetry)
+  # amplifying = disruption widens existing cracks (incoherent)
+  notes: >
+    Tesla exhibits classic incoherence: high emission strength (8/10 dimensional coverage)
+    with low cloud coherence (3/10). The brand's problem is structural, not communicative.
+    This is the "strongest weak brand" paradox — maximum awareness, minimum architectural
+    health. Brand health and brand power are independent variables.
+
+# --- Strengths ---
+top_strengths:
+  - rank: 1
+    area: "Gate permeability"
+    detail: "Near-universal recognition. The identity gate is never the bottleneck."
+  - rank: 2
+    area: "Experiential signal strength"
+    detail: "Product signals (performance, tech, charging) cluster consistently across cohorts."
+  - rank: 3
+    area: "Dimensional breadth"
+    detail: "Active emission on 6 of 8 dimensions — richer spectral signature than most competitors."
+
+# --- Gaps ---
+top_gaps:
+  - rank: 1
+    area: "Cloud coherence"
+    detail: "Extreme divergence between cohorts. The brand does not mean one thing."
+    urgency: critical                     # critical | high | medium | low
+  - rank: 2
+    area: "Ambient narrative dominance"
+    detail: "CEO's personal signals overwhelm brand's designed signals on ideological and narrative dimensions."
+    urgency: high
+  - rank: 3
+    area: "Re-collapse instability in activist cohort"
+    detail: "Actively re-collapsing toward negative conviction. Window for intervention narrowing."
+    urgency: high
+
+# --- Dimension Blind Spots ---
+# Dimensions the brand ignores that target cohorts care about.
+
+blind_spots:
+  - dimension: temporal
+    cohorts_affected: ["Heritage-Minded Consumers"]
+    impact: "Missing opportunity to leverage 20+ year EV pioneer history"
+  - dimension: cultural
+    cohorts_affected: ["Design-Conscious Professionals"]
+    impact: "Cybertruck polarizes cultural coding; no coherent aesthetic philosophy"
+
+# --- Designed-Ambient Conflicts ---
+# Where ambient signals contradict designed signals.
+
+designed_ambient_conflicts:
+  - dimension: ideological
+    designed_signal: "'Accelerate the transition to sustainable energy'"
+    ambient_signal: "CEO's political positioning alienates environmentalists"
+    severity: critical
+    cohorts_affected: ["Environmental Activist", "Progressive Professional"]
+  - dimension: narrative
+    designed_signal: "Innovation and disruption story"
+    ambient_signal: "Quality control complaints, service center frustrations"
+    severity: medium
+    cohorts_affected: ["Tech-Forward Early Adopter", "Mainstream Buyer"]
+
+# --- Recommended Priorities ---
+# Ranked actions based on audit findings.
+
+priorities:
+  - rank: 1
+    action: "Decouple brand narrative from CEO personal signals"
+    dimension: narrative
+    expected_impact: "Reduces cloud divergence, stabilizes activist cohort"
+    difficulty: high                      # low | medium | high
+    timeframe: "3-6 months"
+  - rank: 2
+    action: "Strengthen temporal dimension — '20 years of EV leadership' campaign"
+    dimension: temporal
+    expected_impact: "Adds stabilizing heritage signal across all cohorts"
+    difficulty: low
+    timeframe: "1-3 months"
+  - rank: 3
+    action: "Resolve economic signal contradiction (premium vs value)"
+    dimension: economic
+    expected_impact: "Clearer value proposition reduces scatter in mainstream cohort"
+    difficulty: medium
+    timeframe: "3-6 months"
+
+# --- Framework Configuration ---
+frameworks_used:
+  scoring_structure: "Balanced Scorecard (Kaplan/Norton)"
+  brand_valuation_standard: "ISO 10668:2010"
+  brand_evaluation_standard: "ISO 20671:2021"
+  perception_benchmark: "BrandAsset Valuator (BAV)"
+  alternatives_considered:
+    - name: "Net Promoter Score (NPS)"
+      when_to_use: "When a single loyalty metric is needed. Maps roughly to SBT collapse strength"
+    - name: "Brand Health Index (proprietary variants)"
+      when_to_use: "When integrating with existing corporate brand tracking dashboards"
+    - name: "Keller's CBBE Pyramid"
+      when_to_use: "When the audience expects equity-pyramid framing (identity → meaning → response → resonance)"
+    - name: "Aaker's Brand Equity Model"
+      when_to_use: "When focusing on awareness, associations, perceived quality, loyalty — maps to SBT gate permeability, cloud content, collapse strength, re-collapse resistance"
