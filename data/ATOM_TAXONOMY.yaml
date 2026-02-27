@@ -1,0 +1,145 @@
+# Atom Taxonomy v0.1
+# Defines the 8 brand atom dimensions and their sub-types
+# This is a working draft for concept development
+
+dimensions:
+  semiotic:
+    description: "Visual and auditory identity signals"
+    sub_types:
+      - visual_mark: "Logo, symbol, icon"
+      - naming: "Brand name, sub-brand names, product names"
+      - color_system: "Primary/secondary palette, color associations"
+      - typography: "Typeface choices, typographic hierarchy"
+      - sonic: "Jingles, sonic logos, brand music, UX sounds"
+      - spatial: "Architecture, interior design, packaging form"
+      - motion: "Animation style, video language, kinetic identity"
+    alibi_analog: "VENDOR atoms (identification signals)"
+
+  narrative:
+    description: "Stories, myths, and temporal structures"
+    sub_types:
+      - origin: "Founding story, creator myth"
+      - transformation: "Key pivot moments, evolution arcs"
+      - hero_journey: "Challenge-triumph narratives"
+      - testimonial: "Customer/user stories"
+      - legacy: "Historical events, milestones"
+      - future_vision: "Where we're going narratives"
+    alibi_analog: "DATETIME atoms (temporal anchors)"
+
+  ideological:
+    description: "Values, ethics, purpose, and positions"
+    sub_types:
+      - purpose: "Why the brand exists beyond profit"
+      - values: "Stated and enacted value set"
+      - ethical_position: "Stance on social/environmental issues"
+      - promise: "Core commitment to stakeholders"
+      - political: "Explicit or implicit political alignment"
+      - transparency: "Openness about operations, sourcing, practices"
+    alibi_analog: null  # new dimension, no direct analog
+
+  experiential:
+    description: "Touchpoints, interactions, and product encounters"
+    sub_types:
+      - product_use: "Using the actual product/service"
+      - service_interaction: "Customer service, support, human contact"
+      - digital_ux: "Website, app, digital interface experience"
+      - physical_space: "Store, office, event space experience"
+      - onboarding: "First-time experience, packaging opening"
+      - failure_recovery: "How the brand handles problems"
+    alibi_analog: "ITEM atoms (the actual stuff)"
+
+  social:
+    description: "Community, status, and belonging signals"
+    sub_types:
+      - tribe_marker: "In-group signaling, community belonging"
+      - status_signal: "Luxury, aspiration, exclusivity"
+      - accessibility: "Inclusivity, democratization signals"
+      - peer_endorsement: "Word-of-mouth, influencer association"
+      - participation: "User-generated content, co-creation"
+      - ritual: "Shared consumption practices, traditions"
+    alibi_analog: "PAYMENT atoms (social exchange currency)"
+
+  economic:
+    description: "Price, value, and financial signals"
+    sub_types:
+      - price_point: "Absolute price level"
+      - value_proposition: "Price-to-quality ratio"
+      - premium_signal: "Why this costs more"
+      - discount_pattern: "Sale behavior, promotional cadence"
+      - investment_return: "Financial performance for investors"
+      - cost_transparency: "Visible cost breakdown, fair pricing"
+    alibi_analog: "AMOUNT atoms (monetary meaning)"
+
+  cultural:
+    description: "Aesthetic codes, references, and taste signals"
+    sub_types:
+      - aesthetic: "Design sensibility, visual taste"
+      - reference: "Cultural allusions, art/music/film connections"
+      - humor: "Comedy style, irreverence level"
+      - zeitgeist: "Trend alignment, cultural moment capture"
+      - subculture: "Niche culture connections"
+      - taste_level: "Sophistication, refinement signals"
+    alibi_analog: "TAX atoms (cultural overhead)"
+
+  temporal:
+    description: "Heritage, evolution, and era associations"
+    sub_types:
+      - heritage: "How long the brand has existed, historical weight"
+      - era_association: "Which time period the brand evokes"
+      - evolution: "How the brand has changed visibly over time"
+      - trend_position: "Ahead of / riding / behind cultural trends"
+      - longevity_signal: "Will this brand still exist in 10 years?"
+      - nostalgia: "Deliberate evocation of past eras"
+    alibi_analog: "DATETIME atoms (when things happened)"
+
+# Observer scoring template
+observer_template:
+  spectrum:
+    # 0.0 = invisible, 1.0 = full sensitivity
+    semiotic: 0.5
+    narrative: 0.5
+    ideological: 0.5
+    experiential: 0.5
+    social: 0.5
+    economic: 0.5
+    cultural: 0.5
+    temporal: 0.5
+  weights:
+    # Must sum to 1.0
+    semiotic: 0.125
+    narrative: 0.125
+    ideological: 0.125
+    experiential: 0.125
+    social: 0.125
+    economic: 0.125
+    cultural: 0.125
+    temporal: 0.125
+  tolerances:
+    # 0.0 = zero tolerance, 1.0 = anything goes
+    consistency: 0.5
+    authenticity: 0.5
+    ideology_match: 0.5
+
+# Encounter bundle types
+encounter_bundles:
+  CAMPAIGN:
+    typical_atoms: [semiotic, narrative, cultural, economic]
+    channel: "Advertising, sponsored content"
+  ENCOUNTER:
+    typical_atoms: [experiential, semiotic, social, economic]
+    channel: "Store visit, service interaction"
+  USAGE:
+    typical_atoms: [experiential, economic, temporal]
+    channel: "Product consumption, service use"
+  TESTIMONY:
+    typical_atoms: [narrative, social, ideological]
+    channel: "Word-of-mouth, reviews, recommendations"
+  EMPLOYMENT:
+    typical_atoms: [cultural, ideological, social, economic]
+    channel: "Working at the brand"
+  INVESTMENT:
+    typical_atoms: [economic, narrative, temporal]
+    channel: "Financial relationship"
+  NEWS:
+    typical_atoms: [narrative, cultural, social, ideological]
+    channel: "Media coverage, journalism"

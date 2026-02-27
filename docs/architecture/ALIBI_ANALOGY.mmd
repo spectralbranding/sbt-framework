@@ -1,0 +1,33 @@
+%% Structural analogy between alibi financial pipeline and spectral branding
+%% Side-by-side mapping of concepts
+
+graph TD
+    subgraph "Alibi: Financial Facts"
+        direction TB
+        A_DOC[Document<br/>receipt, invoice, statement] -->|extract| A_ATOM[Atoms<br/>VENDOR, ITEM, AMOUNT,<br/>PAYMENT, DATETIME, TAX]
+        A_ATOM -->|group| A_BUNDLE[Bundle<br/>BASKET, INVOICE,<br/>STATEMENT_LINE]
+        A_BUNDLE -->|score + cluster| A_CLOUD[Cloud<br/>probabilistic match<br/>across documents]
+        A_CLOUD -->|collapse| A_FACT[Fact<br/>confirmed purchase<br/>one canonical truth]
+        A_ID[(Identity Registry<br/>vendor + item<br/>canonical entities)] -.->|gate| A_CLOUD
+    end
+
+    subgraph "Atomic Branding"
+        direction TB
+        B_SRC[Brand Encounter<br/>ad, store visit, product use,<br/>review, news article] -->|perceive| B_ATOM[Brand Atoms<br/>SEMIOTIC, NARRATIVE,<br/>IDEOLOGICAL, EXPERIENTIAL,<br/>SOCIAL, ECONOMIC,<br/>CULTURAL, TEMPORAL]
+        B_ATOM -->|group| B_BUNDLE[Encounter Bundle<br/>CAMPAIGN, ENCOUNTER,<br/>USAGE, TESTIMONY,<br/>EMPLOYMENT, NEWS]
+        B_BUNDLE -->|observer scores + clusters| B_CLOUD[Perception Cloud<br/>proto-brand-image<br/>forming in observer's mind]
+        B_CLOUD -->|conviction threshold| B_FACT[Brand Fact<br/>what the brand IS<br/>to THIS observer]
+        B_ID[(Identity Gate<br/>logo, name, visual<br/>brand recognition)] -.->|gate| B_CLOUD
+    end
+
+    A_DOC ===|analog| B_SRC
+    A_ATOM ===|analog| B_ATOM
+    A_BUNDLE ===|analog| B_BUNDLE
+    A_CLOUD ===|analog| B_CLOUD
+    A_FACT ===|analog| B_FACT
+    A_ID ===|analog| B_ID
+
+    style A_FACT fill:#d4edda,stroke:#155724
+    style B_FACT fill:#cce5ff,stroke:#004085
+    style A_ID fill:#fff3cd,stroke:#856404
+    style B_ID fill:#fff3cd,stroke:#856404

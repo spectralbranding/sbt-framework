@@ -1,0 +1,62 @@
+%% Spectral Branding Pipeline Architecture
+%% Shows the full flow from atom emission to fact collapse
+%% Analogous to alibi's document -> atom -> cloud -> fact pipeline
+
+graph TD
+    subgraph "Atom Emission Layer"
+        direction LR
+        BE[Brand Entity] -->|designed| DA[Designed Atoms<br/>campaigns, products,<br/>communications, UX]
+        ENV[Environment] -->|ambient| AA[Ambient Atoms<br/>reviews, news, competitor<br/>framing, cultural shifts]
+        AI_GEN[AI Systems] -->|synthetic| SA[Synthetic Atoms<br/>AI-generated content,<br/>deepfakes, LLM summaries]
+    end
+
+    subgraph "Atom Registry"
+        DA & AA & SA --> REG[(Typed Atom Store)]
+        REG -->|semiotic| D1[Logo, Name, Colors]
+        REG -->|narrative| D2[Stories, Myths, Events]
+        REG -->|ideological| D3[Values, Ethics, Purpose]
+        REG -->|experiential| D4[Touchpoints, Service, UX]
+        REG -->|social| D5[Community, Status, Tribe]
+        REG -->|economic| D6[Price, Value, Premium]
+        REG -->|cultural| D7[Aesthetic, References, Taste]
+        REG -->|temporal| D8[Heritage, Evolution, Era]
+    end
+
+    subgraph "Mediation Layer"
+        D1 & D2 & D3 & D4 & D5 & D6 & D7 & D8 --> MED{AI Mediation<br/>algorithms filter,<br/>re-rank, re-context}
+        MED -->|platform A subset| PA[TikTok View]
+        MED -->|platform B subset| PB[LinkedIn View]
+        MED -->|platform C subset| PC[Amazon View]
+        MED -->|unmediated| UM[Direct Experience]
+    end
+
+    subgraph "Observer Layer"
+        PA & PB & PC & UM --> IG{Identity Gate<br/>Can observer recognize<br/>the brand?}
+        IG -->|fail| NOISE[Noise / Ignored]
+        IG -->|pass| OBS[Observer Profile<br/>spectrum + weights + tolerances]
+    end
+
+    subgraph "Perception Layer"
+        OBS --> CF[Cloud Formation<br/>atoms cluster by<br/>observer's weight profile]
+        CF --> TH{Threshold<br/>reached?}
+        TH -->|no| FORMING[Forming<br/>awareness, no opinion]
+        TH -->|weak| PARTIAL[Partial Fact<br/>provisional opinion]
+        TH -->|strong| CONFIRMED[Confirmed Fact<br/>strong conviction]
+    end
+
+    subgraph "Dynamics"
+        NEW[New Atoms<br/>scandal, rebrand,<br/>viral moment] --> RC[Re-collapse<br/>facts rebuilt<br/>from scratch]
+        RC --> CF
+    end
+
+    style BE fill:#e3f2fd,stroke:#0d47a1
+    style ENV fill:#fff8e1,stroke:#f57f17
+    style AI_GEN fill:#fce4ec,stroke:#c62828
+    style REG fill:#e8eaf6,stroke:#283593
+    style MED fill:#fff3cd,stroke:#856404
+    style IG fill:#fff3cd,stroke:#856404
+    style NOISE fill:#ffcdd2,stroke:#c62828
+    style FORMING fill:#fff8e1,stroke:#f57f17
+    style PARTIAL fill:#ffe0b2,stroke:#e65100
+    style CONFIRMED fill:#c8e6c9,stroke:#2e7d32
+    style RC fill:#f3e5f5,stroke:#6a1b9a

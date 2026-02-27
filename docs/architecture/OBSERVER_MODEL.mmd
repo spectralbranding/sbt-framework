@@ -1,0 +1,59 @@
+%% Observer Architecture
+%% Models how different observer cohorts perceive the same brand atoms differently
+%% Each observer has: spectrum (what they CAN see), weights (what MATTERS),
+%% tolerances (variance accepted), priors (existing facts), identity gate
+
+graph LR
+    subgraph "Brand Atoms<br/>(same for all observers)"
+        SEM((SEM))
+        NAR((NAR))
+        IDE((IDE))
+        EXP((EXP))
+        SOC((SOC))
+        ECO((ECO))
+        CUL((CUL))
+        TMP((TMP))
+    end
+
+    subgraph "Observer A: Gen-Z Consumer"
+        direction TB
+        A_SPEC[Spectrum: SOC, CUL, SEM high<br/>ECO, EXP medium<br/>IDE, NAR, TMP low]
+        A_WEIGHT[Weights: SOC 0.40<br/>CUL 0.30, SEM 0.15<br/>ECO 0.10, EXP 0.05]
+        A_TOL[Tolerance: LOW for<br/>ideological inconsistency]
+        A_FACT[Fact A: Trendy tribe marker]
+        A_SPEC --> A_WEIGHT --> A_TOL --> A_FACT
+    end
+
+    subgraph "Observer B: B2B Procurement"
+        direction TB
+        B_SPEC[Spectrum: ECO, EXP high<br/>TMP medium<br/>SOC, CUL, SEM low]
+        B_WEIGHT[Weights: ECO 0.45<br/>EXP 0.35, TMP 0.15<br/>NAR 0.05]
+        B_TOL[Tolerance: HIGH for<br/>cultural atoms]
+        B_FACT[Fact B: Reliable supplier]
+        B_SPEC --> B_WEIGHT --> B_TOL --> B_FACT
+    end
+
+    subgraph "Observer C: Employee"
+        direction TB
+        C_SPEC[Spectrum: IDE, CUL, SOC high<br/>ECO medium<br/>SEM, TMP low]
+        C_WEIGHT[Weights: IDE 0.35<br/>CUL 0.30, SOC 0.20<br/>ECO 0.15]
+        C_TOL[Tolerance: ZERO for<br/>ideological contradiction]
+        C_FACT[Fact C: Purpose-driven workplace]
+        C_SPEC --> C_WEIGHT --> C_TOL --> C_FACT
+    end
+
+    SOC & CUL & SEM -.-> A_SPEC
+    ECO & EXP & TMP -.-> B_SPEC
+    IDE & CUL & SOC -.-> C_SPEC
+
+    style SEM fill:#fce4ec,stroke:#c62828
+    style NAR fill:#e8eaf6,stroke:#283593
+    style IDE fill:#e0f2f1,stroke:#004d40
+    style EXP fill:#fff8e1,stroke:#f57f17
+    style SOC fill:#f3e5f5,stroke:#6a1b9a
+    style ECO fill:#e8f5e9,stroke:#2e7d32
+    style CUL fill:#fbe9e7,stroke:#bf360c
+    style TMP fill:#e3f2fd,stroke:#0d47a1
+    style A_FACT fill:#f3e5f5,stroke:#6a1b9a
+    style B_FACT fill:#e8f5e9,stroke:#2e7d32
+    style C_FACT fill:#e0f2f1,stroke:#004d40
