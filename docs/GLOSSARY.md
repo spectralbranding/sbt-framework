@@ -15,6 +15,11 @@
 - **Weight-Barrier-Crossing Signal**: signals that bypass dimensional filtering
 - **Scarcity Multiplier**: amplification of positive signals by structural absence
 
+### v2.1 Additions (Non-Ergodic Perception)
+- **Non-Ergodic Perception**: brand perception as a multiplicative, path-dependent process
+- **Ergodicity Coefficient**: per-dimension measure of ensemble metric reliability
+- **Absorbing State**: irreversible negative conviction basin
+
 ---
 
 ## Overview
@@ -410,6 +415,37 @@ Whether a brand cloud is positive, negative, or ambivalent in its overall charac
 - **Key insight**: evidence-free negative convictions are MORE stable than evidence-rich positive ones. The Boycotter (0.82 confidence) has zero product experience — no experiential data to create cognitive dissonance. The Tech Loyalist (0.85 confidence) has real product data that creates nuance and vulnerability.
 - **See also**: Cloud Formation Mode, Re-collapse Resistance
 
+### Non-Ergodic Perception (v2.1)
+
+The property that brand perception is a multiplicative, path-dependent process in which ensemble averages (measuring the "average observer" across a population at one moment) diverge from time averages (tracking one observer's perception over time). Derived from Peters' (2019) ergodicity economics (*Nature Physics*).
+
+- **Core insight**: when signals compound rather than add, sequence matters and ruin (negative conviction) is an absorbing state. What happens to the "average observer" does not predict what happens to any individual cohort over time.
+- **Brand application**: brand power (ensemble measure — aggregate awareness) and brand health (time-average measure — architectural resilience for any given cohort) are independent variables precisely because brand perception is non-ergodic.
+- **Measurement implication**: for non-ergodic brands (low coherence, low D/A ratio), aggregate metrics like NPS and awareness tracking are structurally misleading — they average trajectories that are diverging. Longitudinal cohort-trajectory tracking is required instead.
+- **Reference**: Peters, O. (2019). The ergodicity problem in economics. *Nature Physics*, 15, 1216–1221.
+- **See also**: Ergodicity Coefficient, Absorbing State, Brand Power vs Brand Health
+
+### Ergodicity Coefficient (v2.1)
+
+A diagnostic measure (epsilon) per brand-dimension or brand-cohort pair, ranging from 0.0 to 1.0, indicating the degree to which ensemble metrics reliably predict individual cohort trajectories for that dimension.
+
+- **epsilon = 1.0**: perfectly ergodic — cross-sectional surveys reliably predict any cohort's trajectory. Safe to use aggregate metrics.
+- **epsilon -> 0.0**: strongly non-ergodic — ensemble average is meaningless for this dimension. Must track individual cohort trajectories longitudinally.
+- **Diagnostic question**: "Does the average observer's perception of [dimension] predict any specific observer's perception trajectory over time?"
+- **Example (Tesla)**: semiotic epsilon = 0.8 (logo stable across cohorts/time), ideological epsilon = 0.1 (pro-Musk and anti-Musk on divergent trajectories — average is a fiction)
+- **Practical use**: determines whether a dimension can be safely measured with surveys (high epsilon) or requires cohort-trajectory tracking (low epsilon)
+- **See also**: Non-Ergodic Perception, Coherence Type
+
+### Absorbing State (v2.1)
+
+In non-ergodic brand perception, a conviction state from which no future signals can extract the observer. Once an observer's negative conviction crosses a threshold with no experiential data to create friction, it enters an absorbing basin — each subsequent negative signal compounds it further, and positive signals cannot reach the observer because their spectral profile excludes the relevant dimensions.
+
+- **Discovered**: Track 0, Tesla case study (Progressive Boycotter: 0.82 confidence, 0.03 experiential weight — experiential gate effectively closed)
+- **Mechanism**: the observer's conviction is built on dimensions (ideological, social) that only receive confirming signals. The dimension that could create dissonance (experiential) is weighted at near-zero. The conviction self-reinforces without bound.
+- **Physics analog**: absorbing state in non-ergodic multiplicative processes (Peters, 2019) — once wealth hits zero, no future gains recover it. Once negative conviction crosses threshold, no future positive signals reach the observer.
+- **Strategic implication**: resources spent converting observers in absorbing states are wasted. The experiential gate is closed. The conviction is structurally irrecoverable.
+- **See also**: Non-Ergodic Perception, Cloud Valence, Re-collapse Resistance
+
 ### Coherence Type (v2.0)
 
 Qualitative classification of how a brand's clouds relate across observer cohorts. Track 0 discovered that coherence has TYPES, not just levels — a 7/10 Signal Coherence and a 7/10 Ecosystem Coherence have fundamentally different structural properties.
@@ -604,6 +640,13 @@ Intentionally disrupting existing brand facts by changing the identity gate (new
 | **Temporal Mode** | Heritage vs currency relationship with time; heritage compounds non-linearly | Erewhon vs Hermès |
 | **Structural Absence Index** | Degree to which dark signals contribute to brand value; scarcity multiplier effect | Hermès, Erewhon |
 | **Cohort Interdependence** | How much one cohort's cloud depends on another cohort's behavior | Hermès (ecosystem) |
+
+### Non-Ergodic Perception Metrics (v2.1)
+
+| Metric | What It Measures | Discovered In |
+|--------|-----------------|---------------|
+| **Ergodicity Coefficient** | Per-dimension reliability of ensemble metrics for predicting cohort trajectories (0.0 = non-ergodic, 1.0 = ergodic) | Cross-study (Peters 2019 + SBT synthesis) |
+| **Absorbing State Detection** | Whether a cohort's negative conviction has crossed the irrecoverable threshold | Tesla (Progressive Boycotter) |
 
 ---
 

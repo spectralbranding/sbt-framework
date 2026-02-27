@@ -666,6 +666,33 @@ graph LR
 
 **Implication**: the framework measures ARCHITECTURE, not AWARENESS. The confusion between brand power and brand health is the central error in traditional brand management.
 
+### 7.10 Non-Ergodic Perception Dynamics
+
+**Discovery**: brand perception operates as a multiplicative, path-dependent, non-ergodic process — and this single property from physics explains multiple independently discovered SBT phenomena.
+
+**Theoretical basis**: Peters, O. (2019). The ergodicity problem in economics. *Nature Physics*, 15, 1216–1221. Peters demonstrates that for 300 years, economics has confused ensemble averages (across many agents at one moment) with time averages (one agent across time). In non-ergodic systems, these diverge. Brand perception is non-ergodic because signals compound multiplicatively (each new signal multiplies existing cloud confidence rather than adding to it), sequence matters (three positive signals then a crisis differs from the reverse), and negative conviction is an absorbing state (once crossed, no future positive signals reach the observer).
+
+**What non-ergodicity explains in SBT**:
+
+| SBT Discovery | Non-Ergodic Explanation |
+|---------------|----------------------|
+| Brand health != brand power (7.9) | Time average != ensemble average |
+| Negative clouds strengthen under disruption (7.8) | Absorbing state — no reversal mechanism |
+| Temporal compounding is non-linear (7.5) | Multiplicative path-dependent growth |
+| Coherence type determines resilience (7.2) | Ergodicity profile determines which metrics are reliable |
+| D/A ratio predicts controllability (7.4) | High D/A = more ergodic (controllable), low D/A = more non-ergodic (chaotic) |
+| Evidence-free conviction > evidence-rich (7.8) | Non-ergodic trajectory without experiential friction |
+
+**Proposed metric — Ergodicity Coefficient (epsilon)**:
+
+```
+epsilon(brand, dimension) in [0, 1]
+epsilon = 1.0 -> ergodic: ensemble surveys reliable
+epsilon -> 0.0 -> non-ergodic: must track cohort trajectories
+```
+
+**Practical implication**: before choosing a measurement approach, assess the ergodicity profile. Ecosystem-coherent brands (high epsilon) can use aggregate surveys. Incoherent brands (low epsilon) require longitudinal cohort tracking — their dashboards are averaging divergent trajectories into a statistical phantom.
+
 ---
 
 ## References
