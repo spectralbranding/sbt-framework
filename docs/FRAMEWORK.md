@@ -693,6 +693,29 @@ epsilon -> 0.0 -> non-ergodic: must track cohort trajectories
 
 **Practical implication**: before choosing a measurement approach, assess the ergodicity profile. Ecosystem-coherent brands (high epsilon) can use aggregate surveys. Incoherent brands (low epsilon) require longitudinal cohort tracking — their dashboards are averaging divergent trajectories into a statistical phantom.
 
+### 7.11 Cross-Model Pipeline Robustness
+
+**Discovery**: the analytical pipeline produces identical structural diagnoses when executed by different LLMs (Claude Opus 4.6 and Gemini 3.1 Pro), confirming that conclusions are framework-driven, not model-specific.
+
+**Cross-model replication** (Tesla + Hermès, 2 brands × 6 modules):
+
+| Finding | Claude | Gemini | Convergence |
+|---------|--------|--------|-------------|
+| Tesla coherence type | Incoherent | Incoherent | Identical |
+| Tesla grade | C- | C- | Identical |
+| Hermès coherence type | Ecosystem | Ecosystem | Identical |
+| Hermès grade | A+ | A+ | Identical |
+| Structural absence mechanism | Independently derived | Independently derived | High |
+| Emission efficiency (Tesla) | 3/10 | 3/10 | Identical |
+| Emission efficiency (Hermès) | 9/10 | 9/10 | Identical |
+
+**Model-sensitive** (varies by LLM, does not affect structural diagnosis):
+- Cohort granularity: Claude Opus 4.6 atomizes (5-6 cohorts), Gemini 3.1 Pro synthesizes (3 cohorts)
+- D/A ratio: within 10 percentage points
+- Narrative style: Claude emphasizes paradoxes; Gemini is more operationally clinical
+
+**Implication**: the framework acts as a structured lens that constrains LLM analysis toward the same architectural truths regardless of which model holds the lens. Different models produce different *resolution* but the same *structure* — like telescopes of different apertures viewing the same constellation. Running the pipeline with multiple models is a recommended practice for maximum analytical depth.
+
 ---
 
 ## References
