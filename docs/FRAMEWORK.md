@@ -697,21 +697,21 @@ epsilon -> 0.0 -> non-ergodic: must track cohort trajectories
 
 **Discovery**: the analytical pipeline produces identical structural diagnoses when executed by different LLMs (Claude Opus 4.6 and Gemini 3.1 Pro), confirming that conclusions are framework-driven, not model-specific.
 
-**Cross-model replication** (Tesla + Hermès, 2 brands × 6 modules):
+**Cross-model replication** (all 5 brands × 6 modules):
 
-| Finding | Claude | Gemini | Convergence |
-|---------|--------|--------|-------------|
-| Tesla coherence type | Incoherent | Incoherent | Identical |
-| Tesla grade | C- | C- | Identical |
-| Hermès coherence type | Ecosystem | Ecosystem | Identical |
-| Hermès grade | A+ | A+ | Identical |
-| Structural absence mechanism | Independently derived | Independently derived | High |
-| Emission efficiency (Tesla) | 3/10 | 3/10 | Identical |
-| Emission efficiency (Hermès) | 9/10 | 9/10 | Identical |
+| Brand | Claude Opus 4.6 | Gemini 3.1 Pro | Convergence |
+|-------|----------------|----------------|-------------|
+| Tesla | Incoherent, C- | Incoherent, C- | Identical |
+| Hermès | Ecosystem, A+ | Ecosystem, A+ | Identical |
+| Patagonia | Identity, B+ | Identity, B+ | Identical |
+| IKEA | Signal, A- | Signal, A- | Identical |
+| Erewhon | Exp. Asymmetry, B- | Exp. Asymmetry, B- | Identical |
+
+5/5 brands: identical coherence type + identical grade. Both models independently derived structural absence (Hermès) and CEO ambient domination (Tesla) without these being named in prompts.
 
 **Model-sensitive** (varies by LLM, does not affect structural diagnosis):
-- Cohort granularity: Claude Opus 4.6 atomizes (5-6 cohorts), Gemini 3.1 Pro synthesizes (3 cohorts)
-- D/A ratio: within 10 percentage points
+- Cohort granularity: Claude Opus 4.6 atomizes (5-6 cohorts), Gemini 3.1 Pro synthesizes (3 cohorts) — consistent across all 5 brands
+- D/A ratio: within 10-15 percentage points (Gemini attributes slightly more to designed signals)
 - Narrative style: Claude emphasizes paradoxes; Gemini is more operationally clinical
 
 **Implication**: the framework acts as a structured lens that constrains LLM analysis toward the same architectural truths regardless of which model holds the lens. Different models produce different *resolution* but the same *structure* — like telescopes of different apertures viewing the same constellation. Running the pipeline with multiple models is a recommended practice for maximum analytical depth.
