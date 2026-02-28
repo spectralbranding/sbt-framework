@@ -74,7 +74,7 @@ Each module has a prompt + YAML template in [`templates/`](templates/).
 
 | Brand | Coherence Type | Grade | Key Finding |
 |-------|---------------|-------|-------------|
-| Hermes | Ecosystem | A+ | Structural absence (dark signals) creates more value than emission |
+| Hermès | Ecosystem | A+ | Structural absence (dark signals) creates more value than emission |
 | IKEA | Signal | A- | Consistent designed signals produce uniform resilience |
 | Patagonia | Identity | B+ | Productive contradiction — ideological core filters cohort compatibility |
 | Erewhon | Experiential asymmetry | B- | Local and mediated audiences perceive structurally different brands |
