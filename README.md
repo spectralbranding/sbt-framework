@@ -124,6 +124,7 @@ sbt-framework/
 | Resource | Description |
 |----------|-------------|
 | [Research Papers](https://github.com/spectralbranding/sbt-papers) | Working papers on SBT and the underlying epistemological architecture |
+| [Brand Code](https://github.com/spectralbranding/brand-code) | Executable brand identity specification — spectral palette, particle system source, AI-readable prompt |
 | [SSRN Preprint](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6318718) | Formal academic paper — *Spectral Brand Theory: A Computational Framework for Multi-Dimensional Brand Perception* |
 | [Substack](https://spectralbranding.substack.com) | Applied analysis articles |
 
