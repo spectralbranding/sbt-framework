@@ -621,6 +621,16 @@ Configuring how multiple brands share or separate their identity gates. Replaces
 | House of Brands | Separate gates | P&G (Tide, Pampers, Gillette have independent gates) |
 | Endorsed | Partial gate sharing | Marriott (Courtyard by Marriott shares partial gate) |
 
+### Brand Code
+
+A machine-readable, version-controlled, executable specification of a brand's visual identity and signal architecture. Replaces the traditional brand guidelines PDF with code that can be read, run, forked, and verified by all three observer cohorts (search engines, humans, AI agents).
+
+- **Structure**: spectral profile (`brand.json`), human-readable description (`BRAND.md`), AI-readable prompt (`prompt.md`), rendering function source code
+- **Key property**: coherence is computable — "does this output follow the brand function?" has a deterministic answer
+- **Traditional equivalent**: brand guidelines, brand book, visual identity manual
+- **Key difference**: brand guidelines describe desired outcomes in natural language (subjective, unverifiable). A Brand Code computes them (deterministic, auditable).
+- **Reference implementation**: [github.com/spectralbranding/brand-code](https://github.com/spectralbranding/brand-code)
+
 ### Forced Re-collapse
 
 Intentionally disrupting existing brand facts by changing the identity gate (new semiotic atoms) and flooding the system with new atoms across all dimensions. Replaces "rebranding" in SBT.
