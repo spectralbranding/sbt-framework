@@ -99,6 +99,18 @@ graph TD
 
 ---
 
+## Foundational
+
+### Brand
+
+In SBT, not an object with fixed properties but a perceptual process: continuous signal emission across eight dimensions, continuous observation through observer-specific spectral profiles, continuous re-collapse into conviction. There is no brand-in-itself — only atoms and observers. What we call "the brand" is always already a collapse state in someone's mind, assembled from whichever signals they could perceive through their particular spectral profile.
+
+- **Key shift**: from noun to verb — brand is something that *happens*, not something that *is*
+- **Implication**: no two observers perceive the same brand; "the brand" is a convenient shorthand for the aggregate of all observer-specific collapse states
+- **See**: Brand Atom, Brand Cloud, Brand Fact, Conviction Collapse, Observer Cohort
+
+---
+
 ## Emission Layer
 
 ### Brand Atom
