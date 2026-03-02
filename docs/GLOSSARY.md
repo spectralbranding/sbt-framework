@@ -318,6 +318,7 @@ The observer's sensitivity to each of the 8 brand atom dimensions. Ranges from 0
 The importance the observer assigns to each dimension, governing how atoms influence cloud formation. Must sum to 1.0. Determines what MATTERS to the observer.
 
 - **Distinction from spectrum**: spectrum = can you see it; weights = does it matter to you. You might see economic atoms (spectrum: 0.7) but not care about them (weight: 0.05)
+- **Estimation in practice**: weights are estimated through structured expert judgment informed by behavioral data (stated purchase drivers, revealed preferences, complaint/praise patterns). Treat as hypotheses, not measurements. Validated approaches: conjoint analysis or MaxDiff scaling. Expert estimates carry ±0.10-0.15 uncertainty. See Part 3.3 for methodology.
 
 ### Tolerances
 

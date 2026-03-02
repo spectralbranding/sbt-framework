@@ -61,6 +61,8 @@ Seven architectural principles make this work:
 | 6 | Re-collapse on new evidence | Facts rebuilt from scratch, never patched | Truth is recalculated from full evidence set |
 | 7 | Epistemic separation | Atoms != Clouds != Facts | Observations != Hypotheses != Knowledge |
 
+*Note on the analogy's limits: the alibi architecture is structural, not literal. Financial atoms (VENDOR, AMOUNT, DATETIME) are discrete, structured, and objectively verifiable. Brand signals are interpretive, continuous, and overlapping. The epistemic architecture — observations → hypotheses → knowledge — transfers across domains; the data precision does not. Brand 'atoms' are more accurately described as typed signal contributions than as discrete measurable units.*
+
 ---
 
 ## Part 2: The Stellar Object Mapping
@@ -123,6 +125,8 @@ graph LR
 | The stellar object itself (all stars, all radiation) | The brand's signal architecture — objectively characterizable across all eight dimensions |
 
 The critical insight: **there is no universal brand perception.** The brand's signal architecture — its eight-dimensional emission pattern — is objectively real and characterizable. What cannot exist in a single universal form is brand *meaning*: each observer cohort assembles structurally different brand meaning from the same signal environment, collapsing whichever atoms they can perceive through their particular spectrum into distinct brand facts.
+
+*A note on the spectral metaphor's limits: in optics, a stellar object's spectrum is observer-independent — the star emits what it emits regardless of who measures it. Brand perception inverts this: the 'spectrum' is observer-specific. The metaphor is useful for visualizing multi-dimensionality and observer sensitivity differences, but breaks down precisely where it matters most — in SBT, the observer's spectral profile creates the perceived brand, not merely filters a fixed emission.*
 
 ---
 
@@ -226,6 +230,10 @@ Example observer profiles:
 | Brand employee | ideological, cultural, social | ideological: 0.35, cultural: 0.30 | Zero for ideological contradiction |
 | Investor | economic, narrative, temporal | economic: 0.45, narrative: 0.30 | High for experiential (not their concern) |
 | Cultural critic | semiotic, cultural, narrative | cultural: 0.40, semiotic: 0.35 | Zero for cultural inauthenticity |
+
+**Estimating dimensional weights**: In current practice, weights are estimated through structured expert judgment informed by available behavioral data: stated purchase drivers, revealed preferences, complaint/praise patterns, and cohort characteristics. These estimates should be treated as hypotheses requiring validation rather than measurements. A validated approach would use conjoint analysis (presenting trade-offs between dimensional attributes to reveal implicit weighting) or MaxDiff scaling (identifying which dimensions are most/least important). All weight assignments in SBT case studies are expert estimates with ±0.10-0.15 uncertainty range.
+
+**Identifying observer cohorts**: Cohorts are clusters in spectral-profile space — groups of observers whose dimensional weight profiles are similar enough to produce structurally similar perception clouds. Discovery process: (1) Start with existing segmentation — map known demographic/psychographic segments to likely spectral profiles; (2) Identify signal-responsive groups — which audiences react distinctly to the same brand signal? Distinct reactions imply distinct weight profiles; (3) Use behavioral evidence — purchase patterns, advocacy behavior, complaint types, and content consumption patterns reveal dimensional priorities; (4) Validate with LLM analysis — run the framework's observer mapping module to generate candidate cohort profiles for expert review. The resulting cohorts are hypotheses to be validated against consumer research.
 
 ### 3.4 Cloud Formation and Fact Collapse
 
