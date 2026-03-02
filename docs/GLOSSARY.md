@@ -566,8 +566,28 @@ A non-human observer that evaluates brand signals on behalf of a human principal
 
 **AI absorbing state analog**: if a brand is sufficiently negatively represented in training data, positive in-context signals face the same resistance as positive signals face against a human's crystallized negative prior. The mechanism differs (probability distribution vs emotional conviction) but the strategic outcome is the same: the brand cannot be rehabilitated through signal correction alone without reaching the next model training update.
 
+- **Three-observer model**: AI Agent Observer is one of three observer types first established in Article 06 ("Three Observers, One Website"). The three types — Search Engines, Humans, AI Agents — have fundamentally different spectral profiles and roles. Search engines are signal mediators (routers to the SSOT); humans are experiential perception-formers; AI agents are structured-data synthesizers. The two-track brand strategy is a signal design framework for the two perception-forming types within this three-observer architecture.
 - **Research note**: `research/NOTES_AI_AGENT_OBSERVERS.md`
-- **See also**: Observer Cohort, Priors, Identity Gate, Absorbing State, Spectral Output (L1)
+- **See also**: Observer Cohort, Priors, Identity Gate, Absorbing State, Spectral Output (L1), Search Engine Observer
+
+### Search Engine Observer (v2.1)
+
+A non-human observer that processes brand signals through crawling, indexing, and ranking algorithms. Established alongside AI Agent Observer in Article 06 ("Three Observers, One Website") as the third member of the three-observer model (Search Engines, Humans, AI Agents).
+
+**Spectral profile** — distinct from both human and AI agent observers:
+- High semiotic: HTML structure, schema.org markup, semantic heading hierarchy, URL patterns, anchor text
+- High temporal: domain age, content freshness, consistency over time
+- High narrative: link graph, cited sources, co-citation context
+- Zero experiential: cannot interact with the brand product
+- Zero social: does not form opinions or respond to cultural signals
+
+**Critical distinction — mediator, not perception-former**: search engines do not form brand perceptions. They route human and AI observers to canonical signal sources. A search engine link is a legitimization signal: it confirms that the indexed page is the authoritative source for a given query. The brand cloud formed by search engine observation is a discoverability profile, not a conviction profile.
+
+**SSOT signal flow**: search engines index the brand's canonical sources (website, GitHub, SSRN, llms.txt) and route observers to them. The search engine's "judgment" is: *is this the authoritative source for this subject?* Brands that structure their SSOT correctly (clear canonical URLs, schema.org markup, consistent structured data) pass this gate efficiently.
+
+- **Strategic implication**: optimizing for search engine observers means SSOT architecture quality, not keyword density. The signal the search engine evaluates is: coherent, structured, authoritative canonical sources. This is identical to Track 2 optimization for AI agent observers — both require machine-readable, structured signal architecture.
+- **First established**: Article 06 ("Three Observers, One Website: Search Engines, Humans, AI Agents")
+- **See also**: AI Agent Observer, Observer Cohort, Identity Gate, Spectral Output (L1)
 
 ### Weight-Barrier-Crossing Signal (v2.0)
 
