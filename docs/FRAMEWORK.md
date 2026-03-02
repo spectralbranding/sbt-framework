@@ -580,6 +580,8 @@ Cloud formation with structural absence — qualitative mechanism: Structural ab
 
 **Scale-independent**: the mechanism works identically at $20 (Erewhon smoothie) and $15,000 (Hermès handbag).
 
+**Prerequisites for structural absence**: the mechanism requires two conditions: (1) existing demand to restrict — the brand must have created desire before restricting access; (2) cultural context that makes restriction legible as intention rather than failure. Heritage is the most reliable source of this legitimizing context. However, equivalent context can be created by: cult community status (Erewhon, ~10 years), founder mythology, category-defining position, or strong ideological identity. The prerequisite is legitimizing context, of which heritage is one — but not the only — source.
+
 ### 7.2 Coherence Taxonomy: Five Types of Brand Architecture
 
 **Dual-layer architecture note**: Humans perceive dots of different colour tones; AI reads the exact spectrum of light waves that compose each dot's lighting. SBT is built for both. The coherence type (ecosystem, signal, identity, experiential asymmetry, incoherent) is a structural classification in the L1 spectral profile — nominal, no ordering implied. The letter grade (A+ to C-) is an L2 rendered output: a projection of each type's typical disruption resilience mechanism onto a human-readable scale. Two brands with structurally different spectral profiles can project to the same grade — spectral metamerism. The grade tells you the resilience colour. For the full spectrum, consult the L1 spectral profile.
@@ -889,6 +891,24 @@ Testable via: Paired study — compare snapshot survey scores to individual pane
 
 **H5 (Structural absence prerequisite)**: Structural absence strategies generate positive scarcity signals only when brands have established existing demand and cultural context that makes restriction legible as intention.
 Testable via: Experiment — manipulate scarcity for high vs low demand brands; measure perceived exclusivity vs perceived arrogance.
+
+## Part 10: Relationship to Existing Frameworks
+
+SBT builds on and extends several established frameworks. The following comparisons locate SBT's contribution precisely.
+
+**vs Keller Customer-Based Brand Equity (CBBE)**: Keller locates equity in the consumer's mind. SBT extends this by formalizing the consumer as a heterogeneous population (not a single model) and specifying the perception-to-conviction pipeline mechanically.
+
+**vs Kapferer Brand Identity Prism**: Kapferer's six facets describe brand identity from the brand's perspective. SBT's eight dimensions describe perceptual channels through which observers filter brand signals — different structural purpose.
+
+**vs Sharp (mental availability)**: Sharp addresses acquisition (passing the identity gate widely). SBT addresses post-gate perception dynamics — how different observers assemble different brand meanings after recognizing the brand.
+
+**vs Erdem & Swait (1998) brand signaling**: Erdem & Swait apply economic signaling theory to brand credibility as a unidimensional quality signal. SBT extends this to an eight-dimensional signal field where observers determine which signals are informative.
+
+**vs Schmitt Experiential Marketing**: Schmitt's SENSE/FEEL/THINK/ACT/RELATE modules describe experiential dimensions. SBT's Experiential dimension encompasses these; SBT's contribution is situating experiential signals within a multi-dimensional perception system.
+
+**vs Consumer Culture Theory (Arnould & Thompson)**: CCT theorizes consumers as active cultural authors — conceptually aligned with SBT's 'observer as active assembler.' SBT formalizes this active role as a parameterized spectral profile.
+
+**vs Kapferer & Bastien anti-laws of luxury**: Kapferer & Bastien codified strategic restriction as a luxury management principle. SBT formalizes the mechanism: restriction functions as cross-dimensional signal generation (economic restriction → social signal). SBT's contribution is the tripartite emission taxonomy and the cross-dimensional mechanism, not the observation of strategic restriction itself.
 
 ---
 
