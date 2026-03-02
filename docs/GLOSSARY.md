@@ -498,8 +498,39 @@ graph TD
 | **Incoherent** | Strong contradictory signals produce irreconcilable clouds | Amplifying — disruption widens existing cracks | Tesla (C-) |
 
 - **Most important theoretical contribution of Track 0**
+- **Theoretical derivation**: the five types follow from the intersection of three structural properties — cohort interdependence, ideological centrality, and encounter mode variance. The types are exhaustive within this three-property space, not discovered post-hoc from five case studies.
 - **Key insight**: traditional brand analysis treats coherence as "how consistent is the brand?" — a single dimension. The spectral model reveals coherence has qualitative types with structurally different resilience properties.
-- **See also**: Cloud Coherence, Cloud Divergence
+- **L1 vs L2**: the coherence type is an L1 structural classification (nominal, no ordering). The letter grade (A+ to C-) is an L2 rendered output — a projection of the type's disruption resilience mechanism onto a human-readable scale. Two brands with different spectral profiles can project to the same grade (spectral metamerism).
+- **Grade mapping**: grade = f(resilience_mechanism, absorption_capacity) — NOT f(coherence_quality). Ecosystem is not "more coherent" than incoherent; it is more resilient under disruption.
+- **See also**: Cloud Coherence, Cloud Divergence, Spectral Output (L1), Rendered Output (L2), Spectral Metamerism
+
+### Spectral Output — L1 (v2.0)
+
+The complete, lossless analytical output of an SBT brand analysis. An 8-dimensional emission map resolved per observer cohort, with dimensional weights, tolerances, priors, and conviction dynamics. Machine-readable, AI-queryable. The ground truth from which all rendered outputs (L2) are derived.
+
+- **Contents**: emission map (8 dimensions × N cohorts), D/A/S ratio, coherence type, resilience mechanism, cohort conviction profiles, structural risk flags
+- **Properties**: lossless (no compression), observer-cohort-specific, computable by AI systems without loss
+- **Key principle**: two brands can have different L1 spectral profiles and project to the same L2 grade — spectral metamerism. The L1 profile is the only way to distinguish them.
+- **See also**: Rendered Output (L2), Spectral Metamerism, Brand Fact, Observer Cohort
+
+### Rendered Output — L2 (v2.0)
+
+A human-readable projection of the L1 spectral profile onto an interpretable scale for strategic decision-making. Lossy by design — different L1 spectral profiles can project to the same L2 output (spectral metamerism).
+
+- **Examples**: coherence type label, disruption resilience grade (A+ to C-), narrative profile summary, strategic implication
+- **Key principle**: the grade answers "what is the resilience colour?" — not "what is the full spectral composition?" The L1 profile is required for the full answer.
+- **Why lossy is correct**: the same way a credit rating makes a complex financial history actionable, or a bond grade makes a full financial analysis actionable — compression for human decision-making is the feature, not the flaw
+- **See also**: Spectral Output (L1), Spectral Metamerism, Coherence Type
+
+### Spectral Metamerism (v2.0)
+
+The property of L2 rendered outputs whereby different L1 spectral profiles project to the same human-readable grade or label — analogous to optical metamerism in physics, where different spectra of light appear as the same colour to human vision. A spectrometer (AI reading L1) distinguishes metamers; the human eye (reading L2 grade) cannot.
+
+- **Example**: A C- from Tesla (high-power, ambient-dominated, amplifying incoherence) and a C- from a hypothetical B2B brand with contradictory investor/customer messaging are the same grade but structurally different spectra. The grade is the same colour. The profiles are different light sources.
+- **Implication for practitioners**: when a diagnosis feels insufficient or two brands receive the same grade, go to the L1 spectral profile. The grade is the compression.
+- **Implication for researchers**: aggregating across brands using only L2 outputs produces misleading comparisons. Use L1 data.
+- **Physics analog**: metamers in optics — two physically distinct light spectra that activate the same cone cells and are perceived as identical by the human visual system
+- **See also**: Spectral Output (L1), Rendered Output (L2), Coherence Type
 
 ### Weight-Barrier-Crossing Signal (v2.0)
 

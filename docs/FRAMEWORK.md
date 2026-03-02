@@ -578,6 +578,20 @@ Cloud formation with structural absence — qualitative mechanism: Structural ab
 
 ### 7.2 Coherence Taxonomy: Five Types of Brand Architecture
 
+**Dual-layer architecture note**: Humans perceive dots of different colour tones; AI reads the exact spectrum of light waves that compose each dot's lighting. SBT is built for both. The coherence type (ecosystem, signal, identity, experiential asymmetry, incoherent) is a structural classification in the L1 spectral profile — nominal, no ordering implied. The letter grade (A+ to C-) is an L2 rendered output: a projection of each type's typical disruption resilience mechanism onto a human-readable scale. Two brands with structurally different spectral profiles can project to the same grade — spectral metamerism. The grade tells you the resilience colour. For the full spectrum, consult the L1 spectral profile.
+
+**Theoretical derivation**: the five coherence types follow from the intersection of three structural properties that can be assessed independently of any specific brand:
+
+| Cohort Interdependence | Ideological Centrality | Encounter Mode Variance | Coherence Type |
+|---|---|---|---|
+| High | Any | Low | Ecosystem |
+| Low | Low | Low | Signal |
+| Low | High | Low | Identity |
+| Low | Low | High | Experiential Asymmetry |
+| Low | Low | Low (contradictory signals) | Incoherent |
+
+These five types represent the structurally distinct configurations of a multi-cohort brand within this three-property space. Additional types would require a fourth structural property not captured here.
+
 **Discovery**: coherence is not a single variable from low to high. It has qualitative TYPES with structurally different resilience properties. A 7/10 Signal Coherence and a 7/10 Ecosystem Coherence would look identical on a traditional scorecard but have fundamentally different properties.
 
 ```mermaid
@@ -606,6 +620,83 @@ graph LR
 | **Identity** | Ideological core filters cohort compatibility | Binary — divides along ideology | Patagonia |
 | **Experiential Asymmetry** | Evidence gap between local and remote observers | Geographic — different impact by location | Erewhon |
 | **Incoherent** | Contradictory signals → irreconcilable clouds | Amplifying — widens existing cracks | Tesla |
+
+**Grade mapping function**: Each type maps to its grade via its disruption resilience mechanism. The function is `grade = f(resilience_mechanism, absorption_capacity)` — NOT `grade = f(coherence_quality)`. The taxonomy is nominal (five structural types, no inherent ordering). The grades are ordinal on a single variable: disruption resilience.
+
+| Coherence Type | Resilience Mechanism | Grade | Rationale |
+|---|---|---|---|
+| Ecosystem | Selective absorption — unaffected cohorts stabilize the system | A+ | Disruption is metabolized selectively |
+| Signal | Uniform transmission — disruption reaches all cohorts equally | A- | Strong but no selective defense |
+| Identity | Binary rally/oppose — aligned cohorts strengthen under stress | B+ | Resilient within aligned segment |
+| Experiential Asymmetry | Geographic isolation — local and mediated cohorts disrupted independently | B- | Partial resilience only |
+| Incoherent | Amplifying — disruptions widen existing cohort divisions | C- | Brand converts disruption into deeper fragmentation |
+
+**Brand profile cards (L1 spectral / L2 rendered)**:
+
+---
+**HERMÈS — SPECTRAL PROFILE (L1)**
+Coherence type:    Ecosystem
+Signal arch:       Balanced, designed-dominant (D/A/S ~60/35/5)
+Resilience mech:   Selective absorption — ecosystem metabolizes disruption
+Dimensional peaks: Social (0.90), Economic (0.85), Experiential (0.80)
+Structural asset:  Cohort interdependence — each cohort validates the others
+
+**RENDERED SUMMARY (L2)**
+Resilience grade:  A+
+Key implication:   Ecosystem can sacrifice peripheral cohorts to purify the core
+
+---
+**IKEA — SPECTRAL PROFILE (L1)**
+Coherence type:    Signal
+Signal arch:       Designed-dominant (D/A/S ~70/25/5)
+Resilience mech:   Uniform transmission — consistent signals, consistent response
+Dimensional peaks: Experiential (0.85), Economic (0.85), Semiotic (0.75)
+Structural asset:  Signal dominance — designed signals overwhelm ambient noise
+
+**RENDERED SUMMARY (L2)**
+Resilience grade:  A-
+Key implication:   No selective defense — recovery requires system-wide correction
+
+---
+**PATAGONIA — SPECTRAL PROFILE (L1)**
+Coherence type:    Identity
+Signal arch:       Goldilocks zone, ideology-led (D/A/S ~55/40/5)
+Resilience mech:   Binary division — aligned cohorts strengthen, others irrelevant
+Dimensional peaks: Ideological (0.90), Cultural (0.75), Experiential (0.70)
+Structural asset:  Ideological gravity — filters cohort compatibility at entry
+
+**RENDERED SUMMARY (L2)**
+Resilience grade:  B+
+Key implication:   Do not moderate the ideology — it IS the architecture
+
+---
+**EREWHON — SPECTRAL PROFILE (L1)**
+Coherence type:    Experiential Asymmetry
+Signal arch:       Ambient-leaning (D/A/S ~25-40/55-70/5 — range reflects measurement uncertainty)
+Resilience mech:   Geographic isolation — local vs mediated cohorts disrupted independently
+Dimensional peaks: Social (0.90), Experiential (direct cohort: 0.80), Economic (0.75)
+Structural risk:   Mediated cloud may never collapse to conviction — permanently partial
+
+**RENDERED SUMMARY (L2)**
+Resilience grade:  B-
+Key implication:   Manage as two parallel brands: local and mediated
+
+---
+**TESLA — SPECTRAL PROFILE (L1)**
+Coherence type:    Incoherent
+Signal arch:       High-power, ambient-dominated (D/A/S ~30/65/5)
+Resilience mech:   Amplifying — disruptions widen existing cohort divisions
+Dimensional peaks: Experiential (0.90), Ideological (0.90), Economic (0.85)
+Structural risk:   CEO-driven ambient contamination; absorbing negative cohorts;
+                   ~65% of signal environment outside brand control
+
+**RENDERED SUMMARY (L2)**
+Resilience grade:  C-
+Key implication:   Cannot communicate out of incoherence — structural fix required
+
+---
+
+**Spectral metamerism**: different L1 spectral profiles can project to the same L2 grade — as different spectra of light appear as the same colour to the human eye. A C- from Tesla (high-power, ambient-dominated, amplifying mechanism) and a C- from a hypothetical B2B brand with contradictory investor/customer messaging are the same grade but different spectra. The grade tells you the resilience colour. It cannot tell you whether you are looking at a single-wavelength laser or a broad-spectrum compound that happens to appear identical. When two brands receive the same coherence grade, or when a grade diagnosis feels insufficient, go to the L1 spectral profile. The grade is the compression. The profile is the ground truth.
 
 ### 7.3 Product-Anchored Cohort as Universal Resilience Asset
 
