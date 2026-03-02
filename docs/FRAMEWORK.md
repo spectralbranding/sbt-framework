@@ -171,6 +171,8 @@ graph TD
 | **Cultural** | Aesthetic codes, references, zeitgeist, humor | TAX (cultural overhead) |
 | **Temporal** | Heritage, evolution moments, era associations | DATETIME (when things happened) |
 
+*Ordering note: dimensions in this document follow the conceptual order used throughout the articles and analytical content (semiotic → narrative → ideological → experiential → social → economic → cultural → temporal). This order groups dimensions by their epistemological role in the perception pipeline. The website and visual identity system uses a different ordering based on physical wavelength sequence of the visible spectrum (semiotic/violet → narrative/indigo → temporal/blue → ideological/teal → economic/green → experiential/amber → cultural/orange → social/red). Both orderings are valid; the conceptual order is canonical for analytical and theoretical purposes.*
+
 ### 3.2 Brand Bundles (Encounter Types)
 
 Each brand encounter produces a typed bundle, analogous to how each document type produces a different bundle in alibi.
@@ -606,6 +608,33 @@ Cloud formation with structural absence — qualitative mechanism: Structural ab
 
 **Dual-layer architecture note**: Humans perceive dots of different colour tones; AI reads the exact spectrum of light waves that compose each dot's lighting. SBT is built for both. The coherence type (ecosystem, signal, identity, experiential asymmetry, incoherent) is a structural classification in the L1 spectral profile — nominal, no ordering implied. The letter grade (A+ to C-) is an L2 rendered output: a projection of each type's typical disruption resilience mechanism onto a human-readable scale. Two brands with structurally different spectral profiles can project to the same grade — spectral metamerism. The grade tells you the resilience colour. For the full spectrum, consult the L1 spectral profile.
 
+#### Worked Example — Tesla, Progressive Boycotter Cohort
+
+**L1 Spectral Profile** (ground truth, machine-readable):
+
+```
+cohort: progressive_boycotter
+dimensional_perception:
+  ideological: {intensity: 4.5, weight: 0.55, valence: negative}
+  social: {intensity: 3.8, weight: 0.25, valence: negative}
+  cultural: {intensity: 3.2, weight: 0.17, valence: negative}
+  experiential: {intensity: 4.2, weight: 0.03, valence: positive}
+conviction: {direction: negative, confidence: 0.82, stability: absorbing}
+gate_status: open (brand recognized, experiential gate closed)
+```
+
+**L2 Rendered Summary** (human-readable projection):
+
+```
+Brand: Tesla
+Coherence type: Incoherent
+Resilience grade: C-
+Key risk: Amplifying — disruption widens existing divisions
+Strategic note: Cannot communicate out of incoherence; structural fix required
+```
+
+The L2 tells you the colour (C-, amplifying fragility). The L1 tells you the spectrum (WHY it is C- for THIS cohort: ideological conviction at 0.55 weight with no experiential counter-evidence because the experiential gate is at 0.03).
+
 **Theoretical derivation**: the five coherence types follow from the intersection of three structural properties that can be assessed independently of any specific brand:
 
 | Cohort Interdependence | Ideological Centrality | Encounter Mode Variance | Coherence Type |
@@ -830,6 +859,8 @@ epsilon -> 0.0 -> non-ergodic: must track cohort trajectories
 
 The Ergodicity Coefficient is a proposed future metric that would quantify this divergence per dimension per brand. Its implementation requires longitudinal cohort panel data and is on the validation research agenda (Part 9, H4). It is not currently implemented or measured.
 
+We note that Peters' ergodicity economics framework remains debated within economics (e.g., Doctor et al., 2020; Meder et al., 2021); our use is analogical rather than dependent on the resolution of that debate.
+
 ### 7.11 Cross-Model Pipeline Robustness
 
 **Finding**: the analytical pipeline produces consistent structural diagnoses when executed by different LLMs (Claude Opus 4.6 and Gemini 3.1 Pro). This demonstrates prompt consistency and internal reproducibility — not empirical validity. Two LLMs trained on similar internet corpora about the same five well-documented brands producing similar outputs shows that the framework is specified precisely enough to constrain LLM analysis; it does not show that those outputs accurately represent real consumer perception processes.
@@ -891,6 +922,10 @@ SBT is a formally specified analytical framework with explicit constructs, mecha
 
 This is the standard intermediate stage for theoretical frameworks: formal specification → testable hypotheses → empirical validation. SBT is at stage two. The testable hypotheses are specified in Part 9 below.
 
+### Sensitivity analysis of coherence type assignments
+
+Sensitivity analysis (see spectral-branding repo, research/SENSITIVITY_ANALYSIS.md) tested the robustness of the five coherence type assignments under +/-0.10 perturbation of key cohort dimensional weights — the conservative end of the +/-0.10-0.15 estimation uncertainty acknowledged in Part 11.2. Five of five coherence types survive standard single-weight perturbation. Four of five (Tesla, Hermes, IKEA, Erewhon) are fully robust across all tested perturbation scenarios, including aggressive double perturbations. One brand (Patagonia) is conditionally robust: identity coherence holds under standard perturbation but approaches a type boundary under simultaneous ideological -0.10 and experiential +0.10 perturbation for values-aligned observers, at which point the diagnosis becomes ambiguous between identity and signal coherence. Six of seven key structural findings (asymmetric conviction resilience, CEO ambient domination, structural absence, ecosystem self-repair, signal consistency, experiential encounter mode gap) are fully robust. Patagonia's ideological gravitational center is conditionally robust and should carry a qualifier pending empirical weight validation. The overall robustness reflects the fact that coherence type diagnoses depend on structural relationships between cohorts and brand-level emission properties, not on exact weight values within individual cohorts. Empirical weight validation via MaxDiff survey (Part 11.1) is most urgent for Patagonia, where the diagnosis sits closest to a type boundary.
+
 ---
 
 ## Part 9: Testable Hypotheses
@@ -924,11 +959,17 @@ SBT builds on and extends several established frameworks. The following comparis
 
 **vs Erdem & Swait (1998) brand signaling**: Erdem & Swait apply economic signaling theory to brand credibility as a unidimensional quality signal. SBT extends this to an eight-dimensional signal field where observers determine which signals are informative.
 
-**vs Schmitt Experiential Marketing**: Schmitt's SENSE/FEEL/THINK/ACT/RELATE modules describe experiential dimensions. SBT's Experiential dimension encompasses these; SBT's contribution is situating experiential signals within a multi-dimensional perception system.
+**vs Schmitt (1999) Experiential Marketing**: Schmitt's five strategic experiential modules (SENSE, FEEL, THINK, ACT, RELATE) decompose the experiential domain. SBT's Experiential dimension encompasses Schmitt's modules as sub-types; SBT's contribution is situating experiential signals within a multi-dimensional perception field where experiential evidence interacts with — and can be overridden by — ideological, social, and economic signals.
+
+**vs Oswald (2012, 2015) Marketing Semiotics**: Oswald applies Peircean semiotics to brand strategy. SBT's Semiotic dimension operationalizes this — brand names, logos, and visual identity as signal types within a formal perception pipeline. SBT extends the semiotic approach by treating semiotic signals as one of eight perceptual channels rather than the primary analytical lens.
 
 **vs Consumer Culture Theory (Arnould & Thompson)**: CCT theorizes consumers as active cultural authors — conceptually aligned with SBT's 'observer as active assembler.' SBT formalizes this active role as a parameterized spectral profile.
 
 **vs Kapferer & Bastien anti-laws of luxury**: Kapferer & Bastien codified strategic restriction as a luxury management principle. SBT formalizes the mechanism: restriction functions as cross-dimensional signal generation (economic restriction → social signal). SBT's contribution is the tripartite emission taxonomy and the cross-dimensional mechanism, not the observation of strategic restriction itself.
+
+**vs Brock (1968) Commodity Theory / Cialdini (2001) Scarcity Principle**: Commodity theory (Brock, 1968) and the scarcity principle (Cialdini, 2001; Lynn, 1991) establish that scarcity enhances perceived value. SBT's structural absence formalizes the mechanism: restriction on one dimension generates a cross-dimensional signal on another. The contribution is not the observation of scarcity effects (well-established) but the specification of the cross-dimensional generation mechanism and the two prerequisites (existing demand + legitimizing context).
+
+**vs Krosnick & Petty (1995) Attitude Strength**: Attitude strength research (Krosnick & Petty, 1995; Petty & Krosnick, 1995) establishes that strong attitudes resist change. SBT's conviction collapse and asymmetric resilience mechanisms extend this by specifying the dimensional pathway: evidence-free convictions resist counter-evidence because the observer's spectral profile excludes the dimensions where counter-evidence exists (the experiential gate is closed).
 
 ---
 
