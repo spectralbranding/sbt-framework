@@ -267,9 +267,9 @@ stateDiagram-v2
     end note
 
     note right of ReCollapse
-        Facts rebuilt from scratch.
-        Never patched -- full recalculation.
-        (Same as alibi re-collapse.)
+        Conviction recalculated from
+        surviving evidence + crystallized priors.
+        Triggered by threshold contradiction.
     end note
 ```
 
@@ -277,9 +277,26 @@ stateDiagram-v2
 
 **Scoring is observer-specific**: unlike alibi's fixed weights, brand cloud formation uses the observer's own weight profile. A Gen-Z consumer clusters by social + cultural. A B2B buyer clusters by economic + experiential. *The same atoms produce different clouds.*
 
-**Re-collapse**: a brand scandal, product failure, or brilliant campaign introduces new atoms that force re-collapse. The brand fact is rebuilt from scratch -- just as in alibi. This explains why some brands recover from scandals (new positive atoms outweigh negative in re-collapse) and some don't (negative atoms dominate).
+**Re-collapse**: a brand scandal, product failure, or brilliant campaign introduces atoms that contradict existing evidence past a threshold, triggering re-collapse. Re-collapse recalculates conviction from the surviving evidence set plus any crystallized priors. Priors act as weighted anchors — they persist through re-collapse but can be overridden by sufficiently strong contradicting evidence. This is recalculation from the current evidence base, not recalculation from a blank slate. The distinction from incremental updating is that re-collapse is triggered by a threshold event (sufficient contradicting evidence) rather than happening continuously. This explains why some brands recover from scandals (new positive atoms outweigh negative in re-collapse) and some don't (negative atoms dominate, priors reversed).
 
 **Single-bundle collapse**: one devastating news article collapses directly into a fact with no corroboration needed -- same as a standalone receipt in alibi.
+
+**Collapse threshold specification**: Collapse for observer k occurs when accumulated cloud confidence reaches that observer's threshold:
+
+```
+Collapse(k) occurs when:
+  cloud_confidence(k) ≥ threshold(k)
+
+  where:
+  - cloud_confidence = Σ(perceived_signal_weights × dimensional_weights)
+    normalized by maximum possible score
+  - threshold(k) is observer-specific, inversely related to tolerance
+    (low-tolerance observers require higher confidence before collapse)
+  - priors from previous collapses lower the threshold for consistent evidence
+    and raise it for contradicting evidence
+```
+
+The threshold parameters remain illustrative — exact calibration requires empirical measurement of real observer responses. What the specification establishes is the form: collapse is a function of accumulated weighted evidence relative to an observer-specific threshold shaped by tolerance and priors.
 
 ---
 
@@ -548,13 +565,12 @@ Track 0 applied the spectral framework to 5 brands (Hermès, IKEA, Patagonia, Te
 
 **Formal specification**:
 
-```
 Standard cloud formation:
-  Cloud = Σ(emitted_atoms × weights)
-
-Cloud formation with structural absence:
-  Cloud = Σ(emitted_atoms × weights) + Σ(absent_atoms × scarcity_multiplier × weights)
 ```
+  Cloud = Σ(emitted_atoms × weights)
+```
+
+Cloud formation with structural absence — qualitative mechanism: Structural absence amplifies the perceived weight of present signals through contrast. The mechanism is not additive (absent signals do not contribute quantitative values to cloud formation) but multiplicative in perception: when some signals are withheld, the present signals carry more interpretive weight per unit of evidence. Concretely, an invitation to an exclusive event becomes more significant when 99% of requests are declined. The restriction creates the contrast that amplifies the signal. The scarcity multiplier is a conceptual amplification parameter — its formal quantification is on the research agenda.
 
 **Dimensional constraints**: structural absence operates primarily on social (exclusivity), economic (no discounts), and experiential (geographic scarcity). It cannot operate on semiotic (no "absent logo") or narrative (absence of story is just absence).
 

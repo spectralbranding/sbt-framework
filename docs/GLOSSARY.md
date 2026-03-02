@@ -237,7 +237,7 @@ The accessible name for the **structural absence** mechanism: designed signal re
 - **Dimensional specificity**: operates primarily on social (exclusivity), economic (no discounts), experiential (geographic scarcity). CANNOT operate on semiotic (no "absent logo") or narrative (absence of story is just absence).
 - **Scale-independent**: works identically at $20 (Erewhon smoothie) and $15,000 (Hermès handbag)
 - **Key examples**: Hermès wait lists, no online Birkin sales, never discounting, limited stores (~300 worldwide). The empty shelf IS the signal.
-- **Formula**: Cloud = Σ(emitted_atoms × weights) + Σ(absent_atoms × scarcity_multiplier × weights)
+- **Mechanism**: structural absence amplifies the perceived weight of present signals through contrast — absent signals do not contribute additive values but multiply the interpretive weight of present signals on affected dimensions. See: Scarcity Multiplier.
 - **See also**: Structural Absence, Scarcity Multiplier, Emission Type
 
 ### Structural Absence (v2.0)
@@ -250,12 +250,12 @@ The formal name for the **dark signals** mechanism. Designed scarcity that funct
 
 ### Scarcity Multiplier (v2.0)
 
-The amplification factor that structural absence applies to positive signals on affected dimensions. When a brand restricts access (economic, experiential, social), existing positive signals on those dimensions are perceived as more valuable.
+A conceptual amplification mechanism by which structural absence increases the perceived weight of present signals on affected dimensions. When a brand restricts access (economic, experiential, social), the present signals on those dimensions are perceived as more valuable through contrast.
 
-- **Formula**: amplified_weight = base_weight × scarcity_multiplier
-- **Levels**: low (1.1-1.3x), medium (1.3-1.7x), high (1.7-2.5x+)
+- **Not currently quantified**: formalizing the scarcity multiplier as a measurable parameter is on the research agenda. The multiplier levels (1.1–2.5x+) represent conceptual characterizations, not empirically calibrated values.
+- **Mechanism**: the amplification is not additive (absent signals do not contribute quantitative values) but multiplicative in perception — restriction creates contrast, which increases the interpretive weight per unit of present signal
 - **Example**: Hermès' refusal to discount (economic structural absence) amplifies the economic signal of each product sold. The price becomes proof of value because it never drops.
-- **See also**: Dark Signals, Structural Absence
+- **See also**: Dark Signals, Structural Absence, Emission Type
 
 ### Temporal Mode (v2.0)
 
@@ -303,6 +303,7 @@ graph TD
 
 - **Five components**: spectrum, weights, tolerances, priors, identity gate
 - **Key principle**: different observers with different profiles assemble different brand facts from identical atoms
+- **Weight re-normalization rule**: when a dimension is outside an observer's spectrum (sensitivity = 0.0), that dimension's weight is set to zero. The remaining weights are re-normalized to sum to 1.0, concentrating perceptual weighting on the observable dimensions. *Example*: an observer whose spectrum includes {social, economic, experiential} and whose original weights are {social: 0.40, economic: 0.30, experiential: 0.30} uses those weights as-is (they sum to 1.0). An observer whose spectrum EXCLUDES cultural (originally assigned 0.15) drops that weight and re-normalizes the remaining seven weights proportionally — each multiplied by 1/0.85 — so the total returns to 1.0. The practical effect: spectrum exclusion concentrates the observer's weighting on fewer dimensions, potentially amplifying those dimensions' influence on cloud formation.
 - **See also**: Observer Cohort, Spectrum, Weights, Tolerances, Priors
 
 ### Spectrum
@@ -556,7 +557,7 @@ stateDiagram-v2
 When new evidence (atoms) forces an observer to rebuild their brand fact from scratch. The existing fact is discarded and the full evidence set is re-evaluated. Analogous to re-collapse in alibi (when a new bundle joins an already-collapsed cloud, the fact is deleted and re-collapsed with all evidence).
 
 - **Triggers**: scandal, rebrand, product failure, viral moment, brilliant campaign, competitor reframing
-- **Key principle**: facts are rebuilt, never patched. This explains why some brands recover from scandals (new positive atoms outweigh negative in re-collapse) and some don't
+- **Key principle**: re-collapse recalculates conviction from the surviving evidence set plus any crystallized priors. Priors act as weighted anchors — they persist through re-collapse but can be overridden by sufficiently strong contradicting evidence. This is recalculation from the current evidence base, not recalculation from a blank slate. This explains why some brands recover from scandals (new positive atoms outweigh negative in re-collapse, and prior-positive observers return to prior-positive convictions) and some don't (negative atoms dominate, or crystallized negative priors raise the threshold for positive evidence)
 - **See also**: Re-collapse Resistance, Re-collapse Defense
 
 ### Re-collapse Resistance
@@ -565,6 +566,15 @@ The degree to which a confirmed brand fact resists re-collapse when contradictin
 
 - **Factors**: confirmation bias (priors protect existing facts), volume of corroborating atoms, emotional investment
 - **Hysteresis hypothesis**: confirmed facts may require more evidence to overturn than partial facts required to form (unvalidated)
+
+### Conviction Collapse
+
+The event in which an observer's accumulated brand cloud crosses the collapse threshold, crystallizing into a Brand Fact. The central dynamic mechanism of SBT's epistemic pipeline.
+
+- **Formal specification**: `Collapse(k)` occurs when `cloud_confidence(k) ≥ threshold(k)`, where `cloud_confidence` = Σ(perceived_signal_weights × dimensional_weights) normalized by maximum possible score, and `threshold(k)` is observer-specific
+- **Threshold determinants**: (1) observer tolerance — low-tolerance observers require higher confidence before collapsing; (2) priors — crystallized priors from previous collapses lower the threshold for consistent evidence and raise it for contradicting evidence
+- **Illustrative, not calibrated**: the threshold parameters are currently specified in form, not in magnitude. Exact calibration requires empirical measurement of real observer responses.
+- **See also**: Brand Fact, Collapse States, Re-collapse, Observer Profile (threshold, tolerances, priors)
 
 ### Single-Bundle Collapse
 
