@@ -607,15 +607,17 @@ graph LR
 
 **Exploratory hypothesis**: the five-brand comparison suggests a possible optimal designed/ambient signal ratio around 55-65% designed. This is an exploratory hypothesis requiring larger-sample validation.
 
-| Brand | D/A Ratio | Coherence | Assessment |
-|-------|-----------|-----------|------------|
-| IKEA | 70/25 | 7/10 | Slightly over-designed (lacks organic defenders) |
-| Hermès | 60/35 | 8/10 | Goldilocks zone + ambient ALIGNMENT |
-| Patagonia | 55/40 | 4/10 | Zone entry — but ideological split reduces coherence |
-| Tesla | 30/65 | 2/10 | Critically under-designed (CEO ambient dominance) |
-| Erewhon | 25/70 | 4/10 | Ambient-dominated (brand doesn't control its narrative) |
+| Brand | D/A/S Ratio (est.) | Coherence | Assessment |
+|-------|-------------------|-----------|------------|
+| IKEA | 70/25/5 | 7/10 | Slightly over-designed (lacks organic defenders) |
+| Hermès | 60/35/5 | 8/10 | Goldilocks zone + ambient ALIGNMENT |
+| Patagonia | 55/40/5 | 4/10 | Zone entry — but ideological split reduces coherence |
+| Tesla | 30/65/5 | 2/10 | Critically under-designed (CEO ambient dominance) |
+| Erewhon | ~25-40/55-70/5 | 4/10 | Ambient-dominated (brand doesn't control its narrative) |
 
-**Key qualifier**: the DIRECTION of ambient signals matters as much as the ratio. Hermès (60/35, aligned ambient) outperforms IKEA (70/25, passive ambient) because Hermès' ambient signals amplify designed signals rather than merely existing.
+*D = designed signals; A = ambient signals; S = synthetic/AI-generated and unclassified signals. Ratios are order-of-magnitude estimates (±10-15% uncertainty); a systematic signal audit would be required for precise measurement. Erewhon's wider range reflects divergent estimates across analyses.*
+
+**Key qualifier**: the DIRECTION of ambient signals matters as much as the ratio. Hermès (60/35/5, aligned ambient) outperforms IKEA (70/25/5, passive ambient) because Hermès' ambient signals amplify designed signals rather than merely existing.
 
 ### 7.5 Temporal Compounding Curve
 
