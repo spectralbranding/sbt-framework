@@ -528,9 +528,9 @@ The fundamental shift: from describing brands as **objects with properties** to 
 
 ---
 
-## Part 7: Track 0 Validation — Nine Discoveries (v2.0)
+## Part 7: Track 0 Exploratory Analysis — Nine Candidate Mechanisms (v2.0)
 
-Track 0 applied the spectral framework to 5 brands (Hermès, IKEA, Patagonia, Tesla, Erewhon) across all 6 modules. The validation produced 9 novel mechanisms that extend the framework beyond its v1.0 specification.
+Track 0 applied the spectral framework to 5 brands (Hermès, IKEA, Patagonia, Tesla, Erewhon) across all 6 modules. The exploratory analysis identified 9 candidate mechanisms that extend the framework beyond its v1.0 specification. These represent analytical observations from five illustrative cases, not empirically validated findings.
 
 ### 7.1 Dark Signals: Structural Absence as Brand Dimension Modifier
 
@@ -605,7 +605,7 @@ graph LR
 
 ### 7.4 Designed/Ambient Goldilocks Zone
 
-**Discovery**: the optimal designed/ambient signal ratio is 55-65% designed. Empirically derived across 5 brands.
+**Exploratory hypothesis**: the five-brand comparison suggests a possible optimal designed/ambient signal ratio around 55-65% designed. This is an exploratory hypothesis requiring larger-sample validation.
 
 | Brand | D/A Ratio | Coherence | Assessment |
 |-------|-----------|-----------|------------|
@@ -630,6 +630,8 @@ graph LR
 | ~180+ years | Foundational architecture (heritage IS the operating system) | Hermès |
 
 **Temporal modes**: heritage (compounds) vs currency (depreciates). Opposite risk profiles.
+
+**Note**: these duration bands are approximate thresholds suggested by the five-brand comparison. They illustrate the mechanism's existence but are not empirically validated boundary conditions; a larger sample would likely refine the inflection points.
 
 ### 7.6 Mediated Cloud Formation
 
@@ -695,7 +697,7 @@ epsilon -> 0.0 -> non-ergodic: must track cohort trajectories
 
 ### 7.11 Cross-Model Pipeline Robustness
 
-**Discovery**: the analytical pipeline produces identical structural diagnoses when executed by different LLMs (Claude Opus 4.6 and Gemini 3.1 Pro), confirming that conclusions are framework-driven, not model-specific.
+**Finding**: the analytical pipeline produces consistent structural diagnoses when executed by different LLMs (Claude Opus 4.6 and Gemini 3.1 Pro). This demonstrates prompt consistency and internal reproducibility — not empirical validity. Two LLMs trained on similar internet corpora about the same five well-documented brands producing similar outputs shows that the framework is specified precisely enough to constrain LLM analysis; it does not show that those outputs accurately represent real consumer perception processes.
 
 **Cross-model replication** (all 5 brands × 6 modules):
 
@@ -714,7 +716,45 @@ epsilon -> 0.0 -> non-ergodic: must track cohort trajectories
 - D/A ratio: within 10-15 percentage points (Gemini attributes slightly more to designed signals)
 - Narrative style: Claude emphasizes paradoxes; Gemini is more operationally clinical
 
-**Implication**: the framework acts as a structured lens that constrains LLM analysis toward the same architectural truths regardless of which model holds the lens. Different models produce different *resolution* but the same *structure* — like telescopes of different apertures viewing the same constellation. Running the pipeline with multiple models is a recommended practice for maximum analytical depth.
+**Implication**: the framework acts as a structured lens that constrains LLM analysis toward consistent analytical conclusions regardless of which model holds the lens. Different models produce different *resolution* but the same *structure* — like telescopes of different apertures viewing the same constellation. Running the pipeline with multiple models is a recommended practice for maximum analytical depth and cross-checking of structural diagnoses.
+
+---
+
+## Part 8: Current Validation Status
+
+### What the LLM-based analysis demonstrates
+
+1. **Internal consistency**: the same structured prompts produce replicable outputs. The five-brand analysis can be reproduced exactly by any analyst using the same prompts — a prerequisite for a useful analytical tool.
+
+2. **Illustrative power**: the framework produces non-obvious structural insights for well-known brands. Structural absence (Hermès), CEO ambient domination (Tesla), and mediated cloud formation (Erewhon) emerged from the analytical process without being seeded in prompts.
+
+3. **Pedagogical utility**: the five brand analyses communicate the framework's mechanisms more clearly than abstract descriptions alone. The case studies are effective teaching material for the framework's concepts.
+
+### What the LLM-based analysis does NOT demonstrate
+
+1. **Empirical accuracy of observer weights**: the dimensional weights assigned to observer cohorts are expert estimates by the framework's author. They have not been validated against actual consumer data (surveys, conjoint analysis, MaxDiff). Two analysts with different intuitions about observer weights may produce different coherence diagnoses.
+
+2. **Predictive validity**: no outcome has been tested against real consumer behavior. The framework has not predicted a brand event before it occurred and confirmed the prediction.
+
+3. **Generalizability**: the five brands were selected because they are among the most analyzed brands in the world and because they illustrate structurally different architectures. This selection bias means the nine candidate mechanisms may not generalize to less-documented brands.
+
+4. **What cross-model replication proves**: identical outputs from Claude and Gemini demonstrate prompt consistency, not theoretical validity. Both models were trained on similar internet corpora containing extensive analysis of these five brands. Agreement between models reflects shared training data and identical structured prompts — not independent confirmation of real consumer perceptions.
+
+### What empirical validation would look like
+
+1. **Dimensional validity study**: survey instruments measuring the importance of each of the 8 dimensions to real consumer cohorts. Do consumers weight semiotic, narrative, temporal, and other dimensions in ways consistent with the framework's expert estimates?
+
+2. **Observer weight conjoint study**: conjoint analysis or MaxDiff methodology to replace expert-estimated dimensional weights with measured consumer preference weights.
+
+3. **Conviction collapse longitudinal panel**: panel study tracking the same cohort through a brand crisis, measuring when and how perception clouds shift toward conviction (collapse) or dissolution.
+
+4. **Cohort discovery research**: cluster analysis of real consumer spectral profiles to test whether the framework's proposed cohort structures emerge from actual consumer data or are imposed by the analytical process.
+
+### Current epistemic status
+
+SBT is a formally specified analytical framework with explicit constructs, mechanisms, and candidate hypotheses. The five-brand exploratory analysis demonstrates the framework's internal consistency and illustrative power. Empirical validation — required to confirm the framework's claims about real consumer perception processes — remains future work.
+
+This is the standard intermediate stage for theoretical frameworks: formal specification → testable hypotheses → empirical validation. SBT is at stage two. The Research Program (added in a future session) specifies the H1–H5 hypotheses and the validation agenda.
 
 ---
 
