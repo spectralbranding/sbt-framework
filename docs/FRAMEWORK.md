@@ -58,7 +58,7 @@ Seven architectural principles make this work:
 | 3 | Hard identity gate | Vendor gate prevents false clustering | Core identity match is a precondition for clustering |
 | 4 | Asymmetric tolerances | receipt+statement: 5d, invoice+payment: 60d | Context determines what "close enough" means |
 | 5 | Weighted multi-dimensional scoring | vendor 0.30, amount 0.40, date 0.20, items 0.50 bonus | Not all dimensions are equal |
-| 6 | Re-collapse on new evidence | Facts rebuilt from scratch, never patched | Truth is recalculated from full evidence set |
+| 6 | Re-collapse on new evidence | Facts rebuilt from scratch, never patched | Truth is recalculated from surviving evidence set (signals that have not decayed + crystallized priors) |
 | 7 | Epistemic separation | Atoms != Clouds != Facts | Observations != Hypotheses != Knowledge |
 
 *Note on the analogy's limits: the alibi architecture is structural, not literal. Financial atoms (VENDOR, AMOUNT, DATETIME) are discrete, structured, and objectively verifiable. Brand signals are interpretive, continuous, and overlapping. The epistemic architecture — observations → hypotheses → knowledge — transfers across domains; the data precision does not. Brand 'atoms' are more accurately described as typed signal contributions than as discrete measurable units.*
