@@ -585,7 +585,7 @@ stateDiagram-v2
 
 ### Re-collapse
 
-When new evidence (atoms) forces an observer to re-evaluate their brand fact. The existing fact is dissolved and conviction is recalculated from the surviving evidence set plus any crystallized priors — not from a blank slate. Analogous to re-collapse in alibi (when a new bundle joins an already-collapsed cloud, the fact is dissolved and recalculated from accumulated evidence plus any crystallized prior).
+When new evidence (atoms) forces an observer to re-evaluate their brand fact. The existing fact is dissolved and conviction is recalculated from the surviving evidence set plus any crystallized priors — not from a blank slate. Analogous to re-collapse in alibi (when a new bundle joins an already-collapsed cloud, the fact is dissolved and recalculated from all accumulated evidence); SBT extends this by adding crystallized priors as persistent weighted anchors that survive the re-collapse and bias the recalculation.
 
 - **Triggers**: scandal, rebrand, product failure, viral moment, brilliant campaign, competitor reframing
 - **Key principle**: re-collapse recalculates conviction from the surviving evidence set plus any crystallized priors. Priors act as weighted anchors — they persist through re-collapse but can be overridden by sufficiently strong contradicting evidence. This is recalculation from the current evidence base, not recalculation from a blank slate. This explains why some brands recover from scandals (new positive atoms outweigh negative in re-collapse, and prior-positive observers return to prior-positive convictions) and some don't (negative atoms dominate, or crystallized negative priors raise the threshold for positive evidence)
