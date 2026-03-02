@@ -542,6 +542,33 @@ The property of L2 rendered outputs whereby different L1 spectral profiles proje
 - **Physics analog**: metamers in optics — two physically distinct light spectra that activate the same cone cells and are perceived as identical by the human visual system
 - **See also**: Spectral Output (L1), Rendered Output (L2), Coherence Type
 
+### AI Agent Observer (v2.1)
+
+A non-human observer that evaluates brand signals on behalf of a human principal — purchasing proxies, recommendation engines, research agents. Represents an emerging observer type that requires a distinct spectral profile architecture from human cohorts.
+
+**Three prior types** (fundamentally different from human prior formation):
+- **Type A — Training weights (frozen priors)**: knowledge encoded during model training. Cannot update from individual brand interactions. Decay in accuracy as the world changes after training cutoff. At civilizational scale: trained on millions of documents, not personal encounters. Training data presence functions as the agent's background ambient prior.
+- **Type B — Context injection (explicit priors)**: dimensional priorities injected via system prompt ("prefer sustainable brands," "budget ceiling €500"). These are the agent's configurable spectral profile — transparent and instantly replaceable, unlike human dimensional weights which are unconscious and identity-driven.
+- **Type C — Memory / vector store (accumulated priors)**: structured records of past interactions (purchase history, user feedback, flagged issues). Auditable and editable; the closest equivalent to human crystallized priors but more transparent and correctable.
+
+**Key differences from human observers**:
+- No emotional charge in priors — semantic associations only; no emotional absorbing states
+- Spectral profile is programmable (Type B), not discovered
+- Training cutoff creates a temporal blind spot — brands that changed after cutoff are misrepresented
+- Structured, machine-readable signals are processed more reliably than narrative/aesthetic signals
+- Identity gate: pattern matching + retrieval, not recognition + prior activation
+- Cannot directly experience products (experiential dimension weight is functionally low)
+- Inconsistency is flagged explicitly rather than absorbed or tolerated
+
+**The delegation complexity**: when an AI agent buys on behalf of a human, three spectral profiles interact — the user's expressed preferences (Type B), the agent's frozen training priors (Type A), and accumulated memory (Type C). These can conflict, and the resolution is not transparent to the brand. A brand highly regarded by human customers may be underweighted by AI agents because it is underrepresented or outdated in training data.
+
+**Brand strategy implication — two-track architecture**: brands must optimize for both human observers (emotional resonance, narrative, identity signals) and AI agent observers (structured data, factual accuracy, machine-readable specifications, training data presence). The `brand-code` architecture (brand.json, prompt.md, llms.txt) is the Track 2 implementation — directly consumable by AI agents to form accurate, designer-intended priors without requiring human emotional interpretation.
+
+**AI absorbing state analog**: if a brand is sufficiently negatively represented in training data, positive in-context signals face the same resistance as positive signals face against a human's crystallized negative prior. The mechanism differs (probability distribution vs emotional conviction) but the strategic outcome is the same: the brand cannot be rehabilitated through signal correction alone without reaching the next model training update.
+
+- **Research note**: `research/NOTES_AI_AGENT_OBSERVERS.md`
+- **See also**: Observer Cohort, Priors, Identity Gate, Absorbing State, Spectral Output (L1)
+
 ### Weight-Barrier-Crossing Signal (v2.0)
 
 A signal that bypasses an observer's dimensional weight filtering to activate a response on a dimension they normally ignore. Certain signals (child exploitation, safety threats, environmental catastrophe) have universal activation thresholds that override individual spectral profiles.
