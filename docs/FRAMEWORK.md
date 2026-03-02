@@ -9,7 +9,7 @@
 
 ## Overview
 
-This document applies the atom-cloud-fact epistemological pattern from the alibi project to branding theory. A brand is modeled as a stellar object: composed of brand-atom signals across multiple dimensions, perceived differently by observers with different spectral sensitivities and positions. There is no "brand in itself" -- only atoms and observers, continuously assembling perception into conviction.
+This document applies the atom-cloud-fact epistemological pattern from the alibi project to branding theory. A brand is modeled as a stellar object: composed of brand-atom signals across multiple dimensions, perceived differently by observers with different spectral sensitivities and positions. There is no single brand perception that applies universally across all observers — each cohort assembles structurally different brand meaning from the same signal environment. The brand's signal architecture (what it emits across eight dimensions) can be characterized at the brand level; brand meaning exists only in the minds of those who perceive it.
 
 The framework provides both a critique of traditional branding theory and a practical architecture for AI-era brand management.
 
@@ -118,9 +118,9 @@ graph LR
 | Visible constellation from Earth | Brand-as-perceived by one cohort |
 | Same stars seen from Andromeda | Same brand perceived by a different cohort |
 | Infrared vs visible vs X-ray | Emotional vs rational vs social perception channels |
-| The object "itself" (all stars, no perspective) | A theoretical construct no one actually experiences |
+| The stellar object itself (all stars, all radiation) | The brand's signal architecture — objectively characterizable across all eight dimensions |
 
-The critical insight: **there is no brand "in itself."** There are only atoms and observers. What we call "the brand" is always already a collapse -- a fact in someone's mind, assembled from whichever atoms they could perceive through their particular spectrum.
+The critical insight: **there is no universal brand perception.** The brand's signal architecture — its eight-dimensional emission pattern — is objectively real and characterizable. What cannot exist in a single universal form is brand *meaning*: each observer cohort assembles structurally different brand meaning from the same signal environment, collapsing whichever atoms they can perceive through their particular spectrum into distinct brand facts.
 
 ---
 

@@ -103,10 +103,10 @@ graph TD
 
 ### Brand
 
-In SBT, not an object with fixed properties but a perceptual process: continuous signal emission across eight dimensions, continuous observation through observer-specific spectral profiles, continuous re-collapse into conviction. There is no brand-in-itself — only atoms and observers. What we call "the brand" is always already a collapse state in someone's mind, assembled from whichever signals they could perceive through their particular spectral profile.
+In SBT, a brand operates at two analyzable levels: its *signal architecture* (what it emits across eight dimensions — objectively characterizable at the brand level) and its *brand meaning* (what observer cohorts collapse from those signals — observer-specific and cohort-variable). The brand is a perceptual process: continuous signal emission, continuous observation through observer-specific spectral profiles, continuous re-collapse into conviction. There is no universal brand perception that applies across all observer cohorts — each cohort assembles structurally different brand meaning from the same signal environment.
 
 - **Key shift**: from noun to verb — brand is something that *happens*, not something that *is*
-- **Implication**: no two observers perceive the same brand; "the brand" is a convenient shorthand for the aggregate of all observer-specific collapse states
+- **Implication**: brand *meaning* is observer-specific (no two cohorts perceive the same brand meaning); brand *signal architecture* is characterizable at the brand level and is the objective input to the perceptual analysis
 - **See**: Brand Atom, Brand Cloud, Brand Fact, Conviction Collapse, Observer Cohort
 
 ---
