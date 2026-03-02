@@ -515,6 +515,18 @@ The real threat is not AI replacing brands, but **AI making observers so granula
 
 ---
 
+### 5.5 Competitive Context Limitation and Extension
+
+**Current scope**: the framework analyzes brands in isolation. Each SBT analysis models one brand's signal architecture and the observer cohorts that perceive it.
+
+**The gap**: real brand health is co-determined by competitors. A brand's signal architecture produces different observer responses depending on what competitors are signaling simultaneously. Tesla's ambient signal contamination operates differently in a market with no direct EV competitor than in a market where multiple credible alternatives exist. The designed/ambient ratio has different strategic implications depending on whether competitors are high-D/A (controlled) or low-D/A (chaotic).
+
+**The extension**: modeling competitive contexts in SBT would require adding a second signal environment to the observer model — the competitor's emission map — and analyzing how the two environments interact within the same observer's perceptual field. A dimension where Brand A dominates and Brand B is absent produces different conviction dynamics than a dimension where both brands are competing.
+
+**Status**: competitive context modeling is a priority structural extension, not yet validated. The five-brand case studies were conducted in isolation. This is a named limitation of the current framework version.
+
+---
+
 ## Part 6: Proposed Book Structure (Spectral Reframe)
 
 | Current Structure | Spectral Structure | Key Shift |
@@ -740,9 +752,9 @@ Key implication:   Cannot communicate out of incoherence — structural fix requ
 
 **Key qualifier**: the DIRECTION of ambient signals matters as much as the ratio. Hermès (60/35/5, aligned ambient) outperforms IKEA (70/25/5, passive ambient) because Hermès' ambient signals amplify designed signals rather than merely existing.
 
-### 7.5 Temporal Compounding Curve
+### 7.5 Temporal Compounding Pattern
 
-**Discovery**: heritage compounds non-linearly. The temporal dimension is the ONLY dimension that competitors cannot replicate and that no disruption can erase.
+**Analytical observation**: heritage depth appears to follow a non-linear pattern across the five brands. The temporal dimension is the only dimension that competitors cannot replicate and that no disruption can erase.
 
 | Heritage Duration | Structural Role | Brand Example |
 |-------------------|---------------|---------------|
@@ -754,7 +766,7 @@ Key implication:   Cannot communicate out of incoherence — structural fix requ
 
 **Temporal modes**: heritage (compounds) vs currency (depreciates). Opposite risk profiles.
 
-**Note**: these duration bands are approximate thresholds suggested by the five-brand comparison. They illustrate the mechanism's existence but are not empirically validated boundary conditions; a larger sample would likely refine the inflection points.
+**Note**: these duration bands are approximate thresholds suggested by the five-brand comparison. They illustrate the mechanism's existence but are not empirically validated boundary conditions; a larger sample would likely refine the inflection points. The underlying mathematical form of the compounding relationship — whether logarithmic, exponential, or step-function — cannot be specified from five data points.
 
 ### 7.6 Mediated Cloud Formation
 
@@ -917,6 +929,94 @@ SBT builds on and extends several established frameworks. The following comparis
 **vs Consumer Culture Theory (Arnould & Thompson)**: CCT theorizes consumers as active cultural authors — conceptually aligned with SBT's 'observer as active assembler.' SBT formalizes this active role as a parameterized spectral profile.
 
 **vs Kapferer & Bastien anti-laws of luxury**: Kapferer & Bastien codified strategic restriction as a luxury management principle. SBT formalizes the mechanism: restriction functions as cross-dimensional signal generation (economic restriction → social signal). SBT's contribution is the tripartite emission taxonomy and the cross-dimensional mechanism, not the observation of strategic restriction itself.
+
+---
+
+## Part 11: Measurement Methodology
+
+The following protocols provide practical paths from the SBT framework to real empirical measurement. These are starting-point designs; specific implementations will vary by budget, timeline, and brand context.
+
+### 11.1 Dimensional Importance Survey
+
+To measure how much each of the 8 dimensions matters to a target observer cohort, use a MaxDiff (Maximum Difference Scaling) survey:
+
+1. Present respondents with sets of 4 brand attributes drawn from the 8 SBT dimensions
+2. For each set, ask: which attribute matters MOST in forming your opinion of a brand? Which matters LEAST?
+3. Analyze with multinomial logit model to produce importance scores for each dimension
+4. Segment respondents by score similarity to identify cohort clusters
+
+Minimum sample: 200 respondents per cohort of interest. The resulting importance scores directly populate dimensional weight profiles in the SBT observer model.
+
+### 11.2 Observer Weight Estimation from Existing Data
+
+When primary research is not available, estimate dimensional weights from secondary behavioral signals:
+
+| Behavioral Signal | Dimension Implied | Weight Proxy Method |
+|---|---|---|
+| Purchase driver stated (survey) | Economic, Experiential | Relative frequency in stated reasons |
+| Complaint topics (review analysis) | Highest-weight dimensions for that cohort | Topic frequency × sentiment intensity |
+| Advocacy content (organic posts) | Which dimensions the advocate emphasizes | Content analysis → dimensional tagging |
+| Churn reasons (exit survey) | Where the brand failed that cohort | Failure dimension = high weight |
+| Event attendance patterns | Experiential, Social | Participation rate as weight proxy |
+
+Weight estimates derived from behavioral signals carry ±0.10-0.15 uncertainty. Treat as hypotheses until validated with primary research.
+
+### 11.3 D/A Ratio Estimation via Content Analysis
+
+To measure the designed/ambient/synthetic ratio empirically:
+
+1. Sample 200+ brand touchpoints from the past 12 months (social posts, earned media, reviews, news)
+2. Code each touchpoint as: Designed (brand-controlled), Ambient (externally generated), Synthetic (AI-generated or algorithmic)
+3. Weight by estimated reach (high-reach touchpoints count more)
+4. Calculate weighted proportions
+
+For ambient signals, separate by valence (positive/negative/neutral) — valence is often more diagnostic than volume.
+
+### 11.4 Conviction Strength Proxies
+
+Standard tracking metrics map approximately to SBT conviction states:
+
+| Tracking Metric | SBT Construct | Mapping Notes |
+|---|---|---|
+| Unaided awareness | Identity gate permeability | Gate passed = aware; gate failed = aware of category, not brand |
+| Brand consideration | Cloud formation stage | Considering = cloud forming or partial; not considering = unaware or contradicted |
+| Net Promoter Score | Conviction direction + strength | Promoters = strong positive conviction; Detractors = strong negative conviction (often absorbing) |
+| Brand loyalty / repeat purchase | Confirmed fact + crystallized prior | High loyalty = deep prior; switching = re-collapse occurred |
+| Willingness to pay premium | Economic dimension weight | Higher WTP = higher economic weight in that cohort |
+
+These mappings are approximate. SBT's constructs are more granular than standard tracking metrics. Use existing tracking data as orientation, not as ground truth for dimensional profiles.
+
+### 11.5 Minimum Viable Research Design
+
+Before trusting an SBT diagnosis for strategic decisions, the following minimum research investment is recommended:
+
+1. **One MaxDiff survey** (n=300, split across 2-3 likely cohorts) to validate dimensional weights
+2. **D/A ratio content analysis** (n=200 touchpoints) to validate the designed/ambient estimate
+3. **Conviction depth interview** (n=10-15 per cohort) to validate the qualitative coherence diagnosis
+
+Total investment: approximately 6-8 weeks of research, 2-3 analyst weeks. This produces a validated observer model rather than an expert-estimated one.
+
+---
+
+## Part 12: Mapping to Existing Brand Tracking
+
+SBT introduces new constructs that complement existing tracking systems. The following translations allow practitioners to use existing tracking data as starting-point inputs for SBT analysis, and to interpret SBT outputs in the language of existing dashboards.
+
+| Existing Metric | SBT Equivalent | Translation Notes |
+|---|---|---|
+| Brand awareness (unaided) | Identity gate permeability | Awareness = gate passed; non-awareness = gate failed or atoms below threshold |
+| Brand consideration | Cloud formation stage | In consideration set = cloud forming (partial fact); not in set = unaware or contradicted |
+| Brand preference | Cloud valence + conviction direction | Preferred = positive cloud forming toward collapse; rejected = negative cloud or absorbing state |
+| Net Promoter Score | Conviction strength proxy | Promoters ≈ confirmed positive fact; Passives ≈ partial fact; Detractors ≈ strong negative conviction |
+| Brand differentiation (Kantar) | Dimensional coverage | High differentiation = clear signal on at least one high-weight dimension for each cohort |
+| Social listening sentiment | Ambient signal valence | Positive sentiment = ambient signal aligning with designed; negative = ambient contamination |
+| Share of voice | D/A ratio approximation | Controlled SOV (owned + paid) ≈ designed signal volume proxy; earned SOV ≈ ambient signal proxy |
+| Brand equity index | Coherence type + grade composite | High equity + low resilience = power-health inversion (see 7.9); track separately |
+| Customer lifetime value by segment | Per-cohort conviction depth | High CLV cohort = confirmed fact + strong prior; segment by SBT cohort for structural insight |
+
+**Important note**: these are approximate conceptual translations. SBT generates its own metrics (dimensional weight profiles, cloud confidence scores, D/A ratios, coherence types) that are more structurally specific than standard tracking outputs. The mapping above allows practitioners to orient SBT analysis within existing measurement infrastructure — not to replace existing tracking with SBT constructs directly.
+
+**Recommended integration approach**: run SBT analysis in parallel with existing tracking for 2-3 quarters. Compare SBT diagnostic predictions (e.g., "this cohort's conviction is an absorbing negative state — NPS will not improve with messaging changes") against actual tracking movement. This generates the empirical track record that builds confidence in SBT structural diagnoses.
 
 ---
 
