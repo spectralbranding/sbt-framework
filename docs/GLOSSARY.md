@@ -443,7 +443,7 @@ Whether a brand cloud is positive, negative, or ambivalent in its overall charac
 
 ### Non-Ergodic Perception (v2.1)
 
-The property that brand perception is a multiplicative, path-dependent process in which ensemble averages (measuring the "average observer" across a population at one moment) diverge from time averages (tracking one observer's perception over time). Derived from Peters' (2019) ergodicity economics (*Nature Physics*).
+An organizing analogy for brand perception dynamics drawn from Peters' (2019) ergodicity economics (*Nature Physics*). In non-ergodic processes, the time average (what one agent experiences over time) diverges from the ensemble average (what many agents experience at one moment). Brand perception exhibits analogous dynamics: what any individual cohort experiences over time can diverge dramatically from what aggregate surveys capture at a single moment. This analogy informs why brand health (time-dimension measure) and brand power (ensemble-dimension measure) are independent variables. It is not a claim that brand perception obeys the specific mathematical properties Peters demonstrates for wealth processes.
 
 - **Core insight**: when signals compound rather than add, sequence matters and ruin (negative conviction) is an absorbing state. What happens to the "average observer" does not predict what happens to any individual cohort over time.
 - **Brand application**: brand power (ensemble measure — aggregate awareness) and brand health (time-average measure — architectural resilience for any given cohort) are independent variables precisely because brand perception is non-ergodic.
@@ -457,6 +457,9 @@ A diagnostic measure (epsilon) per brand-dimension or brand-cohort pair, ranging
 
 - **epsilon = 1.0**: perfectly ergodic — cross-sectional surveys reliably predict any cohort's trajectory. Safe to use aggregate metrics.
 - **epsilon -> 0.0**: strongly non-ergodic — ensemble average is meaningless for this dimension. Must track individual cohort trajectories longitudinally.
+
+The Ergodicity Coefficient is a proposed future metric, not a currently implemented measurement. Its calculation requires longitudinal cohort panel data tracking individual perception trajectories over time. It is on the validation research agenda.
+
 - **Diagnostic question**: "Does the average observer's perception of [dimension] predict any specific observer's perception trajectory over time?"
 - **Example (Tesla)**: semiotic epsilon = 0.8 (logo stable across cohorts/time), ideological epsilon = 0.1 (pro-Musk and anti-Musk on divergent trajectories — average is a fiction)
 - **Practical use**: determines whether a dimension can be safely measured with surveys (high epsilon) or requires cohort-trajectory tracking (low epsilon)

@@ -13,6 +13,8 @@ This document applies the atom-cloud-fact epistemological pattern from the alibi
 
 The framework provides both a critique of traditional branding theory and a practical architecture for AI-era brand management.
 
+A note on terminology: 'Spectral Brand Theory' is the proper name of this work (as published at SSRN). The term 'theory' follows a common convention in academic frameworks and reflects the theoretical ambition of the work. SBT is currently best characterized as an analytical framework: a formally specified set of constructs and mechanisms that generates testable hypotheses about brand perception. It becomes a theory in the scientific sense — with predictive power and empirical validation — as the hypotheses in Part 9 are tested.
+
 ---
 
 ## Part 1: The Epistemic Pattern
@@ -228,6 +230,8 @@ Example observer profiles:
 ### 3.4 Cloud Formation and Fact Collapse
 
 Brand perception follows the same epistemic pipeline as financial facts:
+
+*A note on terminology: 'cloud' and 'collapse' invoke quantum mechanics to suggest indeterminacy before crystallization, not as a mathematical claim. Brand perception does not obey quantum mechanics. The terms are used for their intuitive resonance: an uncertain impression (cloud) that resolves into a definite belief (collapse).*
 
 ```mermaid
 stateDiagram-v2
@@ -779,9 +783,9 @@ Key implication:   Cannot communicate out of incoherence — structural fix requ
 
 ### 7.10 Non-Ergodic Perception Dynamics
 
-**Discovery**: brand perception operates as a multiplicative, path-dependent, non-ergodic process — and this single property from physics explains multiple independently discovered SBT phenomena.
+**Organizing analogy**: Peters' (2019) ergodicity economics provides an illuminating analogy for brand perception dynamics. In non-ergodic processes, the time average (what one agent experiences over time) diverges from the ensemble average (what many agents experience at one moment). Brand perception exhibits analogous dynamics: what any individual cohort experiences over time can diverge dramatically from what aggregate surveys capture at a single moment. We use this analogy as an organizing framework for understanding why brand health (time-dimension, cohort-specific) and brand power (ensemble dimension, aggregate) can be independent variables — not as a claim that brand perception obeys the specific mathematical properties Peters demonstrates for wealth processes.
 
-**Theoretical basis**: Peters, O. (2019). The ergodicity problem in economics. *Nature Physics*, 15, 1216–1221. Peters demonstrates that for 300 years, economics has confused ensemble averages (across many agents at one moment) with time averages (one agent across time). In non-ergodic systems, these diverge. Brand perception is non-ergodic because signals compound multiplicatively (each new signal multiplies existing cloud confidence rather than adding to it), sequence matters (three positive signals then a crisis differs from the reverse), and negative conviction is an absorbing state (once crossed, no future positive signals reach the observer).
+**Theoretical basis**: Peters, O. (2019). The ergodicity problem in economics. *Nature Physics*, 15, 1216–1221. Peters demonstrates that for 300 years, economics has confused ensemble averages (across many agents at one moment) with time averages (one agent across time). In non-ergodic systems, these diverge. Brand perception exhibits analogous dynamics: signals compound multiplicatively, sequence matters, and negative conviction functions as a near-absorbing state. These are structural parallels to non-ergodic processes, not claims that brand perception obeys the specific mathematics of Peters' wealth model.
 
 **What non-ergodicity explains in SBT**:
 
@@ -802,7 +806,7 @@ epsilon = 1.0 -> ergodic: ensemble surveys reliable
 epsilon -> 0.0 -> non-ergodic: must track cohort trajectories
 ```
 
-**Practical implication**: before choosing a measurement approach, assess the ergodicity profile. Ecosystem-coherent brands (high epsilon) can use aggregate surveys. Incoherent brands (low epsilon) require longitudinal cohort tracking — their dashboards are averaging divergent trajectories into a statistical phantom.
+The Ergodicity Coefficient is a proposed future metric that would quantify this divergence per dimension per brand. Its implementation requires longitudinal cohort panel data and is on the validation research agenda (Part 9, H4). It is not currently implemented or measured.
 
 ### 7.11 Cross-Model Pipeline Robustness
 
@@ -863,7 +867,28 @@ epsilon -> 0.0 -> non-ergodic: must track cohort trajectories
 
 SBT is a formally specified analytical framework with explicit constructs, mechanisms, and candidate hypotheses. The five-brand exploratory analysis demonstrates the framework's internal consistency and illustrative power. Empirical validation — required to confirm the framework's claims about real consumer perception processes — remains future work.
 
-This is the standard intermediate stage for theoretical frameworks: formal specification → testable hypotheses → empirical validation. SBT is at stage two. The Research Program (added in a future session) specifies the H1–H5 hypotheses and the validation agenda.
+This is the standard intermediate stage for theoretical frameworks: formal specification → testable hypotheses → empirical validation. SBT is at stage two. The testable hypotheses are specified in Part 9 below.
+
+---
+
+## Part 9: Testable Hypotheses
+
+The following hypotheses are generated by the SBT framework and constitute the empirical research agenda required to validate SBT as a theory:
+
+**H1 (D/A Goldilocks zone)**: Brands with 55-65% designed signals will show higher brand equity and disruption resilience than brands outside this range, controlling for category, age, and market position.
+Testable via: Cross-sectional study of 50+ brands with empirically measured D/A ratios and brand equity scores.
+
+**H2 (Asymmetric conviction resilience)**: Evidence-free negative brand convictions will show higher resistance to counter-evidence than evidence-rich positive convictions.
+Testable via: Experiment — expose participants with no/high product experience to counter-attitudinal brand information; measure conviction change.
+
+**H3 (Coherence type predicts disruption response)**: Ecosystem-coherent brands will show selective disruption absorption; incoherent brands will show disruption amplification.
+Testable via: Longitudinal cohort tracking before/after documented brand crisis events; compare resilience profiles across coherence types.
+
+**H4 (Non-ergodic gap)**: For incoherent brands, cross-sectional brand surveys will systematically overstate cohort-level resilience relative to longitudinal individual-level tracking.
+Testable via: Paired study — compare snapshot survey scores to individual panel tracking data for the same brand across incoherent vs signal-coherent types.
+
+**H5 (Structural absence prerequisite)**: Structural absence strategies generate positive scarcity signals only when brands have established existing demand and cultural context that makes restriction legible as intention.
+Testable via: Experiment — manipulate scarcity for high vs low demand brands; measure perceived exclusivity vs perceived arrogance.
 
 ---
 
