@@ -153,3 +153,7 @@ See [CITATION.cff](CITATION.cff) for machine-readable citation.
 ## License
 
 [MIT](LICENSE) — use freely with attribution.
+
+## Trademarks
+
+"Spectral Brand Theory" and "Brand Code" are trademarks of Dmitry Zharnikov. The MIT license applies to the source code only and does not grant permission to use the project trademarks. You may fork and modify the code freely, but derivative works should not use these names in ways that imply endorsement or official affiliation.
