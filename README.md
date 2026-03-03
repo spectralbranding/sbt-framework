@@ -80,7 +80,7 @@ Each module has a prompt + YAML template in [`templates/`](templates/).
 | Erewhon | Experiential asymmetry | B- | Local and mediated audiences perceive structurally different brands |
 | Tesla | Incoherent | C- | Maximum emission power, minimum architectural health |
 
-25+ validated non-obvious insights. 9 novel mechanisms not found in existing branding literature.
+25+ non-obvious insights. 9 candidate mechanisms not found in existing branding literature.
 
 ## Key Concepts
 
