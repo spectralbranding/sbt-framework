@@ -312,6 +312,65 @@ Collapse(k) occurs when:
 
 The threshold parameters remain illustrative — exact calibration requires empirical measurement of real observer responses. What the specification establishes is the form: collapse is a function of accumulated weighted evidence relative to an observer-specific threshold shaped by tolerance and priors.
 
+### 3.5 Signal Dissemination: Pre-Encounter Mechanics
+
+The perception pipeline (§3.4) begins when atoms reach an observer. But atoms must first travel from emission to the observer's environment. The **Signal Dissemination Layer** models this pre-encounter phase.
+
+```mermaid
+graph TB
+    subgraph "Emission"
+        E[Brand emits atoms]
+        A[Ambient atoms generated]
+        S[Synthetic atoms generated]
+    end
+
+    subgraph "Dissemination"
+        CH[Channels<br/>bandwidth, reach, fidelity]
+        SF[Signal Fields<br/>spatiotemporal atom sets]
+        EE[Encounter Events<br/>attention ∩ atoms]
+    end
+
+    subgraph "Perception (existing)"
+        IG[Identity Gate]
+        SP[Spectrum Filter]
+        WA[Weight Assignment]
+        CF[Cloud Formation]
+        CO[Collapse]
+    end
+
+    E --> CH
+    A --> CH
+    S --> CH
+    CH --> SF
+    SF --> EE
+    EE --> IG
+    IG --> SP --> WA --> CF --> CO
+
+    CO -->|Signal Amplification| CH
+```
+
+**Key concepts**:
+
+- **Signal field**: the set of brand atoms present in a given spatiotemporal environment. A brand's signal field in Berlin differs from its field in Tokyo. Not all emitted atoms populate all fields.
+- **Channel**: the medium through which atoms travel from emission to signal field. Properties: bandwidth (capacity), reach (how many fields), fidelity (dimensional preservation), selectivity (cohort targeting). Channels are distinct from encounter modes (direct/mediated) -- a channel delivers atoms to the environment; encounter mode describes how the observer processes them.
+- **Encounter event**: the moment atoms intersect an observer's attention. Governed by field density, observer receptivity (need-state activation + curiosity threshold), and algorithmic mediation.
+- **Observer receptivity**: a pre-perception property combining need-state activation (Rossiter & Percy's "Category Need") and curiosity threshold. Low receptivity means atoms exist in the field but are never processed.
+- **Gate friction**: the number of encounter events required to transition an observer's identity gate from Closed to Open. Reduced by distinctive brand assets (Romaniuk & Sharp), signal salience, and repeated mere exposure (Zajonc 1968).
+- **Signal amplification**: Confirmed observers become secondary emitters, creating new ambient atoms in new signal fields -- a feedback loop from perception back to dissemination.
+- **First-atom effect**: the first brand atom encountered creates the initial prior schema, disproportionately shaping all subsequent perception (anchoring, primacy effect).
+
+**Dissemination states** (per observer × brand, preceding the perception state machine):
+
+| State | Description | Transition trigger |
+|---|---|---|
+| Absent | No brand atoms in observer's signal field | Channel delivers atoms → Present |
+| Present | Atoms in field, no encounter event | Attention intersects atoms → Encountered |
+| Encountered | At least one encounter event has occurred | Enters perception pipeline (identity gate) |
+
+This resolves the relationship between SBT and acquisition-focused frameworks: Sharp's "mental availability" = field density × gate friction⁻¹ × spectral profile accessibility. Sharp's "physical availability" = channel coverage across observer environments. Schwartz's "Unaware" = SBT's Absent state. Customer acquisition = the product of transition rates across dissemination and perception states.
+
+Full research note: `research/NOTES_SIGNAL_DISSEMINATION.md`. New hypotheses H6-H10 address gate friction variance, first-atom primacy, amplification asymmetry, channel-dimension coupling, and field density thresholds.
+
 ---
 
 ## Part 4: Critical Analysis of the Book Draft
@@ -947,6 +1006,21 @@ Testable via: Paired study — compare snapshot survey scores to individual pane
 **H5 (Structural absence prerequisite)**: Structural absence strategies generate positive scarcity signals only when brands have established existing demand and cultural context that makes restriction legible as intention.
 Testable via: Experiment — manipulate scarcity for high vs low demand brands; measure perceived exclusivity vs perceived arrogance.
 
+**H6 (Gate friction varies by cohort)**: Identity gate friction for a given brand will differ significantly across observer cohorts, with cohorts whose dominant dimensions match the brand's strongest emission dimensions showing lower gate friction.
+Testable via: Exposure experiment — present brand cues to cohorts with different spectral profiles; measure recognition threshold (number of exposures to achieve recognition).
+
+**H7 (First-atom primacy)**: The dimensional content of the first brand atom encountered will disproportionately determine the observer's initial spectral profile, persisting as a prior even after subsequent atoms provide evidence on other dimensions.
+Testable via: Experiment — expose different groups to different "first atoms" (experiential vs. semiotic vs. ideological); measure resulting spectral profiles after equal total exposure.
+
+**H8 (Amplification asymmetry)**: Confirmed observers with negative-valence brand facts will have higher amplification rates than those with positive-valence facts, creating faster field population for negative atoms.
+Testable via: Track secondary emission behavior (reviews, social posts, word-of-mouth) for positive vs. negative Confirmed observers; measure volume and reach of emitted ambient atoms.
+
+**H9 (Channel-dimension coupling)**: Specific channels show systematic dimensional bias in atom transmission — e.g., Instagram transmits semiotic + social at high fidelity but experiential at low fidelity; direct encounters transmit experiential at high fidelity but ideological at low fidelity.
+Testable via: Compare spectral profiles of observers who encountered the same brand through different channels; measure dimensional variance attributable to channel.
+
+**H10 (Field density threshold)**: There exists a minimum field density below which encounter probability drops to near-zero regardless of observer receptivity, and this threshold is higher for channels with low signal-to-noise ratio.
+Testable via: Vary brand signal frequency in controlled environments; measure encounter rate as a function of field density and channel noise level.
+
 ## Part 10: Relationship to Existing Frameworks
 
 SBT builds on and extends several established frameworks. The following comparisons locate SBT's contribution precisely.
@@ -955,7 +1029,7 @@ SBT builds on and extends several established frameworks. The following comparis
 
 **vs Kapferer Brand Identity Prism**: Kapferer's six facets describe brand identity from the brand's perspective. SBT's eight dimensions describe perceptual channels through which observers filter brand signals — different structural purpose.
 
-**vs Sharp (mental availability)**: Sharp addresses acquisition (passing the identity gate widely). SBT addresses post-gate perception dynamics — how different observers assemble different brand meanings after recognizing the brand.
+**vs Sharp (mental availability)**: Sharp addresses acquisition (passing the identity gate widely). SBT's Signal Dissemination Layer (§3.5) now formalizes the mapping: mental availability = field density × gate friction⁻¹ × spectral profile accessibility; physical availability = channel coverage across observer environments; Category Entry Points = need-state activators that raise observer receptivity; Distinctive Brand Assets = gate friction reducers. SBT extends Sharp by specifying what happens *after* mental availability is achieved — how different observers assemble different brand meanings from the same signals.
 
 **vs Erdem & Swait (1998) brand signaling**: Erdem & Swait apply economic signaling theory to brand credibility as a unidimensional quality signal. SBT extends this to an eight-dimensional signal field where observers determine which signals are informative.
 

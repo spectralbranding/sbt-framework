@@ -20,6 +20,17 @@
 - **Ergodicity Coefficient**: per-dimension measure of ensemble metric reliability
 - **Absorbing State**: irreversible negative conviction basin
 
+### v2.2 Additions (Signal Dissemination Layer)
+- **Signal Field**: spatiotemporal set of brand atoms in a given environment
+- **Channel**: medium through which atoms travel from emission to signal field (bandwidth, reach, fidelity, selectivity)
+- **Encounter Event**: moment atoms intersect observer's attention
+- **Observer Receptivity**: pre-perception property (need-state activation + curiosity threshold)
+- **Gate Friction**: number of encounters required to open a closed identity gate
+- **Signal Amplification**: Confirmed observers becoming secondary emitters
+- **First-Atom Effect**: disproportionate impact of the first brand atom encountered
+- **Field Density**: brand atoms per unit of observer attention in a signal field
+- **Cohort Addressability**: set of channels that can deliver atoms to a given cohort's signal field
+
 ---
 
 ## Overview
@@ -45,8 +56,17 @@ graph TD
         DS[Dark Signals<br/>structural absence] -->|amplifies via<br/>scarcity multiplier| BA
     end
 
+    subgraph "Dissemination Layer"
+        BA -->|enters| CHN[Channel<br/>bandwidth / reach /<br/>fidelity / selectivity]
+        CHN -->|populates| SFL[Signal Field]
+        SFL -->|intersects attention| EEV[Encounter Event]
+        EEV -->|determined by| REC[Observer Receptivity<br/>need-state + curiosity]
+        CONF2[Confirmed Observer] -->|signal amplification| AA
+        EEV -->|first-atom effect| PRI2[Initial Prior Schema]
+    end
+
     subgraph "Observation Layer"
-        EB -->|arrives at| IG[Identity Gate]
+        EEV -->|arrives at| IG[Identity Gate]
         IG -->|fail| NOISE[Noise]
         IG -->|pass| OP[Observer Profile]
         OP -->|has| SP[Spectrum]
@@ -291,6 +311,71 @@ The brand's relationship with the temporal dimension. Two primary modes with opp
 - **Discovered**: Track 0, Erewhon vs Hermès comparison
 - **Heritage compounding curve**: non-linear. 20yr = supplementary → 50yr = moderate → 80yr = approaching threshold → 180yr+ = foundational architecture
 - **Key insight**: heritage is the ONLY dimension competitors cannot replicate and no disruption can erase
+
+---
+
+## Dissemination Layer
+
+The layer between emission and observation. Models how emitted atoms reach observers' environments and produce encounter events. See FRAMEWORK.md §3.5.
+
+### Signal Field
+
+The set of brand atoms present in a given spatiotemporal environment. A brand's signal field in one city differs from another. A brand's field on one platform differs from another. Not all emitted atoms populate all fields.
+
+- **Field density**: the number of brand atoms per unit of observer attention in a given signal field. High density = high encounter probability.
+- Signal fields are populated by channels and depleted by signal decay (atoms fade over time).
+
+### Channel
+
+The medium through which atoms travel from emission to signal field. Channels are distinct from encounter modes: a channel delivers atoms to the environment; encounter mode (direct/mediated/stalled) describes how the observer processes them.
+
+**Channel properties**:
+- **Bandwidth**: how many atoms the channel can carry (billboard = few; social media = many)
+- **Reach**: how many signal fields the channel populates (local signage = one field; viral content = millions)
+- **Fidelity**: how accurately the channel preserves emitted atoms' dimensional content (direct experience = high; word-of-mouth = low, dimension-selective)
+- **Selectivity**: whether the channel targets specific cohorts or broadcasts broadly
+
+### Encounter Event
+
+The moment brand atoms in a signal field intersect an observer's attention. Governed by field density, observer receptivity, attention allocation, and algorithmic mediation. The encounter event is the bridge from dissemination to perception -- it triggers the identity gate.
+
+### Observer Receptivity
+
+A pre-perception property of the observer that determines whether encountered atoms are processed or ignored. Two components:
+
+- **Need-state activation**: Does the observer have an active Category Need? (Maps to Rossiter & Percy 1987.) Without need-state, atoms may be encountered but not processed.
+- **Curiosity threshold**: Will the observer process novel atoms even without active need? (Maps to Ehrenberg's trial-by-curiosity and Zajonc's 1968 mere exposure effect.)
+
+### Gate Friction
+
+The resistance to opening a closed identity gate, measured as the number of encounter events required to transition from gate-Closed to gate-Open. Determined by:
+
+- **Distinctive asset strength**: how recognizable are the brand's non-name cues (Romaniuk & Sharp 2016)
+- **Exposure frequency**: how many encounters before gate transitions (Zajonc mere exposure curve: peak at 10-20 exposures)
+- **Signal salience**: can barrier-crossing signals force the gate open in fewer encounters?
+- **Cohort-specific factors**: some cohorts have higher gate friction for certain brand categories
+
+### Signal Amplification
+
+The mechanism by which Confirmed observers become secondary emitters, creating new ambient atoms in new signal fields. A feedback loop from perception back to dissemination. Forms include word-of-mouth, social sharing, visible product use, reviews.
+
+### First-Atom Effect
+
+The disproportionate impact of the first brand atom an observer encounters. Creates the initial prior schema through which all subsequent atoms are filtered (Bartlett 1932, anchoring bias). The first atom determines the dimensional emphasis of the initial spectral profile.
+
+### Cohort Addressability
+
+For a given observer cohort, the set of channels that can deliver atoms to their signal field. A cohort is "addressable" through channels where they allocate attention. Determines the practical ceiling on acquisition for that cohort.
+
+### Dissemination States
+
+Per observer × brand, preceding the perception state machine:
+
+| State | Description |
+|---|---|
+| **Absent** | No brand atoms in observer's signal field |
+| **Present** | Atoms in field, no encounter event yet |
+| **Encountered** | At least one encounter event — enters perception pipeline |
 
 ---
 
