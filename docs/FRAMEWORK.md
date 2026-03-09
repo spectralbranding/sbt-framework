@@ -1,8 +1,8 @@
 # Spectral Branding Framework
 
-**Version**: 2.0 (Post-Track-0 Validation)
+**Version**: 2.3 (Mathematical Foundations)
 **Status**: Draft
-**Last Updated**: 2026-02-27
+**Last Updated**: 2026-03-09
 **Related**: `v2_architecture.md`, `CONTINUATION_PROMPT.md`
 
 ---
@@ -370,6 +370,67 @@ graph TB
 This resolves the relationship between SBT and acquisition-focused frameworks: Sharp's "mental availability" = field density × gate friction⁻¹ × spectral profile accessibility. Sharp's "physical availability" = channel coverage across observer environments. Schwartz's "Unaware" = SBT's Absent state. Customer acquisition = the product of transition rates across dissemination and perception states.
 
 Full research note: `research/NOTES_SIGNAL_DISSEMINATION.md`. New hypotheses H6-H10 address gate friction variance, first-atom primacy, amplification asymmetry, channel-dimension coupling, and field density thresholds.
+
+### 3.6 Geometric Structure of the Perception Space
+
+The constructs in §3.1-3.5 describe the architecture of brand perception qualitatively. This section formalizes the mathematical spaces in which those constructs live, providing the rigorous metric foundation that makes SBT's claims about brand distance, observer similarity, cohort boundaries, and perception dynamics formally precise rather than metaphorical.
+
+**Why geometry matters for brand theory**: Brand perception involves comparison (which brand is "closer" to my ideal?), classification (which observer cohort do I belong to?), and dynamics (how does my perception change over time?). Each of these operations requires a notion of distance. Without a formal metric, "brand distance" is a metaphor. With one, it becomes a computable quantity with provable properties.
+
+#### 3.6.1 The Brand Signal Space
+
+Brand emission profiles (§3.1) are vectors in $\mathbb{R}^8_+$: eight non-negative signal strengths, one per dimension (semiotic, narrative, ideological, experiential, social, economic, cultural, temporal).
+
+Raw Euclidean distance is inappropriate for brand comparison because perception is proportional, not additive (per the Weber-Fechner law: a change from 0.1 to 0.2 is perceptually equivalent to a change from 0.5 to 1.0). The appropriate metric is the **Aitchison distance**, which operates on log-ratios of signal components:
+
+$$d_B(S_A, S_B) = \sqrt{\sum_{i=1}^{8} \left( \log \frac{S_{A,i}}{g(S_A)} - \log \frac{S_{B,i}}{g(S_B)} \right)^2}$$
+
+where $g(S) = (\prod_i S_i)^{1/8}$ is the geometric mean. This metric is scale-invariant (doubling all signals does not change distances) and subcompositionally coherent (comparing brands on a subset of dimensions is consistent with the full comparison). Geodesics in this space are straight lines in log-ratio coordinates, meaning that brand evolution (rebranding trajectories) follows paths that preserve signal ratios rather than absolute values.
+
+For normalized brand profiles (signal strengths scaled to unit norm), the natural space is $S^7_+$: the positive octant of the 7-sphere. This octant comprises only $1/2^8 = 1/256$ of the full sphere surface, reflecting the constraint that brand signals are non-negative. The compression of available brand space has a direct strategic implication: differentiation is harder than naive 8-dimensional counting suggests.
+
+#### 3.6.2 The Observer Weight Space
+
+Observer weight profiles (§3.3) are probability vectors on the 7-simplex $\Delta^7$: eight non-negative weights summing to 1.0, representing the relative importance each observer assigns to the eight dimensions.
+
+The appropriate metric for $\Delta^7$ is the **Fisher-Rao distance**:
+
+$$d_O(w^{(1)}, w^{(2)}) = 2 \arccos \left( \sum_{i=1}^{8} \sqrt{w_i^{(1)} w_i^{(2)}} \right)$$
+
+This metric is uniquely invariant under sufficient-statistic transformations (Cencov's theorem, 1972), making it the canonical distance measure on probability spaces. A key perceptual property: the Fisher-Rao metric is highly sensitive to changes in small weights. An observer who shifts from 0.01 to 0.02 on the ideological dimension (barely noticing it vs. beginning to notice) traverses a larger geometric distance than an observer shifting from 0.25 to 0.26 on the same dimension. This matches the psychological reality that awakening to a previously ignored dimension is a larger perceptual shift than a marginal adjustment to an already-salient one.
+
+Geodesics on $\Delta^7$ under Fisher-Rao "bulge" toward the simplex center (maximum entropy). Interpolating between two polarized observers yields a middle profile with higher entropy than a linear average would predict -- the geometric "compromise" between specialists is a generalist.
+
+#### 3.6.3 The Combined Perception Space
+
+Brand perception in SBT is observer-dependent: two observers may perceive the same brand pair as close or far apart, depending on their weight profiles. This is formalized as a **warped product manifold** $\Delta^7 \times_w \mathbb{R}^8$, where the observer weights "warp" the brand space metric:
+
+$$D^2\big((w^{(1)}, S^{(1)}),\; (w^{(2)}, S^{(2)})\big) = d_O^2(w^{(1)}, w^{(2)}) + \sum_{k=1}^{8} \bar{w}_k \left( \text{clr}_k(S^{(1)}) - \text{clr}_k(S^{(2)}) \right)^2$$
+
+where $\bar{w}_k = (w_k^{(1)} + w_k^{(2)})/2$ and $\text{clr}$ is the centered log-ratio transform.
+
+This structure generalizes the INDSCAL model (Carroll & Chang 1970), which has been empirically validated in psychometric scaling studies: observers share a common brand space but apply individual dimension weights. The warped product formalization gives INDSCAL a rigorous differential-geometric foundation and extends it with a proper metric on the observer space itself.
+
+The **observer-dependent pseudo-metric** on brand space alone:
+
+$$d_w(S_A, S_B) = \left\| \sqrt{w} \circ (S_A - S_B) \right\|_2$$
+
+may degenerate (equal zero for distinct brands) when the observer assigns zero weight to all dimensions where the brands differ. The kernel of this metric -- the set of brand pairs indistinguishable to observer $w$ -- formalizes "blind spots" in brand perception.
+
+#### 3.6.4 Concentration of Measure and Cohort Geometry
+
+At $n = 8$ dimensions, the observer simplex $\Delta^7$ already exhibits significant concentration of measure: the expected squared Euclidean distance between two uniformly random observer profiles is $E[\|X - Y\|^2] = 2n/((n+1)(n+2)) = 16/90 \approx 0.178$, and pairwise distances concentrate tightly around $\sqrt{0.178} \approx 0.42$.
+
+This concentration has three consequences for SBT:
+
+1. **Null model baseline**: Brand differentiation is "meaningful" only when observer-weighted distance exceeds the concentration radius. Many perceived brand differences may be noise rather than structural.
+
+2. **Cohort boundary fuzziness**: For any partition of $\Delta^7$ into $k$ cohort regions, the fraction of observer profiles near a boundary grows with dimensionality. At $n = 8$, boundaries are already substantially fuzzy -- which is why Claude's 5-6 cohorts and Gemini's 3 cohorts (§7.11) represent valid clusterings at different granularity thresholds rather than contradictory results.
+
+3. **Specialization advantage**: Most random observer profiles are "unbalanced" (concentrating weight on a few dimensions). A brand that tries to satisfy all 8 dimensions equally is geometrically further from the typical observer than a brand that specializes -- formalizing the D/A Goldilocks zone (§7.4) as a geometric rather than merely empirical pattern.
+
+**Companion paper**: Zharnikov (2026d), "Brand Space Geometry: A Formal Metric for Multi-Dimensional Brand Perception."
+**Reference implementation**: `research/R1_metric_implementation.py` (Python, numpy/scipy).
 
 ---
 
