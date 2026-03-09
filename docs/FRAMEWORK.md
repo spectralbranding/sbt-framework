@@ -13,7 +13,7 @@ This document applies the atom-cloud-fact epistemological pattern from the alibi
 
 The framework provides both a critique of traditional branding theory and a practical architecture for AI-era brand management.
 
-A note on terminology: 'Spectral Brand Theory' is the proper name of this work (as published at SSRN). The term 'theory' follows a common convention in academic frameworks and reflects the theoretical ambition of the work. SBT is currently best characterized as an analytical framework: a formally specified set of constructs and mechanisms that generates testable hypotheses about brand perception. It becomes a theory in the scientific sense — with predictive power and empirical validation — as the hypotheses in Part 9 are tested.
+A note on terminology: 'Spectral Brand Theory' is the proper name of this work (as published at SSRN). The term 'theory' follows a common convention in academic frameworks and reflects the theoretical ambition of the work. SBT is currently best characterized as an analytical framework: a formally specified set of constructs and mechanisms that generates testable hypotheses about brand perception. It becomes a theory in the scientific sense — with predictive power and empirical validation — as the hypotheses in Part 7 are tested.
 
 ---
 
@@ -369,7 +369,7 @@ graph TB
 
 This resolves the relationship between SBT and acquisition-focused frameworks: Sharp's "mental availability" = field density × gate friction⁻¹ × spectral profile accessibility. Sharp's "physical availability" = channel coverage across observer environments. Schwartz's "Unaware" = SBT's Absent state. Customer acquisition = the product of transition rates across dissemination and perception states.
 
-Full research note: `research/NOTES_SIGNAL_DISSEMINATION.md`. New hypotheses H6-H10 address gate friction variance, first-atom primacy, amplification asymmetry, channel-dimension coupling, and field density thresholds.
+New hypotheses H6-H10 address gate friction variance, first-atom primacy, amplification asymmetry, channel-dimension coupling, and field density thresholds.
 
 ### 3.6 Geometric Structure of the Perception Space
 
@@ -425,108 +425,17 @@ This concentration has three consequences for SBT:
 
 1. **Null model baseline**: Brand differentiation is "meaningful" only when observer-weighted distance exceeds the concentration radius. Many perceived brand differences may be noise rather than structural.
 
-2. **Cohort boundary fuzziness**: For any partition of $\Delta^7$ into $k$ cohort regions, the fraction of observer profiles near a boundary grows with dimensionality. At $n = 8$, boundaries are already substantially fuzzy -- which is why Claude's 5-6 cohorts and Gemini's 3 cohorts (§7.11) represent valid clusterings at different granularity thresholds rather than contradictory results.
+2. **Cohort boundary fuzziness**: For any partition of $\Delta^7$ into $k$ cohort regions, the fraction of observer profiles near a boundary grows with dimensionality. At $n = 8$, boundaries are already substantially fuzzy -- which is why Claude's 5-6 cohorts and Gemini's 3 cohorts (§5.11) represent valid clusterings at different granularity thresholds rather than contradictory results.
 
-3. **Specialization advantage**: Most random observer profiles are "unbalanced" (concentrating weight on a few dimensions). A brand that tries to satisfy all 8 dimensions equally is geometrically further from the typical observer than a brand that specializes -- formalizing the D/A Goldilocks zone (§7.4) as a geometric rather than merely empirical pattern.
+3. **Specialization advantage**: Most random observer profiles are "unbalanced" (concentrating weight on a few dimensions). A brand that tries to satisfy all 8 dimensions equally is geometrically further from the typical observer than a brand that specializes -- formalizing the D/A Goldilocks zone (§5.4) as a geometric rather than merely empirical pattern.
 
 **Companion paper**: Zharnikov (2026d), "Brand Space Geometry: A Formal Metric for Multi-Dimensional Brand Perception."
-**Reference implementation**: `research/R1_metric_implementation.py` (Python, numpy/scipy).
 
 ---
 
-## Part 4: Critical Analysis of the Book Draft
+## Part 4: AI-Era Spectral Branding
 
-The book draft ("Brand 3.0") is structured around a traditional branding framework. Through the spectral lens, here is what it gets right, what it misses, and what could be reframed.
-
-### 4.1 What the Book Anticipates
-
-**"Multi-layered cognitive spaces" (Многослойная модель когнитивных пространств)**
-The 12 spaces -- media, trade, social, cultural, historical, career, financial, political, health, labor market, military, scientific -- are recognizable as proto-atom-dimensions. This is the strongest concept in the outline. But they are framed as "spaces where the brand exists" rather than **dimensions along which observers perceive**. The brand doesn't "exist in" the cultural space; the cultural dimension is a perceptual channel through which observers register brand atoms.
-
-**"Brand as guiding star" (Бренд как путеводная звезда)**
-The stellar metaphor is already present. But the book uses it as a management metaphor (the brand guides the business), not as a perceptual metaphor (the brand IS a stellar object whose appearance depends on the observer). The metaphor should be pushed further.
-
-**"Brand integrity" (Цельность бренда)**
-Maps directly to the identity gate + coherence requirement. Consistency across atoms ensures they cluster correctly. Without it, atoms scatter into unrelated clouds and never collapse into a strong fact.
-
-**"Brand as gestalt and attractor" (Бренд как гештальт и аттрактор)**
-This is exactly what a collapsed brand fact is. The gestalt is the collapse product. The attractor function is the scoring weight profile that pulls atoms toward clustering.
-
-### 4.2 What the Book Misses
-
-```mermaid
-graph LR
-    subgraph "Book's Model<br/>(brand-centric)"
-        B[Brand] -->|has| ID[Identity]
-        B -->|has| IDEO[Ideology]
-        B -->|has| ARCH[Archetype]
-        B -->|has| STRAT[Strategy]
-        B -->|emits to| H[Human<br/>passive receiver]
-    end
-
-    subgraph "Spectral Model<br/>(observer-centric)"
-        BR[Brand Atoms] -->|emitted into| FIELD[Perceptual Field]
-        AMB[Ambient Atoms<br/>reviews, news,<br/>competitors] -->|also in| FIELD
-        FIELD -->|filtered by| OBS[Observer<br/>active assembler]
-        OBS -->|clusters| CL[Perception Cloud]
-        CL -->|collapses| FACT[Brand Fact<br/>observer-specific]
-    end
-
-    style B fill:#ffcdd2,stroke:#333
-    style H fill:#ffcdd2,stroke:#333
-    style BR fill:#c8e6c9,stroke:#333
-    style OBS fill:#c8e6c9,stroke:#333
-    style FACT fill:#c8e6c9,stroke:#333
-    style AMB fill:#fff9c4,stroke:#333
-```
-
-**1. The observer model is absent.**
-The entire outline is brand-centric. Every chapter asks "what IS the brand?" (identity, ideology, archetype, strategy). No chapter asks "who is PERCEIVING the brand, and how?" The spectral model requires equal treatment of the observer. Without it, you describe a stellar object without acknowledging it looks different from every point in the universe.
-
-The book mentions "human-brand relationships" (отношения человека с брендом) but frames the human as a passive receiver. The spectral model treats the observer as an **active assembler** -- they select, weight, cluster, and collapse brand atoms through their own perceptual apparatus.
-
-**2. Archetypes are misplaced in the architecture.**
-The book treats archetypes (masculine/feminine, Jungian) as foundational brand elements -- atoms of identity. In the spectral model, archetypes are **pre-compiled clustering templates** -- cultural algorithms that tell observers how to assemble brand atoms into recognizable patterns. "The Hero" is not a brand atom; it is a scoring function. It tells the observer: "weight narrative atoms high, look for conflict-resolution patterns, expect ideological atoms about courage." Archetypes belong in the observer model, not the brand model.
-
-**3. Brand types are taxonomic, not structural.**
-The book lists types (corporate, product, territorial, social, personal, auxiliary). In the spectral model, these differ not by essence but by **which atom dimensions are dominant**:
-
-| Type | Dominant Dimensions | Primary Observer Cohorts |
-|------|--------------------|-----------------------|
-| Corporate | ideological, economic, narrative | investors, employees, regulators |
-| Product | experiential, economic, semiotic | consumers, retailers |
-| Territorial | cultural, temporal, narrative | tourists, residents, investors |
-| Personal | social, narrative, ideological | followers, employers, peers |
-
-They are not different species -- they are the same spectral structure with different dimensional emphasis.
-
-**4. The static/dynamic confusion.**
-The book frames brand as a *thing* that has properties (identity, ideology, gender). The spectral model frames brand as a *process* -- continuous emission, continuous observation, continuous re-collapse. "Brand identity" is not a fixed property; it is the current collapse state across all observer cohorts. It changes every time new atoms are emitted or new observers arrive.
-
-**5. "When will brands die" is the wrong question.**
-Brands cannot "die" in the spectral model because they were never "alive." Atoms can stop being emitted. Observers can stop perceiving. Clouds can dissipate without collapsing. Facts can be re-collapsed into nothing. But there is no single entity that "dies." The better question: **under what conditions do brand atoms stop producing collapse?**
-
-**6. Missing: designed vs ambient atoms.**
-The brand controls only a subset of its own atoms. Campaigns, products, communications are *designed atoms*. Reviews, scandals, competitor framing, cultural shifts are *ambient atoms*. This tension -- between designed and ambient -- is where brand management actually happens, and it is absent from the outline.
-
-### 4.3 Reframing the Book's Concepts
-
-| Book Concept | Traditional Frame | Spectral Reframe |
-|-------------|-------------------|----------------|
-| Brand ideology | What the brand believes | **Emission policy**: rules governing which atoms to generate and which dimensions to prioritize |
-| Brand mythology | The brand's story | **Temporal clustering scaffold**: narrative atoms designed to anchor cloud formation in origin-trial-triumph structure |
-| Positioning | Where the brand sits in the market | **Dimensional differentiation**: choosing which atom dimensions to dominate so clouds are structurally distinct from competitors |
-| Brand architecture | How sub-brands relate | **Identity gate configuration**: monolithic = one gate; house of brands = separate gates; endorsed = shared partial gate |
-| Rebranding | Changing the brand | **Forced re-collapse**: disrupting existing facts by changing the identity gate and flooding with new atoms, hoping observers re-collapse into a different fact |
-| Brand health research | Measuring brand strength | **Collapse measurement**: what has solidified in observers' minds across cohorts |
-| Tone of voice | How the brand speaks | **Atom signature**: consistent dimensional ratios (e.g., always 40% ideological + 30% cultural + 20% social + 10% semiotic in communications) |
-| Brand book / guidelines | Rules for consistency | **Atom emission spec**: constraints ensuring emitted atoms pass the identity gate and cluster predictably |
-
----
-
-## Part 5: AI-Era Spectral Branding
-
-### 5.1 What AI Changes at Each Pipeline Stage
+### 4.1 What AI Changes at Each Pipeline Stage
 
 ```mermaid
 graph TB
@@ -561,7 +470,7 @@ graph TB
 
 **Fact collapse**: AI accelerates re-collapse cycles. Pre-AI brand facts were stable for years. Now a single viral moment can force re-collapse for millions simultaneously. AI also enables **synthetic facts** -- AI-generated brand perceptions assembled from synthetic atoms (deepfakes, AI reviews). The forgery problem: if brand facts can be assembled from synthetic atoms, what does "brand truth" mean?
 
-### 5.2 Spectral Brand Management System
+### 4.2 Spectral Brand Management System
 
 An AI-era brand management system mirrors alibi's architecture directly:
 
@@ -609,7 +518,7 @@ graph TD
 | Collapse Predictor | Predict how new atoms will change facts per cohort | -- (new, AI-native capability) |
 | Re-collapse Defense | Detect and buffer against unwanted re-collapse | Re-collapse on new evidence |
 
-### 5.3 Brand as Executable Model
+### 4.3 Brand as Executable Model
 
 In the AI era, a brand is no longer a "platform document" or "brand book." It is an executable model:
 
@@ -625,11 +534,9 @@ Brand management becomes model management:
 
 This is not speculative. Personalization engines, dynamic creative optimization, and AI-driven brand tracking are already converging toward this architecture. The spectral model provides the theoretical framework that unifies these operational tools.
 
-### 5.4 The Book's Ultimate Question, Reframed
+### 4.4 When Do Brands Become Unnecessary?
 
-> "When will brands die?" (Когда умрут бренды?)
-
-Reframed: **When will the atom-to-fact pipeline become unnecessary?**
+**When will the atom-to-fact pipeline become unnecessary?**
 
 Answer: when AI observers make all decisions without collapsing atoms into facts. If an AI procurement system evaluates a product on raw atoms (price, specs, reviews) without forming a "brand image," then branding is dead *for that observer*. But as long as human observers need cognitive shortcuts (gestalts, attractors) to navigate choice complexity, the collapse mechanism persists -- and therefore brands persist.
 
@@ -637,7 +544,7 @@ The real threat is not AI replacing brands, but **AI making observers so granula
 
 ---
 
-### 5.5 Competitive Context Limitation and Extension
+### 4.5 Competitive Context Limitation and Extension
 
 **Current scope**: the framework analyzes brands in isolation. Each SBT analysis models one brand's signal architecture and the observer cohorts that perceive it.
 
@@ -649,53 +556,11 @@ The real threat is not AI replacing brands, but **AI making observers so granula
 
 ---
 
-## Part 6: Proposed Book Structure (Spectral Reframe)
-
-| Current Structure | Spectral Structure | Key Shift |
-|-------------------|------------------|-----------|
-| What is a brand? (definitions) | What are brand atoms? (dimensional typology) | From noun to verb: brand is a process, not a thing |
-| Brand identity (ideology, archetypes) | Atom emission policy + observer clustering templates | Archetypes move from brand to observer |
-| Strategy (positioning, architecture) | Dimensional differentiation + identity gate design | From "where we sit" to "which atoms we dominate" |
-| Management (documentation, health) | Cloud monitoring + collapse prediction | From static audit to real-time pipeline |
-| When brands die | When collapse becomes unnecessary | From mortality to phase transition |
-
-```mermaid
-graph TD
-    subgraph "Proposed Chapter Flow"
-        CH1[Ch 1: Brand Atoms<br/>8 dimensions,<br/>designed vs ambient]
-        CH2[Ch 2: Observer Architecture<br/>spectrum, weights,<br/>clustering templates]
-        CH3[Ch 3: Cloud Formation<br/>how perception clusters,<br/>identity gate, scoring]
-        CH4[Ch 4: Fact Collapse<br/>conviction formation,<br/>re-collapse dynamics]
-        CH5[Ch 5: Emission Strategy<br/>positioning as dimensional<br/>differentiation]
-        CH6[Ch 6: AI-Era Pipeline<br/>synthetic atoms,<br/>algorithmic mediation]
-        CH7[Ch 7: Post-Collapse Future<br/>when N=1 per observer,<br/>brands as personal relationships]
-    end
-
-    CH1 --> CH2 --> CH3 --> CH4
-    CH4 --> CH5 --> CH6 --> CH7
-
-    CH1 -.->|"What signals<br/>does the brand emit?"| CH5
-    CH2 -.->|"Who perceives<br/>and how?"| CH4
-    CH3 -.->|"How do perceptions<br/>cluster?"| CH6
-
-    style CH1 fill:#fce4ec,stroke:#333
-    style CH2 fill:#e8eaf6,stroke:#333
-    style CH3 fill:#fff8e1,stroke:#333
-    style CH4 fill:#e8f5e9,stroke:#333
-    style CH5 fill:#e0f2f1,stroke:#333
-    style CH6 fill:#f3e5f5,stroke:#333
-    style CH7 fill:#e3f2fd,stroke:#333
-```
-
-The fundamental shift: from describing brands as **objects with properties** to modeling brands as **processes with observers**.
-
----
-
-## Part 7: Track 0 Exploratory Analysis — Nine Candidate Mechanisms (v2.0)
+## Part 5: Track 0 Exploratory Analysis — Nine Candidate Mechanisms (v2.0)
 
 Track 0 applied the spectral framework to 5 brands (Hermès, IKEA, Patagonia, Tesla, Erewhon) across all 6 modules. The exploratory analysis identified 9 candidate mechanisms that extend the framework beyond its v1.0 specification. These represent analytical observations from five illustrative cases, not empirically validated findings.
 
-### 7.1 Dark Signals: Structural Absence as Brand Dimension Modifier
+### 5.1 Dark Signals: Structural Absence as Brand Dimension Modifier
 
 **Discovery**: Hermès creates value through designed signal RESTRICTION, not amplification. The empty shelf, the wait list, the inability to buy — these are not failures of distribution but strategic acts of structural absence.
 
@@ -724,7 +589,7 @@ Cloud formation with structural absence — qualitative mechanism: Structural ab
 
 **Prerequisites for structural absence**: the mechanism requires two conditions: (1) existing demand to restrict — the brand must have created desire before restricting access; (2) cultural context that makes restriction legible as intention rather than failure. Heritage is the most reliable source of this legitimizing context. However, equivalent context can be created by: cult community status (Erewhon, ~10 years), founder mythology, category-defining position, or strong ideological identity. The prerequisite is legitimizing context, of which heritage is one — but not the only — source.
 
-### 7.2 Coherence Taxonomy: Five Types of Brand Architecture
+### 5.2 Coherence Taxonomy: Five Types of Brand Architecture
 
 **Dual-layer architecture note**: Humans perceive dots of different colour tones; AI reads the exact spectrum of light waves that compose each dot's lighting. SBT is built for both. The coherence type (ecosystem, signal, identity, experiential asymmetry, incoherent) is a structural classification in the L1 spectral profile — nominal, no ordering implied. The letter grade (A+ to C-) is an L2 rendered output: a projection of each type's typical disruption resilience mechanism onto a human-readable scale. Two brands with structurally different spectral profiles can project to the same grade — spectral metamerism. The grade tells you the resilience colour. For the full spectrum, consult the L1 spectral profile.
 
@@ -873,7 +738,7 @@ Key implication:   Cannot communicate out of incoherence — structural fix requ
 
 **Spectral metamerism**: different L1 spectral profiles can project to the same L2 grade — as different spectra of light appear as the same colour to the human eye. A C- from Tesla (high-power, ambient-dominated, amplifying mechanism) and a C- from a hypothetical B2B brand with contradictory investor/customer messaging are the same grade but different spectra. The grade tells you the resilience colour. It cannot tell you whether you are looking at a single-wavelength laser or a broad-spectrum compound that happens to appear identical. When two brands receive the same coherence grade, or when a grade diagnosis feels insufficient, go to the L1 spectral profile. The grade is the compression. The profile is the ground truth.
 
-### 7.3 Product-Anchored Cohort as Universal Resilience Asset
+### 5.3 Product-Anchored Cohort as Universal Resilience Asset
 
 **Discovery**: confirmed across ALL 5 brands. In every disruption scenario, the cohort with highest experiential weight and evidence-based conviction provides the structural floor. Product-anchored cohorts absorb disruption better because their conviction is built on direct evidence, not ambient signals.
 
@@ -885,7 +750,7 @@ Key implication:   Cannot communicate out of incoherence — structural fix requ
 | Tesla | Tech Loyalist | 0.35 | Sole firewall (only unconflicted dimension) |
 | Erewhon | Wellness Devotee | 0.35 | Reinforces ("I know the product firsthand") |
 
-### 7.4 Designed/Ambient Goldilocks Zone
+### 5.4 Designed/Ambient Goldilocks Zone
 
 **Exploratory hypothesis**: the five-brand comparison suggests a possible optimal designed/ambient signal ratio around 55-65% designed. This is an exploratory hypothesis requiring larger-sample validation.
 
@@ -901,7 +766,7 @@ Key implication:   Cannot communicate out of incoherence — structural fix requ
 
 **Key qualifier**: the DIRECTION of ambient signals matters as much as the ratio. Hermès (60/35/5, aligned ambient) outperforms IKEA (70/25/5, passive ambient) because Hermès' ambient signals amplify designed signals rather than merely existing.
 
-### 7.5 Temporal Compounding Pattern
+### 5.5 Temporal Compounding Pattern
 
 **Analytical observation**: heritage depth appears to follow a non-linear pattern across the five brands. The temporal dimension is the only dimension that competitors cannot replicate and that no disruption can erase.
 
@@ -917,7 +782,7 @@ Key implication:   Cannot communicate out of incoherence — structural fix requ
 
 **Note**: these duration bands are approximate thresholds suggested by the five-brand comparison. They illustrate the mechanism's existence but are not empirically validated boundary conditions; a larger sample would likely refine the inflection points. The underlying mathematical form of the compounding relationship — whether logarithmic, exponential, or step-function — cannot be specified from five data points.
 
-### 7.6 Mediated Cloud Formation
+### 5.6 Mediated Cloud Formation
 
 **Discovery**: clouds can form via screens without direct product encounter. The observer builds an impression from content, social media, and secondhand accounts — but this impression may never collapse to conviction. It exists in a permanent pre-conviction state.
 
@@ -925,7 +790,7 @@ Key implication:   Cannot communicate out of incoherence — structural fix requ
 - **Properties**: lower confidence, higher volatility, dual-coded (aspirational + incomplete)
 - **Significance**: increasingly the DEFAULT mode for digital-native brand perception
 
-### 7.7 Weight-Barrier-Crossing Signals
+### 5.7 Weight-Barrier-Crossing Signals
 
 **Discovery**: certain signals bypass an observer's dimensional weight filtering. Not all weights are absolute.
 
@@ -933,7 +798,7 @@ Key implication:   Cannot communicate out of incoherence — structural fix requ
 - **Mechanism**: signal migrates from primary dimension (ideological) to a dimension where the observer IS sensitive (experiential/safety)
 - **Implication**: supply chain ethics is an experiential risk, not just an ideological one
 
-### 7.8 Negative Cloud Resilience
+### 5.8 Negative Cloud Resilience
 
 **Discovery**: negative clouds STRENGTHEN during brand disruption. Evidence-free negative convictions are more stable than evidence-rich positive ones.
 
@@ -941,7 +806,7 @@ Key implication:   Cannot communicate out of incoherence — structural fix requ
 - **Mechanism**: no experiential data to create cognitive dissonance. Brand crises CONFIRM the negative conviction rather than challenging it.
 - **Paradox**: the observer with the LEAST evidence has the MOST stable conviction
 
-### 7.9 Brand Health vs Brand Power Inversion
+### 5.9 Brand Health vs Brand Power Inversion
 
 **Discovery**: brand health and brand power are independent variables. Traditional metrics conflate them.
 
@@ -952,7 +817,7 @@ Key implication:   Cannot communicate out of incoherence — structural fix requ
 
 **Implication**: the framework measures ARCHITECTURE, not AWARENESS. The confusion between brand power and brand health is the central error in traditional brand management.
 
-### 7.10 Non-Ergodic Perception Dynamics
+### 5.10 Non-Ergodic Perception Dynamics
 
 **Organizing analogy**: Peters' (2019) ergodicity economics provides an illuminating analogy for brand perception dynamics. In non-ergodic processes, the time average (what one agent experiences over time) diverges from the ensemble average (what many agents experience at one moment). Brand perception exhibits analogous dynamics: what any individual cohort experiences over time can diverge dramatically from what aggregate surveys capture at a single moment. We use this analogy as an organizing framework for understanding why brand health (time-dimension, cohort-specific) and brand power (ensemble dimension, aggregate) can be independent variables — not as a claim that brand perception obeys the specific mathematical properties Peters demonstrates for wealth processes.
 
@@ -977,11 +842,11 @@ epsilon = 1.0 -> ergodic: ensemble surveys reliable
 epsilon -> 0.0 -> non-ergodic: must track cohort trajectories
 ```
 
-The Ergodicity Coefficient is a proposed future metric that would quantify this divergence per dimension per brand. Its implementation requires longitudinal cohort panel data and is on the validation research agenda (Part 9, H4). It is not currently implemented or measured.
+The Ergodicity Coefficient is a proposed future metric that would quantify this divergence per dimension per brand. Its implementation requires longitudinal cohort panel data and is on the validation research agenda (Part 7, H4). It is not currently implemented or measured.
 
 We note that Peters' ergodicity economics framework remains debated within economics (e.g., Doctor et al., 2020; Meder et al., 2021); our use is analogical rather than dependent on the resolution of that debate.
 
-### 7.11 Cross-Model Pipeline Robustness
+### 5.11 Cross-Model Pipeline Robustness
 
 **Finding**: the analytical pipeline produces consistent structural diagnoses when executed by different LLMs (Claude Opus 4.6 and Gemini 3.1 Pro). This demonstrates prompt consistency and internal reproducibility — not empirical validity. Two LLMs trained on similar internet corpora about the same five well-documented brands producing similar outputs shows that the framework is specified precisely enough to constrain LLM analysis; it does not show that those outputs accurately represent real consumer perception processes.
 
@@ -1006,7 +871,7 @@ We note that Peters' ergodicity economics framework remains debated within econo
 
 ---
 
-## Part 8: Current Validation Status
+## Part 6: Current Validation Status
 
 ### What the LLM-based analysis demonstrates
 
@@ -1040,15 +905,15 @@ We note that Peters' ergodicity economics framework remains debated within econo
 
 SBT is a formally specified analytical framework with explicit constructs, mechanisms, and candidate hypotheses. The five-brand exploratory analysis demonstrates the framework's internal consistency and illustrative power. Empirical validation — required to confirm the framework's claims about real consumer perception processes — remains future work.
 
-This is the standard intermediate stage for theoretical frameworks: formal specification → testable hypotheses → empirical validation. SBT is at stage two. The testable hypotheses are specified in Part 9 below.
+This is the standard intermediate stage for theoretical frameworks: formal specification → testable hypotheses → empirical validation. SBT is at stage two. The testable hypotheses are specified in Part 7 below.
 
 ### Sensitivity analysis of coherence type assignments
 
-Sensitivity analysis (see spectral-branding repo, research/SENSITIVITY_ANALYSIS.md) tested the robustness of the five coherence type assignments under +/-0.10 perturbation of key cohort dimensional weights — the conservative end of the +/-0.10-0.15 estimation uncertainty acknowledged in Part 11.2. Five of five coherence types survive standard single-weight perturbation. Four of five (Tesla, Hermes, IKEA, Erewhon) are fully robust across all tested perturbation scenarios, including aggressive double perturbations. One brand (Patagonia) is conditionally robust: identity coherence holds under standard perturbation but approaches a type boundary under simultaneous ideological -0.10 and experiential +0.10 perturbation for values-aligned observers, at which point the diagnosis becomes ambiguous between identity and signal coherence. Six of seven key structural findings (asymmetric conviction resilience, CEO ambient domination, structural absence, ecosystem self-repair, signal consistency, experiential encounter mode gap) are fully robust. Patagonia's ideological gravitational center is conditionally robust and should carry a qualifier pending empirical weight validation. The overall robustness reflects the fact that coherence type diagnoses depend on structural relationships between cohorts and brand-level emission properties, not on exact weight values within individual cohorts. Empirical weight validation via MaxDiff survey (Part 11.1) is most urgent for Patagonia, where the diagnosis sits closest to a type boundary.
+Sensitivity analysis tested the robustness of the five coherence type assignments under +/-0.10 perturbation of key cohort dimensional weights — the conservative end of the +/-0.10-0.15 estimation uncertainty acknowledged in Part 9.2. Five of five coherence types survive standard single-weight perturbation. Four of five (Tesla, Hermes, IKEA, Erewhon) are fully robust across all tested perturbation scenarios, including aggressive double perturbations. One brand (Patagonia) is conditionally robust: identity coherence holds under standard perturbation but approaches a type boundary under simultaneous ideological -0.10 and experiential +0.10 perturbation for values-aligned observers, at which point the diagnosis becomes ambiguous between identity and signal coherence. Six of seven key structural findings (asymmetric conviction resilience, CEO ambient domination, structural absence, ecosystem self-repair, signal consistency, experiential encounter mode gap) are fully robust. Patagonia's ideological gravitational center is conditionally robust and should carry a qualifier pending empirical weight validation. The overall robustness reflects the fact that coherence type diagnoses depend on structural relationships between cohorts and brand-level emission properties, not on exact weight values within individual cohorts. Empirical weight validation via MaxDiff survey (Part 9.1) is most urgent for Patagonia, where the diagnosis sits closest to a type boundary.
 
 ---
 
-## Part 9: Testable Hypotheses
+## Part 7: Testable Hypotheses
 
 The following hypotheses are generated by the SBT framework and constitute the empirical research agenda required to validate SBT as a theory:
 
@@ -1082,7 +947,7 @@ Testable via: Compare spectral profiles of observers who encountered the same br
 **H10 (Field density threshold)**: There exists a minimum field density below which encounter probability drops to near-zero regardless of observer receptivity, and this threshold is higher for channels with low signal-to-noise ratio.
 Testable via: Vary brand signal frequency in controlled environments; measure encounter rate as a function of field density and channel noise level.
 
-## Part 10: Relationship to Existing Frameworks
+## Part 8: Relationship to Existing Frameworks
 
 SBT builds on and extends several established frameworks. The following comparisons locate SBT's contribution precisely.
 
@@ -1108,11 +973,11 @@ SBT builds on and extends several established frameworks. The following comparis
 
 ---
 
-## Part 11: Measurement Methodology
+## Part 9: Measurement Methodology
 
 The following protocols provide practical paths from the SBT framework to real empirical measurement. These are starting-point designs; specific implementations will vary by budget, timeline, and brand context.
 
-### 11.1 Dimensional Importance Survey
+### 9.1 Dimensional Importance Survey
 
 To measure how much each of the 8 dimensions matters to a target observer cohort, use a MaxDiff (Maximum Difference Scaling) survey:
 
@@ -1123,7 +988,7 @@ To measure how much each of the 8 dimensions matters to a target observer cohort
 
 Minimum sample: 200 respondents per cohort of interest. The resulting importance scores directly populate dimensional weight profiles in the SBT observer model.
 
-### 11.2 Observer Weight Estimation from Existing Data
+### 9.2 Observer Weight Estimation from Existing Data
 
 When primary research is not available, estimate dimensional weights from secondary behavioral signals:
 
@@ -1137,7 +1002,7 @@ When primary research is not available, estimate dimensional weights from second
 
 Weight estimates derived from behavioral signals carry ±0.10-0.15 uncertainty. Treat as hypotheses until validated with primary research.
 
-### 11.3 D/A Ratio Estimation via Content Analysis
+### 9.3 D/A Ratio Estimation via Content Analysis
 
 To measure the designed/ambient/synthetic ratio empirically:
 
@@ -1148,7 +1013,7 @@ To measure the designed/ambient/synthetic ratio empirically:
 
 For ambient signals, separate by valence (positive/negative/neutral) — valence is often more diagnostic than volume.
 
-### 11.4 Conviction Strength Proxies
+### 9.4 Conviction Strength Proxies
 
 Standard tracking metrics map approximately to SBT conviction states:
 
@@ -1162,7 +1027,7 @@ Standard tracking metrics map approximately to SBT conviction states:
 
 These mappings are approximate. SBT's constructs are more granular than standard tracking metrics. Use existing tracking data as orientation, not as ground truth for dimensional profiles.
 
-### 11.5 Minimum Viable Research Design
+### 9.5 Minimum Viable Research Design
 
 Before trusting an SBT diagnosis for strategic decisions, the following minimum research investment is recommended:
 
@@ -1174,7 +1039,7 @@ Total investment: approximately 6-8 weeks of research, 2-3 analyst weeks. This p
 
 ---
 
-## Part 12: Mapping to Existing Brand Tracking
+## Part 10: Mapping to Existing Brand Tracking
 
 SBT introduces new constructs that complement existing tracking systems. The following translations allow practitioners to use existing tracking data as starting-point inputs for SBT analysis, and to interpret SBT outputs in the language of existing dashboards.
 
