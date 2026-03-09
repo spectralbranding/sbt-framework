@@ -3,7 +3,7 @@
 **Version**: 2.3 (Mathematical Foundations)
 **Status**: Draft
 **Last Updated**: 2026-03-09
-**Related**: `v2_architecture.md`, `CONTINUATION_PROMPT.md`
+**Related**: `GLOSSARY.md`
 
 ---
 
