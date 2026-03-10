@@ -669,7 +669,7 @@ graph LR
 |---|---|---|---|
 | Ecosystem | Selective absorption — unaffected cohorts stabilize the system | A+ | Disruption is metabolized selectively |
 | Signal | Uniform transmission — disruption reaches all cohorts equally | A- | Strong but no selective defense |
-| Identity | Binary rally/oppose — aligned cohorts strengthen under stress | B+ | Resilient within aligned segment |
+| Identity | Binary rally/oppose — aligned cohorts strengthen under stress | B+ | Resilient within aligned cohort |
 | Experiential Asymmetry | Geographic isolation — local and mediated cohorts disrupted independently | B- | Partial resilience only |
 | Incoherent | Amplifying — disruptions widen existing cohort divisions | C- | Brand converts disruption into deeper fragmentation |
 

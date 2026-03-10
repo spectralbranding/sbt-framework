@@ -696,7 +696,7 @@ A non-human observer that evaluates brand signals on behalf of a human principal
 **AI absorbing state analog**: if a brand is sufficiently negatively represented in training data, positive in-context signals face the same resistance as positive signals face against a human's crystallized negative prior. The mechanism differs (probability distribution vs emotional conviction) but the strategic outcome is the same: the brand cannot be rehabilitated through signal correction alone without reaching the next model training update.
 
 - **Three-observer model**: AI Agent Observer is one of three observer types first established in Article 06 ("Three Observers, One Website"). The three types — Search Engines, Humans, AI Agents — have fundamentally different spectral profiles and roles. Search engines are signal mediators (routers to the SSOT); humans are experiential perception-formers; AI agents are structured-data synthesizers. The two-track brand strategy is a signal design framework for the two perception-forming types within this three-observer architecture.
-- **Research note**: `research/NOTES_AI_AGENT_OBSERVERS.md`
+- **Research note**: See AI Agent Observer section in the SBT framework documentation
 - **See also**: Observer Cohort, Priors, Identity Gate, Absorbing State, Spectral Output (L1), Search Engine Observer
 
 ### Search Engine Observer (v2.1)
@@ -930,4 +930,4 @@ Quick reference for translating between traditional branding vocabulary and SBT.
 
 **Framework**: `SPECTRAL_BRANDING_FRAMEWORK.md`
 **Taxonomy**: `data/ATOM_TAXONOMY.yaml`
-**Related work**: `research/RELATED_WORK.md`
+**Related work**: See [sbt-papers](https://github.com/spectralbranding/sbt-papers)

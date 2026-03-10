@@ -96,7 +96,7 @@ Each module has a prompt + YAML template in [`templates/`](templates/).
 
 ## Mathematical Validation
 
-Every pipeline output is validated against proven mathematical bounds from seven companion research papers (R1-R6):
+Every pipeline output is validated against proven mathematical bounds from seven companion research papers (R0-R6):
 
 | Validator | Paper | What It Checks |
 |-----------|-------|----------------|
@@ -127,7 +127,7 @@ sbt-framework/
 ├── data/
 │   └── ATOM_TAXONOMY.yaml    Signal classification reference
 ├── docs/
-│   ├── FRAMEWORK.md          Full theoretical framework (v2.1)
+│   ├── FRAMEWORK.md          Full theoretical framework (v2.3)
 │   ├── GLOSSARY.md           Term definitions and relationships
 │   └── architecture/         Mermaid architecture diagrams
 │       ├── BRAND_PIPELINE.mmd    Full signal pipeline: emission → cloud → collapse
@@ -149,7 +149,7 @@ sbt-framework/
 | [R1: Formal Metric](https://papers.ssrn.com/abstract=6379298) | Aitchison + Fisher-Rao metric for brand/observer spaces |
 | [R5: Specification Impossibility](https://papers.ssrn.com/abstract=6379578) | Geometric impossibility bounds for organizational design |
 | [Substack](https://spectralbranding.substack.com) | Applied analysis articles |
-| [orgschema-toolkit](https://github.com/spectralbranding/orgschema-toolkit) | Sibling framework: 8-module business specification toolkit (operations side of SBT) |
+| [config-org-framework](https://github.com/spectralbranding/config-org-framework) | Sibling framework: 8-module business specification toolkit (operations side of SBT) |
 
 ## Citation
 
