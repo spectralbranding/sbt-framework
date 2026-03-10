@@ -3,7 +3,7 @@
 **Version**: 2.0 (Post-Track-0 Validation)
 **Status**: Draft
 **Last Updated**: 2026-02-27
-**Related**: `SPECTRAL_BRANDING_FRAMEWORK.md`, `BOOK_STRUCTURE_PROPOSAL.md`
+**Related**: `FRAMEWORK.md`
 
 ### v2.0 Additions (Track 0 Discoveries)
 - **Dark Signals / Structural Absence**: value creation through designed signal restriction

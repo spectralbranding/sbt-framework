@@ -3,7 +3,7 @@
 > Brands are stellar objects. You are the observer.
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
-![Framework v2.1](https://img.shields.io/badge/Framework-v2.1-green.svg)
+![Framework v2.3](https://img.shields.io/badge/Framework-v2.3-green.svg)
 ![Validated: 5 Brands](https://img.shields.io/badge/Validated-5%20Brands-orange.svg)
 
 ```mermaid
@@ -94,6 +94,21 @@ Each module has a prompt + YAML template in [`templates/`](templates/).
 | **D/A ratio** | Designed vs. ambient signal balance (optimal zone: 55-65% designed) |
 | **Coherence type** | Structural category of brand architecture (5 types, each with different resilience) |
 
+## Mathematical Validation
+
+Every pipeline output is validated against proven mathematical bounds from seven companion research papers (R1-R6):
+
+| Validator | Paper | What It Checks |
+|-----------|-------|----------------|
+| Metric | R1 (Formal Metric) | Signal positivity, simplex constraints, triangle inequality |
+| Metamerism | R2 (Spectral Metamerism) | Brands with similar scores but different 8D structure |
+| Cohort | R3 (Cohort Boundaries) | Over-segmentation, false sharp boundaries |
+| Capacity | R4 (Sphere Packing) | Positioning overcrowding, indistinguishable pairs |
+| Trajectory | R6 (Diffusion Dynamics) | Absorption risk, irreversible perception decline |
+| Specification | R5 (Impossibility) | Organizational spec coverage, cascade consistency |
+
+The validation module (`src/spectral_branding/validators/`) is Python + numpy/scipy with 67 unit tests. It runs automatically on pipeline output, flagging geometric violations that no amount of prompt engineering can prevent.
+
 ## Repository Structure
 
 ```
@@ -130,6 +145,9 @@ sbt-framework/
 | [Research Papers](https://github.com/spectralbranding/sbt-papers) | Working papers on SBT and the underlying epistemological architecture |
 | [Brand Code](https://github.com/spectralbranding/brand-code) | Executable brand identity specification — spectral palette, particle system source, AI-readable prompt |
 | [SSRN Preprint](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6318718) | Formal academic paper — *Spectral Brand Theory: A Computational Framework for Multi-Dimensional Brand Perception* |
+| [R0: Literature Survey](https://papers.ssrn.com/abstract=6379181) | Critical survey of geometric approaches to brand perception |
+| [R1: Formal Metric](https://papers.ssrn.com/abstract=6379298) | Aitchison + Fisher-Rao metric for brand/observer spaces |
+| [R5: Specification Impossibility](https://papers.ssrn.com/abstract=6379578) | Geometric impossibility bounds for organizational design |
 | [Substack](https://spectralbranding.substack.com) | Applied analysis articles |
 | [orgschema-toolkit](https://github.com/spectralbranding/orgschema-toolkit) | Sibling framework: 8-module business specification toolkit (operations side of SBT) |
 
