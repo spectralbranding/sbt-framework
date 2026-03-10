@@ -18,7 +18,6 @@ import numpy as np
 from spectral_branding.validators._math import (
     N_DIM,
     aitchison_distance,
-    normalize_to_sphere,
     positive_orthant_fraction,
     sphere_surface_area,
     to_signal_array,

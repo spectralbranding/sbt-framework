@@ -20,7 +20,6 @@ from spectral_branding.validators._math import (
     SIGNAL_MIN,
     aitchison_distance,
     clr_transform,
-    fisher_rao_distance,
     normalize_to_simplex,
     to_signal_array,
     verify_triangle_inequality,

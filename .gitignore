@@ -11,8 +11,6 @@
 # Machine-specific MCP config (use .mcp.json.silicon or .mcp.json.intel templates)
 .mcp.json
 
-# Linter config (local)
-.flake8
 
 # Local skills
 skills/

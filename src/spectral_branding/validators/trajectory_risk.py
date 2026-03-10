@@ -18,7 +18,6 @@ import numpy as np
 
 from spectral_branding.validators._math import (
     DIMENSIONS,
-    N_DIM,
     to_signal_array,
 )
 
