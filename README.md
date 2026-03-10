@@ -107,7 +107,7 @@ Every pipeline output is validated against proven mathematical bounds from seven
 | Trajectory | R6 (Diffusion Dynamics) | Absorption risk, irreversible perception decline |
 | Specification | R5 (Impossibility) | Organizational spec coverage, cascade consistency |
 
-The validation module (`src/spectral_branding/validators/`) is Python + numpy/scipy with 67 unit tests. It runs automatically on pipeline output, flagging geometric violations that no amount of prompt engineering can prevent.
+The validation module (`src/spectral_branding/validators/`) is Python + numpy/scipy with 70 unit tests. It runs automatically on pipeline output, flagging geometric violations that no amount of prompt engineering can prevent.
 
 ## Repository Structure
 
@@ -133,6 +133,10 @@ sbt-framework/
 │       ├── BRAND_PIPELINE.mmd    Full signal pipeline: emission → cloud → collapse
 │       ├── OBSERVER_MODEL.mmd    Observer cohort spectral profiles
 │       └── ALIBI_ANALOGY.mmd     Structural analogy: alibi finance ↔ SBT
+├── src/spectral_branding/       Python validation module
+│   └── validators/              6 math-hardened validators (numpy/scipy)
+├── tests/                       70 unit tests for validators
+├── pyproject.toml               Package config (hatchling + numpy + scipy)
 ├── CITATION.cff
 ├── LICENSE
 └── README.md

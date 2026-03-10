@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sbt-framework"
+version = "2.3.0"
+description = "Spectral Brand Theory - AI-native brand analysis toolkit with math-hardened validators"
+requires-python = ">=3.12"
+license = "MIT"
+dependencies = [
+    "numpy>=1.26.0",
+    "scipy>=1.12.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/spectral_branding"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
