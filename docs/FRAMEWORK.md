@@ -431,6 +431,8 @@ This concentration has three consequences for SBT:
 
 **Companion paper**: Zharnikov (2026d), "Brand Space Geometry: A Formal Metric for Multi-Dimensional Brand Perception."
 
+**Computational enforcement**: The mathematical constraints defined in §3.6 and the companion papers (R1-R6) are computationally enforced by the validation module (`src/spectral_branding/validators/`). Every LLM-generated spectral profile is checked against metric constraints (positivity, triangle inequality), metamerism bounds (R2), cohort boundary fuzziness (R3), positioning capacity (R4), and trajectory absorption risk (R6). This ensures that the framework's mathematical foundations are active runtime constraints, not just theoretical properties.
+
 ---
 
 ## Part 4: AI-Era Spectral Branding
