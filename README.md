@@ -82,6 +82,8 @@ Each module has a prompt + YAML template in [`templates/`](templates/).
 
 25+ non-obvious insights. 9 candidate mechanisms not found in existing branding literature.
 
+All five brand profiles have been retroactively validated against the mathematical bounds from R1-R6. Every profile passes metric axioms (R1), no metameric pairs exist among the five (R2), positioning capacity is unconstrained (R4), and trajectory risk is low across all brands (R6).
+
 ## Key Concepts
 
 | Concept | Definition |
