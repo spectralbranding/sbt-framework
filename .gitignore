@@ -1,0 +1,27 @@
+# Claude Code local settings (all local dev tooling)
+.claude/
+.claude-decisions/
+
+# Fleet-standards symlinks (local dev tooling, not project content)
+.clinerules
+.cursorrules
+.cursorignore
+.rooignore
+
+# Machine-specific MCP config (use .mcp.json.silicon or .mcp.json.intel templates)
+.mcp.json
+
+# Linter config (local)
+.flake8
+
+# Local skills
+skills/
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
