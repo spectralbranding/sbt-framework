@@ -151,9 +151,14 @@ sbt-framework/
 | [Research Papers](https://github.com/spectralbranding/sbt-papers) | Working papers on SBT and the underlying epistemological architecture |
 | [Brand Code](https://github.com/spectralbranding/brand-code) | Executable brand identity specification — spectral palette, particle system source, AI-readable prompt |
 | [SSRN Preprint](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6318718) | Formal academic paper — *Spectral Brand Theory: A Computational Framework for Multi-Dimensional Brand Perception* |
+| [Zenodo Archive](https://doi.org/10.5281/zenodo.18945913) | Archived SBT paper with DOI (10.5281/zenodo.18945913) |
 | [R0: Literature Survey](https://papers.ssrn.com/abstract=6379181) | Critical survey of geometric approaches to brand perception |
 | [R1: Formal Metric](https://papers.ssrn.com/abstract=6379298) | Aitchison + Fisher-Rao metric for brand/observer spaces |
+| [R2: Spectral Metamerism](https://papers.ssrn.com/abstract=6388378) | Information loss bounds under dimensional projection (JL lemma) |
+| [R3: Cohort Boundaries](https://papers.ssrn.com/abstract=6388360) | Concentration of measure on the probability simplex |
+| [R4: Sphere Packing](https://papers.ssrn.com/abstract=6388361) | E8 lattice bounds on brand positioning capacity |
 | [R5: Specification Impossibility](https://papers.ssrn.com/abstract=6379578) | Geometric impossibility bounds for organizational design |
+| [R6: Diffusion Dynamics](https://papers.ssrn.com/abstract=6388498) | Non-ergodic perception dynamics on manifolds |
 | [Substack](https://spectralbranding.substack.com) | Applied analysis articles |
 | [Alibi](https://github.com/viberesearch/alibi) | The atom-cloud-fact epistemological engine — domain-agnostic observation pipeline underlying SBT |
 | [config-org-framework](https://github.com/spectralbranding/config-org-framework) | Sibling framework: 8-module business specification toolkit (operations side of SBT) |
