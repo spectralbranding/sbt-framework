@@ -13,7 +13,7 @@ This document applies the atom-cloud-fact epistemological pattern from the alibi
 
 The framework provides both a critique of traditional branding theory and a practical architecture for AI-era brand management.
 
-A note on terminology: 'Spectral Brand Theory' is the proper name of this work (as published at SSRN). The term 'theory' follows a common convention in academic frameworks and reflects the theoretical ambition of the work. SBT is currently best characterized as an analytical framework: a formally specified set of constructs and mechanisms that generates testable hypotheses about brand perception. It becomes a theory in the scientific sense — with predictive power and empirical validation — as the hypotheses in Part 7 are tested.
+A note on terminology: 'Spectral Brand Theory' is the proper name of this work (as published on Zenodo). The term 'theory' follows a common convention in academic frameworks and reflects the theoretical ambition of the work. SBT is currently best characterized as an analytical framework: a formally specified set of constructs and mechanisms that generates testable hypotheses about brand perception. It becomes a theory in the scientific sense — with predictive power and empirical validation — as the hypotheses in Part 7 are tested.
 
 ---
 

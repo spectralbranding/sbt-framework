@@ -712,7 +712,7 @@ A non-human observer that processes brand signals through crawling, indexing, an
 
 **Critical distinction — mediator, not perception-former**: search engines do not form brand perceptions. They route human and AI observers to canonical signal sources. A search engine link is a legitimization signal: it confirms that the indexed page is the authoritative source for a given query. The brand cloud formed by search engine observation is a discoverability profile, not a conviction profile.
 
-**SSOT signal flow**: search engines index the brand's canonical sources (website, GitHub, SSRN, llms.txt) and route observers to them. The search engine's "judgment" is: *is this the authoritative source for this subject?* Brands that structure their SSOT correctly (clear canonical URLs, schema.org markup, consistent structured data) pass this gate efficiently.
+**SSOT signal flow**: search engines index the brand's canonical sources (website, GitHub, Zenodo, llms.txt) and route observers to them. The search engine's "judgment" is: *is this the authoritative source for this subject?* Brands that structure their SSOT correctly (clear canonical URLs, schema.org markup, consistent structured data) pass this gate efficiently.
 
 - **Strategic implication**: optimizing for search engine observers means SSOT architecture quality, not keyword density. The signal the search engine evaluates is: coherent, structured, authoritative canonical sources. This is identical to Track 2 optimization for AI agent observers — both require machine-readable, structured signal architecture.
 - **First established**: Article 06 ("Three Observers, One Website: Search Engines, Humans, AI Agents")
