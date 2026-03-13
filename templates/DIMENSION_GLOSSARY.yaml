@@ -1,0 +1,422 @@
+# Spectral Brand Theory — Dimension Glossary
+# Version: 1.0
+# Purpose: Dual-purpose reference — readable by practitioners AND parseable by LLMs.
+#
+# Each dimension entry contains:
+#   - definition: one-sentence technical definition
+#   - plain_language: what it means to a marketing manager
+#   - budget_categories: typical line items that map to this dimension
+#   - brand_signals: observable evidence that a brand invests here
+#   - survey_questions: MaxDiff / conjoint items for measuring cohort weights
+#   - diagnostic_flags: what to look for when estimating investment profile
+#   - zero_weight_risk: what happens when this dimension is ignored (blind spot)
+#
+# Usage (human): Read as a reference when estimating investment or cohort profiles.
+# Usage (LLM): Include this file in context when running Module 7 prompts.
+#   The LLM uses budget_categories for investment estimation,
+#   survey_questions for cohort weight elicitation,
+#   and diagnostic_flags for gap detection.
+#
+# Dimension order is canonical: S-N-I-E-So-Ec-C-T
+
+dimensions:
+  - id: semiotic
+    index: 0
+    label: "Semiotic"
+    definition: >
+      Visual and auditory identity signals — the recognizable surface layer
+      that enables brand identification before any deeper engagement.
+    plain_language: >
+      Everything a customer sees or hears that says "this is us" — logo,
+      colors, typography, packaging, sounds, spatial design. The identity
+      layer that makes you recognizable in a crowded shelf or feed.
+    budget_categories:
+      - "Brand identity / logo design"
+      - "Packaging design and production"
+      - "Typography and visual guidelines"
+      - "Sonic branding / audio identity"
+      - "Retail / office space design"
+      - "Vehicle / uniform branding"
+      - "Photography and visual asset creation"
+    brand_signals:
+      - "Distinctive logo recognition (aided and unaided)"
+      - "Consistent color palette across touchpoints"
+      - "Proprietary typeface or visual language"
+      - "Branded sonic cues (startup sounds, jingles)"
+      - "Recognizable packaging silhouette"
+      - "Consistent spatial design in physical locations"
+    survey_questions:
+      - "How important is it that a brand has a distinctive, recognizable look and feel?"
+      - "When choosing between brands, how much does visual identity influence your decision?"
+      - "Would you pay more for a product with premium packaging and design?"
+    diagnostic_flags:
+      - "Design agency fees and retainers"
+      - "Brand guidelines documentation effort"
+      - "Packaging redesign frequency"
+      - "Visual asset production volume"
+    zero_weight_risk: >
+      Invisible brand. Customers cannot identify or recall you. You compete
+      on price alone because nothing visually distinguishes you from
+      competitors. Commodity trap.
+
+  - id: narrative
+    index: 1
+    label: "Narrative"
+    definition: >
+      Stories, myths, and temporal structures that give the brand meaning
+      beyond its functional attributes.
+    plain_language: >
+      Your origin story, founder myth, customer testimonials, brand
+      journalism, content marketing — anything that tells people WHO you
+      are and WHY you exist. The story layer.
+    budget_categories:
+      - "Content marketing / brand journalism"
+      - "PR and media relations"
+      - "Video production (brand films, documentaries)"
+      - "Copywriting (website, campaigns)"
+      - "Podcast / editorial series"
+      - "Founder story development"
+      - "Testimonial and case study production"
+    brand_signals:
+      - "Founder origin story widely known"
+      - "Active content marketing cadence"
+      - "Media coverage and earned press"
+      - "Customer testimonials and case studies"
+      - "Brand documentary or long-form content"
+      - "Consistent messaging across channels"
+    survey_questions:
+      - "How important is it that a brand has a compelling story or mission?"
+      - "Do you care about how a company was founded or why it exists?"
+      - "Would you choose a brand with a story you relate to over a cheaper alternative?"
+    diagnostic_flags:
+      - "Content team headcount"
+      - "PR agency retainer"
+      - "Blog/newsletter publication frequency"
+      - "Earned media volume and sentiment"
+    zero_weight_risk: >
+      Meaningless brand. Customers know what you sell but not why you
+      exist. No emotional hook for loyalty. Vulnerable to any competitor
+      who tells a better story.
+
+  - id: ideological
+    index: 2
+    label: "Ideological"
+    definition: >
+      Values, ethics, purpose positions, and political stances that signal
+      what the brand stands for beyond commercial interest.
+    plain_language: >
+      Your stated values, sustainability commitments, social positions,
+      ethical sourcing, DEI policies — the "what we believe" layer that
+      attracts or repels based on alignment with the customer's own values.
+    budget_categories:
+      - "CSR / sustainability programs"
+      - "ESG reporting and compliance"
+      - "Cause marketing campaigns"
+      - "Ethical sourcing / supply chain audits"
+      - "Diversity and inclusion initiatives (external-facing)"
+      - "Political or social advocacy"
+      - "Certifications (B Corp, Fair Trade, organic)"
+    brand_signals:
+      - "Published sustainability or impact report"
+      - "B Corp or equivalent certification"
+      - "Active public stance on social issues"
+      - "Ethical sourcing transparency"
+      - "Donation or 1%-type commitments"
+      - "Employee activism endorsed by brand"
+    survey_questions:
+      - "How important is it that a brand shares your values on social and environmental issues?"
+      - "Would you switch brands if you learned one had unethical practices?"
+      - "Do you actively seek out brands with strong sustainability commitments?"
+    diagnostic_flags:
+      - "CSR budget as % of revenue"
+      - "Sustainability team headcount"
+      - "Certifications held and maintained"
+      - "Public positions taken in past 12 months"
+    zero_weight_risk: >
+      Values-neutral brand. Safe from controversy but invisible to the
+      growing cohort of values-driven buyers. Cannot command premium from
+      purpose-aligned customers.
+
+  - id: experiential
+    index: 3
+    label: "Experiential"
+    definition: >
+      Direct touchpoints, product encounters, service quality, and
+      interaction design that shape perception through lived experience.
+    plain_language: >
+      What customers actually experience when they use your product, visit
+      your store, call your support line, or interact with your app. The
+      "does it work and does it feel good" layer.
+    budget_categories:
+      - "Product development and R&D"
+      - "UX/UI design"
+      - "Customer service / support operations"
+      - "Quality assurance and testing"
+      - "Physical retail / showroom investment"
+      - "Onboarding and customer education"
+      - "Returns, warranty, and recovery processes"
+    brand_signals:
+      - "Product quality ratings and reviews"
+      - "Customer satisfaction scores (CSAT)"
+      - "Service response time and resolution rate"
+      - "App store ratings"
+      - "Repeat purchase rate"
+      - "Unboxing and first-use experience quality"
+    survey_questions:
+      - "How important is product quality and reliability in your brand choice?"
+      - "Would you pay more for a significantly better user experience?"
+      - "How much does customer service quality affect your loyalty to a brand?"
+    diagnostic_flags:
+      - "R&D spend as % of revenue"
+      - "Customer support headcount and NPS"
+      - "Product return rate"
+      - "UX research budget"
+    zero_weight_risk: >
+      Perception-only brand. All promise, no delivery. Initial attraction
+      followed by rapid disillusionment. High churn, negative word of
+      mouth. The brand is a facade.
+
+  - id: social
+    index: 4
+    label: "Social"
+    definition: >
+      Community, status signaling, belonging mechanisms, and peer dynamics
+      that create value through social context rather than direct utility.
+    plain_language: >
+      Community programs, referral systems, user groups, status tiers,
+      events, ambassador programs — anything that makes customers feel
+      they belong to something or signals their identity to others.
+    budget_categories:
+      - "Community management and moderation"
+      - "Events (conferences, meetups, launch parties)"
+      - "Ambassador / influencer programs"
+      - "Referral and loyalty programs"
+      - "User-generated content campaigns"
+      - "Social media team and content"
+      - "Membership / tier programs"
+    brand_signals:
+      - "Active user community (forum, Discord, subreddit)"
+      - "Brand-organized events and gatherings"
+      - "Visible ambassador or influencer network"
+      - "Customers display brand publicly (stickers, apparel)"
+      - "Strong word-of-mouth and referral rate"
+      - "Status tier system with visible markers"
+    survey_questions:
+      - "How important is it that a brand has a community you can belong to?"
+      - "Does seeing friends or peers use a brand influence your choice?"
+      - "Would you pay more for a brand that signals status or identity?"
+    diagnostic_flags:
+      - "Community team headcount"
+      - "Event budget and frequency"
+      - "Influencer/ambassador program scale"
+      - "User-generated content volume"
+    zero_weight_risk: >
+      Isolated brand. Customers buy alone and leave alone. No network
+      effects, no organic advocacy, no tribe. Growth depends entirely
+      on paid acquisition.
+
+  - id: economic
+    index: 5
+    label: "Economic"
+    definition: >
+      Price positioning, value proposition, financial signals, and
+      accessibility that shape perception through monetary framing.
+    plain_language: >
+      Your pricing strategy, discount patterns, payment terms, total cost
+      of ownership messaging, value-for-money positioning — everything
+      that frames the financial relationship between brand and customer.
+    budget_categories:
+      - "Pricing strategy and analysis"
+      - "Promotions and discount campaigns"
+      - "Payment infrastructure (installments, BNPL)"
+      - "Price comparison and competitive monitoring"
+      - "Value proposition development"
+      - "Cost transparency communications"
+      - "Financial accessibility programs"
+    brand_signals:
+      - "Clear price positioning (premium, mid-market, value)"
+      - "Transparent pricing with no hidden fees"
+      - "Total cost of ownership communicated"
+      - "Consistent discount policy (or conspicuous absence of discounts)"
+      - "Flexible payment options"
+      - "Price anchoring against competitors"
+    survey_questions:
+      - "How important is price relative to other factors in your brand choice?"
+      - "Would you choose the cheapest option even if another brand offered more?"
+      - "How much does perceived value-for-money drive your loyalty?"
+    diagnostic_flags:
+      - "Pricing team or function existence"
+      - "Discount frequency and depth"
+      - "Payment option variety"
+      - "Price-related customer complaints"
+    zero_weight_risk: >
+      Price-blind brand. Customers have no idea what value they are
+      getting. Either leaving money on the table (underpriced) or
+      creating sticker shock (overpriced without justification). No
+      financial narrative.
+
+  - id: cultural
+    index: 6
+    label: "Cultural"
+    definition: >
+      Aesthetic codes, cultural references, taste signals, and zeitgeist
+      alignment that create resonance through shared cultural context.
+    plain_language: >
+      How your brand connects to broader culture — design sensibility,
+      artistic collaborations, humor, subcultural ties, trend alignment.
+      The "taste and belonging" layer that signals "you get us."
+    budget_categories:
+      - "Creative direction and art direction"
+      - "Cultural collaborations and partnerships"
+      - "Trend research and cultural intelligence"
+      - "Artist and designer collaborations"
+      - "Cultural event sponsorship"
+      - "Localization and cultural adaptation"
+      - "Humor, memes, and cultural content"
+    brand_signals:
+      - "Collaborations with artists, designers, or cultural figures"
+      - "Design awards and cultural recognition"
+      - "Subcultural credibility or niche following"
+      - "Culturally resonant advertising"
+      - "Brand referenced in culture (music, art, film)"
+      - "Trend-setting vs trend-following behavior"
+    survey_questions:
+      - "How important is it that a brand aligns with your cultural tastes and sensibility?"
+      - "Would you choose a brand that feels culturally relevant over a generic alternative?"
+      - "Does a brand's design sensibility and aesthetic matter to you?"
+    diagnostic_flags:
+      - "Creative director or cultural strategist role"
+      - "Collaboration partnerships active"
+      - "Cultural event presence"
+      - "Brand mentions in cultural media"
+    zero_weight_risk: >
+      Culturally dead brand. Functional but soulless. Cannot attract
+      taste-driven cohorts. Invisible to cultural curators and
+      influencers who drive organic reach.
+
+  - id: temporal
+    index: 7
+    label: "Temporal"
+    definition: >
+      Heritage, evolution visibility, longevity signals, and era
+      associations that create value through accumulated time and
+      demonstrated persistence.
+    plain_language: >
+      Your brand's relationship with time — heritage storytelling, "since
+      19XX" positioning, visible evolution, generational continuity,
+      nostalgia activation. The "we have been here and will be here" layer.
+    budget_categories:
+      - "Heritage and archive management"
+      - "Anniversary and milestone campaigns"
+      - "Museum or brand history exhibitions"
+      - "Legacy product lines and re-editions"
+      - "Generational marketing campaigns"
+      - "Longevity and warranty messaging"
+      - "Founder/family continuity communications"
+    brand_signals:
+      - "Visible founding date in branding"
+      - "Heritage product lines or re-editions"
+      - "Brand archive or museum"
+      - "Multi-generational customer stories"
+      - "Consistent core identity across decades"
+      - "Anniversary events and commemorations"
+    survey_questions:
+      - "How important is a brand's track record and longevity in your choice?"
+      - "Do you trust established brands more than new ones?"
+      - "Would heritage and tradition make you willing to pay a premium?"
+    diagnostic_flags:
+      - "Heritage marketing budget"
+      - "Archive or museum investment"
+      - "Founding date prominence in materials"
+      - "Long-term warranty or guarantee programs"
+    zero_weight_risk: >
+      Ephemeral brand. No accumulated trust, no compounding effect. Every
+      marketing dollar starts from zero. Young brands can overcome this
+      with other dimensions, but ignoring temporal entirely forfeits the
+      compounding advantage as the brand ages.
+
+# --- Decision Thresholds ---
+# Reference values for interpreting alignment gap diagnostic results.
+# Include in LLM context for Module 7 to generate actionable prescriptions.
+
+decision_thresholds:
+  alignment_gap:
+    - range: [0.00, 0.05]
+      label: "Aligned"
+      prescription: >
+        Investment profile matches customer values. Maintain current
+        allocation. Monitor quarterly for drift.
+      action: "hold"
+    - range: [0.05, 0.15]
+      label: "Minor misalignment"
+      prescription: >
+        Small gaps on 1-2 dimensions. Reallocate 5-10% of budget from
+        over-invested dimensions to under-invested ones. No structural
+        change needed.
+      action: "tune"
+    - range: [0.15, 0.30]
+      label: "Moderate misalignment"
+      prescription: >
+        Significant gaps on 2-3 dimensions. Requires deliberate budget
+        reallocation of 15-25%. Review whether current agency/team
+        structure maps to the right dimensions.
+      action: "reallocate"
+    - range: [0.30, 0.50]
+      label: "Severe misalignment"
+      prescription: >
+        Founder is building for different values than the customer holds.
+        Major reallocation (25-40%) needed. Consider whether the target
+        cohort definition is correct before moving budget.
+      action: "restructure"
+    - range: [0.50, 1.00]
+      label: "Structural misalignment"
+      prescription: >
+        Founder and customer profiles are fundamentally divergent. Two
+        options: (1) change the target cohort to match what you are
+        building, or (2) rebuild the investment profile from scratch
+        around the customer's weights. This is a pivot decision, not a
+        budget adjustment.
+      action: "pivot_or_retarget"
+
+  blind_spots:
+    description: >
+      A blind spot is a dimension where founder investment weight is
+      near zero but cohort weight exceeds 0.05. Blind spots are proven
+      to cause strictly larger alignment gaps than distributed
+      misallocation (R7 Proposition 3).
+    severity:
+      - cohort_weight_range: [0.05, 0.10]
+        label: "Minor blind spot"
+        prescription: "Allocate minimum viable investment (2-5% of budget)."
+      - cohort_weight_range: [0.10, 0.20]
+        label: "Significant blind spot"
+        prescription: "This dimension materially affects customer choice. Allocate 8-15% of budget."
+      - cohort_weight_range: [0.20, 1.00]
+        label: "Critical blind spot"
+        prescription: "Top-tier customer priority with zero investment. Urgent reallocation required."
+
+  multi_cohort:
+    fisher_rao_threshold: 0.32
+    description: >
+      If the Fisher-Rao diameter across all target cohort weight profiles
+      exceeds 2 * 0.32 = 0.64, a single brand cannot efficiently serve
+      all cohorts (>10% efficiency loss). Consider sub-brands.
+    actions:
+      feasible: "Single brand strategy viable. Use weighted-average allocation across cohorts."
+      infeasible: "Sub-brand or separate product lines recommended. Identify cohort clusters that fit within the radius."
+
+  herfindahl:
+    description: >
+      Herfindahl index H(w) = sum(w_i^2) measures concentration. Higher
+      H means the cohort cares about fewer dimensions. Range: 0.125
+      (uniform across 8 dimensions) to 1.0 (single dimension).
+    bands:
+      - range: [0.125, 0.20]
+        label: "Diffuse"
+        meaning: "Customer values spread across many dimensions. Broad investment needed."
+      - range: [0.20, 0.35]
+        label: "Moderate"
+        meaning: "2-3 dimensions dominate. Focus investment there, maintain presence elsewhere."
+      - range: [0.35, 1.00]
+        label: "Concentrated"
+        meaning: "1-2 dimensions drive nearly all value. Heavy focus, minimal spend elsewhere."

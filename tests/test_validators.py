@@ -447,6 +447,21 @@ class TestResourceAllocationValidator:
         assert len(report.blind_spot_dimensions) > 0
         assert any("blind spot" in w.lower() for w in report.warnings)
 
+    def test_blind_spot_low_nonzero_weight(self):
+        """Founder weight below 0.02 threshold should still flag as blind spot."""
+        from spectral_branding.validators.resource_allocation_validator import (
+            validate_resource_allocation,
+        )
+
+        # Social at 0.01 (below 0.02 threshold), cohort wants 0.20
+        founder = [0.24, 0.24, 0.25, 0.15, 0.01, 0.07, 0.03, 0.01]
+        cohort = [0.10, 0.10, 0.20, 0.15, 0.20, 0.10, 0.10, 0.05]
+        report = validate_resource_allocation(
+            founder_weights=founder,
+            cohort_weights={"target": cohort},
+        )
+        assert "social" in report.blind_spot_dimensions
+
     def test_multi_cohort_close_weights_feasible(self):
         """Cohorts with similar weights should be servable by one portfolio."""
         from spectral_branding.validators.resource_allocation_validator import (
@@ -521,6 +536,77 @@ class TestResourceAllocationValidator:
         optimal = compute_optimal_allocation(weights, costs, shadow_price=1.0)
         # With uniform costs and lambda=1, optimal = weights
         np.testing.assert_allclose(optimal, weights)
+
+    def test_nan_inputs_rejected(self):
+        """NaN founder weights should be rejected."""
+        from spectral_branding.validators.resource_allocation_validator import (
+            validate_resource_allocation,
+        )
+
+        report = validate_resource_allocation(
+            founder_weights=[float("nan"), 0.2, 0.1, 0.2, 0.1, 0.2, 0.1, 0.1],
+            cohort_weights={"target": [0.125] * 8},
+        )
+        assert not report.valid
+        assert any("NaN" in e for e in report.errors)
+
+    def test_inf_inputs_rejected(self):
+        """Inf founder weights should be rejected."""
+        from spectral_branding.validators.resource_allocation_validator import (
+            validate_resource_allocation,
+        )
+
+        report = validate_resource_allocation(
+            founder_weights=[float("inf"), 0.2, 0.1, 0.2, 0.1, 0.2, 0.1, 0.1],
+            cohort_weights={"target": [0.125] * 8},
+        )
+        assert not report.valid
+        assert any("Inf" in e or "NaN" in e for e in report.errors)
+
+    def test_per_cohort_gaps_stored(self):
+        """Multi-cohort should store per-cohort alignment gaps."""
+        from spectral_branding.validators.resource_allocation_validator import (
+            validate_resource_allocation,
+        )
+
+        founder = [0.4, 0.3, 0.1, 0.05, 0.05, 0.05, 0.025, 0.025]
+        c1 = [0.1, 0.1, 0.3, 0.2, 0.1, 0.1, 0.05, 0.05]
+        c2 = [0.05, 0.05, 0.1, 0.1, 0.2, 0.2, 0.15, 0.15]
+        report = validate_resource_allocation(
+            founder_weights=founder,
+            cohort_weights={"c1": c1, "c2": c2},
+        )
+        assert "c1" in report.per_cohort_gaps
+        assert "c2" in report.per_cohort_gaps
+        assert report.alignment_gap == max(report.per_cohort_gaps.values())
+
+    def test_efficiency_loss_computed(self):
+        """Efficiency loss (symmetric metric) should be computed."""
+        from spectral_branding.validators.resource_allocation_validator import (
+            validate_resource_allocation,
+        )
+
+        founder = [0.5, 0.3, 0.05, 0.05, 0.025, 0.025, 0.025, 0.025]
+        cohort = [0.025, 0.025, 0.025, 0.025, 0.05, 0.05, 0.3, 0.5]
+        report = validate_resource_allocation(
+            founder_weights=founder,
+            cohort_weights={"target": cohort},
+        )
+        assert report.efficiency_loss > 0
+
+    def test_data_quality_warning(self):
+        """LLM-estimated data should trigger quality warning."""
+        from spectral_branding.validators.resource_allocation_validator import (
+            validate_resource_allocation,
+        )
+
+        report = validate_resource_allocation(
+            founder_weights=[0.125] * 8,
+            cohort_weights={"target": [0.125] * 8},
+            data_source="llm_estimate",
+        )
+        assert report.data_quality == "llm_estimate"
+        assert any("indicative only" in w for w in report.warnings)
 
     def test_orchestrator_includes_allocation(self):
         """Orchestrator should run R7 when founder_weights provided."""

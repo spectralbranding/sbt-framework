@@ -41,12 +41,17 @@ graph LR
     M6 --> RiskMatrix[Risk Matrix]
     M6 --> ScenarioPlanning[Scenario<br>Planning]
 
+    M7[Module 7<br>Resource Allocation] --> R7[R7: Spectral<br>Resource Allocation]
+    M7 --> MaxDiff[MaxDiff /<br>Conjoint]
+    M7 --> BOS[Blue Ocean<br>Strategy]
+
     style M1 fill:#e8f4f8,stroke:#2980b9
     style M2 fill:#e8f4f8,stroke:#2980b9
     style M3 fill:#e8f4f8,stroke:#2980b9
     style M4 fill:#e8f4f8,stroke:#2980b9
     style M5 fill:#e8f4f8,stroke:#2980b9
     style M6 fill:#e8f4f8,stroke:#2980b9
+    style M7 fill:#e8f4f8,stroke:#2980b9
 ```
 
 ---
@@ -265,6 +270,37 @@ graph LR
 | **Cynefin Framework (Snowden)** | When classifying disruption complexity level | Helps choose response strategy (simple/complicated/complex/chaotic) |
 | **Bowtie Analysis** | When mapping prevention and mitigation barriers for a specific risk | Operational risk management; very detailed per scenario |
 | **Monte Carlo Simulation** | When quantitative probability modeling is possible | Requires numerical data; future SaaS platform could implement |
+
+---
+
+## Module 7: Resource Allocation
+
+### Primary: R7 — Spectral Resource Allocation (Zharnikov, 2026k)
+
+**What it does**: Proves optimal allocation theorems for multi-dimensional brand investment. Four theorems: optimal allocation proportional to cohort weights / cost, alignment gap lower bounded by Hellinger distance, multi-cohort efficiency bounded by Fisher-Rao ball radius, cost-minimizing metamers.
+
+**How SBT uses it**: R7 is the mathematical engine for Module 7. Every computation — alignment gap, blind spot detection, multi-cohort feasibility, optimal allocation — derives from R7's theorems. The Python validator enforces these bounds at runtime.
+
+### Secondary: MaxDiff / Best-Worst Scaling
+
+**What it does**: Survey method where respondents choose the "most important" and "least important" item from rotating subsets. Produces interval-scale importance weights.
+
+**How SBT uses it**: MaxDiff is the recommended method for measuring cohort dimension weights — the w(c) vector. It produces weights on the probability simplex naturally (respondents trade off importance rather than rating independently).
+
+### Secondary: Conjoint Analysis
+
+**What it does**: Measures preference trade-offs by presenting product profiles that vary on multiple attributes simultaneously.
+
+**How SBT uses it**: Conjoint provides an alternative to MaxDiff for weight elicitation, especially useful when dimensional trade-offs are more meaningful than standalone importance ratings.
+
+### Alternatives
+
+| Framework | When to Use | Trade-off |
+|-----------|-------------|-----------|
+| **Blue Ocean Strategy Canvas** | When mapping dimensional raise/reduce/eliminate/create decisions | Value curve maps directly to SBT dimension profiles — complementary framing |
+| **Jobs-to-be-Done (Christensen)** | When the cohort's hiring decision needs to be identified before weights | JTBD gives the job; SBT gives the perception coordinates for evaluation |
+| **Balanced Scorecard (Kaplan/Norton)** | When tracking multi-dimensional investment over time | BSC's multi-perspective approach parallels SBT's dimensional measurement |
+| **Portfolio Theory (Markowitz)** | When framing brand investment as portfolio optimization | Mathematical analogy: dimensions as assets, weights as allocations, alignment gap as tracking error |
 
 ---
 

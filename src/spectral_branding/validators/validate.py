@@ -86,7 +86,7 @@ class ValidationResult:
         if self.allocation:
             lines.append(
                 f"\nAlignment gap: {self.allocation.alignment_gap:.4f}"
-                f" (lower bound: {self.allocation.alignment_gap_lower_bound:.4f})"
+                f" (efficiency loss: {self.allocation.efficiency_loss:.4f})"
             )
             if self.allocation.blind_spot_dimensions:
                 lines.append(

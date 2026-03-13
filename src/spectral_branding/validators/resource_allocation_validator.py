@@ -5,7 +5,7 @@ Validates resource allocation analyses against optimal allocation theorems
 and alignment gap bounds proven in R7. Key results enforced:
 
 - Optimal allocation proportional to cohort weights / cost (Theorem 1)
-- Alignment gap >= Fisher-Rao lower bound (Theorem 2)
+- Alignment gap with Hellinger distance diagnostic (Theorem 2)
 - Multi-cohort efficiency bounded by Fisher-Rao ball radius (Theorem 3)
 - Cost-minimizing metamers satisfy hyperplane constraint (Theorem 4)
 """
@@ -38,6 +38,13 @@ DEFAULT_LAMBDA = 1.0
 # Tolerance for numerical comparisons
 NUMERICAL_TOL = 1e-8
 
+# Blind spot threshold: founder weight below this is considered near-zero.
+# Cohort weight above BLIND_SPOT_COHORT_MIN on the same dimension triggers
+# a blind spot warning. Threshold set to match practitioner expectations:
+# a 2% allocation is effectively negligible for most budget structures.
+BLIND_SPOT_FOUNDER_MAX = 0.02
+BLIND_SPOT_COHORT_MIN = 0.05
+
 
 def herfindahl_index(w: np.ndarray) -> float:
     """
@@ -56,12 +63,15 @@ class AllocationReport:
     valid: bool = True
     alignment_gap: float = 0.0
     alignment_gap_lower_bound: float = 0.0
+    efficiency_loss: float = 0.0
+    per_cohort_gaps: dict[str, float] = field(default_factory=dict)
     multi_cohort_feasible: bool = True
     multi_cohort_diameter: float = 0.0
     efficiency_loss_bound: float = 0.0
     herfindahl_founder: float = 0.0
     herfindahl_cohort: float = 0.0
     blind_spot_dimensions: list[str] = field(default_factory=list)
+    data_quality: str = "unknown"
     warnings: list[str] = field(default_factory=list)
     errors: list[str] = field(default_factory=list)
 
@@ -104,10 +114,12 @@ def compute_alignment_gap(
     Compute alignment gap A(f,c) under quadratic costs (Proposition 2).
 
     A(f,c) = V(s*_f, f) - V(s*_f, c)
-           = (1 / (2 * lambda * alpha_bar)) * ||w(f) - w(c)||_2^2
 
-    under uniform costs. For non-uniform costs, computes directly from
-    value function difference.
+    Under uniform costs with alpha_i = alpha_bar:
+        A(f,c) = (1 / (lambda * alpha_bar)) * (||w(f)||^2 - <w(f), w(c)>)
+
+    Note: this is NOT symmetric. A(f,c) != A(c,f) in general.
+    For the symmetric efficiency loss, use compute_efficiency_loss().
     """
     if cost_params is None:
         cost_params = DEFAULT_COST_PARAMS
@@ -116,6 +128,32 @@ def compute_alignment_gap(
     v_founder_for_founder = float(np.dot(founder_weights, s_founder))
     v_founder_for_cohort = float(np.dot(cohort_weights, s_founder))
     return v_founder_for_founder - v_founder_for_cohort
+
+
+def compute_efficiency_loss(
+    founder_weights: np.ndarray,
+    cohort_weights: np.ndarray,
+    cost_params: np.ndarray | None = None,
+    shadow_price: float = DEFAULT_LAMBDA,
+) -> float:
+    """
+    Compute the cohort's efficiency loss from founder misallocation.
+
+    L(f,c) = U(s*_c, c) - U(s*_f, c)
+
+    where U(s, w) = w.s - (1/2) * s' * diag(alpha) * s is net value.
+
+    Under uniform costs:
+        L(f,c) = ||w(f) - w(c)||^2 / (2 * lambda * alpha_bar)
+
+    This is symmetric, always non-negative, and measures how much value
+    the cohort loses because the founder optimizes for their own weights.
+    """
+    if cost_params is None:
+        cost_params = DEFAULT_COST_PARAMS
+    alpha_bar = float(np.mean(cost_params))
+    diff = founder_weights - cohort_weights
+    return float(np.sum(diff**2)) / (2.0 * shadow_price * alpha_bar)
 
 
 def compute_alignment_gap_lower_bound(
@@ -136,6 +174,11 @@ def compute_alignment_gap_lower_bound(
     return h**2 / (2.0 * shadow_price * alpha_bar)
 
 
+def _has_nan_or_inf(arr: np.ndarray) -> bool:
+    """Check for NaN or Inf values."""
+    return bool(np.any(np.isnan(arr)) or np.any(np.isinf(arr)))
+
+
 def validate_resource_allocation(
     founder_weights: list[float] | np.ndarray,
     cohort_weights: dict[str, list[float] | np.ndarray],
@@ -143,6 +186,7 @@ def validate_resource_allocation(
     cost_params: list[float] | np.ndarray | None = None,
     shadow_price: float = DEFAULT_LAMBDA,
     efficiency_tolerance: float = 0.10,
+    data_source: str = "unknown",
 ) -> AllocationReport:
     """
     Validate resource allocation against R7 mathematical bounds.
@@ -161,12 +205,29 @@ def validate_resource_allocation(
         Budget shadow price.
     efficiency_tolerance : float
         Maximum acceptable efficiency loss for multi-cohort targeting.
+    data_source : str
+        Origin of weight data: 'survey', 'financial_report',
+        'behavioral', 'llm_estimate', or 'unknown'. When source is
+        'llm_estimate' or 'unknown', a quality warning is emitted.
     """
     report = AllocationReport()
+    report.data_quality = data_source
+
+    # --- Data quality gate ---
+    if data_source in ("llm_estimate", "unknown"):
+        report.warnings.append(
+            f"Data quality: weights source is '{data_source}'. "
+            "Results are indicative only. Validate with MaxDiff survey "
+            "or financial report analysis before making budget decisions."
+        )
 
     # Parse and normalize founder weights
     try:
         fw = to_signal_array(founder_weights)
+        if _has_nan_or_inf(fw):
+            report.errors.append("Founder weights contain NaN or Inf values")
+            report.valid = False
+            return report
         if np.any(fw < 0):
             report.errors.append("Founder weights contain negative values")
             report.valid = False
@@ -185,6 +246,10 @@ def validate_resource_allocation(
     cp = DEFAULT_COST_PARAMS
     if cost_params is not None:
         cp = np.asarray(cost_params, dtype=np.float64)
+        if _has_nan_or_inf(cp):
+            report.errors.append("Cost parameters contain NaN or Inf values")
+            report.valid = False
+            return report
         if cp.shape != (N_DIM,):
             report.errors.append(f"Cost params must have {N_DIM} dimensions")
             report.valid = False
@@ -199,6 +264,9 @@ def validate_resource_allocation(
     for name, weights in cohort_weights.items():
         try:
             cw = to_signal_array(weights)
+            if _has_nan_or_inf(cw):
+                report.warnings.append(f"Cohort '{name}': NaN or Inf values, skipping")
+                continue
             if np.any(cw < 0):
                 report.warnings.append(f"Cohort '{name}': negative weights, skipping")
                 continue
@@ -218,57 +286,67 @@ def validate_resource_allocation(
     if proposed_allocation is not None:
         try:
             proposed = to_signal_array(proposed_allocation)
-            # Check against each cohort's optimum
-            for name, cw in parsed_cohorts.items():
-                optimal = compute_optimal_allocation(cw, cp, shadow_price)
-                deviation = float(np.linalg.norm(proposed - optimal))
-                if deviation > 0.1 * float(np.linalg.norm(optimal)):
-                    report.warnings.append(
-                        f"R7 Thm 1: Proposed allocation deviates from "
-                        f"cohort '{name}' optimum by {deviation:.4f} "
-                        f"({deviation / max(float(np.linalg.norm(optimal)), NUMERICAL_TOL):.1%})"
-                    )
+            if not _has_nan_or_inf(proposed):
+                for name, cw in parsed_cohorts.items():
+                    optimal = compute_optimal_allocation(cw, cp, shadow_price)
+                    deviation = float(np.linalg.norm(proposed - optimal))
+                    if deviation > 0.1 * float(np.linalg.norm(optimal)):
+                        report.warnings.append(
+                            f"R7 Thm 1: Proposed allocation deviates from "
+                            f"cohort '{name}' optimum by {deviation:.4f} "
+                            f"({deviation / max(float(np.linalg.norm(optimal)), NUMERICAL_TOL):.1%})"
+                        )
         except ValueError:
             report.warnings.append("Proposed allocation: invalid shape, skipping check")
 
     # --- Theorem 2: Alignment gap analysis ---
     report.herfindahl_founder = herfindahl_index(fw)
 
+    worst_gap = 0.0
+    worst_bound = 0.0
+    worst_cohort_h = 0.0
+
     for name, cw in parsed_cohorts.items():
         actual_gap = compute_alignment_gap(fw, cw, cp, shadow_price)
+        eff_loss = compute_efficiency_loss(fw, cw, cp, shadow_price)
         lower_bound = compute_alignment_gap_lower_bound(fw, cw, cp, shadow_price)
         d_fr = fisher_rao_distance(fw, cw)
 
-        report.alignment_gap = actual_gap
-        report.alignment_gap_lower_bound = lower_bound
-        report.herfindahl_cohort = herfindahl_index(cw)
+        report.per_cohort_gaps[name] = actual_gap
 
-        # Verify Theorem 2 inequality (should always hold)
-        if actual_gap < lower_bound - NUMERICAL_TOL:
-            report.errors.append(
-                f"R7 Thm 2 VIOLATED for cohort '{name}': "
-                f"gap={actual_gap:.6f} < lower_bound={lower_bound:.6f}. "
-                "This indicates a computation error."
-            )
-            report.valid = False
+        if actual_gap > worst_gap:
+            worst_gap = actual_gap
+            worst_bound = lower_bound
+            worst_cohort_h = herfindahl_index(cw)
+
+        if eff_loss > report.efficiency_loss:
+            report.efficiency_loss = eff_loss
 
         if actual_gap > 0.05:
             report.warnings.append(
                 f"R7 Thm 2: Alignment gap with cohort '{name}' = {actual_gap:.4f} "
-                f"(Fisher-Rao distance = {d_fr:.4f}). "
+                f"(efficiency loss = {eff_loss:.4f}, "
+                f"Fisher-Rao distance = {d_fr:.4f}). "
                 "Founder is investing in wrong dimensions."
             )
+
+    report.alignment_gap = worst_gap
+    report.alignment_gap_lower_bound = worst_bound
+    report.herfindahl_cohort = worst_cohort_h
 
     # --- Proposition 3: Blind spot detection ---
     from spectral_branding.validators._math import DIMENSIONS
 
     for name, cw in parsed_cohorts.items():
         for i in range(N_DIM):
-            if fw[i] < NUMERICAL_TOL and cw[i] > 0.05:
-                report.blind_spot_dimensions.append(DIMENSIONS[i])
+            if fw[i] < BLIND_SPOT_FOUNDER_MAX and cw[i] > BLIND_SPOT_COHORT_MIN:
+                dim_name = DIMENSIONS[i]
+                if dim_name not in report.blind_spot_dimensions:
+                    report.blind_spot_dimensions.append(dim_name)
                 report.warnings.append(
-                    f"R7 Prop 3: Founder blind spot on '{DIMENSIONS[i]}' "
-                    f"(founder weight ~0, cohort '{name}' weight = {cw[i]:.2f}). "
+                    f"R7 Prop 3: Founder blind spot on '{dim_name}' "
+                    f"(founder weight = {fw[i]:.3f}, "
+                    f"cohort '{name}' weight = {cw[i]:.2f}). "
                     "Blind spots cause strictly larger alignment gaps "
                     "than distributed misallocation."
                 )

@@ -46,7 +46,7 @@ graph LR
 
 ## What Is This?
 
-Spectral Brand Theory (SBT) models brands as multi-dimensional signal sources perceived differently by every observer. There is no "brand in itself" — only signals and observers. This toolkit provides a six-module AI-native analytical pipeline that turns any capable LLM into a brand perception X-ray machine, producing structural diagnosis that traditional audits cannot.
+Spectral Brand Theory (SBT) models brands as multi-dimensional signal sources perceived differently by every observer. There is no "brand in itself" — only signals and observers. This toolkit provides a seven-module AI-native analytical pipeline that turns any capable LLM into a brand perception X-ray machine, producing structural diagnosis that traditional audits cannot.
 
 ## Quick Start
 
@@ -55,9 +55,9 @@ Spectral Brand Theory (SBT) models brands as multi-dimensional signal sources pe
 1. Copy the prompt from [`prompts/01_BRAND_DECOMPOSITION.md`](prompts/01_BRAND_DECOMPOSITION.md)
 2. Paste into Claude, GPT-4, or any capable LLM with your brand name
 3. Get structured YAML output: signal inventory across 8 dimensions
-4. Run all 6 modules for a complete **Spectral Brand Audit**
+4. Run all 7 modules for a complete **Spectral Brand Audit**
 
-## The 6 Modules
+## The 7 Modules
 
 | # | Module | What It Does | Input | Output |
 |---|--------|-------------|-------|--------|
@@ -67,8 +67,15 @@ Spectral Brand Theory (SBT) models brands as multi-dimensional signal sources pe
 | 4 | [Coherence Audit](prompts/04_COHERENCE_AUDIT.md) | Score brand coherence (7 metrics) | Module 3 | Grade (A+ to F) + type |
 | 5 | [Emission Strategy](prompts/05_EMISSION_STRATEGY.md) | Design dimensionally specific action plan | Modules 1+2+4 | Strategy per cohort |
 | 6 | [Re-collapse Simulation](prompts/06_RECOLLAPSE_SIMULATION.md) | Test disruption resilience | Modules 3+4 | Resilience profile |
+| 7 | [Resource Allocation](prompts/07_RESOURCE_ALLOCATION.md) | Optimal investment, alignment gaps, blind spots | Modules 1+2 | Allocation plan + gap table |
 
 Each module has a prompt + YAML template in [`templates/`](templates/).
+
+**Module 7** adds three practitioner features not present in Modules 1-6:
+- **Financial report input**: Upload a P&L, 10-K, or departmental budget. The LLM maps line items to 8 dimensions using the [Dimension Glossary](templates/DIMENSION_GLOSSARY.yaml).
+- **Code Execution Mode**: When the LLM has a Python sandbox (Claude tools, GPT Code Interpreter, any agent), it runs `validate_resource_allocation()` directly — the math is computed by deterministic code, not LLM inference. Zero hallucination on the hard numbers.
+- **Data quality gates**: Every output is tagged with its data source (`survey`, `financial_report`, `llm_estimate`). Estimated inputs trigger a mandatory warning: results are indicative only until validated with real data. If >30% of budget cannot be mapped to dimensions, the tool refuses to produce results rather than guess.
+- **Clarification protocol**: When budget items are ambiguous (e.g., "marketing" spans Narrative, Semiotic, Social), the LLM asks the user to clarify the split rather than estimating silently.
 
 ## Validated on 5 Brands
 
@@ -112,22 +119,24 @@ Every pipeline output is validated against proven mathematical bounds from eight
 | Specification | R5 (Impossibility) | Organizational spec coverage, cascade consistency |
 | Resource Allocation | R7 (Spectral Resource Allocation) | Optimal dimensional investment, alignment gap, multi-cohort efficiency |
 
-The validation module (`src/spectral_branding/validators/`) is Python + numpy/scipy with 80 unit tests. It runs automatically on pipeline output, flagging geometric violations that no amount of prompt engineering can prevent.
+The validation module (`src/spectral_branding/validators/`) is Python + numpy/scipy with 86 unit tests. It runs automatically on pipeline output, flagging geometric violations that no amount of prompt engineering can prevent.
 
 ## Repository Structure
 
 ```
 sbt-framework/
-├── prompts/                  6 prompt modules (copy-paste into any LLM)
+├── prompts/                  7 prompt modules (copy-paste into any LLM)
 │   ├── 01_BRAND_DECOMPOSITION.md
 │   ├── 02_OBSERVER_MAPPING.md
 │   ├── 03_CLOUD_PREDICTION.md
 │   ├── 04_COHERENCE_AUDIT.md
 │   ├── 05_EMISSION_STRATEGY.md
 │   ├── 06_RECOLLAPSE_SIMULATION.md
+│   ├── 07_RESOURCE_ALLOCATION.md
 │   └── README.md
 ├── templates/                YAML output schemas for structured results
-│   ├── 01-06_*.yaml
+│   ├── 01-07_*.yaml
+│   ├── DIMENSION_GLOSSARY.yaml  Dual-purpose dimension reference (human + LLM)
 │   └── FRAMEWORKS.md
 ├── data/
 │   └── ATOM_TAXONOMY.yaml    Signal classification reference
@@ -140,7 +149,7 @@ sbt-framework/
 │       └── ALIBI_ANALOGY.mmd     Structural analogy: alibi finance ↔ SBT
 ├── src/spectral_branding/       Python validation module
 │   └── validators/              7 math-hardened validators (numpy/scipy)
-├── tests/                       80 unit tests for validators
+├── tests/                       86 unit tests for validators
 ├── pyproject.toml               Package config (hatchling + numpy + scipy)
 ├── CITATION.cff
 ├── LICENSE

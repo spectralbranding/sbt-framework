@@ -7,7 +7,7 @@
 
 ## What This Is
 
-A set of 6 structured prompts for analyzing any brand through the Spectral Brand Theory (SBT) framework. Each module is a self-contained prompt that can be used with Claude, GPT, or any capable LLM.
+A set of 7 structured prompts for analyzing any brand through the Spectral Brand Theory (SBT) framework. Each module is a self-contained prompt that can be used with Claude, GPT, or any capable LLM.
 
 **v2.0** incorporates 9 novel mechanisms discovered during Track 0 validation across 5 brands (Patagonia, Tesla, IKEA, Hermès, Erewhon). Key additions:
 - **Dark signals / structural absence**: Value creation through designed signal restriction
@@ -29,6 +29,7 @@ Each module includes:
 1. Start with **Module 1** (Brand Decomposition) -- it produces the signal inventory that all other modules need
 2. Run **Module 2** (Observer Mapping) to define your target cohorts
 3. Modules 3-6 build on 1 and 2 (see dependency table below)
+4. Run **Module 7** (Resource Allocation) for investment optimization — uses Modules 1+2 as inputs
 
 ### With Output Templates
 
@@ -53,6 +54,7 @@ Each template uses specific external frameworks (SWOT, Maslow, PESTEL, etc.) but
 | 4 | `04_COHERENCE_AUDIT.md` | `templates/04_coherence_audit.yaml` | Score brand coherence and identify gaps | 3 |
 | 5 | `05_EMISSION_STRATEGY.md` | `templates/05_emission_strategy.yaml` | Design emission plan for target convictions | 1 + 2 + 4 |
 | 6 | `06_RECOLLAPSE_SIMULATION.md` | `templates/06_recollapse_simulation.yaml` | Simulate conviction disruption and re-collapse | 3 + 4 |
+| 7 | `07_RESOURCE_ALLOCATION.md` | `templates/07_resource_allocation.yaml` | Compute optimal investment and diagnose alignment gaps | 1 + 2 |
 
 ## Frameworks Used Per Module
 
@@ -64,6 +66,7 @@ Each template uses specific external frameworks (SWOT, Maslow, PESTEL, etc.) but
 | 4 | ISO 10668 (brand valuation) | BAV, Balanced Scorecard | NPS, Keller CBBE, Aaker Equity |
 | 5 | RACE (digital marketing) | Ansoff Matrix, AIDA | SOSTAC, Blue Ocean, Porter, McKinsey 3H |
 | 6 | PESTEL Analysis | Risk Matrix, Scenario Planning | VUCA, Cynefin, Black Swan, Bowtie |
+| 7 | R7: Spectral Resource Allocation | MaxDiff / Conjoint | Blue Ocean, JTBD, Balanced Scorecard |
 
 Full details: [templates/FRAMEWORKS.md](../templates/FRAMEWORKS.md)
 
@@ -74,3 +77,4 @@ Full details: [templates/FRAMEWORKS.md](../templates/FRAMEWORKS.md)
 3. Provide your brand name and any supporting materials (website URL, social profiles, recent campaigns)
 4. The LLM will produce a structured signal inventory
 5. Feed that output into Module 2 and continue through the pipeline
+6. For investment optimization, run Module 7 with the Dimension Glossary (`templates/DIMENSION_GLOSSARY.yaml`)

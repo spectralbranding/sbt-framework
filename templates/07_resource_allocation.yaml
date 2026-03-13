@@ -1,0 +1,312 @@
+# Spectral Brand Theory — Module 7: Resource Allocation Output Template
+# Version: 1.0
+# Mathematical foundation: R7 (Spectral Resource Allocation, Zharnikov 2026k)
+#
+# This template structures the output of a spectral audit — the diagnostic
+# that computes alignment between founder investment and customer value.
+#
+# Frameworks referenced:
+#   - R7: Spectral Resource Allocation (Theorems 1-4, Propositions 1,3)
+#   - MaxDiff / Best-Worst Scaling (cohort weight measurement)
+#   - Blue Ocean Strategy (dimensional raise/reduce/eliminate/create)
+#   - See templates/FRAMEWORKS.md for alternatives
+#
+# Usage:
+#   1. Include this template in your LLM prompt with Module 7 system prompt
+#   2. Tell the LLM: "Structure your output using the provided YAML template"
+#   3. The LLM fills in values; you can then feed into the Python validator
+#
+# Dimension order is canonical: S-N-I-E-So-Ec-C-T
+
+brand:
+  name: "EcoThread"                              # Brand being analyzed
+  category: "Direct-to-consumer sustainable fashion"
+  analysis_date: "2026-03-14"
+  analyst_note: "Weights estimated by LLM from operational description — not measured via survey"
+
+# --- Step 1: Founder Investment Profile ---
+# Where the brand currently allocates resources across 8 dimensions.
+# Source: operational audit, team structure, budget analysis, or LLM estimation.
+
+founder_profile:
+  method: "llm_estimation"                       # survey | operational_audit | llm_estimation
+  confidence: "medium"                           # high | medium | low
+  weights:
+    semiotic: 0.20
+    narrative: 0.20
+    ideological: 0.27
+    experiential: 0.15
+    social: 0.01
+    economic: 0.07
+    cultural: 0.08
+    temporal: 0.02
+    _total: 1.00                                 # Validation: must equal 1.00
+  per_dimension:
+    - dimension: semiotic
+      weight: 0.20
+      confidence: high                           # high | medium | low
+      evidence: "4/12 staff in design; heavy packaging and visual identity investment"
+      bias_flag: null                            # null or string describing potential founder bias
+    - dimension: narrative
+      weight: 0.20
+      confidence: high
+      evidence: "3/12 staff in content marketing; founder story is central to brand"
+      bias_flag: "Founder is a storyteller — may over-invest in narrative vs evidence"
+    - dimension: ideological
+      weight: 0.27
+      confidence: high
+      evidence: "2 sustainability staff; organic/recycled sourcing is primary cost driver"
+      bias_flag: "Founder passion for sustainability — verify cohort values this as highly"
+    - dimension: experiential
+      weight: 0.15
+      confidence: medium
+      evidence: "Premium materials imply quality, but no dedicated QA or UX function"
+      bias_flag: null
+    - dimension: social
+      weight: 0.01
+      confidence: high
+      evidence: "No community manager, no loyalty program, no ambassador network"
+      bias_flag: null
+    - dimension: economic
+      weight: 0.07
+      confidence: medium
+      evidence: "Mid-range pricing, no discount events, minimal pricing strategy"
+      bias_flag: null
+    - dimension: cultural
+      weight: 0.08
+      confidence: medium
+      evidence: "Design sensibility exists but no cultural strategy or collaborations"
+      bias_flag: null
+    - dimension: temporal
+      weight: 0.02
+      confidence: high
+      evidence: "Young brand (<3 years), no heritage investment"
+      bias_flag: null
+
+# --- Step 2: Cohort Value Profiles ---
+# What target customers actually weight when forming brand perception.
+# Source: MaxDiff survey, conjoint analysis, behavioral inference, or LLM estimation.
+
+cohort_profiles:
+  - name: "Urban Sustainable Millennials"
+    description: "Urban 25-38, sustainability-aware, Instagram-active, mid-to-high income"
+    size_estimate: "Primary target — 70% of revenue"
+    method: "llm_estimation"                     # maxdiff | conjoint | behavioral | llm_estimation
+    confidence: "medium"
+    weights:
+      semiotic: 0.10
+      narrative: 0.10
+      ideological: 0.20
+      experiential: 0.15
+      social: 0.20
+      economic: 0.10
+      cultural: 0.10
+      temporal: 0.05
+      _total: 1.00
+    weight_rationale:
+      semiotic: "Aesthetics matter but are table stakes, not a differentiator"
+      narrative: "Story adds value but is secondary to social proof"
+      ideological: "Sustainability is a stated priority but constrained by budget"
+      experiential: "Product must feel premium to justify price point"
+      social: "Instagram-worthy and peer endorsement are primary purchase drivers"
+      economic: "Price-sensitive within a range; willing to pay 20-30% premium for values"
+      cultural: "Trend alignment matters — want to feel culturally current"
+      temporal: "Some trust value but not a major factor for this demographic"
+
+  # Add additional cohorts here for multi-cohort analysis
+  # - name: "Eco-Conscious Gen Z"
+  #   ...
+
+# --- Step 3: Cost Structure ---
+# Per-dimension cost parameters. 1.0 = average cost to improve.
+# >1.0 = expensive to improve, <1.0 = cheap to improve.
+
+cost_structure:
+  method: "uniform"                              # estimated | measured | uniform
+  params:
+    semiotic: 1.0
+    narrative: 1.0
+    ideological: 1.0
+    experiential: 1.0
+    social: 1.0
+    economic: 1.0
+    cultural: 1.0
+    temporal: 1.0
+  notes: "Uniform costs assumed. In practice, Narrative is typically cheapest (words), Experiential most expensive (product/infrastructure)."
+
+# --- Step 4: Alignment Gap Analysis ---
+# Core diagnostic output. Computed from founder and cohort profiles.
+
+alignment_gap:
+  value: 0.053                                   # A(f,c) = V(s*_f, f) - V(s*_f, c)
+  efficiency_loss: 0.032                         # L(f,c) = ||w_f - w_c||^2 / (2*alpha)
+  lower_bound: 0.043                             # Hellinger-based diagnostic (Theorem 2)
+  band: "minor_misalignment"                     # aligned | minor | moderate | severe | structural
+  label: "Minor misalignment"
+  prescription: >
+    Critical blind spot on Social dimension. Reallocate 7% from
+    Ideological and 5% from Semiotic to Social. Build community
+    infrastructure immediately.
+
+# --- Gap Direction Table ---
+# Per-dimension comparison: founder vs cohort, direction, action.
+
+gap_table:
+  - dimension: semiotic
+    founder_weight: 0.20
+    cohort_weight: 0.10
+    gap: +0.10
+    direction: "over"                            # over | under | aligned
+    action: "Reduce by 5-8 points. Current semiotic investment exceeds cohort demand."
+  - dimension: narrative
+    founder_weight: 0.20
+    cohort_weight: 0.10
+    gap: +0.10
+    direction: "over"
+    action: "Reduce by 5-8 points. Redirect from content production to community."
+  - dimension: ideological
+    founder_weight: 0.27
+    cohort_weight: 0.20
+    gap: +0.07
+    direction: "over"
+    action: "Over-investment. Redirect 7 points to Social."
+  - dimension: experiential
+    founder_weight: 0.15
+    cohort_weight: 0.15
+    gap: 0.00
+    direction: "aligned"
+    action: "Hold. Well-calibrated to cohort demand."
+  - dimension: social
+    founder_weight: 0.01
+    cohort_weight: 0.20
+    gap: -0.19
+    direction: "under"
+    action: "CRITICAL BLIND SPOT. Build community infrastructure immediately."
+  - dimension: economic
+    founder_weight: 0.07
+    cohort_weight: 0.10
+    gap: -0.03
+    direction: "under"
+    action: "Minor under-investment. Develop value-for-money messaging."
+  - dimension: cultural
+    founder_weight: 0.08
+    cohort_weight: 0.10
+    gap: -0.02
+    direction: "under"
+    action: "Minor under-investment. Consider cultural collaborations."
+  - dimension: temporal
+    founder_weight: 0.02
+    cohort_weight: 0.05
+    gap: -0.03
+    direction: "under"
+    action: "Minor. Natural improvement as brand ages. Low priority."
+
+# --- Step 5: Blind Spot Inventory ---
+# Dimensions where founder invests near-zero but cohort values significantly.
+
+blind_spots:
+  - dimension: social
+    founder_weight: 0.01
+    cohort_weight: 0.20
+    severity: "critical"                         # minor | significant | critical
+    prescription: >
+      Top-tier customer priority with near-zero investment. Build:
+      (1) Ambassador/influencer program, (2) UGC campaign incentives,
+      (3) Community events or meetups, (4) Social sharing integration
+      in product/packaging. Target: raise Social to 0.15-0.20 within
+      6 months.
+
+# --- Step 6: Multi-Cohort Feasibility ---
+# Only computed when 2+ cohort profiles are provided.
+
+multi_cohort:
+  n_cohorts: 1
+  feasible: true                                 # true | false | n/a (single cohort)
+  diameter: 0.0                                  # Fisher-Rao diameter across all cohort pairs
+  threshold: 0.64                                # 2 * 0.32 — max diameter for 10% efficiency loss
+  pairwise_distances: []                         # List of {cohort_a, cohort_b, fisher_rao_distance}
+  recommendation: "Single cohort analysis — multi-cohort check not applicable."
+  # Example with multiple cohorts:
+  # pairwise_distances:
+  #   - cohort_a: "Urban Millennials"
+  #     cohort_b: "Eco Gen Z"
+  #     fisher_rao_distance: 0.18
+  #     feasible_pair: true
+
+# --- Concentration Analysis ---
+# Herfindahl index measures how concentrated vs diffuse each profile is.
+
+concentration:
+  founder:
+    herfindahl: 0.187                            # H(w) = sum(w_i^2)
+    band: "diffuse"                              # diffuse | moderate | concentrated
+    interpretation: "Founder investment is spread relatively evenly — no dominant dimension."
+  cohort:
+    herfindahl: 0.145
+    band: "diffuse"
+    interpretation: "Cohort values are broadly distributed — requires investment across many dimensions."
+  comparison: >
+    Both profiles are diffuse. The founder's slightly higher H indicates
+    marginally more concentration (in Semiotic + Narrative + Ideological)
+    than the cohort demands.
+
+# --- Optimal Allocation ---
+# Computed from Theorem 1: s_i* = w_i(c) / (lambda * alpha_i)
+
+optimal_allocation:
+  target_cohort: "Urban Sustainable Millennials"
+  weights:
+    semiotic: 0.10
+    narrative: 0.10
+    ideological: 0.20
+    experiential: 0.15
+    social: 0.20
+    economic: 0.10
+    cultural: 0.10
+    temporal: 0.05
+  notes: "Under uniform costs, optimal allocation equals cohort weights."
+
+# --- Reallocation Plan ---
+# Specific budget shifts recommended, ranked by impact.
+
+reallocation_plan:
+  total_budget_shift: "15-20%"                   # % of total brand investment to move
+  priority_actions:
+    - priority: 1
+      action: "Build Social from 1% to 15%"
+      source_dimensions: ["narrative", "semiotic"]
+      target_dimension: "social"
+      budget_shift: "+12 points"
+      implementation: "Hire community manager. Launch ambassador program. Create UGC incentives."
+      timeline: "0-3 months"
+    - priority: 2
+      action: "Reduce Semiotic over-investment"
+      source_dimensions: ["semiotic"]
+      target_dimension: null
+      budget_shift: "-5 points"
+      implementation: "Stabilize visual identity. Reduce redesign frequency. Freeze packaging iterations."
+      timeline: "Immediate"
+    - priority: 3
+      action: "Develop Cultural presence"
+      source_dimensions: ["narrative"]
+      target_dimension: "cultural"
+      budget_shift: "+2 points"
+      implementation: "One cultural collaboration per quarter. Design award submissions."
+      timeline: "3-6 months"
+
+# --- Frameworks Used ---
+frameworks_used:
+  primary: "R7: Spectral Resource Allocation (Zharnikov, 2026k)"
+  measurement: "LLM estimation (MaxDiff survey recommended for validation)"
+  strategic: "Blue Ocean Strategy Canvas (dimensional raise/reduce mapping)"
+  operational: "Balanced Scorecard (multi-perspective investment tracking)"
+
+# --- Validation ---
+# Results from Python validator (if run).
+
+validation:
+  validator_run: false                           # true if validate_resource_allocation() was executed
+  theorem_2_holds: null                          # true | false | null (not checked)
+  simplex_valid: null                            # true | false | null
+  warnings: []
+  errors: []
