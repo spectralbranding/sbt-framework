@@ -4,7 +4,7 @@ Main orchestrator for SBT/OST math-hardened validation.
 Runs all validators on an LLM-generated brand/organizational analysis
 and produces a consolidated report with warnings, bounds, and flags.
 
-SBT validators (R1-R4, R6): brand profiles, observer profiles, cohorts
+SBT validators (R1-R4, R6-R7): brand profiles, observer profiles, cohorts, allocation
 OST validators (R5): organizational activation matrices, cascade, forkability
 """
 
@@ -32,6 +32,10 @@ from spectral_branding.validators.specification_validator import (
     SpecificationReport,
     validate_activation_matrix,
 )
+from spectral_branding.validators.resource_allocation_validator import (
+    AllocationReport,
+    validate_resource_allocation,
+)
 from spectral_branding.validators.trajectory_risk import (
     TrajectoryReport,
     analyze_trajectory_risk,
@@ -48,6 +52,7 @@ class ValidationResult:
     cohort: CohortReport | None = None
     capacity: CapacityReport | None = None
     specification: SpecificationReport | None = None
+    allocation: AllocationReport | None = None
     trajectories: dict[str, TrajectoryReport] = field(default_factory=dict)
     all_warnings: list[str] = field(default_factory=list)
     all_errors: list[str] = field(default_factory=list)
@@ -77,6 +82,18 @@ class ValidationResult:
                 f"/{self.capacity.theoretical_max} "
                 f"({self.capacity.utilization:.1%})"
             )
+
+        if self.allocation:
+            lines.append(
+                f"\nAlignment gap: {self.allocation.alignment_gap:.4f}"
+                f" (lower bound: {self.allocation.alignment_gap_lower_bound:.4f})"
+            )
+            if self.allocation.blind_spot_dimensions:
+                lines.append(
+                    f"  Blind spots: {', '.join(self.allocation.blind_spot_dimensions)}"
+                )
+            if not self.allocation.multi_cohort_feasible:
+                lines.append("  Multi-cohort: INFEASIBLE (consider sub-brands)")
 
         if self.specification:
             lines.append(
@@ -115,6 +132,8 @@ def validate_analysis(analysis: dict[str, Any]) -> ValidationResult:
         "activation_matrix": ...,  # optional, 8x6 OST matrix
         "cascade_gamma": 0.5,  # optional, cascade coupling
         "fork_level": 3,  # optional, fork at level k
+        "founder_weights": [w1, ..., w8],  # optional, R7 allocation
+        "cost_params": [a1, ..., a8],  # optional, R7 cost parameters
     }
     """
     result = ValidationResult()
@@ -191,6 +210,20 @@ def validate_analysis(analysis: dict[str, Any]) -> ValidationResult:
             result.valid = False
             result.all_errors.extend(result.specification.errors)
         result.all_warnings.extend(result.specification.warnings)
+
+    # 7. Resource allocation validation (R7)
+    founder_weights = analysis.get("founder_weights")
+    if founder_weights is not None and observer_profiles:
+        result.allocation = validate_resource_allocation(
+            founder_weights=founder_weights,
+            cohort_weights=observer_profiles,
+            proposed_allocation=analysis.get("proposed_allocation"),
+            cost_params=analysis.get("cost_params"),
+        )
+        if not result.allocation.valid:
+            result.valid = False
+            result.all_errors.extend(result.allocation.errors)
+        result.all_warnings.extend(result.allocation.warnings)
 
     # Validate observer profiles (R1) if present
     for name, weights in observer_profiles.items():

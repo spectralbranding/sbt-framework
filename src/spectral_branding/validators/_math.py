@@ -76,6 +76,18 @@ def fisher_rao_distance(w1: np.ndarray, w2: np.ndarray) -> float:
     return 2.0 * float(np.arccos(bc))
 
 
+def hellinger_distance(w1: np.ndarray, w2: np.ndarray) -> float:
+    """
+    Hellinger distance between probability vectors on the simplex.
+
+    H(w1, w2) = (1/sqrt(2)) * ||sqrt(w1) - sqrt(w2)||_2
+
+    Related to Fisher-Rao: d_FR = 2 * arccos(1 - H^2).
+    From R7 Theorem 2 (Zharnikov 2026k).
+    """
+    return float(np.linalg.norm(np.sqrt(w1) - np.sqrt(w2)) / np.sqrt(2.0))
+
+
 def normalize_to_simplex(v: np.ndarray) -> np.ndarray:
     """Normalize a positive vector to the probability simplex."""
     total = np.sum(v)

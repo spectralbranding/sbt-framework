@@ -379,3 +379,160 @@ class TestValidateOrchestrator:
         result = validate_analysis(analysis)
         assert result.metamerism is not None
         assert len(result.metamerism.metameric_pairs) > 0
+
+
+class TestResourceAllocationValidator:
+    """Tests for R7 resource allocation validator."""
+
+    def test_identical_weights_zero_gap(self):
+        """Same founder and cohort weights should produce zero alignment gap."""
+        from spectral_branding.validators.resource_allocation_validator import (
+            validate_resource_allocation,
+        )
+
+        w = [0.2, 0.1, 0.05, 0.2, 0.1, 0.05, 0.15, 0.15]
+        report = validate_resource_allocation(
+            founder_weights=w,
+            cohort_weights={"target": w},
+        )
+        assert report.valid
+        assert report.alignment_gap < 1e-10
+        assert len(report.errors) == 0
+
+    def test_divergent_weights_positive_gap(self):
+        """Different weights should produce positive alignment gap."""
+        from spectral_branding.validators.resource_allocation_validator import (
+            validate_resource_allocation,
+        )
+
+        founder = [0.5, 0.3, 0.05, 0.05, 0.025, 0.025, 0.025, 0.025]
+        cohort = [0.025, 0.025, 0.025, 0.025, 0.05, 0.05, 0.3, 0.5]
+        report = validate_resource_allocation(
+            founder_weights=founder,
+            cohort_weights={"target": cohort},
+        )
+        assert report.valid
+        assert report.alignment_gap > 0
+        assert any(
+            "Alignment gap" in w or "investing in wrong" in w for w in report.warnings
+        )
+
+    def test_theorem_2_lower_bound_holds(self):
+        """Actual alignment gap must be >= Theorem 2 lower bound."""
+        from spectral_branding.validators.resource_allocation_validator import (
+            validate_resource_allocation,
+        )
+
+        founder = [0.4, 0.3, 0.1, 0.05, 0.05, 0.05, 0.025, 0.025]
+        cohort = [0.05, 0.05, 0.3, 0.3, 0.1, 0.1, 0.05, 0.05]
+        report = validate_resource_allocation(
+            founder_weights=founder,
+            cohort_weights={"target": cohort},
+        )
+        assert report.valid
+        assert report.alignment_gap >= report.alignment_gap_lower_bound - 1e-10
+
+    def test_blind_spot_detected(self):
+        """Founder with zero weight on a dimension cohort values should flag."""
+        from spectral_branding.validators.resource_allocation_validator import (
+            validate_resource_allocation,
+        )
+
+        founder = [0.3, 0.3, 0.2, 0.2, 0.0, 0.0, 0.0, 0.0]
+        cohort = [0.1, 0.1, 0.1, 0.1, 0.15, 0.15, 0.15, 0.15]
+        report = validate_resource_allocation(
+            founder_weights=founder,
+            cohort_weights={"target": cohort},
+        )
+        assert len(report.blind_spot_dimensions) > 0
+        assert any("blind spot" in w.lower() for w in report.warnings)
+
+    def test_multi_cohort_close_weights_feasible(self):
+        """Cohorts with similar weights should be servable by one portfolio."""
+        from spectral_branding.validators.resource_allocation_validator import (
+            validate_resource_allocation,
+        )
+
+        founder = [0.15, 0.15, 0.1, 0.1, 0.1, 0.1, 0.15, 0.15]
+        c1 = [0.14, 0.16, 0.11, 0.09, 0.1, 0.1, 0.15, 0.15]
+        c2 = [0.16, 0.14, 0.09, 0.11, 0.1, 0.1, 0.15, 0.15]
+        report = validate_resource_allocation(
+            founder_weights=founder,
+            cohort_weights={"c1": c1, "c2": c2},
+        )
+        assert report.multi_cohort_feasible
+
+    def test_multi_cohort_divergent_infeasible(self):
+        """Extreme cohort divergence should trigger sub-brand warning."""
+        from spectral_branding.validators.resource_allocation_validator import (
+            validate_resource_allocation,
+        )
+
+        founder = [0.125] * 8
+        c1 = [0.9, 0.02, 0.01, 0.01, 0.02, 0.01, 0.02, 0.01]
+        c2 = [0.01, 0.01, 0.02, 0.01, 0.01, 0.9, 0.02, 0.02]
+        report = validate_resource_allocation(
+            founder_weights=founder,
+            cohort_weights={"c1": c1, "c2": c2},
+        )
+        assert not report.multi_cohort_feasible
+        assert any("sub-brand" in w.lower() for w in report.warnings)
+
+    def test_herfindahl_computed(self):
+        """Herfindahl index should be computed for founder and cohort."""
+        from spectral_branding.validators.resource_allocation_validator import (
+            validate_resource_allocation,
+        )
+
+        founder = [0.5, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        cohort = [0.125] * 8
+        report = validate_resource_allocation(
+            founder_weights=founder,
+            cohort_weights={"target": cohort},
+        )
+        # Uniform weights: H = 8 * (1/8)^2 = 0.125
+        assert abs(report.herfindahl_cohort - 0.125) < 0.01
+        # Concentrated founder: H = 2 * 0.5^2 = 0.5
+        assert report.herfindahl_founder > 0.4
+
+    def test_negative_weights_error(self):
+        """Negative founder weights should produce error."""
+        from spectral_branding.validators.resource_allocation_validator import (
+            validate_resource_allocation,
+        )
+
+        report = validate_resource_allocation(
+            founder_weights=[-0.1, 0.2, 0.1, 0.2, 0.1, 0.2, 0.1, 0.2],
+            cohort_weights={"target": [0.125] * 8},
+        )
+        assert not report.valid
+        assert len(report.errors) > 0
+
+    def test_optimal_allocation_proportional(self):
+        """Optimal allocation should be proportional to weights / cost."""
+        from spectral_branding.validators.resource_allocation_validator import (
+            compute_optimal_allocation,
+        )
+
+        import numpy as np
+
+        weights = np.array([0.4, 0.3, 0.1, 0.05, 0.05, 0.05, 0.025, 0.025])
+        costs = np.ones(8)
+        optimal = compute_optimal_allocation(weights, costs, shadow_price=1.0)
+        # With uniform costs and lambda=1, optimal = weights
+        np.testing.assert_allclose(optimal, weights)
+
+    def test_orchestrator_includes_allocation(self):
+        """Orchestrator should run R7 when founder_weights provided."""
+        analysis = {
+            "brand_profiles": {
+                "TestBrand": [5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0],
+            },
+            "observer_profiles": {
+                "Cohort_A": [0.2, 0.1, 0.1, 0.2, 0.1, 0.1, 0.1, 0.1],
+            },
+            "founder_weights": [0.3, 0.3, 0.1, 0.1, 0.05, 0.05, 0.05, 0.05],
+        }
+        result = validate_analysis(analysis)
+        assert result.allocation is not None
+        assert result.allocation.alignment_gap >= 0
