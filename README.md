@@ -84,7 +84,7 @@ Each module has a prompt + YAML template in [`templates/`](templates/).
 
 **Demand-side analysis**: Observer cohort weights decompose market demand into eight dimensions. The validators double as investment guides — metamerism detection reveals the cheapest signal portfolio achieving a target perception, capacity analysis identifies profitable unoccupied positions, and trajectory risk flags cohorts where further investment has zero expected return.
 
-All five brand profiles have been retroactively validated against the mathematical bounds from R1-R6. Every profile passes metric axioms (R1), no metameric pairs exist among the five (R2), positioning capacity is unconstrained (R4), and trajectory risk is low across all brands (R6).
+All five brand profiles have been retroactively validated against the mathematical bounds from R1-R7. Every profile passes metric axioms (R1), no metameric pairs exist among the five (R2), positioning capacity is unconstrained (R4), and trajectory risk is low across all brands (R6).
 
 ## Key Concepts
 
@@ -100,7 +100,7 @@ All five brand profiles have been retroactively validated against the mathematic
 
 ## Mathematical Validation
 
-Every pipeline output is validated against proven mathematical bounds from seven companion research papers (R0-R6):
+Every pipeline output is validated against proven mathematical bounds from eight companion research papers (R0-R7):
 
 | Validator | Paper | What It Checks |
 |-----------|-------|----------------|
@@ -110,6 +110,7 @@ Every pipeline output is validated against proven mathematical bounds from seven
 | Capacity | R4 (Sphere Packing) | Positioning overcrowding, indistinguishable pairs |
 | Trajectory | R6 (Diffusion Dynamics) | Absorption risk, irreversible perception decline |
 | Specification | R5 (Impossibility) | Organizational spec coverage, cascade consistency |
+| Resource Allocation | R7 (Spectral Resource Allocation) | Optimal dimensional investment, alignment gap, multi-cohort efficiency |
 
 The validation module (`src/spectral_branding/validators/`) is Python + numpy/scipy with 70 unit tests. It runs automatically on pipeline output, flagging geometric violations that no amount of prompt engineering can prevent.
 
@@ -160,6 +161,7 @@ sbt-framework/
 | [R4: Sphere Packing](https://doi.org/10.5281/zenodo.18945522) | E8 lattice bounds on brand positioning capacity |
 | [R5: Specification Impossibility](https://doi.org/10.5281/zenodo.18945591) | Geometric impossibility bounds for organizational design |
 | [R6: Diffusion Dynamics](https://doi.org/10.5281/zenodo.18945659) | Non-ergodic perception dynamics on manifolds |
+| [R7: Spectral Resource Allocation](https://doi.org/10.5281/zenodo.19009268) | Optimal dimensional investment, alignment gap, multi-cohort efficiency |
 | [Substack](https://spectralbranding.substack.com) | Applied analysis articles |
 | [Alibi](https://github.com/viberesearch/alibi) | The atom-cloud-fact epistemological engine — domain-agnostic observation pipeline underlying SBT |
 | [config-org-framework](https://github.com/spectralbranding/config-org-framework) | Sibling framework: 8-module business specification toolkit (operations side of SBT) |
