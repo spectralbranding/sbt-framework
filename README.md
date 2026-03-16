@@ -4,7 +4,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 ![Framework v2.3](https://img.shields.io/badge/Framework-v2.3-green.svg)
-![Validated: 5 Brands](https://img.shields.io/badge/Validated-5%20Brands-orange.svg)
+![Demonstrated: 5 Brands](https://img.shields.io/badge/Demonstrated-5%20Brands-orange.svg)
 
 ```mermaid
 graph LR
@@ -77,7 +77,7 @@ Each module has a prompt + YAML template in [`templates/`](templates/).
 - **Data quality gates**: Every output is tagged with its data source (`survey`, `financial_report`, `llm_estimate`). Estimated inputs trigger a mandatory warning: results are indicative only until validated with real data. If >30% of budget cannot be mapped to dimensions, the tool refuses to produce results rather than guess.
 - **Clarification protocol**: When budget items are ambiguous (e.g., "marketing" spans Narrative, Semiotic, Social), the LLM asks the user to clarify the split rather than estimating silently.
 
-## Validated on 5 Brands
+## Demonstrated on 5 Brands
 
 | Brand | Coherence Type | Grade | Key Finding |
 |-------|---------------|-------|-------------|

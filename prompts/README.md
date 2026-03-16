@@ -9,7 +9,7 @@
 
 A set of 7 structured prompts for analyzing any brand through the Spectral Brand Theory (SBT) framework. Each module is a self-contained prompt that can be used with Claude, GPT, or any capable LLM.
 
-**v2.0** incorporates 9 novel mechanisms discovered during Track 0 validation across 5 brands (Patagonia, Tesla, IKEA, Hermès, Erewhon). Key additions:
+**v2.0** incorporates 9 candidate mechanisms identified during Track 0 analysis across 5 brands (Patagonia, Tesla, IKEA, Hermès, Erewhon). Key additions:
 - **Dark signals / structural absence**: Value creation through designed signal restriction
 - **Coherence type taxonomy**: 5 distinct types (ecosystem, signal, identity, experiential_asymmetry, incoherent)
 - **Cloud formation modes**: standard, mediated, stalled
