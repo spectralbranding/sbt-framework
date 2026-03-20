@@ -1,5 +1,4 @@
 # Claude Code local settings (all local dev tooling)
-.claude/
 .claude-decisions/
 
 # Fleet-standards symlinks (local dev tooling, not project content)
@@ -13,7 +12,6 @@
 
 
 # Local skills
-skills/
 
 # macOS
 .DS_Store
@@ -24,3 +22,13 @@ __pycache__/
 .venv/
 venv/
 
+
+# Claude Code local settings (keep commands/ tracked)
+.claude/*
+!.claude/commands/
+!.claude/templates/
+!.claude/skills/
+!.claude/hooks/
+
+# Machine-specific MCP config (use .mcp.json.silicon or .mcp.json.intel templates)
+.mcp.json
