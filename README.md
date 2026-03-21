@@ -46,6 +46,8 @@ graph LR
 
 ## What Is This?
 
+> Aaker drew the anatomy chart. SBT built the microscope. Same brands, higher resolution.
+
 Spectral Brand Theory (SBT) models brands as multi-dimensional signal sources perceived differently by every observer. There is no "brand in itself" — only signals and observers. This toolkit provides a seven-module AI-native analytical pipeline that turns any capable LLM into a brand perception X-ray machine, producing structural diagnosis that traditional audits cannot.
 
 ## Quick Start
