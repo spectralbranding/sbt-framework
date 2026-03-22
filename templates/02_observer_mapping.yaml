@@ -19,6 +19,10 @@ cohorts:
   - name: "Tech-Forward Early Adopter"
     description: "High-income tech professionals who view cars as technology platforms. Early majority in Rogers' adoption curve."
     size_estimate: "15-20% of addressable market"
+    growth_rate:
+      estimate: "+2-3% per year"          # Directional estimate of cohort size change
+      direction: rising                   # rising | stable | falling
+      confidence: low                     # low | medium | high — how confident in this estimate
 
     # SPECTRUM: sensitivity 0.0-1.0 per dimension
     # What the observer CAN perceive. 0.0 = invisible, 1.0 = fully attuned.
@@ -97,6 +101,10 @@ cohorts:
   - name: "Environmental Activist"
     description: "Values-driven consumers who evaluate every brand through an ideological lens. Low tolerance for perceived hypocrisy."
     size_estimate: "8-12% of addressable market"
+    growth_rate:
+      estimate: "-1% per year"            # Directional estimate of cohort size change
+      direction: falling                  # rising | stable | falling
+      confidence: low                     # low | medium | high — how confident in this estimate
 
     spectrum:
       semiotic: 0.3

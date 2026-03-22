@@ -128,6 +128,12 @@ See `templates/FRAMEWORKS.md` for alternatives (STEEP/DESTEP, VUCA, Cynefin, Bla
 
 ---
 
+## Velocity-Informed Simulation
+
+When per-dimension velocity data is available (from `VelocityReport` via `validate_analysis()`), factor it into the simulation before applying the steps above. A dimension with `direction: falling` and a short `periods_to_absorption` is already in structural decline and will destabilize faster under disruption than a point-in-time score alone would suggest. Conversely, a dimension with `direction: rising` and positive acceleration carries latent resilience that the current score may understate. Where acceleration data exists (3+ snapshots), prioritize it over velocity alone: a falling dimension that is decelerating may self-correct without intervention, while a falling dimension with negative acceleration (compounding decline) warrants immediate counter-signal strategy regardless of current absolute score.
+
+---
+
 ## User Prompt Template
 
 ```

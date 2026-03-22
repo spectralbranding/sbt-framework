@@ -846,7 +846,26 @@ epsilon -> 0.0 -> non-ergodic: must track cohort trajectories
 
 The Ergodicity Coefficient is a proposed future metric that would quantify this divergence per dimension per brand. Its implementation requires longitudinal cohort panel data and is on the validation research agenda (Part 7, H4). It is not currently implemented or measured.
 
+**Per-dimension velocity tracking** is now implemented as a related but distinct capability. Where the Ergodicity Coefficient would measure whether ensemble averages reliably predict cohort trajectories, velocity tracking measures the rate and direction of change in a brand's spectral profile across time periods. See Section 5.10.1.
+
 We note that Peters' ergodicity economics framework remains debated within economics (e.g., Doctor et al., 2020; Meder et al., 2021); our use is analogical rather than dependent on the resolution of that debate.
+
+### 5.10.1 Per-Dimension Velocity Tracking (v2.3)
+
+When historical brand profile snapshots are available, the framework computes velocity metrics for each of the 8 dimensions. This enables detection of drifting signals before they trigger re-collapse.
+
+**Implementation**: `VelocityReport` in `trajectory_risk.py`. Accepts a current signal profile plus one or more historical snapshots.
+
+**Output per dimension**:
+
+- **Velocity**: rate of change per period on the 1-10 scale. Stable threshold is ±0.5 per period (`VELOCITY_STABLE_THRESHOLD`).
+- **Direction**: `rising`, `falling`, or `stable` — categorical summary of velocity sign and magnitude.
+- **Acceleration**: rate of change of velocity (requires 3+ snapshots); `None` when insufficient history.
+- **Periods to absorption**: estimated periods until a falling dimension approaches the absorbing-state floor (1.0); `None` when direction is not falling or when insufficient data.
+
+**Usage**: velocity data surfaces automatically in `TrajectoryReport.velocity_report` when `historical_brand_profiles` is supplied to `validate_analysis()`. No additional configuration required.
+
+**Analytical value**: a dimension with stable aggregate score but negative velocity and positive acceleration is a leading indicator of structural risk — the current snapshot looks healthy but the trajectory signals deterioration. This is precisely the dynamic that ensemble-only metrics miss.
 
 ### 5.11 Cross-Model Pipeline Robustness
 

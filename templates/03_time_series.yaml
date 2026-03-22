@@ -1,0 +1,33 @@
+# Spectral Brand Theory — Optional Template: Multi-Period Brand Data
+# Version: 1.0
+#
+# Purpose: Supply historical brand profile snapshots for per-dimension velocity tracking.
+# This template is OPTIONAL. Use it when you have longitudinal data and want velocity,
+# direction, acceleration, and time-to-absorption estimates from validate_analysis().
+#
+# How it connects to the pipeline:
+#   - Pass this data under the `historical_brand_profiles` key in validate_analysis().
+#   - The orchestrator calls compute_velocity(current_signals, historical_signals)
+#     and populates TrajectoryReport.velocity_report with a VelocityReport.
+#   - Minimum: 1 historical snapshot (enables velocity and direction).
+#   - 3+ snapshots: enables acceleration in addition to velocity and direction.
+#
+# Profile values: 1.0-10.0 per dimension, canonical order S-N-I-E-So-Ec-C-T.
+# Snapshot order: chronological (oldest first). The most recent snapshot feeds the
+# current_signals argument; historical_signals receives all prior snapshots.
+#
+# period_label options: "quarter" | "month" | "year" | "wave" | custom string
+
+brand:
+  name: ""
+  category: ""
+
+time_series:
+  period_label: "quarter"               # Unit label used in VelocityReport output
+  snapshots:
+    - period: "Q1 2025"
+      profile: [0, 0, 0, 0, 0, 0, 0, 0]  # [semiotic, narrative, ideological, experiential, social, economic, cultural, temporal]
+    - period: "Q2 2025"
+      profile: [0, 0, 0, 0, 0, 0, 0, 0]
+    - period: "Q3 2025"
+      profile: [0, 0, 0, 0, 0, 0, 0, 0]

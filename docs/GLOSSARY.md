@@ -20,6 +20,12 @@
 - **Ergodicity Coefficient**: per-dimension measure of ensemble metric reliability
 - **Absorbing State**: irreversible negative conviction basin
 
+### v2.3 Additions (Per-Dimension Velocity Tracking)
+- **Dimension Velocity**: rate of change of a dimension's signal score per time period
+- **Velocity Direction**: categorical summary of velocity — "rising", "falling", or "stable"
+- **Dimension Acceleration**: rate of change of velocity across periods (requires 3+ snapshots)
+- **Time-to-Absorption Estimate**: projected periods until a falling dimension reaches the absorbing-state floor
+
 ### v2.2 Additions (Signal Dissemination Layer)
 - **Signal Field**: spatiotemporal set of brand atoms in a given environment
 - **Channel**: medium through which atoms travel from emission to signal field (bandwidth, reach, fidelity, selectivity)
@@ -582,6 +588,46 @@ In non-ergodic brand perception, a conviction state from which no future signals
 - **Strategic implication**: resources spent converting observers in absorbing states are wasted. The experiential gate is closed. The conviction is structurally irrecoverable.
 - **See also**: Non-Ergodic Perception, Cloud Valence, Re-collapse Resistance
 
+### Dimension Velocity (v2.3)
+
+The rate of change of a brand's signal score on a given dimension per time period, computed from two or more historical profile snapshots. Expressed in units of the 1-10 scale per period (e.g., +0.8 per quarter).
+
+- **Stable threshold**: ±0.5 per period (`VELOCITY_STABLE_THRESHOLD`). Velocities within this band are classified as `stable`.
+- **Interpretation**: positive velocity signals rising investment or ambient reinforcement on that dimension; negative velocity signals erosion.
+- **Key insight**: a dimension can appear healthy in a point-in-time analysis while exhibiting persistent negative velocity — a leading indicator of future re-collapse risk that ensemble snapshots miss.
+- **Implementation**: `VelocityReport.velocity` (dict[str, float]) in `trajectory_risk.py`
+- **See also**: Velocity Direction, Dimension Acceleration, Time-to-Absorption Estimate, Non-Ergodic Perception
+
+### Velocity Direction (v2.3)
+
+Categorical classification of a dimension's current velocity: `rising`, `falling`, or `stable`. Derived from the velocity magnitude relative to `VELOCITY_STABLE_THRESHOLD` (±0.5 per period on the 1-10 scale).
+
+- **rising**: velocity > +0.5 — dimension score is increasing at a meaningful rate
+- **falling**: velocity < -0.5 — dimension score is eroding at a meaningful rate
+- **stable**: |velocity| ≤ 0.5 — no significant trend detected
+- **Implementation**: `VelocityReport.direction` (dict[str, str]) in `trajectory_risk.py`
+- **See also**: Dimension Velocity, Dimension Acceleration
+
+### Dimension Acceleration (v2.3)
+
+The rate of change of a dimension's velocity across consecutive periods. Requires a minimum of three historical snapshots; returns `None` when insufficient history is available.
+
+- **Positive acceleration**: velocity is increasing (dimension gaining momentum, whether rising or recovering from a fall)
+- **Negative acceleration**: velocity is decreasing (a rising dimension is slowing; a falling dimension is accelerating toward the absorbing floor)
+- **Diagnostic use**: a falling dimension with negative acceleration (accelerating decline) is a high-priority intervention signal — the deterioration is compounding. A falling dimension with positive acceleration (deceleration) suggests a natural floor or early recovery.
+- **Implementation**: `VelocityReport.acceleration` (dict[str, float | None]) in `trajectory_risk.py`
+- **See also**: Dimension Velocity, Velocity Direction, Time-to-Absorption Estimate
+
+### Time-to-Absorption Estimate (v2.3)
+
+Projected number of periods until a dimension with negative velocity reaches the absorbing-state floor (score of 1.0 on the 1-10 scale). Returns `None` when direction is not `falling` or when fewer than two snapshots are available.
+
+- **Calculation**: linear extrapolation from current score and velocity; does not account for acceleration
+- **Interpretation**: a short time-to-absorption on a high-weight dimension is a structural red flag. The brand is on a trajectory where that dimension will effectively cease contributing to observer conviction.
+- **Limitation**: extrapolation assumes constant velocity. Treat as a planning horizon for intervention, not a precise forecast.
+- **Implementation**: `VelocityReport.periods_to_absorption` (dict[str, float | None]) in `trajectory_risk.py`
+- **See also**: Dimension Velocity, Absorbing State, Non-Ergodic Perception
+
 ### Coherence Type (v2.0)
 
 Qualitative classification of how a brand's clouds relate across observer cohorts. Track 0 discovered that coherence has TYPES, not just levels — a 7/10 Signal Coherence and a 7/10 Ecosystem Coherence have fundamentally different structural properties.
@@ -901,6 +947,15 @@ Intentionally disrupting existing brand facts by changing the identity gate (new
 |--------|-----------------|---------------|
 | **Ergodicity Coefficient** | Per-dimension reliability of ensemble metrics for predicting cohort trajectories (0.0 = non-ergodic, 1.0 = ergodic) | Cross-study (Peters 2019 + SBT synthesis) |
 | **Absorbing State Detection** | Whether a cohort's negative conviction has crossed the irrecoverable threshold | Tesla (Progressive Boycotter) |
+
+### Per-Dimension Velocity Metrics (v2.3)
+
+| Metric | What It Measures | Implementation |
+|--------|-----------------|----------------|
+| **Dimension Velocity** | Rate of change per period on the 1-10 scale; stable threshold ±0.5 | `VelocityReport.velocity` |
+| **Velocity Direction** | Categorical trend per dimension: rising / falling / stable | `VelocityReport.direction` |
+| **Dimension Acceleration** | Rate of change of velocity; requires 3+ snapshots | `VelocityReport.acceleration` |
+| **Time-to-Absorption Estimate** | Projected periods until a falling dimension hits the absorbing floor (1.0) | `VelocityReport.periods_to_absorption` |
 
 ---
 

@@ -58,6 +58,13 @@ dimensions:
       Invisible brand. Customers cannot identify or recall you. You compete
       on price alone because nothing visually distinguishes you from
       competitors. Commodity trap.
+    velocity_indicators: >
+      Rising semiotic velocity signals an active visual identity refresh or packaging
+      redesign; interpret as intentional brand evolution if accompanied by narrative
+      investment. Falling semiotic velocity typically indicates design system neglect
+      or cost-cutting on visual production — rarely recovers without deliberate
+      investment because identity signals decay slowly but persistently.
+    typical_velocity_range: "slow — typically ±0.2 to ±0.5 per quarter; identity signals are structurally stable and change only through deliberate redesign"
 
   - id: narrative
     index: 1
@@ -97,6 +104,12 @@ dimensions:
       Meaningless brand. Customers know what you sell but not why you
       exist. No emotional hook for loyalty. Vulnerable to any competitor
       who tells a better story.
+    velocity_indicators: >
+      Rising narrative velocity signals an active content or PR campaign expanding the
+      brand story. Falling narrative velocity — particularly common after a founder
+      departure or media cycle shift — erodes the meaning layer that sustains loyalty
+      in the absence of direct product experience.
+    typical_velocity_range: "moderate — typically ±0.3 to ±0.8 per quarter; narrative signals build and decay at a pace set by content cadence and earned media cycles"
 
   - id: ideological
     index: 2
@@ -136,6 +149,12 @@ dimensions:
       Values-neutral brand. Safe from controversy but invisible to the
       growing cohort of values-driven buyers. Cannot command premium from
       purpose-aligned customers.
+    velocity_indicators: >
+      Rising ideological velocity indicates active public positioning — new certifications,
+      cause campaigns, or prominent social stances. Falling ideological velocity often
+      reflects a retreat from prior commitments and is high-risk for values-weighted
+      cohorts, who interpret silence as hypocrisy.
+    typical_velocity_range: "moderate — typically ±0.3 to ±0.7 per quarter; driven by discrete positioning events rather than continuous investment"
 
   - id: experiential
     index: 3
@@ -175,6 +194,12 @@ dimensions:
       Perception-only brand. All promise, no delivery. Initial attraction
       followed by rapid disillusionment. High churn, negative word of
       mouth. The brand is a facade.
+    velocity_indicators: >
+      Rising experiential velocity reflects genuine product or service improvements —
+      new features, quality upgrades, or service redesigns. Falling experiential velocity
+      is a leading indicator of churn acceleration and negative word-of-mouth; it
+      typically precedes review-score deterioration by one to two periods.
+    typical_velocity_range: "moderate — typically ±0.2 to ±0.6 per quarter; product and service quality changes are gradual unless triggered by a discrete launch or recall"
 
   - id: social
     index: 4
@@ -214,6 +239,13 @@ dimensions:
       Isolated brand. Customers buy alone and leave alone. No network
       effects, no organic advocacy, no tribe. Growth depends entirely
       on paid acquisition.
+    velocity_indicators: >
+      Rising social velocity signals community growth, viral advocacy, or a successful
+      ambassador program — can be rapid following a cultural moment. Falling social
+      velocity after controversy or a community platform shutdown can be the fastest
+      dimension to collapse; social perception shifts can move a full point within
+      weeks.
+    typical_velocity_range: "fast — typically ±0.5 to ±1.5 per quarter; social perception responds to discrete events and viral dynamics at speeds no other dimension matches"
 
   - id: economic
     index: 5
@@ -254,6 +286,13 @@ dimensions:
       getting. Either leaving money on the table (underpriced) or
       creating sticker shock (overpriced without justification). No
       financial narrative.
+    velocity_indicators: >
+      Rising economic velocity signals a price increase, premium repositioning, or
+      improved value-for-money perception following product upgrades. Falling economic
+      velocity — common during price wars or inflationary pressure — can be difficult
+      to reverse without structural repricing because observers anchor to prior price
+      points.
+    typical_velocity_range: "slow to moderate — typically ±0.2 to ±0.5 per quarter; price positioning is sticky and changes only through deliberate repricing or competitive disruption"
 
   - id: cultural
     index: 6
@@ -293,6 +332,13 @@ dimensions:
       Culturally dead brand. Functional but soulless. Cannot attract
       taste-driven cohorts. Invisible to cultural curators and
       influencers who drive organic reach.
+    velocity_indicators: >
+      Rising cultural velocity indicates successful creative collaborations, trend
+      alignment, or earned cultural recognition (press, awards, subcultural adoption).
+      Falling cultural velocity is often a lagging indicator of creative stagnation —
+      the brand stops being referenced in cultural conversation before internal teams
+      notice the gap.
+    typical_velocity_range: "moderate — typically ±0.3 to ±0.8 per quarter; cultural relevance shifts with creative cycles and trend waves, faster in fashion-adjacent categories"
 
   - id: temporal
     index: 7
@@ -334,6 +380,13 @@ dimensions:
       marketing dollar starts from zero. Young brands can overcome this
       with other dimensions, but ignoring temporal entirely forfeits the
       compounding advantage as the brand ages.
+    velocity_indicators: >
+      Rising temporal velocity reflects active heritage investment — anniversary
+      campaigns, re-editions, archive activations, or longevity messaging gaining
+      traction. Falling temporal velocity is the slowest and rarest movement of all
+      dimensions; when it occurs it typically signals a deliberate modernization push
+      that severs the brand from its heritage anchors.
+    typical_velocity_range: "very slow — typically ±0.1 to ±0.3 per quarter; heritage and temporal associations accumulate over years and decay only through sustained neglect or deliberate repositioning"
 
 # --- Decision Thresholds ---
 # Reference values for interpreting alignment gap diagnostic results.
