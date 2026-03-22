@@ -68,12 +68,35 @@ class VelocityReport:
     periods_to_absorption: dict[str, float | None] = field(default_factory=dict)
     n_snapshots: int = 0
     period_label: str = "period"
+    confidence_level: float = 0.90
+    velocity_lower: dict[str, float] = field(
+        default_factory=dict
+    )  # lower conformal bound
+    velocity_upper: dict[str, float] = field(
+        default_factory=dict
+    )  # upper conformal bound
+    absorption_range: dict[str, tuple[float, float] | None] = field(
+        default_factory=dict
+    )  # (optimistic, pessimistic) periods
+
+
+def _conformal_quantile(residuals: np.ndarray, alpha: float = 0.10) -> float:
+    """Compute conformal prediction quantile from calibration residuals.
+
+    Split conformal prediction (Vovk et al., 2005): distribution-free
+    coverage guarantee P(true in interval) >= 1 - alpha.
+    """
+    n = len(residuals)
+    scores = np.abs(residuals)
+    level = min(np.ceil((1 - alpha) * (n + 1)) / n, 1.0)
+    return float(np.quantile(scores, level))
 
 
 def compute_velocity(
     current_signals: list[float] | np.ndarray,
     historical_signals: list[list[float] | np.ndarray],
     period_label: str = "period",
+    confidence_level: float = 0.90,
 ) -> VelocityReport:
     """
     Compute per-dimension velocity from a time series of signal profiles.
@@ -87,20 +110,29 @@ def compute_velocity(
         At least 1 historical snapshot required.
     period_label : str
         Label for the time unit (e.g. "quarter", "month", "year").
+    confidence_level : float
+        Nominal coverage for conformal prediction intervals (default 0.90).
+        Requires n_snapshots >= 4 to produce bands.
 
     Returns
     -------
     VelocityReport
         Per-dimension velocity (signed rate of change per period),
-        direction labels, acceleration (if 3+ snapshots), and
-        linear time-to-absorption estimates.
+        direction labels, acceleration (if 3+ snapshots),
+        linear time-to-absorption estimates, and conformal prediction
+        bands (if n_snapshots >= 4).
     """
     current = to_signal_array(current_signals)
     history = [to_signal_array(s) for s in historical_signals]
     all_snapshots = history + [current]
     n = len(all_snapshots)
 
-    report = VelocityReport(n_snapshots=n, period_label=period_label)
+    alpha = 1.0 - confidence_level
+    report = VelocityReport(
+        n_snapshots=n,
+        period_label=period_label,
+        confidence_level=confidence_level,
+    )
 
     for i, dim_name in enumerate(DIMENSIONS):
         values = [snap[i] for snap in all_snapshots]
@@ -132,6 +164,38 @@ def compute_velocity(
             report.periods_to_absorption[dim_name] = float(periods)
         else:
             report.periods_to_absorption[dim_name] = None
+
+        # Conformal prediction bands — require n >= 4 (at least 3 residuals)
+        # diffs has length n-1; running means need at least 2 diffs to produce
+        # a residual (first running mean uses 1 diff, residual from 2nd onward).
+        # With n >= 4 we have len(diffs) >= 3 and can form >= 2 residuals.
+        if n >= 4:
+            # Residuals: diff_k minus running mean of diffs up to step k
+            residuals = []
+            for k in range(1, len(diffs)):
+                running_mean = float(np.mean(diffs[:k]))
+                residuals.append(diffs[k] - running_mean)
+            residuals_arr = np.array(residuals)
+            q = _conformal_quantile(residuals_arr, alpha=alpha)
+            report.velocity_lower[dim_name] = v - q
+            report.velocity_upper[dim_name] = v + q
+
+            # Absorption range: only when even optimistic bound is declining
+            if report.velocity_upper[dim_name] < -VELOCITY_STABLE_THRESHOLD:
+                v_lower = report.velocity_lower[dim_name]
+                v_upper = report.velocity_upper[dim_name]
+                cur_val = float(current[i])
+                if cur_val > ABSORPTION_THRESHOLD:
+                    pessimistic = (cur_val - ABSORPTION_THRESHOLD) / abs(v_lower)
+                    optimistic = (cur_val - ABSORPTION_THRESHOLD) / abs(v_upper)
+                    report.absorption_range[dim_name] = (
+                        float(optimistic),
+                        float(pessimistic),
+                    )
+                else:
+                    report.absorption_range[dim_name] = None
+            else:
+                report.absorption_range[dim_name] = None
 
     return report
 

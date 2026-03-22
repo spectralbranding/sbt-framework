@@ -100,13 +100,26 @@ class ValidationResult:
         for tname, treport in self.trajectories.items():
             if treport.velocity_report is not None:
                 vr = treport.velocity_report
+                pct = int(vr.confidence_level * 100)
                 lines.append(f"\nVelocity ({tname}):")
                 for dim in vr.velocity:
                     vel = vr.velocity[dim]
                     dirn = vr.direction[dim]
                     pta = vr.periods_to_absorption.get(dim)
                     line = f"  {dim}: {vel:+.2f}/{vr.period_label} ({dirn})"
-                    if pta is not None:
+                    # Conformal bands (present when n_snapshots >= 4)
+                    if dim in vr.velocity_lower and dim in vr.velocity_upper:
+                        lo = vr.velocity_lower[dim]
+                        hi = vr.velocity_upper[dim]
+                        line += f" [{pct}% CI: {lo:+.2f} to {hi:+.2f}]"
+                    ar = vr.absorption_range.get(dim)
+                    if ar is not None:
+                        opt, pess = ar
+                        line += (
+                            f" — absorption in ~{opt:.1f}-{pess:.1f}"
+                            f" {vr.period_label}s"
+                        )
+                    elif pta is not None:
                         line += f" — absorption in ~{pta:.1f} {vr.period_label}s"
                     lines.append(line)
 

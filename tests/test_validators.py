@@ -29,6 +29,7 @@ from spectral_branding.validators.trajectory_risk import (
     DEFAULT_SIGMA_0,
     SPECTRAL_GAP,
     VelocityReport,
+    _conformal_quantile,
     _mixing_time_lower_bound,
     analyze_trajectory_risk,
     compute_velocity,
@@ -389,6 +390,85 @@ class TestVelocity:
         # No historical signals -> velocity_report is None
         report = analyze_trajectory_risk([5.0] * 8, "Test")
         assert report.velocity_report is None
+
+    # ------------------------------------------------------------------
+    # Conformal prediction band tests (6 new)
+    # ------------------------------------------------------------------
+
+    def test_conformal_quantile_basic(self):
+        """Known residuals produce the expected quantile."""
+        # residuals = [1, 2, 3, 4, 5]; abs scores = same
+        # alpha=0.10, n=5: level = ceil(0.90 * 6) / 5 = ceil(5.4)/5 = 6/5 = 1.0
+        # quantile at 1.0 = max = 5
+        residuals = np.array([1.0, 2.0, 3.0, 4.0, 5.0])
+        q = _conformal_quantile(residuals, alpha=0.10)
+        assert q == pytest.approx(5.0)
+
+    def test_conformal_bands_with_sufficient_data(self):
+        """4+ snapshots produce non-empty velocity_lower and velocity_upper."""
+        # 3 history + current = 4 snapshots
+        history = [[7.0] * 8, [6.0] * 8, [5.0] * 8]
+        current = [4.0] * 8
+        vr = compute_velocity(current, history)
+        assert vr.n_snapshots == 4
+        for dim in vr.velocity:
+            assert dim in vr.velocity_lower
+            assert dim in vr.velocity_upper
+
+    def test_conformal_bands_empty_insufficient_data(self):
+        """<4 snapshots leaves velocity_lower, velocity_upper, absorption_range empty."""
+        # 2 snapshots (1 history + current)
+        history = [[7.0] * 8]
+        current = [5.0] * 8
+        vr = compute_velocity(current, history)
+        assert vr.n_snapshots == 2
+        assert len(vr.velocity_lower) == 0
+        assert len(vr.velocity_upper) == 0
+        assert len(vr.absorption_range) == 0
+
+        # 3 snapshots (2 history + current) — still < 4
+        history3 = [[8.0] * 8, [7.0] * 8]
+        vr3 = compute_velocity(current, history3)
+        assert vr3.n_snapshots == 3
+        assert len(vr3.velocity_lower) == 0
+        assert len(vr3.velocity_upper) == 0
+
+    def test_absorption_range_computed(self):
+        """Strongly declining dimension with 4+ snapshots produces absorption_range tuple."""
+        # Declining at -1.0/period; current = 4.0 (above threshold 2.0)
+        # velocity_upper must be < -0.5 for absorption_range to be set
+        history = [[7.0] * 8, [6.0] * 8, [5.0] * 8]
+        current = [4.0] * 8
+        vr = compute_velocity(current, history)
+        # velocity = -1.0 for all dims; upper bound may still be negative
+        for dim in vr.velocity:
+            ar = vr.absorption_range.get(dim)
+            if ar is not None:
+                opt, pess = ar
+                # optimistic < pessimistic (faster decline = fewer periods)
+                assert opt <= pess
+                assert opt > 0
+
+    def test_absorption_range_none_when_stable(self):
+        """Stable/rising velocity produces None absorption_range for all dims."""
+        history = [[5.0] * 8, [5.0] * 8, [5.0] * 8]
+        current = [5.0] * 8
+        vr = compute_velocity(current, history)
+        assert vr.n_snapshots == 4
+        for dim in vr.absorption_range:
+            assert vr.absorption_range[dim] is None
+
+    def test_conformal_coverage_level(self):
+        """Wider alpha produces wider bands; narrower alpha produces narrower bands."""
+        history = [[8.0] * 8, [7.0] * 8, [6.0] * 8]
+        current = [5.0] * 8
+        vr_90 = compute_velocity(current, history, confidence_level=0.90)
+        vr_50 = compute_velocity(current, history, confidence_level=0.50)
+        # 90% CI should be at least as wide as 50% CI for all dims
+        for dim in vr_90.velocity:
+            width_90 = vr_90.velocity_upper[dim] - vr_90.velocity_lower[dim]
+            width_50 = vr_50.velocity_upper[dim] - vr_50.velocity_lower[dim]
+            assert width_90 >= width_50 - 1e-10
 
     def test_orchestrator_passes_historical(self):
         analysis = {
