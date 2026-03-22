@@ -91,7 +91,7 @@ Each module has a prompt + YAML template in [`templates/`](templates/).
 
 25+ non-obvious insights. 9 candidate mechanisms not found in existing branding literature.
 
-**Demand-side analysis**: Observer cohort weights decompose market demand into eight dimensions. The validators double as investment guides — metamerism detection reveals the cheapest signal portfolio achieving a target perception, capacity analysis identifies profitable unoccupied positions, and trajectory risk flags cohorts where further investment has zero expected return.
+**Demand-side analysis**: Observer cohort weights decompose market demand into eight dimensions. The validators double as investment guides — metamerism detection reveals the cheapest signal portfolio achieving a target perception, capacity analysis identifies profitable unoccupied positions, and trajectory risk flags cohorts where further investment has zero expected return and tracks per-dimension velocity (signed rate of change, direction, acceleration, and time-to-absorption estimates from sequential snapshots).
 
 All five brand profiles have been retroactively validated against the mathematical bounds from R1-R7. Every profile passes metric axioms (R1), no metameric pairs exist among the five (R2), positioning capacity is unconstrained (R4), and trajectory risk is low across all brands (R6).
 
