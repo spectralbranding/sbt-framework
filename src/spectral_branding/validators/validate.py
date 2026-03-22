@@ -38,7 +38,9 @@ from spectral_branding.validators.resource_allocation_validator import (
 )
 from spectral_branding.validators.trajectory_risk import (
     TrajectoryReport,
+    VelocityReport,  # noqa: F401
     analyze_trajectory_risk,
+    compute_velocity,  # noqa: F401
 )
 
 
@@ -95,6 +97,19 @@ class ValidationResult:
             if not self.allocation.multi_cohort_feasible:
                 lines.append("  Multi-cohort: INFEASIBLE (consider sub-brands)")
 
+        for tname, treport in self.trajectories.items():
+            if treport.velocity_report is not None:
+                vr = treport.velocity_report
+                lines.append(f"\nVelocity ({tname}):")
+                for dim in vr.velocity:
+                    vel = vr.velocity[dim]
+                    dirn = vr.direction[dim]
+                    pta = vr.periods_to_absorption.get(dim)
+                    line = f"  {dim}: {vel:+.2f}/{vr.period_label} ({dirn})"
+                    if pta is not None:
+                        line += f" — absorption in ~{pta:.1f} {vr.period_label}s"
+                    lines.append(line)
+
         if self.specification:
             lines.append(
                 f"\nSpecification: {self.specification.n_specified}"
@@ -134,6 +149,9 @@ def validate_analysis(analysis: dict[str, Any]) -> ValidationResult:
         "fork_level": 3,  # optional, fork at level k
         "founder_weights": [w1, ..., w8],  # optional, R7 allocation
         "cost_params": [a1, ..., a8],  # optional, R7 cost parameters
+        "historical_brand_profiles": {  # optional, R6 velocity tracking
+            "BrandName": [[s1, ..., s8], [s1, ..., s8]],  # oldest to newest
+        },
     }
     """
     result = ValidationResult()
@@ -142,6 +160,7 @@ def validate_analysis(analysis: dict[str, Any]) -> ValidationResult:
     observer_profiles = analysis.get("observer_profiles", {})
     cohort_labels = analysis.get("cohort_labels", {})
     scalar_scores = analysis.get("scalar_scores", {})
+    historical_brand_profiles = analysis.get("historical_brand_profiles", {})
 
     # 1. Metric validation (R1) -- validate each brand profile
     if brand_profiles:
@@ -184,7 +203,10 @@ def validate_analysis(analysis: dict[str, Any]) -> ValidationResult:
 
     # 5. Trajectory risk (R6) -- per brand
     for name, profile in brand_profiles.items():
-        traj_report = analyze_trajectory_risk(profile, brand_name=name)
+        history = historical_brand_profiles.get(name)
+        traj_report = analyze_trajectory_risk(
+            profile, brand_name=name, historical_signals=history
+        )
         result.trajectories[name] = traj_report
         if traj_report.overall_risk in ("critical", "high"):
             result.all_warnings.extend(traj_report.warnings)

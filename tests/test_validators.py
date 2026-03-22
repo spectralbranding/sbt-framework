@@ -25,10 +25,13 @@ from spectral_branding.validators.metric_validator import (
     validate_signal_profile,
 )
 from spectral_branding.validators.trajectory_risk import (
+    ABSORPTION_THRESHOLD,
     DEFAULT_SIGMA_0,
     SPECTRAL_GAP,
+    VelocityReport,
     _mixing_time_lower_bound,
     analyze_trajectory_risk,
+    compute_velocity,
 )
 from spectral_branding.validators.validate import validate_analysis
 
@@ -318,6 +321,102 @@ class TestTrajectoryRisk:
         signals = [8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 0.5, 0.5]
         report = analyze_trajectory_risk(signals, "Weak")
         assert any("Theorem 4" in w for w in report.warnings)
+
+
+# =============================================================================
+# velocity tracking tests (R6 drift vector operationalization)
+# =============================================================================
+
+
+class TestVelocity:
+    def test_velocity_stable_no_change(self):
+        current = [5.0] * 8
+        history = [[5.0] * 8, [5.0] * 8]
+        vr = compute_velocity(current, history)
+        for dim in vr.velocity:
+            assert vr.velocity[dim] == pytest.approx(0.0)
+            assert vr.direction[dim] == "stable"
+
+    def test_velocity_rising(self):
+        current = [7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0]
+        history = [[5.0] * 8]
+        vr = compute_velocity(current, history)
+        for dim in vr.velocity:
+            assert vr.velocity[dim] == pytest.approx(2.0)
+            assert vr.direction[dim] == "rising"
+
+    def test_velocity_falling(self):
+        current = [3.0] * 8
+        history = [[5.0] * 8]
+        vr = compute_velocity(current, history)
+        for dim in vr.velocity:
+            assert vr.velocity[dim] == pytest.approx(-2.0)
+            assert vr.direction[dim] == "falling"
+
+    def test_acceleration_with_3_snapshots(self):
+        # Accelerating decline: -1, then -2 per period
+        current = [4.0] * 8
+        history = [[7.0] * 8, [6.0] * 8]  # diff1=-1, diff2=-2
+        vr = compute_velocity(current, history)
+        # acceleration = (diff[-1] - diff[0]) / (n_diffs - 1) = (-2 - -1) / 1 = -1
+        for dim in vr.acceleration:
+            assert vr.acceleration[dim] == pytest.approx(-1.0)
+
+    def test_no_acceleration_with_2_snapshots(self):
+        current = [5.0] * 8
+        history = [[7.0] * 8]
+        vr = compute_velocity(current, history)
+        for dim in vr.acceleration:
+            assert vr.acceleration[dim] is None
+
+    def test_periods_to_absorption(self):
+        # Declining at -1.0/period from 4.0, threshold is 2.0
+        # Expected: (4.0 - 2.0) / 1.0 = 2.0 periods
+        current = [4.0] * 8
+        history = [[5.0] * 8]
+        vr = compute_velocity(current, history)
+        for dim in vr.periods_to_absorption:
+            assert vr.periods_to_absorption[dim] == pytest.approx(2.0)
+
+    def test_periods_to_absorption_none_when_rising(self):
+        current = [7.0] * 8
+        history = [[5.0] * 8]
+        vr = compute_velocity(current, history)
+        for dim in vr.periods_to_absorption:
+            assert vr.periods_to_absorption[dim] is None
+
+    def test_backward_compatible(self):
+        # No historical signals -> velocity_report is None
+        report = analyze_trajectory_risk([5.0] * 8, "Test")
+        assert report.velocity_report is None
+
+    def test_orchestrator_passes_historical(self):
+        analysis = {
+            "brand_profiles": {"Tesla": [7.5, 8.5, 3.0, 6.0, 7.0, 6.0, 4.0, 2.0]},
+            "historical_brand_profiles": {
+                "Tesla": [
+                    [7.5, 8.5, 4.0, 6.5, 7.5, 6.0, 5.0, 3.0],
+                    [7.5, 8.5, 3.5, 6.0, 7.0, 6.0, 4.5, 2.5],
+                ],
+            },
+        }
+        result = validate_analysis(analysis)
+        assert "Tesla" in result.trajectories
+        assert result.trajectories["Tesla"].velocity_report is not None
+        vr = result.trajectories["Tesla"].velocity_report
+        assert vr.n_snapshots == 3
+        # Ideological declining: 4.0 -> 3.5 -> 3.0
+        assert vr.velocity["ideological"] == pytest.approx(-0.5)
+        assert vr.direction["ideological"] == "falling"
+
+    def test_single_historical_snapshot(self):
+        current = [5.0] * 8
+        history = [[7.0] * 8]
+        report = analyze_trajectory_risk(current, "Test", historical_signals=history)
+        assert report.velocity_report is not None
+        assert report.velocity_report.n_snapshots == 2
+        for dim in report.velocity_report.acceleration:
+            assert report.velocity_report.acceleration[dim] is None
 
 
 # =============================================================================

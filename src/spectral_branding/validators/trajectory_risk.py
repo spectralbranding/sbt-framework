@@ -48,6 +48,94 @@ def _mixing_time_lower_bound(sigma_0: float = DEFAULT_SIGMA_0) -> float:
 MIXING_TIME_LOWER_BOUND = _mixing_time_lower_bound(DEFAULT_SIGMA_0)
 
 
+# Velocity thresholds
+# Per-period change below this (absolute value) is classified as "stable".
+# On a 1-10 signal scale, 0.5 per period is ~5% shift.
+VELOCITY_STABLE_THRESHOLD = 0.5
+
+
+@dataclass
+class VelocityReport:
+    """Per-dimension velocity analysis for a brand profile.
+
+    Operationalizes the discrete approximation to the continuous-time
+    drift vector mu(X_t, t) defined in R6 Section 4.3.
+    """
+
+    velocity: dict[str, float] = field(default_factory=dict)
+    direction: dict[str, str] = field(default_factory=dict)
+    acceleration: dict[str, float | None] = field(default_factory=dict)
+    periods_to_absorption: dict[str, float | None] = field(default_factory=dict)
+    n_snapshots: int = 0
+    period_label: str = "period"
+
+
+def compute_velocity(
+    current_signals: list[float] | np.ndarray,
+    historical_signals: list[list[float] | np.ndarray],
+    period_label: str = "period",
+) -> VelocityReport:
+    """
+    Compute per-dimension velocity from a time series of signal profiles.
+
+    Parameters
+    ----------
+    current_signals : array-like
+        Current 8D signal profile (most recent snapshot).
+    historical_signals : list
+        Previous signal profiles ordered oldest-to-newest.
+        At least 1 historical snapshot required.
+    period_label : str
+        Label for the time unit (e.g. "quarter", "month", "year").
+
+    Returns
+    -------
+    VelocityReport
+        Per-dimension velocity (signed rate of change per period),
+        direction labels, acceleration (if 3+ snapshots), and
+        linear time-to-absorption estimates.
+    """
+    current = to_signal_array(current_signals)
+    history = [to_signal_array(s) for s in historical_signals]
+    all_snapshots = history + [current]
+    n = len(all_snapshots)
+
+    report = VelocityReport(n_snapshots=n, period_label=period_label)
+
+    for i, dim_name in enumerate(DIMENSIONS):
+        values = [snap[i] for snap in all_snapshots]
+        diffs = np.diff(values)
+
+        # Velocity: mean rate of change per period
+        v = float(np.mean(diffs))
+        report.velocity[dim_name] = v
+
+        # Direction classification
+        if abs(v) < VELOCITY_STABLE_THRESHOLD:
+            report.direction[dim_name] = "stable"
+        elif v > 0:
+            report.direction[dim_name] = "rising"
+        else:
+            report.direction[dim_name] = "falling"
+
+        # Acceleration: requires 3+ snapshots (2+ diffs)
+        if len(diffs) >= 2:
+            # Change in velocity between consecutive intervals
+            accel = float(diffs[-1] - diffs[0]) / (len(diffs) - 1)
+            report.acceleration[dim_name] = accel
+        else:
+            report.acceleration[dim_name] = None
+
+        # Time-to-absorption estimate (linear extrapolation)
+        if v < -VELOCITY_STABLE_THRESHOLD and current[i] > ABSORPTION_THRESHOLD:
+            periods = (current[i] - ABSORPTION_THRESHOLD) / abs(v)
+            report.periods_to_absorption[dim_name] = float(periods)
+        else:
+            report.periods_to_absorption[dim_name] = None
+
+    return report
+
+
 @dataclass
 class TrajectoryReport:
     """Report on trajectory risk for a brand profile."""
@@ -58,6 +146,7 @@ class TrajectoryReport:
     mixing_time_bound: float = MIXING_TIME_LOWER_BOUND
     warnings: list[str] = field(default_factory=list)
     non_ergodic_flag: bool = True  # always true for SBT (R6 Theorem 1)
+    velocity_report: VelocityReport | None = None
 
 
 def analyze_trajectory_risk(
@@ -65,6 +154,7 @@ def analyze_trajectory_risk(
     brand_name: str = "brand",
     historical_signals: list[list[float] | np.ndarray] | None = None,
     sigma_0: float = DEFAULT_SIGMA_0,
+    period_label: str = "period",
 ) -> TrajectoryReport:
     """
     Analyze absorption risk and trajectory dynamics for a brand profile.
@@ -127,20 +217,41 @@ def analyze_trajectory_risk(
         )
 
     # Trajectory analysis if historical data available
-    if historical_signals and len(historical_signals) >= 2:
+    if historical_signals and len(historical_signals) >= 1:
         try:
             history = [to_signal_array(s) for s in historical_signals]
-            # Check for monotonic decline toward boundary
-            for i, dim_name in enumerate(DIMENSIONS):
-                values = [h[i] for h in history] + [arr[i]]
-                if len(values) >= 3:
-                    diffs = np.diff(values)
-                    if np.all(diffs < 0) and arr[i] < ABSORPTION_THRESHOLD * 1.5:
-                        report.warnings.append(
-                            f"{brand_name}: {dim_name} shows monotonic decline "
-                            f"({values[0]:.1f} -> {arr[i]:.1f}). "
-                            "Trajectory heading toward absorbing boundary."
-                        )
+
+            # Compute per-dimension velocity
+            report.velocity_report = compute_velocity(
+                arr, historical_signals, period_label=period_label
+            )
+
+            # Check for monotonic decline toward boundary (requires 3+ points)
+            if len(historical_signals) >= 2:
+                for i, dim_name in enumerate(DIMENSIONS):
+                    values = [h[i] for h in history] + [arr[i]]
+                    if len(values) >= 3:
+                        diffs = np.diff(values)
+                        if np.all(diffs < 0) and arr[i] < ABSORPTION_THRESHOLD * 1.5:
+                            report.warnings.append(
+                                f"{brand_name}: {dim_name} shows monotonic decline "
+                                f"({values[0]:.1f} -> {arr[i]:.1f}). "
+                                "Trajectory heading toward absorbing boundary."
+                            )
+
+            # Add velocity warnings for dimensions approaching absorption
+            vr = report.velocity_report
+            for dim_name in DIMENSIONS:
+                pta = vr.periods_to_absorption.get(dim_name)
+                if pta is not None and pta < 5.0:
+                    report.warnings.append(
+                        f"{brand_name}: {dim_name} declining at "
+                        f"{vr.velocity[dim_name]:+.2f}/{vr.period_label}. "
+                        f"Linear estimate: ~{pta:.1f} {vr.period_label}s "
+                        f"to absorbing boundary. "
+                        f"(R6: actual absorption is stochastic; "
+                        f"this assumes constant velocity.)"
+                    )
         except (ValueError, IndexError):
             report.warnings.append("Historical data parsing failed")
 
