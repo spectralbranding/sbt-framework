@@ -121,7 +121,7 @@ Every pipeline output is validated against proven mathematical bounds from eight
 | Specification | R5 (Impossibility) | Organizational spec coverage, cascade consistency |
 | Resource Allocation | R7 (Spectral Resource Allocation) | Optimal dimensional investment, alignment gap, multi-cohort efficiency |
 
-The validation module (`src/spectral_branding/validators/`) is Python + numpy/scipy with 86 unit tests. It runs automatically on pipeline output, flagging geometric violations that no amount of prompt engineering can prevent.
+The validation module (`src/spectral_branding/validators/`) is Python + numpy/scipy with 102 unit tests. It runs automatically on pipeline output, flagging geometric violations that no amount of prompt engineering can prevent.
 
 ## Repository Structure
 
@@ -151,7 +151,7 @@ sbt-framework/
 │       └── ALIBI_ANALOGY.mmd     Structural analogy: alibi finance ↔ SBT
 ├── src/spectral_branding/       Python validation module
 │   └── validators/              7 math-hardened validators (numpy/scipy)
-├── tests/                       86 unit tests for validators
+├── tests/                       102 unit tests for validators
 ├── pyproject.toml               Package config (hatchling + numpy + scipy)
 ├── CITATION.cff
 ├── LICENSE
