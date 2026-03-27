@@ -21,7 +21,7 @@ preferred-citation:
   authors:
     - family-names: Zharnikov
       given-names: Dmitry
-      email: dmitry@spectralbranding.com
-  title: "Spectral Brand Theory: A Computational Framework for Multi-Dimensional Brand Perception"
+      orcid: "https://orcid.org/0009-0000-6893-9231"
+  title: "Spectral Brand Theory: A multi-dimensional framework for brand perception analysis"
   year: 2026
   url: "https://doi.org/10.5281/zenodo.18945912"
