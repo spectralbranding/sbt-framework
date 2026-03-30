@@ -467,7 +467,7 @@ The precondition for all brand perception: can the observer recognize these atom
 
 A cluster in spectral-profile space: a group of observers whose profiles (spectrum, weights, tolerances, priors, gate state) are similar enough that they form structurally similar perception clouds from the same signal environment. The same brand produces similar clouds within a cohort but different clouds across cohorts.
 
-- **Examples**: Gen-Z consumers, B2B procurement buyers, brand employees, investors, cultural critics
+- **Examples**: Gen-Z observers, B2B procurement buyers, brand employees, investors, cultural critics, AI purchasing agents
 - **Key distinction**: cohorts are perceptual groupings, not demographic segments. Two observers from different demographics can share a cohort if their spectral profiles are similar; two observers from the same demographic can belong to different cohorts if their priors diverge
 - **Dynamic membership**: cohort membership shifts over time as priors evolve through signal accumulation, decay, and crystallization. Differential signal exposure (encounter mode, geography, media consumption) causes observers to drift between cohorts. Signal events (CEO controversy, product crisis) redistribute observers across cohort boundaries
 - **Cohort boundaries**: fuzzy, not categorical. An observer near the boundary between two cohorts produces clouds that blend properties of both

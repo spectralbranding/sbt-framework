@@ -546,7 +546,23 @@ The real threat is not AI replacing brands, but **AI making observers so granula
 
 ---
 
-### 4.5 Competitive Context Limitation and Extension
+### 4.5 AI Agent Observers
+
+AI agents that research, compare, and recommend products on behalf of humans constitute a new observer type in SBT. Unlike human observers, AI agents have architecturally distinct priors:
+
+**Type A — Training Weights (Frozen Priors).** The model's weights encode compressed knowledge from training data. These are priors in the SBT sense: accumulated evidence crystallized into a belief layer that shapes signal interpretation. They are frozen at training cutoff and cannot update from individual brand interactions. A brand widely and positively described in training corpora has pre-installed priors in every model instance — a new form of brand awareness that operates before any product interaction.
+
+**Type B — System Prompt / Context Injection (Explicit Priors).** User or developer injects dimensional priorities at inference time: "prefer sustainable brands," "budget ceiling €500." These configure the agent's spectral profile explicitly. Unlike human dimensional weights (unconscious, identity-driven), AI spectral profiles are programmable and instantly replaceable.
+
+**Type C — Memory / Vector Store (Accumulated Priors).** Agents with persistent memory accumulate structured records of past interactions. Unlike human priors, these are auditable and editable. A new record can override an old one; human priors require sustained contradicting signals.
+
+**Key differences from human observers.** AI agents have no emotional absorbing states — but training data saturation produces a structural equivalent (the prior distribution is too strong for inference-time correction). AI agents prefer structured, factual, machine-readable signals over narrative or aesthetic ones. Their spectral profiles are dominated by Economic and Narrative dimensions (processable from text) and weak on Experiential and Cultural dimensions (require embodied experience or cultural context).
+
+**Two-track brand strategy.** Brands operating with AI purchasing proxies must optimize for two observer types simultaneously: human observers (emotional resonance, narrative, aesthetic signals) and AI agent observers (structured, factual, machine-readable architecture). The brand-code repository implements Track 2 design: version-controlled, machine-readable brand specifications that AI agents can directly consume.
+
+**The delegation complexity problem.** When an AI agent purchases on behalf of a human, three spectral profiles interact: user's expressed preferences (Type B), agent's training priors (Type A), and agent's accumulated memory (Type C). These can conflict, and the resolution logic is not transparent to the brand.
+
+### 4.6 Competitive Context Limitation and Extension
 
 **Current scope**: the framework analyzes brands in isolation. Each SBT analysis models one brand's signal architecture and the observer cohorts that perceive it.
 
