@@ -175,7 +175,7 @@ sbt-framework/
 | [R7: Spectral Resource Allocation](https://doi.org/10.5281/zenodo.19009268) | Optimal dimensional investment, alignment gap, multi-cohort efficiency |
 | [Substack](https://spectralbranding.substack.com) | Applied analysis articles |
 | [Alibi](https://github.com/viberesearch/alibi) | The atom-cloud-fact epistemological engine — domain-agnostic observation pipeline underlying SBT |
-| [config-org-framework](https://github.com/spectralbranding/config-org-framework) | Sibling framework: 8-module business specification toolkit (operations side of SBT) |
+| [orgschema-framework](https://github.com/spectralbranding/orgschema-framework) | Sibling framework: 8-module business specification toolkit (operations side of SBT) |
 
 ## Citation
 

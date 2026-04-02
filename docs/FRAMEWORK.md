@@ -576,7 +576,7 @@ AI agents that research, compare, and recommend products on behalf of humans con
 
 ## Part 5: Track 0 Exploratory Analysis — Nine Candidate Mechanisms (v2.0)
 
-Track 0 applied the spectral framework to 5 brands (Hermès, IKEA, Patagonia, Tesla, Erewhon) across all 6 modules. The exploratory analysis identified 9 candidate mechanisms that extend the framework beyond its v1.0 specification. These represent analytical observations from five illustrative cases, not empirically validated findings.
+Track 0 applied the spectral framework to 5 brands (Hermès, IKEA, Patagonia, Tesla, Erewhon) across all 7 modules. The exploratory analysis identified 9 candidate mechanisms that extend the framework beyond its v1.0 specification. These represent analytical observations from five illustrative cases, not empirically validated findings.
 
 ### 5.1 Dark Signals: Structural Absence as Brand Dimension Modifier
 
@@ -887,7 +887,7 @@ When historical brand profile snapshots are available, the framework computes ve
 
 **Finding**: the analytical pipeline produces consistent structural diagnoses when executed by different LLMs (Claude Opus 4.6 and Gemini 3.1 Pro). This demonstrates prompt consistency and internal reproducibility — not empirical validity. Two LLMs trained on similar internet corpora about the same five well-documented brands producing similar outputs shows that the framework is specified precisely enough to constrain LLM analysis; it does not show that those outputs accurately represent real consumer perception processes.
 
-**Cross-model replication** (all 5 brands × 6 modules):
+**Cross-model replication** (all 5 brands × 7 modules):
 
 | Brand | Claude Opus 4.6 | Gemini 3.1 Pro | Convergence |
 |-------|----------------|----------------|-------------|
