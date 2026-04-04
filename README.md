@@ -50,6 +50,8 @@ graph LR
 
 Spectral Brand Theory (SBT) models brands as multi-dimensional signal sources perceived differently by every observer. There is no "brand in itself" — only signals and observers. This toolkit provides a seven-module AI-native analytical pipeline that turns any capable LLM into a brand perception X-ray machine, producing structural diagnosis that traditional audits cannot.
 
+> SBT's contribution is not the eight dimensions themselves --- it is the measurement infrastructure: the observer-cohort framework, the spectral weight formalism, the metamerism detection mathematics, and the Brand Function specification. This infrastructure enables geometric positioning in perception space regardless of which dimensional decomposition is used.
+
 ## Quick Start
 
 **Analyze your first brand in 10 minutes:**
