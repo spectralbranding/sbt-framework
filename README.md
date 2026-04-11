@@ -180,7 +180,7 @@ sbt-framework/
 | [R12: Coherence-Resilience](https://doi.org/10.5281/zenodo.19208107) | Coherence type as crisis predictor; formal derivation from non-ergodic dynamics |
 | [R13: Paper as Specification](https://doi.org/10.5281/zenodo.19210037) | Machine-readable YAML standard for scientific claims (under review at QSS) |
 | [R14: Research as Repository](https://doi.org/10.5281/zenodo.19294864) | Git-native protocol for scientific publishing (submitted to JLSC) |
-| [R15: AI Search Metamerism](https://doi.org/10.5281/zenodo.19422427) | Empirical: 4,860 API calls, 6 LLMs; conditional metamerism confirmed (submitted to JAR) |
+| [R15: AI Search Metamerism](https://doi.org/10.5281/zenodo.19422427) | Empirical: 21,601 calls, 24 models, 7 training traditions; H1 p&lt;.001 d=3.449, H2 cosine=.977, H3 d=.878 (under review) |
 | [R16: AI-Native Brand Identity](https://doi.org/10.5281/zenodo.19391476) | Observer evolution, behavioral metamerism, Brand Function formalization |
 | R17: Brand Triangulation | GPS-SBT framework, Perception DOP, 36 metric components (Zenodo pending) |
 | [Substack](https://spectralbranding.substack.com) | Applied analysis articles |
