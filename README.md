@@ -178,11 +178,14 @@ sbt-framework/
 | [R8: Spectral Portfolio Theory](https://doi.org/10.5281/zenodo.19145099) | Cross-brand interference, coherence, and capacity in multi-brand perception space |
 | [R11: Why Eight?](https://doi.org/10.5281/zenodo.19207599) | Completeness and necessity of the SBT dimensional taxonomy |
 | [R12: Coherence-Resilience](https://doi.org/10.5281/zenodo.19208107) | Coherence type as crisis predictor; formal derivation from non-ergodic dynamics |
-| [R13: Paper as Specification](https://doi.org/10.5281/zenodo.19210037) | Machine-readable YAML standard for scientific claims (under review at QSS) |
-| [R14: Research as Repository](https://doi.org/10.5281/zenodo.19294864) | Git-native protocol for scientific publishing (submitted to JLSC) |
-| [R15: AI Search Metamerism](https://doi.org/10.5281/zenodo.19422427) | Empirical: 21,350 calls, 24 models, 7 training traditions; H1 p&lt;.001 d=3.449, H2 cosine=.977, H3 d=.878 (under review) |
+| [R13: Paper as Specification](https://doi.org/10.5281/zenodo.19210037) | Machine-readable YAML standard for scientific claims |
+| [R14: Research as Repository](https://doi.org/10.5281/zenodo.19294864) | Git-native protocol for scientific publishing |
+| [R15: AI Search Metamerism](https://doi.org/10.5281/zenodo.19422427) | Empirical: 21,350 calls, 24 models, 7 training traditions; H1 p&lt;.001 d=3.449, H2 cosine=.977, H3 d=.878 |
 | [R16: AI-Native Brand Identity](https://doi.org/10.5281/zenodo.19391476) | Observer evolution, behavioral metamerism, Brand Function formalization |
-| R17: Brand Triangulation | GPS-SBT framework, Perception DOP, 36 metric components (Zenodo pending) |
+| [R17: Brand Triangulation](https://doi.org/10.5281/zenodo.19482547) | GPS-SBT framework, Perception DOP, 36 metric components |
+| [R18: Spectral Dynamics](https://doi.org/10.5281/zenodo.19468204) | Brand velocity, acceleration, and phase space in multi-dimensional perception |
+| [R19: Empirical Rate-Distortion](https://doi.org/10.5281/zenodo.19528833) | Empirical rate-distortion curve for AI brand perception encoders |
+| [R20: Portfolio Interference](https://doi.org/10.5281/zenodo.19555282) | Does corporate ownership matter to AI? Portfolio interference in LLM brand perception |
 | [Substack](https://spectralbranding.substack.com) | Applied analysis articles |
 | [Alibi](https://github.com/viberesearch/alibi) | The atom-cloud-fact epistemological engine — domain-agnostic observation pipeline underlying SBT |
 | [orgschema-framework](https://github.com/spectralbranding/orgschema-framework) | Sibling framework: 8-module business specification toolkit (operations side of SBT) |
