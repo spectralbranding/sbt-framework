@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.3.1] — 2026-04-15
+
+### Added
+- **`dimension_order` parameter for Module 7 prompt generation** (`src/spectral_branding/prompt_generator.py`):
+  new `generate_prism_b_prompt()` function builds PRISM-B elicitation prompts with configurable
+  dimension ordering to counterbalance primacy effects found in JSON-based LLM elicitation.
+  - `"canonical"` (default): fixed S-N-I-E-So-Ec-C-T order — fully backward-compatible
+  - `"latin_square"`: cyclic Latin square producing 8 balanced orderings; each dimension appears
+    in every position exactly once across the 8-row cycle
+  - `"random"`: random permutation per call with optional `seed=` for reproducibility
+  - Finding motivating the fix: Run 15b synthetic cohort experiment, eta-sq=.217 — dimensions
+    listed first in the JSON template received ~15.4% weight vs ~8.0% for last-listed dimensions
+    (R15 Zenodo DOI 10.5281/zenodo.19422427)
+- **`get_dimension_order()`**: lower-level function that returns the ordered dimension list given
+  a mode; useful for custom prompt construction
+- **`reset_latin_square_counter()`**: resets the auto-advance Latin-square row counter to 0
+- **`LATIN_SQUARE`** module constant: all 8 cyclic Latin-square rows pre-computed
+- **29 new unit tests** in `tests/test_prompt_generator.py` (total: 131 tests, up from 102)
+
+### Changed
+- `src/spectral_branding/__init__.py` updated to export `generate_prism_b_prompt`,
+  `get_dimension_order`, `reset_latin_square_counter`, `CANONICAL_DIMENSIONS`, `LATIN_SQUARE`
+- README updated: Module 7 feature count (3 → 4), test count (102 → 131), added usage examples
+  for the three dimension ordering modes
+
+---
+
 ## [2.3.0] — 2026-03-20
 
 ### Added

@@ -75,11 +75,31 @@ Spectral Brand Theory (SBT) models brands as multi-dimensional signal sources pe
 
 Each module has a prompt + YAML template in [`templates/`](templates/).
 
-**Module 7** adds three practitioner features not present in Modules 1-6:
+**Module 7** adds four practitioner features not present in Modules 1-6:
 - **Financial report input**: Upload a P&L, 10-K, or departmental budget. The LLM maps line items to 8 dimensions using the [Dimension Glossary](templates/DIMENSION_GLOSSARY.yaml).
 - **Code Execution Mode**: When the LLM has a Python sandbox (Claude tools, GPT Code Interpreter, any agent), it runs `validate_resource_allocation()` directly — the math is computed by deterministic code, not LLM inference. Zero hallucination on the hard numbers.
 - **Data quality gates**: Every output is tagged with its data source (`survey`, `financial_report`, `llm_estimate`). Estimated inputs trigger a mandatory warning: results are indicative only until validated with real data. If >30% of budget cannot be mapped to dimensions, the tool refuses to produce results rather than guess.
 - **Clarification protocol**: When budget items are ambiguous (e.g., "marketing" spans Narrative, Semiotic, Social), the LLM asks the user to clarify the split rather than estimating silently.
+- **Balanced dimension ordering** (`dimension_order`): PRISM-B elicitation experiments found a primacy effect in JSON-based prompts (eta-sq=.217 — dimensions listed first receive ~15.4% weight vs ~8.0% for last). The `generate_prism_b_prompt()` function supports three modes to counterbalance this bias:
+
+  | Mode | Behavior |
+  |------|----------|
+  | `"canonical"` (default) | Fixed S-N-I-E-So-Ec-C-T order. Backward-compatible. |
+  | `"latin_square"` | Cycles through 8 orderings from a cyclic Latin square. Each dimension appears in every position exactly once across the 8-row cycle. |
+  | `"random"` | Random permutation per call. Pass `seed=` for reproducibility. |
+
+  ```python
+  from spectral_branding import generate_prism_b_prompt
+
+  # Standard call (canonical order, backward-compatible)
+  prompt = generate_prism_b_prompt("Hermes")
+
+  # Counterbalanced: cycles through 8 balanced orderings automatically
+  prompt = generate_prism_b_prompt("Hermes", "latin_square")
+
+  # Reproducible random order
+  prompt = generate_prism_b_prompt("Hermes", "random", seed=42)
+  ```
 
 ## Demonstrated on 5 Brands
 
@@ -123,7 +143,7 @@ Every pipeline output is validated against proven mathematical bounds from eight
 | Specification | R5 (Impossibility) | Organizational spec coverage, cascade consistency |
 | Resource Allocation | R7 (Spectral Resource Allocation) | Optimal dimensional investment, alignment gap, multi-cohort efficiency |
 
-The validation module (`src/spectral_branding/validators/`) is Python + numpy/scipy with 102 unit tests. It runs automatically on pipeline output, flagging geometric violations that no amount of prompt engineering can prevent.
+The validation module (`src/spectral_branding/validators/`) is Python + numpy/scipy with 131 unit tests. It runs automatically on pipeline output, flagging geometric violations that no amount of prompt engineering can prevent.
 
 ## Repository Structure
 
@@ -153,7 +173,7 @@ sbt-framework/
 │       └── ALIBI_ANALOGY.mmd     Structural analogy: alibi finance ↔ SBT
 ├── src/spectral_branding/       Python validation module
 │   └── validators/              7 math-hardened validators (numpy/scipy)
-├── tests/                       102 unit tests for validators
+├── tests/                       131 unit tests for validators and prompt generator
 ├── pyproject.toml               Package config (hatchling + numpy + scipy)
 ├── CITATION.cff
 ├── LICENSE
