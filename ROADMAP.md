@@ -147,13 +147,16 @@ move SBT from "mathematical framework with demonstration" to "empirically valida
 - [ ] Minimum N per cohort: per R3 concentration of measure bounds
 - [ ] Journal target: Journal of Consumer Research or similar
 
-### Multi-Brand Portfolio Analysis (R8) [FUTURE]
+### Multi-Brand Portfolio Analysis (R21) [THEORY + EMPIRICAL COMPLETE]
 
-R8 (Spectral Portfolio Theory, in progress) extends SBT to multi-brand portfolios: interference,
-coherence, and capacity in multi-brand perception space. Framework tooling will follow once R8
-is peer-reviewed.
+R21 (Spectral Immunity, 2026ac) merges the R8 theory and R20 empirical work into a single
+analytical–empirical paper: 9,925 observations across 40 brands, 13 models, and 7 training
+traditions confirm spectral immunity for AI observers. Awareness gate is necessary but not
+sufficient — bandwidth as generalization of rational inattention dominates. DOI:
+[10.5281/zenodo.19765401](https://doi.org/10.5281/zenodo.19765401). Framework tooling for
+portfolio analysis can now proceed against a published empirical baseline.
 
-- [ ] Portfolio Module 8: cross-brand interference detection
+- [ ] Portfolio Module 8: cross-brand interference detection (with awareness-gate + bandwidth gating)
 - [ ] Portfolio Module 9: coherence scoring across brand families
 - [ ] Capacity analysis: E8 lattice bounds applied to portfolio positioning
 - [ ] LVMH-type vs. Unilever-type portfolio archetypes as canonical demonstrations
