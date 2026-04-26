@@ -161,6 +161,20 @@ portfolio analysis can now proceed against a published empirical baseline.
 - [ ] Capacity analysis: E8 lattice bounds applied to portfolio positioning
 - [ ] LVMH-type vs. Unilever-type portfolio archetypes as canonical demonstrations
 
+### Coherence Shock Recovery and Threshold Inequality (R22) [THEORY + SIMULATION COMPLETE]
+
+R22 (Spectral Gap Restoration, 2026ad) formalizes the sufficient condition for cohort
+separability to survive disruption: corrective coherence emission rate μ must exceed spectral
+leakage rate λ at the observer cohort's detection scale. Grounded in Kato-Rellich perturbation
+theory and Diaconis–Stroock spectral-gap-mixing-time bounds. Monte Carlo demonstration with
+Dove 2003–2023 design parameters: terminal gap 1.10 vs .02 (52x ratio), IRF half-life 1.4 vs
+13.1 months. H22: gap collapse precedes conviction reorientation by 6–18 months. DOI:
+[10.5281/zenodo.19778549](https://doi.org/10.5281/zenodo.19778549). Target: Marketing Science.
+
+- [ ] Module 6 (Re-collapse Simulation) extension: compute μ/λ ratio from snapshot inputs
+- [ ] Resilience scoring: flag when brand is in λ > μ regime (absorption risk)
+- [ ] Companion paper using R10 Dove longitudinal data for empirical regime-map estimation
+
 ---
 
 ## Out of Scope

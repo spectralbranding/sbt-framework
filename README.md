@@ -207,6 +207,7 @@ sbt-framework/
 | [R19: Empirical Rate-Distortion](https://doi.org/10.5281/zenodo.19528833) | Empirical rate-distortion curve for AI brand perception encoders |
 | [R20: Portfolio Interference](https://doi.org/10.5281/zenodo.19555282) | SUPERSEDED by R21 (2026ac) — original empirical: 9,925 obs, 40 brands, 13 models |
 | [R21: Spectral Immunity](https://doi.org/10.5281/zenodo.19765401) | Merges R8 + R20: spectral immunity in AI-mediated brand perception. 9,925 obs, TOST equivalence 18/20 brands within ±1.0 DCI; bandwidth as generalization of rational inattention |
+| [R22: Spectral Gap Restoration](https://doi.org/10.5281/zenodo.19778549) | μ > λ threshold inequality for cohort separability after coherence shocks. Monte Carlo: gap 1.10 vs .02 (52x); IRF half-life 1.4 vs 13.1 months. Target: Marketing Science |
 | [Substack](https://spectralbranding.substack.com) | Applied analysis articles |
 | [Alibi](https://github.com/viberesearch/alibi) | The atom-cloud-fact epistemological engine — domain-agnostic observation pipeline underlying SBT |
 | [orgschema-framework](https://github.com/spectralbranding/orgschema-framework) | Sibling framework: 8-module business specification toolkit (operations side of SBT) |
