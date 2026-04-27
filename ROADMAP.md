@@ -6,10 +6,11 @@ theoretical or empirical foundation is established — not speculatively.
 
 ---
 
-## Current State: v2.3 (March 2026)
+## Current State: v2.3.1 (April 2026)
 
 - 7 prompt modules covering the full brand analysis pipeline
-- 7 math-hardened validators (numpy + scipy), 102 unit tests
+- Module 7 prompt generation now exposes `dimension_order` parameter (canonical / latin_square / random) — addresses Run 15b primacy bias (eta-sq=.217)
+- 7 math-hardened validators (numpy + scipy), 131 unit tests
 - 5 canonical brand demonstrations (Hermès, IKEA, Patagonia, Erewhon, Tesla)
 - Mathematical foundations integrated from R0-R7 companion papers
 - Velocity tracking + conformal prediction bands on trajectory estimates

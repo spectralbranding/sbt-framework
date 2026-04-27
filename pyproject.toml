@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "sbt-framework"
-version = "2.3.0"
+version = "2.3.1"
 description = "Spectral Brand Theory - AI-native brand analysis toolkit with math-hardened validators"
 requires-python = ">=3.12"
 license = "MIT"

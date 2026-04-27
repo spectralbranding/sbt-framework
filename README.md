@@ -3,7 +3,7 @@
 > Brands are stellar objects. You are the observer.
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
-![Framework v2.3](https://img.shields.io/badge/Framework-v2.3-green.svg)
+![Framework v2.3.1](https://img.shields.io/badge/Framework-v2.3.1-green.svg)
 ![Demonstrated: 5 Brands](https://img.shields.io/badge/Demonstrated-5%20Brands-orange.svg)
 
 ```mermaid
@@ -165,7 +165,7 @@ sbt-framework/
 ├── data/
 │   └── ATOM_TAXONOMY.yaml    Signal classification reference
 ├── docs/
-│   ├── FRAMEWORK.md          Full theoretical framework (v2.3)
+│   ├── FRAMEWORK.md          Full theoretical framework (v2.3.1)
 │   ├── GLOSSARY.md           Term definitions and relationships
 │   └── architecture/         Mermaid architecture diagrams
 │       ├── BRAND_PIPELINE.mmd    Full signal pipeline: emission → cloud → collapse
