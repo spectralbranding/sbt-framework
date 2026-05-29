@@ -1,3 +1,7 @@
+[![MIT License](https://img.shields.io/badge/Code-MIT-blue.svg)](LICENSE)
+[![CC-BY 4.0](https://img.shields.io/badge/Data-CC--BY_4.0-lightgrey.svg)](LICENSE-data)
+![Last Updated](https://img.shields.io/badge/updated-2026--05--29-success)
+
 # Spectral Brand Theory — Framework & Toolkit
 
 > Brands are stellar objects. You are the observer.
@@ -237,3 +241,92 @@ See [CITATION.cff](CITATION.cff) for machine-readable citation.
 ## Trademarks
 
 "Spectral Brand Theory" and "Brand Code" are trademarks of Dmitry Zharnikov. The MIT license applies to the source code only and does not grant permission to use the project trademarks. You may fork and modify the code freely, but derivative works should not use these names in ways that imply endorsement or official affiliation.
+
+---
+
+## 1 | Getting Started
+
+Clone the repository and synchronise the Python environment:
+
+```bash
+git clone https://github.com/spectralbranding/sbt-framework.git
+cd sbt-framework
+uv sync --extra dev
+```
+
+The project anchor is `pyproject.toml` at the repository root (`name = "sbt-framework"`, `requires-python = ">=3.12"`). The full unit-test suite (131 tests) verifies the validator math:
+
+```bash
+uv run pytest -q
+```
+
+Or run the orchestrator for a single-command verification:
+
+```bash
+./reproduce.sh
+```
+
+## 2 | Project Layout
+
+```
+sbt-framework/
+├── prompts/                 7 prompt modules (copy-paste into any LLM)
+├── templates/               YAML output schemas + DIMENSION_GLOSSARY.yaml
+├── data/                    ATOM_TAXONOMY.yaml and other reference data
+├── docs/                    FRAMEWORK.md, GLOSSARY.md, architecture diagrams
+├── src/spectral_branding/   Python validation module (7 validators)
+├── tests/                   131 unit tests
+├── output/
+│   ├── figures/             generated PNG / SVG / PDF
+│   ├── tables/              generated CSV / TeX / HTML
+│   └── logs/                run logs (master_run.log per orchestrator run)
+├── pyproject.toml           Package config (hatchling + numpy + scipy)
+├── reproduce.sh             Single-command verification orchestrator
+├── CITATION.cff             Machine-readable citation
+├── LICENSE                  MIT (code)
+├── LICENSE-data             CC BY 4.0 (data, figures, tables)
+└── README.md
+```
+
+## 4 | Dependencies
+
+Runtime (`pyproject.toml [project.dependencies]`):
+
+- Python `>=3.12`
+- `numpy>=1.26.0`
+- `scipy>=1.12.0`
+
+Development extras (`pyproject.toml [project.optional-dependencies.dev]`):
+
+- `pytest>=8.0.0`
+- `black>=24.0.0`
+- `flake8>=7.0.0`
+- `mypy>=1.8.0`
+
+Install everything with `uv sync --extra dev`. The lockfile (`uv.lock`) is committed for reproducibility.
+
+## 6 | Citation
+
+```bibtex
+@software{zharnikov2026sbtframework,
+  title  = {Spectral Brand Theory: AI-Native Brand Analysis Toolkit},
+  author = {Zharnikov, Dmitry},
+  year   = {2026},
+  url    = {https://github.com/spectralbranding/sbt-framework}
+}
+```
+
+Machine-readable metadata in [`CITATION.cff`](CITATION.cff). The underlying paper (concept DOI [10.5281/zenodo.18945912](https://doi.org/10.5281/zenodo.18945912)) is referenced under `preferred-citation` and exposed by GitHub / Zenodo "Cite this repository" widgets.
+
+## 7 | Licence
+
+Dual-licensed in line with `PUBLIC_MIRROR_STANDARD.md`:
+
+- Code (Python module, scripts, configs, `reproduce.sh`): MIT — see [`LICENSE`](LICENSE).
+- Data, figures, tables, generated artifacts under `output/` and `data/`: Creative Commons Attribution 4.0 International (CC BY 4.0) — see [`LICENSE-data`](LICENSE-data).
+
+Trademark notice above applies to the project names; the dual licence does not transfer trademark rights.
+
+---
+
+*Last updated: 2026-05-29*

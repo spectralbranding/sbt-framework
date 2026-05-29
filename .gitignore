@@ -12,6 +12,11 @@
 
 # Local skills
 
+# Environment + secrets
+.env
+.env.*
+*.env
+
 # macOS
 .DS_Store
 
@@ -20,6 +25,7 @@ __pycache__/
 *.py[cod]
 .venv/
 venv/
+.ipynb_checkpoints/
 
 
 
