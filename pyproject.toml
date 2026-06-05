@@ -11,7 +11,11 @@ license = "MIT"
 dependencies = [
     "numpy>=1.26.0",
     "scipy>=1.12.0",
+    "pyyaml>=6.0",
 ]
+
+[project.scripts]
+sbt-validator-query = "spectral_branding.validator_query:main"
 
 [project.optional-dependencies]
 dev = [
