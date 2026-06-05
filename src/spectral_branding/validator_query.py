@@ -30,8 +30,12 @@ LOCAL-FIRST: the compile step takes an injectable ``llm_fn`` defaulting to local
 
 from __future__ import annotations
 
+import argparse
 import dataclasses
 import json
+import os
+import pathlib
+import sys
 import typing
 from typing import Any, Callable
 
@@ -461,3 +465,252 @@ def compile_and_query(
     registry = registry or build_validator_registry()
     program = compile_nl_to_program(nl_text, registry, llm_fn)
     return execute_program(analysis, program, registry=None)
+
+
+# ---------------------------------------------------------------------------
+# Serialization helpers (programs are saved as the reproducibility unit)
+# ---------------------------------------------------------------------------
+
+
+def _dump_program(program: dict) -> str:
+    """Serialize a program for display/persistence.
+
+    Prefers YAML (matching the cohort_query reproducibility-unit convention); falls
+    back to pretty JSON when PyYAML is unavailable so the CLI never hard-depends on it.
+    """
+    try:
+        import yaml  # type: ignore[import-untyped]
+
+        return yaml.dump(program, default_flow_style=False, sort_keys=False).rstrip()
+    except ImportError:
+        return json.dumps(program, indent=2, sort_keys=False)
+
+
+def _load_mapping(path: pathlib.Path) -> Any:
+    """Load a YAML-or-JSON mapping file. Raises ValueError on parse failure."""
+    text = path.read_text()
+    try:
+        import yaml  # type: ignore[import-untyped]
+
+        return yaml.safe_load(text)
+    except ImportError:
+        try:
+            return json.loads(text)
+        except json.JSONDecodeError as exc:
+            raise ValueError(f"could not parse {path} as JSON: {exc}") from exc
+    except Exception as exc:  # yaml.YAMLError and friends
+        raise ValueError(f"could not parse {path}: {exc}") from exc
+
+
+# ---------------------------------------------------------------------------
+# Output helpers (transparency: print the compiled/validated program)
+# ---------------------------------------------------------------------------
+
+
+def _print_program(program: dict) -> None:
+    """Print the compiled query program (transparency)."""
+    sep = "=" * 72
+    print(f"\n{sep}")
+    print("COMPILED VALIDATOR-QUERY PROGRAM")
+    print(sep)
+    print(_dump_program(program))
+    print(sep)
+
+
+def _print_result_summary(result: dict, program: dict) -> int:
+    """Print selection + gate verdicts. Returns the verdict-derived exit code.
+
+    Exit code 0 when every gate passed (or there are no gates); 2 when any gate
+    explicitly failed (mirrors cohort_query's WARN -> exit 2 semantics).
+    """
+    sep = "-" * 72
+    print(f"\n{sep}")
+    selected = result.get("selected", [])
+    print(f"Selected: {len(selected)} / {result.get('n_brands', 0)} brands")
+    for sel in selected:
+        vals = ", ".join(f"{k}={v}" for k, v in sel.get("values", {}).items())
+        print(f"  {sel['brand']}: {vals}" if vals else f"  {sel['brand']}")
+
+    gates = result.get("gates", [])
+    failed = 0
+    if gates:
+        print("\nGates:")
+        for g in gates:
+            passed = g.get("passed")
+            if passed is True:
+                verdict = "PASS"
+            elif passed is False:
+                verdict = "FAIL"
+                failed += 1
+            else:
+                verdict = "N/A "
+            tgt = g.get("threshold", g.get("value", g.get("values", "")))
+            note = f"  ({g['note']})" if g.get("note") else ""
+            print(
+                f"  [{verdict}] {g['validator']}.{g['parameter']} "
+                f"{g['op']} {tgt}  measured={g.get('measured')}{note}"
+            )
+
+    flags = result.get("flags") or program.get("flags") or []
+    if flags:
+        print("\nFLAGS (unknown/ambiguous terms from NL compilation):")
+        for f in flags:
+            print(f"  FLAG: {f}")
+
+    print(sep)
+    return 0 if failed == 0 else 2
+
+
+# ---------------------------------------------------------------------------
+# CLI
+# ---------------------------------------------------------------------------
+
+DEFAULT_MODEL = os.environ.get("SBT_QUERY_MODEL", "qwen3:30b")
+
+
+def _build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        prog="sbt-validator-query",
+        description=__doc__.split("\n")[0],
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+
+    mode = parser.add_mutually_exclusive_group(required=True)
+    mode.add_argument(
+        "--ask",
+        metavar="NL_TEXT",
+        help=(
+            "Natural-language validator question. Compiles via the LOCAL Ollama "
+            "llm_fn, prints the compiled program (transparency), then executes if a "
+            "--report is available."
+        ),
+    )
+    mode.add_argument(
+        "--program",
+        metavar="FILE.yaml",
+        help=(
+            "Path to a saved query-program (YAML or JSON). Re-runs deterministically "
+            "with NO LLM call -- validated against the live registry. The program is "
+            "the reproducibility unit."
+        ),
+    )
+
+    parser.add_argument(
+        "--save-program",
+        metavar="FILE.yaml",
+        default=None,
+        help=(
+            "With --ask, save the compiled program to this file for later "
+            "deterministic re-runs via --program."
+        ),
+    )
+    parser.add_argument(
+        "--report",
+        metavar="FILE",
+        default=None,
+        help=(
+            "Path to a validate_analysis input (YAML/JSON with 'brand_profiles', "
+            "etc.) to execute the program against. If omitted, the program is "
+            "compiled/validated and printed only (no execution)."
+        ),
+    )
+    parser.add_argument(
+        "--model",
+        default=DEFAULT_MODEL,
+        help=(
+            "Local Ollama model for NL compilation (sets SBT_QUERY_MODEL; "
+            f"default: {DEFAULT_MODEL})."
+        ),
+    )
+    return parser
+
+
+def main(args: list[str] | None = None) -> int:
+    parser = _build_parser()
+    ns = parser.parse_args(args)
+
+    # --model overrides the env var that _default_llm_fn reads.
+    os.environ["SBT_QUERY_MODEL"] = ns.model
+
+    registry = build_validator_registry()
+
+    # --- obtain a program (compile via LLM, or load a saved one) -----------
+    if ns.ask:
+        print(f"Compiling NL request: {ns.ask!r} (model={ns.model})")
+        try:
+            program = compile_nl_to_program(ns.ask, registry)
+        except (ValueError, RuntimeError) as exc:
+            print(f"ERROR: compilation failed: {exc}", file=sys.stderr)
+            return 1
+        except Exception as exc:  # network / Ollama unavailable
+            print(f"ERROR: LLM call failed: {exc}", file=sys.stderr)
+            return 1
+
+        _print_program(program)
+
+        if ns.save_program:
+            out_path = pathlib.Path(ns.save_program)
+            if out_path.parent != pathlib.Path(""):
+                out_path.parent.mkdir(parents=True, exist_ok=True)
+            out_path.write_text(_dump_program(program) + "\n")
+            print(f"Program saved: {out_path}")
+    else:
+        prog_path = pathlib.Path(ns.program)
+        if not prog_path.exists():
+            print(f"ERROR: program file not found: {prog_path}", file=sys.stderr)
+            return 1
+        try:
+            program = _load_mapping(prog_path)
+        except ValueError as exc:
+            print(f"ERROR: {exc}", file=sys.stderr)
+            return 1
+        if not isinstance(program, dict):
+            print(
+                "ERROR: program file did not parse as a mapping/object.",
+                file=sys.stderr,
+            )
+            return 1
+        program.setdefault("predicates", [])
+        program.setdefault("gates", [])
+        program.setdefault("flags", [])
+        try:
+            new_flags = validate_program(program, registry)
+        except ValueError as exc:
+            print(f"ERROR: program validation failed: {exc}", file=sys.stderr)
+            return 1
+        program["flags"] = list(program.get("flags") or []) + new_flags
+        _print_program(program)
+
+    # --- obtain an analysis to execute against -----------------------------
+    if ns.report:
+        report_path = pathlib.Path(ns.report)
+        if not report_path.exists():
+            print(f"ERROR: report file not found: {report_path}", file=sys.stderr)
+            return 1
+        try:
+            analysis = _load_mapping(report_path)
+        except ValueError as exc:
+            print(f"ERROR: {exc}", file=sys.stderr)
+            return 1
+        if not isinstance(analysis, dict):
+            print("ERROR: report did not parse as a mapping/object.", file=sys.stderr)
+            return 1
+    else:
+        print(
+            "\nno report provided; program compiled and validated only "
+            "(skipping execution). Pass --report FILE to execute."
+        )
+        return 0
+
+    # --- deterministic execution -------------------------------------------
+    try:
+        result = execute_program(analysis, program)
+    except (ValueError, KeyError, TypeError) as exc:
+        print(f"ERROR: execution failed: {exc}", file=sys.stderr)
+        return 1
+
+    return _print_result_summary(result, program)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
