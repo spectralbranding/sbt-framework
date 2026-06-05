@@ -290,6 +290,15 @@ def _parse_program_json(raw: str) -> dict:
     return program
 
 
+def _query_timeout() -> float:
+    """Live-path HTTP client timeout (seconds), env-configurable.
+
+    Local reasoning models (e.g. qwen3:30b) can take 40-220s/call, so the default
+    is generous (600s). Override with ``SBT_QUERY_TIMEOUT``.
+    """
+    return float(os.environ.get("SBT_QUERY_TIMEOUT", "600"))
+
+
 def _default_llm_fn(system_prompt: str, user_prompt: str) -> str:
     """Local Ollama JSON-mode chat (prefer_local => $0)."""
     import os
@@ -298,6 +307,7 @@ def _default_llm_fn(system_prompt: str, user_prompt: str) -> str:
 
     url = os.environ.get("OLLAMA_URL", "http://127.0.0.1:11434").rstrip("/")
     model = os.environ.get("SBT_QUERY_MODEL", "qwen3:30b")
+    timeout = _query_timeout()
     payload = {
         "model": model,
         "messages": [
@@ -308,7 +318,7 @@ def _default_llm_fn(system_prompt: str, user_prompt: str) -> str:
         "format": "json",
         "options": {"temperature": 0.0},
     }
-    with httpx.Client(timeout=120.0) as client:
+    with httpx.Client(timeout=timeout) as client:
         resp = client.post(f"{url}/api/chat", json=payload)
         resp.raise_for_status()
         content: str = resp.json()["message"]["content"]

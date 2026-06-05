@@ -248,3 +248,15 @@ def test_reproducibility_zero_llm_on_reexecute():
     r2 = vq.execute_program(analysis, compiled)
     assert [s["brand"] for s in r1["selected"]] == [s["brand"] for s in r2["selected"]]
     assert stub.state["calls"] == 1  # re-execution touched no model
+
+
+def test_query_timeout_default_is_600(monkeypatch):
+    """Live-path timeout defaults to 600s (local reasoning models are slow)."""
+    monkeypatch.delenv("SBT_QUERY_TIMEOUT", raising=False)
+    assert vq._query_timeout() == 600.0
+
+
+def test_query_timeout_env_override_honored(monkeypatch):
+    """SBT_QUERY_TIMEOUT overrides the default; parsed as float."""
+    monkeypatch.setenv("SBT_QUERY_TIMEOUT", "45.5")
+    assert vq._query_timeout() == 45.5
