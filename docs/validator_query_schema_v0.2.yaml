@@ -1,0 +1,82 @@
+# Validator Query DSL — schema v0.2  (SBT Search-as-Code)
+#
+# A validator query is the auditable, deterministic artifact-of-record for a question
+# about how a set of brands behaves under the R1-R7 validators. It compiles from
+# natural language (validator_query.compile_nl_to_program) and executes
+# DETERMINISTICALLY via the existing validate_analysis engine
+# (validator_query.execute_program). Re-running a saved program makes NO LLM call.
+#
+# DESIGN PRINCIPLE:
+#   The model controls WHAT to ask; deterministic code controls HOW. NL compiles to
+#   THIS validated DSL only. The live registry is built by INTROSPECTING the validator
+#   report dataclasses (build_validator_registry), so the model cannot invent a
+#   validator or a parameter the reports do not expose; unknown terms are flagged.
+
+schema_version: "0.2"
+
+# ---------------------------------------------------------------------------
+# Program structure
+# ---------------------------------------------------------------------------
+#
+# schema_version: "0.2"
+# predicates: [ <predicate> ]   # select BRANDS by PER-BRAND validators
+# gates:      [ <predicate> ]   # aggregate pass/fail on the brand SET
+# flags:      [ <string> ]      # ungrounded terms; NEVER silently mapped
+
+# ---------------------------------------------------------------------------
+# Scopes (enforced by validate_program)
+# ---------------------------------------------------------------------------
+# PER-BRAND validators (allowed only in `predicates`):
+#   metric (R1)      parameters: valid:bool
+#   trajectory (R6)  parameters: overall_risk:categorical[low|moderate|high|critical],
+#                                mixing_time_bound:numeric, non_ergodic_flag:bool
+#
+# AGGREGATE validators (allowed only in `gates`):
+#   capacity (R4)       n_brands, theoretical_max (int); utilization,
+#                       min_pairwise_distance, mean_pairwise_distance (numeric)
+#   allocation (R7)     valid:bool; alignment_gap, efficiency_loss,
+#                       herfindahl_founder/cohort, multi_cohort_diameter (numeric);
+#                       multi_cohort_feasible:bool; data_quality:categorical
+#   specification (R5)  valid:bool; n_specified, shared_dims, private_dims (int);
+#                       coverage_fraction, effective_dimensionality, cascade_coupling,
+#                       cognitive_load_bits (numeric)
+#   metamerism (R2)     scalar_collapse_risk, distortion_bound (numeric);
+#                       information_loss_dims (int)
+#
+# NOTE: the authoritative parameter list is whatever the report dataclasses expose at
+# runtime — build_validator_registry() introspects them; this comment is a snapshot.
+
+# ---------------------------------------------------------------------------
+# predicate / gate
+# ---------------------------------------------------------------------------
+#   numeric:     { validator, parameter, op: ge|le|gt|lt|eq|ne, threshold: <float> }
+#   categorical: { validator, parameter, op: eq|ne|in, value: <v> | values: [<v>,...] }
+#   bool:        { validator, parameter, op: eq|ne, value: true|false }
+predicate:
+  required_fields: [validator, parameter, op]
+  numeric_ops: [ge, le, gt, lt, eq, ne]
+  categorical_ops: [eq, ne, in]
+
+# ---------------------------------------------------------------------------
+# Validation rules (validate_program)
+# ---------------------------------------------------------------------------
+validation_rules:
+  - schema_version must equal "0.2"                                   # raise
+  - validator must exist in the live registry                        # raise
+  - validator scope must match its container (predicates vs gates)   # raise
+  - parameter must be exposed by that validator's report             # raise
+  - numeric op requires a float 'threshold'; categorical/bool use value/values  # raise
+  - categorical value outside the documented vocab -> flag           # flag
+
+# ---------------------------------------------------------------------------
+# Canonical example program
+# ---------------------------------------------------------------------------
+example_program:
+  schema_version: "0.2"
+  predicates:
+    - { validator: trajectory, parameter: overall_risk, op: in, values: [high, critical] }
+    - { validator: metric, parameter: valid, op: eq, value: true }
+  gates:
+    - { validator: capacity, parameter: utilization, op: le, threshold: 0.9 }
+    - { validator: allocation, parameter: alignment_gap, op: le, threshold: 0.15 }
+  flags: []
