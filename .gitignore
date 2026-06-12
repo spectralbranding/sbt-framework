@@ -52,3 +52,5 @@ skills/
 .rooignore
 .mcp.json
 .flake8
+
+.coverage
