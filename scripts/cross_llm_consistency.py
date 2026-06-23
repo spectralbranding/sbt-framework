@@ -10,7 +10,11 @@ Keys read from env: ANTHROPIC_API_KEY, OPENAI_API_KEY, GOOGLE_API_KEY.
 Raw responses logged to cross_llm_run/<brand>_<model>.json for provenance.
 """
 
-import os, re, json, itertools, math
+import os
+import re
+import json
+import itertools
+import math
 import numpy as np
 from scipy.stats import spearmanr
 
