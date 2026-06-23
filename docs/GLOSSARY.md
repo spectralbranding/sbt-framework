@@ -1,9 +1,13 @@
 # Spectral Brand Theory: Glossary
 
-**Version**: 2.0 (Post-Track-0 Validation)
+**Version**: 2.4 (Signal-Lean + Measurement Layer)
 **Status**: Draft
-**Last Updated**: 2026-02-27
+**Last Updated**: 2026-06-23
 **Related**: `FRAMEWORK.md`
+
+### v2.4 Additions (Signal-Lean + The Brand Spectrometer)
+- **Emission-layer signal-lean**: the eight emission headwords now lead with **Signal** (Brand/Designed/Ambient/Synthetic Signal, Signal Signature, First-Signal Effect, Signal Scatter, Signal Registry). "Atom" is retained as an alias for discoverability and is **reserved** for the distinct atom-cloud-fact lineage (the alibi-style single observation). Matches the corpus "reflection, not atom/signal" terminology decision and the website glossary (the canonical reference).
+- **New "Measurement (The Brand Spectrometer)" layer**: Brand Spectrometer, Reflection, Atlas, Operator Floor, Source Floor, Signal-to-Noise (Resolution), Signal-Source Clustering, Metameric Degree, Distribution-Level Separation, Metameric Psychometrics. The emission side is the *signal*; the measurement side is the *reflection* (a per-artifact eight-dimensional reading) — they are distinct units.
 
 ### v2.0 Additions (Track 0 Discoveries)
 - **Dark Signals / Structural Absence**: value creation through designed signal restriction
@@ -27,14 +31,14 @@
 - **Time-to-Absorption Estimate**: projected periods until a falling dimension reaches the absorbing-state floor
 
 ### v2.2 Additions (Signal Dissemination Layer)
-- **Signal Field**: spatiotemporal set of brand atoms in a given environment
+- **Signal Field**: spatiotemporal set of brand signals in a given environment
 - **Channel**: medium through which atoms travel from emission to signal field (bandwidth, reach, fidelity, selectivity)
 - **Encounter Event**: moment atoms intersect observer's attention
 - **Observer Receptivity**: pre-perception property (need-state activation + curiosity threshold)
 - **Gate Friction**: number of encounters required to open a closed identity gate
 - **Signal Amplification**: Confirmed observers becoming secondary emitters
-- **First-Atom Effect**: disproportionate impact of the first brand atom encountered
-- **Field Density**: brand atoms per unit of observer attention in a signal field
+- **First-Signal Effect**: disproportionate impact of the first brand signal encountered
+- **Field Density**: brand signals per unit of observer attention in a signal field
 - **Cohort Addressability**: set of channels that can deliver atoms to a given cohort's signal field
 
 ---
@@ -50,14 +54,14 @@ Comprehensive glossary of Spectral Brand Theory (SBT) terminology. Terms are org
 ```mermaid
 graph TD
     subgraph "Emission Layer"
-        BA[Brand Atom] -->|typed by| DIM[Dimension]
-        BA -->|source| DA[Designed Atom]
-        BA -->|source| AA[Ambient Atom]
-        BA -->|source| SA[Synthetic Atom]
+        BA[Brand Signal] -->|typed by| DIM[Dimension]
+        BA -->|source| DA[Designed Signal]
+        BA -->|source| AA[Ambient Signal]
+        BA -->|source| SA[Synthetic Signal]
         BA -->|emission type| ET[Emission Type<br/>positive / null /<br/>structural absence]
         BA -->|grouped into| EB[Encounter Bundle]
         EP[Emission Policy] -->|governs| DA
-        AS[Atom Signature] -->|defines ratios in| EP
+        AS[Signal Signature] -->|defines ratios in| EP
         ES[Emission Spec] -->|constrains| EP
         DS[Dark Signals<br/>structural absence] -->|amplifies via<br/>scarcity multiplier| BA
     end
@@ -68,7 +72,7 @@ graph TD
         SFL -->|intersects attention| EEV[Encounter Event]
         EEV -->|determined by| REC[Observer Receptivity<br/>need-state + curiosity]
         CONF2[Confirmed Observer] -->|signal amplification| AA
-        EEV -->|first-atom effect| PRI2[Initial Prior Schema]
+        EEV -->|first-signal effect| PRI2[Initial Prior Schema]
     end
 
     subgraph "Observation Layer"
@@ -103,7 +107,7 @@ graph TD
     end
 
     subgraph "Management Layer"
-        AR[Atom Registry] -->|tracks| BA
+        AR[Signal Registry] -->|tracks| BA
         CM[Cloud Monitor] -->|observes| BC
         CP[Collapse Predictor] -->|forecasts| BF
         RD[Re-collapse Defense] -->|buffers| RC
@@ -133,28 +137,29 @@ In SBT, a brand operates at two analyzable levels: its *signal architecture* (wh
 
 - **Key shift**: from noun to verb — brand is something that *happens*, not something that *is*
 - **Implication**: brand *meaning* is observer-specific (no two cohorts perceive the same brand meaning); brand *signal architecture* is characterizable at the brand level and is the objective input to the perceptual analysis
-- **See**: Brand Atom, Brand Cloud, Brand Fact, Conviction Collapse, Observer Cohort
+- **See**: Brand Signal, Brand Cloud, Brand Fact, Conviction Collapse, Observer Cohort
 
 ---
 
 ## Emission Layer
 
-### Brand Atom
+### Brand Signal
 
-The irreducible unit of brand meaning. A discrete signal emitted by or about a brand, typed by one of 8 dimensions. Analogous to an atom in the alibi project (a typed observation extracted from a document).
+The irreducible *emitted* unit of brand meaning. A discrete signal emitted by or about a brand, typed by one of 8 dimensions. Analogous to an atom in the alibi project (a typed observation extracted from a document).
 
+- **Aliases**: brand atom, atom, signal (all retained for discoverability; "signal" is the preferred headword)
 - **Properties**: dimension (type), source (designed/ambient/synthetic), channel, timestamp, content
-- **Key principle**: atoms are source-bound -- each originates from one encounter or event
-- **Terminology note**: In the articles and paper, brand atoms are referred to as 'signals' or 'brand signals.' The terms are synonymous: an atom/signal is a single typed contribution to a brand's emission field.
-- **See also**: Dimension, Designed Atom, Ambient Atom, Encounter Bundle
+- **Key principle**: signals are source-bound -- each originates from one encounter or event
+- **Terminology note**: "brand signal" and "brand atom" name the same thing — the single typed contribution to a brand's emission field. The corpus now leads with **signal** (the emission unit) and reserves **atom** for the distinct *atom-cloud-fact* lineage (the alibi-style single observation). The Brand Spectrometer's per-artifact *measurement* unit is the **reflection** (see the Measurement layer) — a separate concept from the emitted signal.
+- **See also**: Dimension, Designed Signal, Ambient Signal, Encounter Bundle, Reflection
 
 ### Dimension
 
-One of 8 typed channels through which brand atoms are classified. Each dimension captures a distinct facet of brand meaning.
+One of 8 typed channels through which brand signals are classified. Each dimension captures a distinct facet of brand meaning.
 
 ```mermaid
 graph LR
-    subgraph "8 Brand Atom Dimensions"
+    subgraph "8 Brand Signal Dimensions"
         SEM[Semiotic<br/>identity signals]
         NAR[Narrative<br/>stories and myths]
         IDE[Ideological<br/>values and purpose]
@@ -188,27 +193,27 @@ graph LR
 
 **Ordering note**: two orderings of the eight dimensions exist and are both valid. (a) Conceptual order for theory and articles: semiotic, narrative, ideological, experiential, social, economic, cultural, temporal — this order groups dimensions by their epistemological role in the perception pipeline. (b) Spectral wavelength order for visual identity (website): semiotic (violet), narrative (indigo), temporal (blue), ideological (teal), economic (green), experiential (amber), cultural (orange), social (red) — this order follows the physical wavelength sequence of the visible spectrum and governs all website and design system renderings. When consuming articles and analytical content, use order (a); when working with visual identity or design assets, use order (b).
 
-### Designed Atom
+### Designed Signal
 
-A brand atom intentionally created and emitted by the brand. The brand has direct control over these atoms.
+A brand signal intentionally created and emitted by the brand. The brand has direct control over these signals.
 
 - **Examples**: advertising campaigns, product design, packaging, official communications, store design
-- **Contrast with**: Ambient Atom, Synthetic Atom
-- **Key insight**: brands control only a fraction of their total atom output
+- **Contrast with**: Ambient Signal, Synthetic Signal
+- **Key insight**: brands control only a fraction of their total signal output
 
-### Ambient Atom
+### Ambient Signal
 
-A brand atom generated by the environment, not by the brand itself. The brand has no direct control over these atoms but must manage their effects.
+A brand signal generated by the environment, not by the brand itself. The brand has no direct control over these signals but must manage their effects.
 
 - **Examples**: customer reviews, news coverage, competitor framing, cultural shifts, word-of-mouth
-- **Key insight**: the tension between designed and ambient atoms is where brand management actually happens
+- **Key insight**: the tension between designed and ambient signals is where brand management actually happens
 
-### Synthetic Atom
+### Synthetic Signal
 
-A brand atom generated by AI systems. May be designed (brand uses AI for content) or ambient (AI-generated reviews, deepfakes, LLM summaries about the brand).
+A brand signal generated by AI systems. May be designed (brand uses AI for content) or ambient (AI-generated reviews, deepfakes, LLM summaries about the brand).
 
 - **Examples**: AI-generated ads, synthetic reviews, LLM brand evaluations, deepfake endorsements
-- **Key insight**: synthetic atoms create the "forgery problem" -- brand facts assembled from signals no human created
+- **Key insight**: synthetic signals create the "forgery problem" -- brand facts assembled from signals no human created
 - **See also**: Mediation Layer
 
 ### Designed/Ambient Ratio (D/A Ratio)
@@ -227,11 +232,11 @@ The proportion of a brand's signal environment that is intentionally designed ve
 **Key qualifier**: the direction of ambient signals matters as much as the ratio. A brand with 35% ambient but strongly aligned ambient (e.g., Hermès' earned exclusivity) outperforms a brand with 25% ambient that is passive and neutral. High ambient volume with amplifying direction is structurally different from high ambient volume with contradictory direction.
 
 - **Exploratory hypothesis status**: the Goldilocks zone (55-65%) is derived from five illustrative cases. Larger-sample empirical validation is required. See Part 7.4 and H1.
-- **See also**: Designed Atom, Ambient Atom, Synthetic Atom, Structural Absence, H1 (Part 9)
+- **See also**: Designed Signal, Ambient Signal, Synthetic Signal, Structural Absence, H1 (Part 9)
 
 ### Encounter Bundle
 
-A coherent group of brand atoms from a single encounter or channel. Analogous to a bundle in alibi (a group of atoms from one document).
+A coherent group of brand signals from a single encounter or channel. Analogous to a bundle in alibi (a group of atoms from one document).
 
 | Bundle Type | Channel | Typical Dimensions |
 |-------------|---------|-------------------|
@@ -245,14 +250,14 @@ A coherent group of brand atoms from a single encounter or channel. Analogous to
 
 ### Emission Policy
 
-The set of rules governing which brand atoms the brand intentionally generates and which dimensions it prioritizes. Replaces the traditional concept of "brand ideology" in SBT.
+The set of rules governing which brand signals the brand intentionally generates and which dimensions it prioritizes. Replaces the traditional concept of "brand ideology" in SBT.
 
 - **Traditional equivalent**: brand ideology, brand values, brand purpose
 - **Key difference**: emission policy is operational (what to emit), not philosophical (what to believe)
 
-### Atom Signature
+### Signal Signature
 
-The consistent dimensional ratio in a brand's communications. Defines the relative proportions of atom types the brand emits. Replaces "tone of voice" in SBT.
+The consistent dimensional ratio in a brand's communications. Defines the relative proportions of signal types the brand emits. Replaces "tone of voice" in SBT.
 
 - **Example**: "40% ideological + 30% cultural + 20% social + 10% semiotic" for a purpose-driven brand
 - **Key principle**: signature consistency is what makes atoms cluster predictably across encounters
@@ -263,7 +268,7 @@ The operational document constraining atom emission to ensure atoms pass the ide
 
 ### Emission Type (v2.0)
 
-Classification of how a brand atom relates to signal presence or absence. Three types:
+Classification of how a brand signal relates to signal presence or absence. Three types:
 
 | Type | Mechanism | Example | Physics Analog |
 |------|-----------|---------|---------------|
@@ -326,9 +331,9 @@ The layer between emission and observation. Models how emitted atoms reach obser
 
 ### Signal Field
 
-The set of brand atoms present in a given spatiotemporal environment. A brand's signal field in one city differs from another. A brand's field on one platform differs from another. Not all emitted atoms populate all fields.
+The set of brand signals present in a given spatiotemporal environment. A brand's signal field in one city differs from another. A brand's field on one platform differs from another. Not all emitted atoms populate all fields.
 
-- **Field density**: the number of brand atoms per unit of observer attention in a given signal field. High density = high encounter probability.
+- **Field density**: the number of brand signals per unit of observer attention in a given signal field. High density = high encounter probability.
 - Signal fields are populated by channels and depleted by signal decay (atoms fade over time).
 
 ### Channel
@@ -343,7 +348,7 @@ The medium through which atoms travel from emission to signal field. Channels ar
 
 ### Encounter Event
 
-The moment brand atoms in a signal field intersect an observer's attention. Governed by field density, observer receptivity, attention allocation, and algorithmic mediation. The encounter event is the bridge from dissemination to perception -- it triggers the identity gate.
+The moment brand signals in a signal field intersect an observer's attention. Governed by field density, observer receptivity, attention allocation, and algorithmic mediation. The encounter event is the bridge from dissemination to perception -- it triggers the identity gate.
 
 ### Observer Receptivity
 
@@ -363,11 +368,11 @@ The resistance to opening a closed identity gate, measured as the number of enco
 
 ### Signal Amplification
 
-The mechanism by which Confirmed observers become secondary emitters, creating new ambient atoms in new signal fields. A feedback loop from perception back to dissemination. Forms include word-of-mouth, social sharing, visible product use, reviews.
+The mechanism by which Confirmed observers become secondary emitters, creating new ambient signals in new signal fields. A feedback loop from perception back to dissemination. Forms include word-of-mouth, social sharing, visible product use, reviews.
 
-### First-Atom Effect
+### First-Signal Effect
 
-The disproportionate impact of the first brand atom an observer encounters. Creates the initial prior schema through which all subsequent atoms are filtered (Bartlett 1932, anchoring bias). The first atom determines the dimensional emphasis of the initial spectral profile.
+The disproportionate impact of the first brand signal an observer encounters. Creates the initial prior schema through which all subsequent atoms are filtered (Bartlett 1932, anchoring bias). The first atom determines the dimensional emphasis of the initial spectral profile.
 
 ### Cohort Addressability
 
@@ -379,7 +384,7 @@ Per observer × brand, preceding the perception state machine:
 
 | State | Description |
 |---|---|
-| **Absent** | No brand atoms in observer's signal field |
+| **Absent** | No brand signals in observer's signal field |
 | **Present** | Atoms in field, no encounter event yet |
 | **Encountered** | At least one encounter event — enters perception pipeline |
 
@@ -389,7 +394,7 @@ Per observer × brand, preceding the perception state machine:
 
 ### Observer Profile
 
-The formal model of an observer's perceptual apparatus. Defines HOW a specific observer (or cohort) assembles brand atoms into meaning.
+The formal model of an observer's perceptual apparatus. Defines HOW a specific observer (or cohort) assembles brand signals into meaning.
 
 ```mermaid
 graph TD
@@ -420,7 +425,7 @@ graph TD
 
 ### Spectrum
 
-The observer's sensitivity to each of the 8 brand atom dimensions. Ranges from 0.0 (invisible -- cannot perceive this dimension) to 1.0 (full sensitivity). Determines WHAT the observer can see.
+The observer's sensitivity to each of the 8 brand signal dimensions. Ranges from 0.0 (invisible -- cannot perceive this dimension) to 1.0 (full sensitivity). Determines WHAT the observer can see.
 
 - **Example**: a Gen-Z consumer has high sensitivity to social (0.9) and cultural (0.8) atoms, low sensitivity to temporal (0.2)
 - **Analogy**: like different species seeing different wavelengths of light. Some animals see infrared, others see ultraviolet, none see all
@@ -475,7 +480,7 @@ A cluster in spectral-profile space: a group of observers whose profiles (spectr
 
 ### Clustering Template
 
-A pre-compiled set of instructions, installed by culture, that tells observers how to assemble brand atoms into recognizable patterns. Replaces "archetypes" in SBT.
+A pre-compiled set of instructions, installed by culture, that tells observers how to assemble brand signals into recognizable patterns. Replaces "archetypes" in SBT.
 
 - **Traditional equivalent**: Jungian archetypes (Hero, Explorer, Sage, etc.)
 - **Key reframe**: archetypes are NOT brand properties -- they are observer functions. "The Hero" is not what the brand IS; it's a set of scoring rules pre-installed in observers that says "weight narrative atoms high, look for conflict-resolution patterns, expect ideological atoms about courage"
@@ -483,7 +488,7 @@ A pre-compiled set of instructions, installed by culture, that tells observers h
 
 ### Mediation Layer
 
-The AI algorithms and platform systems that filter, re-rank, and re-contextualize brand atoms before they reach human observers. A pipeline stage unique to the AI era.
+The AI algorithms and platform systems that filter, re-rank, and re-contextualize brand signals before they reach human observers. A pipeline stage unique to the AI era.
 
 - **Examples**: social media recommendation algorithms, search engine ranking, e-commerce product placement, content curation AI
 - **Key insight**: the brand emits atom X, but the mediation layer presents atom X' to the observer. The brand increasingly does not control what observers actually perceive
@@ -494,15 +499,15 @@ The AI algorithms and platform systems that filter, re-rank, and re-contextualiz
 
 ### Brand Cloud
 
-A probabilistic cluster of brand atoms forming in an observer's perception. The proto-brand-image -- a hypothesis about what the brand is, before conviction forms. Analogous to a cloud in alibi (a cluster of bundles that might represent the same transaction).
+A probabilistic cluster of brand signals forming in an observer's perception. The proto-brand-image -- a hypothesis about what the brand is, before conviction forms. Analogous to a cloud in alibi (a cluster of bundles that might represent the same transaction).
 
 ```mermaid
 graph LR
-    subgraph "Atoms from Multiple Encounters"
-        A1[Campaign atom:<br/>semiotic]
-        A2[Store visit atom:<br/>experiential]
-        A3[Review atom:<br/>social]
-        A4[News atom:<br/>narrative]
+    subgraph "Signals from Multiple Encounters"
+        A1[Campaign signal:<br/>semiotic]
+        A2[Store visit signal:<br/>experiential]
+        A3[Review signal:<br/>social]
+        A4[News signal:<br/>narrative]
     end
 
     subgraph "Observer's Cloud"
@@ -715,7 +720,7 @@ A brand's characteristic pattern of dimensional emphasis across the eight percep
 - **What it describes**: not which dimensions the brand uses, but which dimensions it emphasizes relative to others. A brand with a strong semiotic + temporal signature emits consistently in those dimensions and its signals cluster predictably around those axes.
 - **Diagnostic use**: two brands can share a coherence type and the same grade (spectral metamerism) yet have entirely different spectral signatures. The signature reveals the structural character behind the label.
 - **Stability**: the spectral signature is the slow-moving variable in the brand's signal architecture. Individual campaigns and encounters may emphasize different dimensions, but the aggregate pattern — the signature — should remain recognizable across years.
-- **See also**: Emission Map (L1), Atom Signature, Spectral Output (L1), Spectral Metamerism, Dimensional Differentiation
+- **See also**: Emission Map (L1), Signal Signature, Spectral Output (L1), Spectral Metamerism, Dimensional Differentiation
 
 ### AI Agent Observer (v2.1)
 
@@ -772,12 +777,12 @@ A signal that bypasses an observer's dimensional weight filtering to activate a 
 - **Mechanism**: the signal migrates from its primary dimension to another dimension where the observer IS sensitive. Ideological issue → experiential/safety concern → bypasses ideological weight barrier.
 - **Key insight**: not all dimensional weights are absolute. Some signals have priority channels that override the spectral profile.
 
-### Atom Scatter
+### Signal Scatter
 
-When brand atoms fail to cluster at all -- they arrive at the observer but don't form a coherent cloud. Caused by inconsistent emission (atoms across encounters contradict each other) or weak identity gate (observer can't recognize them as the same brand).
+When brand signals fail to cluster at all -- they arrive at the observer but don't form a coherent cloud. Caused by inconsistent emission (atoms across encounters contradict each other) or weak identity gate (observer can't recognize them as the same brand).
 
 - **Symptom**: brand awareness exists (gate passes) but no clear brand image forms
-- **Cause**: emission policy lacks a consistent atom signature
+- **Cause**: emission policy lacks a consistent signal signature
 
 ---
 
@@ -852,9 +857,9 @@ When one encounter alone is sufficient to form a brand fact, without corroborati
 
 ## Management Layer
 
-### Atom Registry
+### Signal Registry
 
-A system for tracking every brand atom -- both designed (intentional emissions) and ambient (environmental signals). The foundation of data-driven spectral brand management.
+A system for tracking every brand signal -- both designed (intentional emissions) and ambient (environmental signals). The foundation of data-driven spectral brand management.
 
 - **Alibi analog**: atom storage (documents -> atoms)
 - **Tracks**: atom type (dimension), source, channel, timestamp, reach, observer cohort exposure
@@ -863,7 +868,7 @@ A system for tracking every brand atom -- both designed (intentional emissions) 
 
 Real-time tracking of which atoms are clustering in which observer cohorts. Reframes traditional "social listening" and "brand tracking" as cloud formation measurement.
 
-- **Key metrics**: cloud coherence, cloud divergence, atom scatter rate
+- **Key metrics**: cloud coherence, cloud divergence, signal scatter rate
 - **Alibi analog**: cloud formation (probabilistic clustering)
 
 ### Collapse Predictor
@@ -914,20 +919,96 @@ Intentionally disrupting existing brand facts by changing the identity gate (new
 
 ---
 
+## Measurement Layer (The Brand Spectrometer)
+
+The instrument layer: how SBT's emission/observation/formation model is operationalized into reproducible, cohort-resolved readings from public evidence. Where the emission unit is the **brand signal**, the measurement unit is the **reflection**. The Brand Spectrometer is the reference instrument; the terms below are its working vocabulary. See `sbt-papers` (the Brand Spectrometer methods paper) for the full pipeline.
+
+### Brand Spectrometer
+
+An open, reproducible measurement instrument that reconstructs cohort-resolved eight-dimensional brand-perception readings from dated public artifacts through a fixed pipeline (acquire, render, extract, aggregate, sensitivity) run by cross-family model pairs. It reports every cohort comparison against noise floors it computes for itself, and resolves a difference only when it clears that floor.
+
+- **Public tool**: [meter.spectralbranding.com](https://meter.spectralbranding.com) — runs in the browser, demo brand loaded, no account or install
+- **When to use it**: to measure how a brand is actually perceived — across cohorts, across the eight dimensions, from real public evidence — rather than asserting a profile by hand. Use it whenever the question is *"what does the perception cloud look like, and do two cohorts genuinely differ?"*
+- **What it is not**: not a single-score brand tracker, not a survey panel, not a ground-truth oracle. It measures cohorts, never individuals.
+- **Aliases**: spectrometer
+- **See also**: Reflection, Atlas, Spectral Output (L1), Observer Cohort
+
+### Reflection
+
+The Brand Spectrometer's unit of measurement: the brand signal as reflected through one public artifact and read by one cross-family model pair, yielding one eight-dimensional reading bound to its source. Distinct from a **brand signal** (one emitted, dimension-typed unit) — a reflection is a per-artifact reading across all eight dimensions at once, the data-of-record the instrument aggregates into cohorts at any resolution.
+
+- **Emission vs measurement**: the signal is *emitted*; the reflection is *measured*. Do not call a reflection an "atom" — atom is reserved for the emitted-signal/atom-cloud-fact lineage.
+- **Aliases**: per-artifact reading
+- **See also**: Brand Signal, Brand Spectrometer, Signal-Source Clustering, Atlas
+
+### Atlas
+
+The instrument's complete assembled output for one brand and one dated window: every cohort vector with its per-dimension intervals, the two noise floors, the pairwise distances and signal-to-noise values, and the artifact manifest. The published atlas re-derives byte-for-byte from open code and data.
+
+- **See also**: Brand Spectrometer, Reflection, Operator Floor, Source Floor
+
+### Operator Floor
+
+The instrument-computed reliability floor: how far a cohort reading moves when the model operator pair is swapped for an equivalent cross-family pair. It quantifies the share of a measured difference attributable to the choice of model rather than to the cohort.
+
+- **Aliases**: operator-noise floor
+- **See also**: Source Floor, Signal-to-Noise (Resolution)
+
+### Source Floor
+
+The instrument-computed sampling floor: how far a cohort reading moves under leave-one-out resampling of its signal sources. It quantifies sensitivity to which sources were sampled.
+
+- **Aliases**: source-noise floor
+- **See also**: Operator Floor, Signal-Source Clustering
+
+### Signal-to-Noise (Resolution)
+
+A cohort-pair difference divided by the larger of the two endpoint noise floors. Resolved above 2, marginal between 1 and 2, sub-resolution below 1. A sub-resolution pair is reported as sub-resolution — never as "no difference" and never as a finding.
+
+- **Aliases**: per-pair resolution
+- **See also**: Operator Floor, Source Floor, Distribution-Level Separation
+
+### Signal-Source Clustering
+
+Aggregating readings reflection -> source -> cohort so that repeated artifacts from one source do not falsely narrow a cohort's confidence. It is a correction on the sources of signal; the unit of inference stays the cohort distribution, so the instrument measures cohorts, never individuals (no person is identified, reported, or stored).
+
+- **See also**: Reflection, Source Floor, Observer Cohort
+
+### Metameric Degree
+
+The average shape (cosine) distance across all cohort pairs in an atlas. A low value means the cohorts read the brand in similar dimensional shape; it does not preclude a magnitude difference that a distribution-level metric can still resolve.
+
+- **See also**: Spectral Metamerism, Distribution-Level Separation
+
+### Distribution-Level Separation
+
+A discriminant measure comparing whole cohort clouds (energy distance and kernel maximum-mean-discrepancy) rather than their averaged centroids, recovering magnitude differences the shape-only cosine metric discards. A pair is declared resolved only under triangulation: a corrected permutation test, a signal-to-noise interval above 1, and above-chance classification must all agree.
+
+- **Aliases**: triangulation criterion
+- **See also**: Metameric Degree, Signal-to-Noise (Resolution)
+
+### Metameric Psychometrics
+
+The validation framework for measurement instruments that have no ground-truth score: reliability, convergent validity, reproducibility, and discriminant resolution are judged against the instrument's own noise floors, never against a presumed truth or a human-panel oracle. Cohort variance is treated as the measurement, not as error.
+
+- **See also**: Brand Spectrometer, Spectral Metamerism, Operator Floor
+
+---
+
 ## Metrics
 
 ### Core Metrics (v1.0)
 
 | Metric | What It Measures | Traditional Equivalent |
 |--------|-----------------|----------------------|
-| **Atom Coverage** | How many of 8 dimensions the brand actively emits on | Brand presence breadth |
+| **Signal Coverage** | How many of 8 dimensions the brand actively emits on | Brand presence breadth |
 | **Gate Permeability** | % of target observers who can recognize the brand | Brand awareness |
 | **Cloud Coherence** | Similarity of clouds across target cohorts | Brand consistency |
 | **Cloud Divergence** | Difference in clouds across cohorts (controlled vs uncontrolled) | Perception gap analysis |
-| **Atom Scatter** | Rate of atoms failing to cluster | Brand confusion |
+| **Signal Scatter** | Rate of signals failing to cluster | Brand confusion |
 | **Collapse Strength** | Confidence level of collapsed brand facts | Brand equity / NPS |
 | **Re-collapse Resistance** | Stability of facts under contradicting atoms | Brand resilience |
-| **Emission Efficiency** | Ratio of designed atoms that successfully cluster vs scatter | Campaign effectiveness |
+| **Emission Efficiency** | Ratio of designed signals that successfully cluster vs scatter | Campaign effectiveness |
 
 ### Track 0 Metrics (v2.0)
 
@@ -965,13 +1046,13 @@ Quick reference for translating between traditional branding vocabulary and SBT.
 
 | Traditional Term | SBT Term | Key Difference |
 |-----------------|----------|----------------|
-| Brand identity | Emission policy + atom signature | Not what the brand IS but what it EMITS |
+| Brand identity | Emission policy + signal signature | Not what the brand IS but what it EMITS |
 | Brand image | Brand fact (observer-specific) | Not singular -- different per observer cohort |
 | Brand equity | Aggregate collapse strength | Measured as collapse confidence across cohorts |
 | Brand awareness | Gate permeability | Precondition for all perception, not a separate metric |
 | Positioning | Dimensional differentiation | Not where you sit but which frequencies you dominate |
 | Brand architecture | Identity gate design | How gates are shared or separated across sub-brands |
-| Tone of voice | Atom signature | Consistent dimensional ratios, not just verbal style |
+| Tone of voice | Signal signature | Consistent dimensional ratios, not just verbal style |
 | Brand guidelines | Emission spec | Operational constraints on atom generation |
 | Rebranding | Forced re-collapse | Intentional destruction and rebuilding of brand facts |
 | Crisis management | Re-collapse defense | Buffering against unwanted fact rebuilding |
