@@ -7,7 +7,7 @@
 > Brands are stellar objects. You are the observer.
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
-![Framework v2.3.1](https://img.shields.io/badge/Framework-v2.3.1-green.svg)
+![Framework v2.4.0](https://img.shields.io/badge/Framework-v2.4.0-green.svg)
 ![Demonstrated: 5 Brands](https://img.shields.io/badge/Demonstrated-5%20Brands-orange.svg)
 
 ```mermaid
