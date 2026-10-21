@@ -2,12 +2,19 @@
 Cohort Validator (R3: Cohort Boundaries, Zharnikov 2026f).
 
 Validates cohort analysis results against concentration of measure bounds
-proven in R3. Key result: in 8D perception space, cohort boundaries are
-inherently fuzzy -- sharp segmentation is geometrically impossible.
+in R3 (v2.0.0). Key result: under the uniform Dirichlet null on Delta^7, a
+majority of the simplex lies near the boundary of any convex cohort partition,
+so discrete cohort labels are fragile and continuous observer profiles are
+preferred.
 
-Key R3 results enforced:
-- Boundary fuzziness >= 57% at delta=0.10 (Theorem 2)
-- Membership probability transitions smoothly (no sharp cutoffs)
+R3 results used:
+- Boundary volume fraction >= 52.2% at delta=0.10 (Theorem 2): at least
+  1 - (1 - delta)^7 of Delta^7 lies within delta of a cell's volume radius of
+  that cell's boundary. This bounds VOLUME near the full cell boundary, most of
+  which abuts the faces of the simplex; it does not bound reassignment risk.
+- Reassignment exposure (Proposition 4, simulation): roughly two-thirds of
+  observers lie within one component standard deviation of an inter-cohort
+  bisector, stable for k >= 3. Empirical, not a geometric necessity.
 - Distance contrast ratio bounds cohort separability
 """
 
@@ -21,10 +28,14 @@ from spectral_branding.validators._math import (
     to_signal_array,
 )
 
-# R3 Theorem 2: minimum boundary fuzziness on Delta^7
-# P(|d(x, boundary) - E[d]| <= delta) >= 1 - 2*exp(-c*n*delta^2)
-# For n=8, delta=0.10: fuzziness ~= 0.57
-BOUNDARY_FUZZINESS_N8_D010 = 0.57
+# R3 Theorem 2 (v2.0.0): boundary volume fraction BVF(n, delta) >= 1 - (1 - delta)^(n-1)
+# under the uniform Dirichlet null. For n=8, delta=0.10: 1 - 0.9^7 = 0.522.
+# (Toolkit versions before 2.4.0 used 0.57, the superseded ambient-dimension variant.)
+BOUNDARY_FUZZINESS_N8_D010 = 1.0 - (1.0 - 0.10) ** (N_DIM - 1)
+
+# R3 Proposition 4: share of observers within one component SD of an
+# inter-cohort bisector (simulation, k >= 3). Empirical, not a bound.
+REASSIGNMENT_EXPOSURE_APPROX = 2.0 / 3.0
 
 # Concentration constant for the simplex (Dirichlet measure)
 CONCENTRATION_CONSTANT = 0.5  # conservative bound from R3
@@ -99,9 +110,12 @@ def validate_cohort_assignment(
 
     # Core R3 constraint: boundary fuzziness
     report.warnings.append(
-        f"R3 bound: In {N_DIM}D perception space, cohort boundaries have "
-        f">={BOUNDARY_FUZZINESS_N8_D010:.0%} fuzziness at delta=0.10. "
-        "Sharp cohort boundaries are geometrically impossible."
+        f"R3 bound: under the uniform null on Delta^{N_DIM - 1}, at least "
+        f"{BOUNDARY_FUZZINESS_N8_D010:.1%} of the simplex lies within delta=0.10 "
+        "of a cohort cell's boundary (Theorem 2). Separately, about "
+        f"{REASSIGNMENT_EXPOSURE_APPROX:.0%} of observers sit within one SD of an "
+        "inter-cohort bisector (Proposition 4, simulation). Treat cohort labels "
+        "as provisional; prefer continuous observer profiles."
     )
 
     # Compute inter-cohort separability

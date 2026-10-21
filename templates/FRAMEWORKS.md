@@ -277,7 +277,7 @@ graph LR
 
 ### Primary: R7 — Spectral Resource Allocation (Zharnikov, 2026k)
 
-**What it does**: Proves optimal allocation theorems for multi-dimensional brand investment. Four theorems: optimal allocation proportional to cohort weights / cost, alignment gap lower bounded by Hellinger distance, multi-cohort efficiency bounded by Fisher-Rao ball radius, cost-minimizing metamers.
+**What it does**: Proves optimal allocation theorems for multi-dimensional brand investment. Four theorems: optimal allocation proportional to cohort weights / cost, alignment gap lower bounded when the founder is at least as concentrated as the cohort (Theorem 2, corrected in R7 v2.0.0), multi-cohort efficiency bounded by Fisher-Rao ball radius, cost-minimizing metamers.
 
 **How SBT uses it**: R7 is the mathematical engine for Module 7. Every computation — alignment gap, blind spot detection, multi-cohort feasibility, optimal allocation — derives from R7's theorems. The Python validator enforces these bounds at runtime.
 

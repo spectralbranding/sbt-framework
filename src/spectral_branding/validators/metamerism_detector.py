@@ -59,7 +59,10 @@ def detect_metamerism(
         Brand name -> single-number score (e.g., NPS, brand health).
         If provided, checks for score-similar but structurally-different pairs.
     score_tolerance : float
-        Maximum score difference to consider "similar" (default: 5 points).
+        Maximum score difference to consider "similar" (default: 5 points,
+        sized for 0-100 indices such as NPS). Set it on the scale of the
+        scores supplied: on a 1-10 scale, 5 points treats almost every pair
+        as similar.
     distance_threshold : float
         Minimum Aitchison distance to consider "structurally different".
     """
@@ -84,6 +87,15 @@ def detect_metamerism(
             report.distortion_bound = np.sqrt(ratio) - 1.0
         else:
             report.distortion_bound = 0.0
+
+    # Metamerism is defined against a scalar score: without one, no pair can
+    # be tested, and an empty result means "not tested", not "none found".
+    if scalar_scores is None:
+        report.warnings.append(
+            "No scalar scores supplied: metameric pairs were not tested. "
+            "Pass scalar_scores (e.g. NPS or a brand-health index) to detect "
+            "score-similar but structurally different pairs."
+        )
 
     # If scalar scores provided, detect score-metameric pairs
     if scalar_scores is not None:

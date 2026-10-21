@@ -58,7 +58,7 @@ Do NOT produce results from insufficient data. A confident-looking output from g
 - Express confidence as high/medium/low per dimension
 - Flag the data_source: 'financial_report', 'operational_audit', or 'llm_estimate'
 
-Key bias to watch: founders over-invest in dimensions they personally value (R7 Theorem 2 — "founder weight projection"). Flag any dimension where the founder's background suggests personal bias.
+Key bias to watch: founders over-invest in dimensions they personally value (R7 Failure Mode 1 — "weight projection"). Flag any dimension where the founder's background suggests personal bias.
 
 ## Step 2: Estimate Cohort Value Profile
 
