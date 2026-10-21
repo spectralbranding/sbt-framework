@@ -6,8 +6,8 @@ authors:
     email: dmitry@spectralbranding.com
     orcid: "https://orcid.org/0009-0000-6893-9231"
 title: "Spectral Brand Theory: AI-Native Brand Analysis Toolkit"
-version: 2.3.1
-date-released: 2026-04-15
+version: 2.4.0
+date-released: 2026-10-21
 url: "https://github.com/spectralbranding/sbt-framework"
 keywords:
   - brand analysis
