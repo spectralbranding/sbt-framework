@@ -7,6 +7,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased]
+
+### Fixed
+- **Resource allocation, Theorem 2** (`resource_allocation_validator.py`): the alignment-gap lower
+  bound `H(f,c)^2 / (2 * lambda * alpha_bar)` was withdrawn in R7 (Zharnikov 2026k) v2.0.0 because it
+  is false in general: a uniform founder has zero gap against every cohort. The validator now uses the
+  corrected bound `||w(f) - w(c)||^2 / (2 * lambda * alpha_bar)`, which holds only under uniform costs
+  and condition C4 (`||w(c)|| <= ||w(f)||`, the founder at least as concentrated as the cohort).
+  - `compute_alignment_gap_lower_bound()` returns `None` when the theorem does not apply, and the
+    validator adds a warning naming the cohort.
+  - `AllocationReport.alignment_gap_lower_bound` is now `float | None` (default `None`); new field
+    `theorem2_applies`. New helper `satisfies_concentration_condition()`.
+- **Cohort boundaries, R3 Theorem 2** (`cohort_validator.py`): `BOUNDARY_FUZZINESS_N8_D010` changes
+  from .57, the superseded ambient-dimension variant, to `1 - 0.9^7` = .522 per R3 (Zharnikov 2026f)
+  v2.0.0. The warning no longer claims sharp boundaries are "geometrically impossible". It states that
+  the bound concerns volume near cell boundaries under the uniform null and that reassignment exposure
+  (about two-thirds of observers, R3 Proposition 4) is a simulation result.
+- **Metamerism detector**: when no scalar scores are passed, the report now warns that metameric pairs
+  were not tested, so an empty list is no longer read as "none found". The `score_tolerance`
+  docstring states its 0-100 sizing.
+- Blind-spot thresholds (2% founder, 5% cohort) are documented as engineering heuristics; R7
+  Proposition 3 concerns a founder weight of exactly zero.
+- Template `07_resource_allocation.yaml` example bound recomputed (.043 to .032). Prompt 07
+  attributes weight projection to R7 Failure Mode 1, not Theorem 2.
+
+### Added
+- Tests for the corrected Theorem 2 (C4 failure, non-uniform costs, 2,000 random Dirichlet pairs),
+  the R3 constant, and the metamerism "not tested" warning (161 tests).
+
+---
+
 ## [2.3.1] — 2026-04-15
 
 ### Added

@@ -181,6 +181,15 @@ class TestMetamerismDetector:
         report = detect_metamerism(profiles, scalar_scores=scores)
         assert len(report.metameric_pairs) == 0
 
+    def test_no_scalar_scores_reports_not_tested(self):
+        profiles = {
+            "A": [9.0, 9.0, 7.0, 9.0, 8.0, 3.0, 9.0, 9.0],
+            "B": [3.0, 3.0, 9.0, 3.0, 8.0, 9.0, 3.0, 3.0],
+        }
+        report = detect_metamerism(profiles)
+        assert report.metameric_pairs == []
+        assert any("not tested" in w for w in report.warnings)
+
     def test_distortion_bound_increases_with_brands(self):
         profiles = {f"B{i}": [5.0 + i * 0.1] * 8 for i in range(20)}
         report = detect_metamerism(profiles)
@@ -222,6 +231,14 @@ class TestCohortValidator:
         labels = {"obs1": "A", "obs2": "B"}
         report = validate_cohort_assignment(observers, labels)
         assert any("R3 bound" in w for w in report.warnings)
+
+    def test_r3_boundary_fraction_is_intrinsic_dimension_value(self):
+        from spectral_branding.validators.cohort_validator import (
+            BOUNDARY_FUZZINESS_N8_D010,
+        )
+
+        assert abs(BOUNDARY_FUZZINESS_N8_D010 - (1 - 0.9**7)) < 1e-12
+        assert round(BOUNDARY_FUZZINESS_N8_D010, 3) == 0.522
 
     def test_over_segmentation_warning(self):
         observers = {f"obs{i}": [0.125] * 8 for i in range(10)}
@@ -609,7 +626,55 @@ class TestResourceAllocationValidator:
             cohort_weights={"target": cohort},
         )
         assert report.valid
+        assert report.theorem2_applies
         assert report.alignment_gap >= report.alignment_gap_lower_bound - 1e-10
+
+    def test_theorem_2_withheld_when_c4_fails(self):
+        """A uniform founder has zero gap; the withdrawn H^2 bound was positive here."""
+        from spectral_branding.validators.resource_allocation_validator import (
+            compute_alignment_gap,
+            compute_alignment_gap_lower_bound,
+            validate_resource_allocation,
+        )
+
+        founder = np.full(8, 1.0 / 8.0)
+        cohort = np.array([0.4, 0.3, 0.1, 0.05, 0.05, 0.05, 0.025, 0.025])
+        assert abs(compute_alignment_gap(founder, cohort)) < 1e-12
+        assert compute_alignment_gap_lower_bound(founder, cohort) is None
+        report = validate_resource_allocation(
+            founder_weights=founder,
+            cohort_weights={"target": cohort},
+        )
+        assert report.alignment_gap_lower_bound is None
+        assert not report.theorem2_applies
+        assert any("no lower bound" in w for w in report.warnings)
+
+    def test_theorem_2_withheld_for_nonuniform_costs(self):
+        from spectral_branding.validators.resource_allocation_validator import (
+            compute_alignment_gap_lower_bound,
+        )
+
+        founder = np.array([0.4, 0.3, 0.1, 0.05, 0.05, 0.05, 0.025, 0.025])
+        cohort = np.array([0.05, 0.05, 0.3, 0.3, 0.1, 0.1, 0.05, 0.05])
+        costs = np.array([1.0, 2.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
+        assert compute_alignment_gap_lower_bound(founder, cohort, costs) is None
+
+    def test_theorem_2_bound_holds_on_random_c4_pairs(self):
+        from spectral_branding.validators.resource_allocation_validator import (
+            compute_alignment_gap,
+            compute_alignment_gap_lower_bound,
+        )
+
+        rng = np.random.default_rng(20261021)
+        checked = 0
+        for _ in range(2000):
+            f, c = rng.dirichlet(np.ones(8)), rng.dirichlet(np.ones(8))
+            bound = compute_alignment_gap_lower_bound(f, c)
+            if bound is None:
+                continue
+            checked += 1
+            assert compute_alignment_gap(f, c) >= bound - 1e-12
+        assert checked > 0
 
     def test_blind_spot_detected(self):
         """Founder with zero weight on a dimension cohort values should flag."""

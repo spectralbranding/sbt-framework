@@ -140,7 +140,7 @@ cost_structure:
 alignment_gap:
   value: 0.053                                   # A(f,c) = V(s*_f, f) - V(s*_f, c)
   efficiency_loss: 0.032                         # L(f,c) = ||w_f - w_c||^2 / (2*alpha)
-  lower_bound: 0.043                             # Hellinger-based diagnostic (Theorem 2)
+  lower_bound: 0.032                             # Theorem 2 (R7 v2.0.0): ||w_f - w_c||^2 / (2*alpha); needs uniform costs + C4 (||w_c|| <= ||w_f||), else null
   band: "minor_misalignment"                     # aligned | minor | moderate | severe | structural
   label: "Minor misalignment"
   prescription: >

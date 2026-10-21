@@ -5,7 +5,8 @@ Validates resource allocation analyses against optimal allocation theorems
 and alignment gap bounds proven in R7. Key results enforced:
 
 - Optimal allocation proportional to cohort weights / cost (Theorem 1)
-- Alignment gap with Hellinger distance diagnostic (Theorem 2)
+- Alignment gap lower bound under the concentration condition C4 (Theorem 2,
+  as corrected in R7 v2.0.0; the earlier unconditional H^2 bound is withdrawn)
 - Multi-cohort efficiency bounded by Fisher-Rao ball radius (Theorem 3)
 - Cost-minimizing metamers satisfy hyperplane constraint (Theorem 4)
 """
@@ -17,7 +18,6 @@ import numpy as np
 from spectral_branding.validators._math import (
     N_DIM,
     fisher_rao_distance,
-    hellinger_distance,
     normalize_to_simplex,
     to_signal_array,
 )
@@ -40,8 +40,9 @@ NUMERICAL_TOL = 1e-8
 
 # Blind spot threshold: founder weight below this is considered near-zero.
 # Cohort weight above BLIND_SPOT_COHORT_MIN on the same dimension triggers
-# a blind spot warning. Threshold set to match practitioner expectations:
-# a 2% allocation is effectively negligible for most budget structures.
+# a blind spot warning. These are engineering heuristics, not R7 results:
+# R7 Proposition 3 concerns a founder weight of exactly zero, and the 2% / 5%
+# cut-offs extend it to near-zero weights for practical budget structures.
 BLIND_SPOT_FOUNDER_MAX = 0.02
 BLIND_SPOT_COHORT_MIN = 0.05
 
@@ -62,7 +63,10 @@ class AllocationReport:
 
     valid: bool = True
     alignment_gap: float = 0.0
-    alignment_gap_lower_bound: float = 0.0
+    # Theorem 2 bound for the worst cohort; None when the theorem does not
+    # apply (condition C4 fails or costs are non-uniform).
+    alignment_gap_lower_bound: float | None = None
+    theorem2_applies: bool = False
     efficiency_loss: float = 0.0
     per_cohort_gaps: dict[str, float] = field(default_factory=dict)
     multi_cohort_feasible: bool = True
@@ -156,22 +160,50 @@ def compute_efficiency_loss(
     return float(np.sum(diff**2)) / (2.0 * shadow_price * alpha_bar)
 
 
+def satisfies_concentration_condition(
+    founder_weights: np.ndarray,
+    cohort_weights: np.ndarray,
+) -> bool:
+    """
+    Condition C4 of R7 Theorem 2: ||w(c)||_2 <= ||w(f)||_2.
+
+    The founder's profile must be at least as concentrated as the cohort's.
+    Without C4 the alignment gap is not sign-definite (it is identically
+    zero for a uniform founder), so no lower bound applies.
+    """
+    return (
+        herfindahl_index(cohort_weights)
+        <= herfindahl_index(founder_weights) + NUMERICAL_TOL
+    )
+
+
 def compute_alignment_gap_lower_bound(
     founder_weights: np.ndarray,
     cohort_weights: np.ndarray,
     cost_params: np.ndarray | None = None,
     shadow_price: float = DEFAULT_LAMBDA,
-) -> float:
+) -> float | None:
     """
-    Theorem 2 lower bound: A(f,c) >= H(f,c)^2 / (2 * lambda * alpha_bar).
+    Theorem 2 lower bound (R7 v2.0.0), Euclidean form:
 
-    Uses Hellinger distance on the probability simplex.
+        A(f,c) >= ||w(f) - w(c)||_2^2 / (2 * lambda * alpha_bar)
+
+    valid only under uniform costs (alpha_i = alpha_bar) and condition C4.
+    The Hellinger form H(f,c)^4 / (4 * lambda * alpha_bar) follows from it
+    and is weaker. Returns None when the theorem does not apply.
+
+    The bound A(f,c) >= H(f,c)^2 / (2 * lambda * alpha_bar) used before
+    toolkit v2.4.0 was withdrawn in R7 v2.0.0: it is false in general.
     """
     if cost_params is None:
         cost_params = DEFAULT_COST_PARAMS
+    if not np.allclose(cost_params, cost_params[0]):
+        return None
+    if not satisfies_concentration_condition(founder_weights, cohort_weights):
+        return None
     alpha_bar = float(np.mean(cost_params))
-    h = hellinger_distance(founder_weights, cohort_weights)
-    return h**2 / (2.0 * shadow_price * alpha_bar)
+    diff = founder_weights - cohort_weights
+    return float(np.sum(diff**2)) / (2.0 * shadow_price * alpha_bar)
 
 
 def _has_nan_or_inf(arr: np.ndarray) -> bool:
@@ -303,7 +335,7 @@ def validate_resource_allocation(
     report.herfindahl_founder = herfindahl_index(fw)
 
     worst_gap = 0.0
-    worst_bound = 0.0
+    worst_bound: float | None = None
     worst_cohort_h = 0.0
 
     for name, cw in parsed_cohorts.items():
@@ -313,6 +345,13 @@ def validate_resource_allocation(
         d_fr = fisher_rao_distance(fw, cw)
 
         report.per_cohort_gaps[name] = actual_gap
+
+        if lower_bound is None:
+            report.warnings.append(
+                f"R7 Thm 2: no lower bound for cohort '{name}'. The bound needs "
+                "uniform costs and condition C4 (cohort no more concentrated "
+                "than the founder); without them the gap is not sign-definite."
+            )
 
         if actual_gap > worst_gap:
             worst_gap = actual_gap
@@ -332,6 +371,7 @@ def validate_resource_allocation(
 
     report.alignment_gap = worst_gap
     report.alignment_gap_lower_bound = worst_bound
+    report.theorem2_applies = worst_bound is not None
     report.herfindahl_cohort = worst_cohort_h
 
     # --- Proposition 3: Blind spot detection ---
