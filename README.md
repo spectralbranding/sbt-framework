@@ -254,7 +254,7 @@ cd sbt-framework
 uv sync --extra dev
 ```
 
-The project anchor is `pyproject.toml` at the repository root (`name = "sbt-framework"`, `requires-python = ">=3.14"`). The full unit-test suite (131 tests) verifies the validator math:
+The project anchor is `pyproject.toml` at the repository root (`name = "sbt-framework"`, `requires-python = ">=3.14,<3.15"`). The full unit-test suite (131 tests) verifies the validator math:
 
 ```bash
 uv run pytest -q
@@ -292,7 +292,7 @@ sbt-framework/
 
 Runtime (`pyproject.toml [project.dependencies]`):
 
-- Python `>=3.14`
+- Python `>=3.14,<3.15`
 - `numpy>=1.26.0`
 - `scipy>=1.12.0`
 
