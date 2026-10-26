@@ -251,7 +251,7 @@ def _parse_matrix(
                 )
                 report.valid = False
                 return None
-        except (ValueError, TypeError):
+        except ValueError, TypeError:
             report.errors.append("Cannot parse matrix from list.")
             report.valid = False
             return None
