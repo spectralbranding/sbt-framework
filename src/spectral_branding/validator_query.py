@@ -184,7 +184,7 @@ def _validate_predicate(
             raise ValueError(f"{where}.op={op!r} invalid for numeric parameter")
         try:
             float(pred.get("threshold"))  # type: ignore[arg-type]
-        except (TypeError, ValueError):
+        except TypeError, ValueError:
             raise ValueError(f"{where} numeric op requires a float 'threshold'")
     else:  # bool / categorical
         if op not in _CATEGORICAL_OPS:
@@ -369,7 +369,7 @@ def _eval(pred: dict, value: Any) -> bool:
     if op in ("ge", "le", "gt", "lt"):
         try:
             return _OP_FN[op](float(value), float(target))  # type: ignore[arg-type]
-        except (TypeError, ValueError):
+        except TypeError, ValueError:
             return False
     return _OP_FN[op](value, target)
 

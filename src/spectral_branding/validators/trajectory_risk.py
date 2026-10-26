@@ -316,7 +316,7 @@ def analyze_trajectory_risk(
                         f"(R6: actual absorption is stochastic; "
                         f"this assumes constant velocity.)"
                     )
-        except (ValueError, IndexError):
+        except ValueError, IndexError:
             report.warnings.append("Historical data parsing failed")
 
     # Non-ergodicity reminder
