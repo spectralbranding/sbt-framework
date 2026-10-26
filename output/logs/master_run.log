@@ -1,0 +1,21 @@
+==================================================
+Pipeline run: 2026-10-26T11:39:50Z
+Repo: /Users/d/projects/sbt-framework
+Git SHA: 357567a1ccbc136db37f3c061359d991ca6c65ea
+==================================================
+>>> Checking dependencies...
+Resolved 23 packages in 2ms
+   Building sbt-framework @ file:///Users/d/projects/sbt-framework
+      Built sbt-framework @ file:///Users/d/projects/sbt-framework
+Prepared 1 package in 167ms
+Uninstalled 1 package in 0.91ms
+Installed 1 package in 1ms
+ ~ sbt-framework==2.4.0 (from file:///Users/d/projects/sbt-framework)
+>>> Block 1: Running unit tests
+........................................................................ [ 44%]
+........................................................................ [ 89%]
+.................                                                        [100%]
+161 passed in 0.26s
+==================================================
+Pipeline complete: 2026-10-26T11:39:50Z
+==================================================
