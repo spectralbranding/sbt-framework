@@ -146,7 +146,7 @@ move SBT from "mathematical framework with demonstration" to "empirically valida
 - [ ] Collaboration with at least one academic research group
 - [ ] Pre-registered study protocol
 - [ ] Minimum N per cohort: per R3 concentration of measure bounds
-- [ ] Journal target: Journal of Consumer Research or similar
+- [ ] Peer-reviewed publication of the study
 
 ### Multi-Brand Portfolio Analysis (R21) [THEORY + EMPIRICAL COMPLETE]
 
@@ -170,7 +170,7 @@ leakage rate λ at the observer cohort's detection scale. Grounded in Kato-Relli
 theory and Diaconis–Stroock spectral-gap-mixing-time bounds. Monte Carlo demonstration with
 Dove 2003–2023 design parameters: terminal gap 1.10 vs .02 (52x ratio), IRF half-life 1.4 vs
 13.1 months. H22: gap collapse precedes conviction reorientation by 6–18 months. DOI:
-[10.5281/zenodo.19778549](https://doi.org/10.5281/zenodo.19778549). Target: Marketing Science.
+[10.5281/zenodo.19778549](https://doi.org/10.5281/zenodo.19778549).
 
 - [ ] Module 6 (Re-collapse Simulation) extension: compute μ/λ ratio from snapshot inputs
 - [ ] Resilience scoring: flag when brand is in λ > μ regime (absorption risk)
