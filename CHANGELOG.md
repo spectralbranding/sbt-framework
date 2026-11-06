@@ -171,7 +171,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Observer model sharpened (M3, M11, M16, M2): precision improvements on cohort formation
   mechanics and signal filtering
-- Theory status upgraded to hypothesis-stage with explicit H6-H10 (Session 06 update)
+- Theory status upgraded to hypothesis-stage with explicit H6-H10
 - Related frameworks section expanded (M7, M8, M11): Aaker, Kapferer, Keller positioning clarified
 
 ### Fixed
