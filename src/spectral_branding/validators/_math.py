@@ -29,9 +29,21 @@ CANONICAL_BRANDS = {
     "Tesla": np.array([7.5, 8.5, 3.0, 6.0, 7.0, 6.0, 4.0, 2.0]),
 }
 
-# Signal value bounds (SBT uses 1-10 scale)
+# Signal scale (the toolkit's one scale; docs/FRAMEWORK.md, "Signal scale and
+# structural zeros"): every brand signal is a real number in [1, 10]. 1.0 is the
+# floor and records a dimension with no detectable emission (the absorbing-state
+# floor of R6); 10.0 is a dominant emitter. The toolkit never imputes a
+# replacement for 0 or a negative value: those are input errors.
 SIGNAL_MIN = 1.0
 SIGNAL_MAX = 10.0
+
+ZERO_SIGNAL_RULE = (
+    "Signals use the [1, 10] scale: record a dimension with no detectable "
+    "emission as 1.0 (the floor), not 0. A designed restriction (dark signal) "
+    "is scored on its own strength. No replacement value is imputed for 0 or "
+    "negative values, because the CLR transform and the Aitchison distance "
+    "need strictly positive components (R1 Sec. 4)."
+)
 
 
 def to_signal_array(values: list[float] | np.ndarray) -> np.ndarray:
@@ -50,7 +62,10 @@ def clr_transform(s: np.ndarray) -> np.ndarray:
     From R1 Section 4 (Aitchison geometry).
     """
     if np.any(s <= 0):
-        raise ValueError("All signal components must be strictly positive")
+        bad = [i for i, v in enumerate(np.ravel(s)) if v <= 0]
+        raise ValueError(
+            f"Non-positive signal at dimension(s) {bad}. {ZERO_SIGNAL_RULE}"
+        )
     log_s = np.log(s)
     return log_s - np.mean(log_s)
 
