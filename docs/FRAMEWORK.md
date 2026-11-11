@@ -379,13 +379,23 @@ The constructs in §3.1-3.5 describe the architecture of brand perception qualit
 
 #### 3.6.1 The Brand Signal Space
 
-Brand emission profiles (§3.1) are vectors in $\mathbb{R}^8_+$: eight non-negative signal strengths, one per dimension (semiotic, narrative, ideological, experiential, social, economic, cultural, temporal).
+Brand emission profiles (§3.1) are vectors in $\mathbb{R}^8_+$: eight strictly positive signal strengths, one per dimension (semiotic, narrative, ideological, experiential, social, economic, cultural, temporal), on the scale stated below.
 
 Raw Euclidean distance is inappropriate for brand comparison because perception is proportional, not additive (per the Weber-Fechner law: a change from 0.1 to 0.2 is perceptually equivalent to a change from 0.5 to 1.0). The appropriate metric is the **Aitchison distance**, which operates on log-ratios of signal components:
 
 $$d_B(S_A, S_B) = \sqrt{\sum_{i=1}^{8} \left( \log \frac{S_{A,i}}{g(S_A)} - \log \frac{S_{B,i}}{g(S_B)} \right)^2}$$
 
 where $g(S) = (\prod_i S_i)^{1/8}$ is the geometric mean. This metric is scale-invariant (doubling all signals does not change distances) and subcompositionally coherent (comparing brands on a subset of dimensions is consistent with the full comparison). Geodesics in this space are straight lines in log-ratio coordinates, meaning that brand evolution (rebranding trajectories) follows paths that preserve signal ratios rather than absolute values.
+
+**Signal scale and structural zeros.** The toolkit uses one signal scale: every brand signal is a real number in $[1, 10]$ (`SIGNAL_MIN`, `SIGNAL_MAX` in `validators/_math.py`). Profiles, templates, prompts that ask for a per-dimension signal, and validators all use it. Scores that are not brand signals, such as the 1-10 coherence-metric scores in Modules 3, 4 and 6, are separate quantities and are labelled as such where they appear.
+
+The Aitchison distance needs strictly positive components, while a brand can have no detectable emission on a dimension. The rule is:
+
+1. A dimension with no detectable emission is recorded as $1.0$, the floor of the scale (the absorbing-state floor used in R6 velocity tracking, §5.10.1). It is not recorded as $0$.
+2. A designed restriction that functions as a signal (a dark signal, §5.1) is an emission, not an absence. It is scored on its own strength like any other signal.
+3. The toolkit imputes no replacement value. A $0$ or a negative value is an input error: `clr_transform` raises, and `validate_signal_profile` reports the dimension and this rule instead of failing inside a logarithm. Values between $0$ and $1$ are positive, so the geometry is computable, and the validator reports them as outside the scale.
+
+The script `scripts/cross_llm_consistency.py` keeps the 0-5 strength rating of the recorded run it reproduces. Its conversion to the signal scale is $s = 1 + 9 \cdot r / 5$ for a rating $r$, so a rating of $0$ ("silent") maps to the floor and $5$ to $10$. Neither of its reported statistics depends on the conversion: the Spearman correlation is unchanged by an increasing linear map, and the Fisher-Rao distance is computed on the separate signature percentages.
 
 For normalized brand profiles (signal strengths scaled to unit norm), the natural space is $S^7_+$: the positive octant of the 7-sphere. This octant comprises only $1/2^8 = 1/256$ of the full sphere surface, reflecting the constraint that brand signals are non-negative. The compression of available brand space has a direct strategic implication: differentiation is harder than naive 8-dimensional counting suggests.
 

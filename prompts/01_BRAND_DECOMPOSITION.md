@@ -55,7 +55,7 @@ Track 0 finding: Heritage compounds NON-LINEARLY:
 ## Output Format
 
 For each of the 8 dimensions, provide:
-1. A strength rating (0-5 stars) for how actively the brand emits on this dimension
+1. A signal strength from 1 to 10 for how actively the brand emits on this dimension (1 = no detectable emission, 10 = dominant emitter; a designed restriction that functions as a signal is scored on its own strength, never as 0)
 2. 3-5 specific signals with their source type (designed/ambient/synthetic) AND emission type (positive/null/structural_absence)
 3. A "gap note" if the dimension is weak or missing
 
@@ -104,15 +104,17 @@ Additional context: [Any specific focus areas or concerns]
 
 ## Example (abbreviated)
 
+*Illustrative output showing the format. The strengths are not the toolkit's reference profile for Patagonia (`CANONICAL_BRANDS` in `src/spectral_branding/validators/_math.py`).*
+
 **Brand**: Patagonia
 
-**SEMIOTIC** (4/5 stars)
+**SEMIOTIC** (8.2/10)
 - Mountain silhouette logo (designed) -- instantly recognizable, outdoor coded
 - Earth-tone color palette (designed) -- browns, greens, natural tones
 - "Don't Buy This Jacket" headline (designed/ambient) -- became cultural artifact
 - Worn Wear aesthetic in social media (ambient) -- user-generated content reinforces rugged look
 
-**IDEOLOGICAL** (5/5 stars)
+**IDEOLOGICAL** (10.0/10)
 - "We're in business to save our home planet" (designed) -- explicit purpose statement
 - 1% for the Planet commitment (designed) -- financial commitment to values
 - Lawsuit against Trump over Bears Ears (ambient) -- political positioning
@@ -120,15 +122,15 @@ Additional context: [Any specific focus areas or concerns]
 
 **DIMENSION HEAT MAP**:
 
-| Rank | Dimension | Strength |
+| Rank | Dimension | Strength (1-10) |
 |------|-----------|----------|
-| 1 | Ideological | 5/5 |
-| 2 | Experiential | 4/5 |
-| 3 | Semiotic | 4/5 |
-| 4 | Cultural | 4/5 |
-| 5 | Narrative | 3/5 |
-| 6 | Social | 3/5 |
-| 7 | Economic | 3/5 |
-| 8 | Temporal | 2/5 |
+| 1 | Ideological | 10.0 |
+| 2 | Experiential | 8.2 |
+| 3 | Semiotic | 8.2 |
+| 4 | Cultural | 8.2 |
+| 5 | Narrative | 6.4 |
+| 6 | Social | 6.4 |
+| 7 | Economic | 6.4 |
+| 8 | Temporal | 4.6 |
 
 **ATOM SIGNATURE**: Ideological 25% / Experiential 20% / Cultural 15% / Semiotic 15% / Narrative 10% / Social 8% / Economic 5% / Temporal 2%

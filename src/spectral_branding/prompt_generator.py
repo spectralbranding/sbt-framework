@@ -25,7 +25,7 @@ from __future__ import annotations
 import random
 from typing import Literal
 
-from spectral_branding.validators._math import DIMENSIONS
+from spectral_branding.validators._math import DIMENSIONS, SIGNAL_MAX, SIGNAL_MIN
 
 # ---------------------------------------------------------------------------
 # Canonical dimension order (Semiotic, Narrative, Ideological, Experiential,
@@ -186,7 +186,8 @@ def generate_prism_b_prompt(
     )
 
     # Build the JSON template block showing the expected key order
-    json_keys = ",\n  ".join(f'"{d}": <1-10>' for d in dims)
+    scale = f"<{SIGNAL_MIN:g}-{SIGNAL_MAX:g}>"  # the toolkit signal scale
+    json_keys = ",\n  ".join(f'"{d}": {scale}' for d in dims)
     json_template = "{\n  " + json_keys + "\n}"
 
     # Build dimension description block (follows the requested order)

@@ -59,6 +59,12 @@ class TestMathUtilities:
         with pytest.raises(ValueError):
             clr_transform(np.array([0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]))
 
+    def test_clr_transform_zero_error_names_the_rule(self):
+        with pytest.raises(
+            ValueError, match=r"dimension\(s\) \[0\].*1\.0 \(the floor\)"
+        ):
+            clr_transform(np.array([0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]))
+
     def test_aitchison_distance_self_is_zero(self):
         s = CANONICAL_BRANDS["Hermes"]
         assert np.isclose(aitchison_distance(s, s), 0.0)
@@ -122,6 +128,16 @@ class TestMetricValidator:
     def test_zero_value(self):
         report = validate_signal_profile([5.0, 5.0, 0.0, 5.0, 5.0, 5.0, 5.0, 5.0])
         assert not report.valid
+
+    def test_zero_value_error_names_the_rule(self):
+        report = validate_signal_profile([5.0, 5.0, 0.0, 5.0, 5.0, 5.0, 5.0, 5.0])
+        assert any("1.0 (the floor)" in e for e in report.errors)
+
+    def test_no_emission_recorded_at_floor_is_valid(self):
+        report = validate_signal_profile([5.0, 5.0, 1.0, 5.0, 5.0, 5.0, 5.0, 5.0])
+        assert report.valid
+        assert report.errors == []
+        assert report.warnings == []
 
     def test_out_of_range_warning(self):
         report = validate_signal_profile([15.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0])

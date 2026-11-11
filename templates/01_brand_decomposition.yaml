@@ -15,6 +15,10 @@
 #   - Interbrand Brand Strength model (10 factors)
 #   - See templates/FRAMEWORKS.md for alternatives
 
+# The Patagonia values below are an illustrative Module 1 output, kept to show the
+# structure. They are not the toolkit's reference profile for Patagonia, which is
+# CANONICAL_BRANDS["Patagonia"] in src/spectral_branding/validators/_math.py.
+
 brand:
   name: "Patagonia"                       # Brand being analyzed
   category: "Outdoor apparel & gear"      # Industry/category
@@ -22,12 +26,13 @@ brand:
 
 # --- Dimension Inventory ---
 # Each of the 8 SBT dimensions with strength rating, atoms, and gap notes.
-# Strength scale: 0-5 (0 = silent, 5 = dominant emitter on this dimension)
+# Strength scale: the toolkit signal scale, 1-10 (1 = no detectable emission, 10 = dominant emitter).
+# Never 0: see docs/FRAMEWORK.md, "Signal scale and structural zeros".
 # Source types: designed | ambient | synthetic
 
 dimensions:
   semiotic:
-    strength: 4                           # 0-5 stars
+    strength: 8.2                         # 1-10
     description: "Visual and auditory identity signals"
     atoms:
       - signal: "Mountain silhouette logo"
@@ -51,7 +56,7 @@ dimensions:
     gap_note: null                        # null if no gap; string describing weakness
 
   narrative:
-    strength: 3
+    strength: 6.4
     description: "Stories, myths, temporal structures"
     atoms:
       - signal: "Yvon Chouinard founder story"
@@ -65,7 +70,7 @@ dimensions:
     gap_note: "Day-to-day narrative cadence is weak between landmark events"
 
   ideological:
-    strength: 5
+    strength: 10.0
     description: "Values, ethics, purpose, positions"
     atoms:
       - signal: "'We're in business to save our home planet'"
@@ -83,7 +88,7 @@ dimensions:
     gap_note: null
 
   experiential:
-    strength: 4
+    strength: 8.2
     description: "Touchpoints, interactions, product encounters"
     atoms:
       - signal: "Product durability and Ironclad Guarantee"
@@ -97,7 +102,7 @@ dimensions:
     gap_note: null
 
   social:
-    strength: 3
+    strength: 6.4
     description: "Community, status, belonging signals"
     atoms:
       - signal: "Outdoor tribe identification"
@@ -111,7 +116,7 @@ dimensions:
     gap_note: "Status signal is ambiguous — luxury-adjacent or anti-luxury?"
 
   economic:
-    strength: 3
+    strength: 6.4
     description: "Price, value, financial signals"
     atoms:
       - signal: "Premium price point ($200+ jackets)"
@@ -125,7 +130,7 @@ dimensions:
     gap_note: "Price-value tension unresolved — is premium justified by durability or ideology?"
 
   cultural:
-    strength: 4
+    strength: 8.2
     description: "Aesthetic codes, references, taste"
     atoms:
       - signal: "Functional minimalism aesthetic"
@@ -139,7 +144,7 @@ dimensions:
     gap_note: null
 
   temporal:
-    strength: 2
+    strength: 4.6
     description: "Heritage, evolution, era associations"
     atoms:
       - signal: "50+ year heritage (founded 1973)"
@@ -154,28 +159,28 @@ dimensions:
 
 heat_map:
   - dimension: ideological
-    strength: 5
+    strength: 10.0
     rank: 1
   - dimension: semiotic
-    strength: 4
+    strength: 8.2
     rank: 2
   - dimension: experiential
-    strength: 4
+    strength: 8.2
     rank: 3
   - dimension: cultural
-    strength: 4
+    strength: 8.2
     rank: 4
   - dimension: narrative
-    strength: 3
+    strength: 6.4
     rank: 5
   - dimension: social
-    strength: 3
+    strength: 6.4
     rank: 6
   - dimension: economic
-    strength: 3
+    strength: 6.4
     rank: 7
   - dimension: temporal
-    strength: 2
+    strength: 4.6
     rank: 8
 
 # --- Emission Signature ---

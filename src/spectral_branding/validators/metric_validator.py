@@ -18,6 +18,7 @@ from spectral_branding.validators._math import (
     N_DIM,
     SIGNAL_MAX,
     SIGNAL_MIN,
+    ZERO_SIGNAL_RULE,
     aitchison_distance,
     clr_transform,
     normalize_to_simplex,
@@ -62,8 +63,7 @@ def validate_signal_profile(signals: list[float] | np.ndarray) -> MetricReport:
         zero_dims = [i for i, v in enumerate(arr) if v <= 0]
         report.valid = False
         report.errors.append(
-            f"Non-positive values at dimensions {zero_dims}. "
-            "Aitchison geometry requires all s_i > 0 (R1 Sec. 4)."
+            f"Non-positive values at dimensions {zero_dims}. {ZERO_SIGNAL_RULE}"
         )
         return report
 

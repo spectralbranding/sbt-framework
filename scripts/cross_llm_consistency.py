@@ -6,6 +6,12 @@ SIGNAL SIGNATURE (percentages on Delta^7), and reports cross-model agreement:
   - Fisher-Rao distance between the models' signature distributions (the article's simplex metric).
   - Spearman rank correlation of the 8 strength ratings (agreement on dimension ordering).
 
+Scale note: the 0-5 strength rating is kept because this script reproduces the recorded run of the
+article package; it is not the toolkit's signal scale (1-10, docs/FRAMEWORK.md, "Signal scale and
+structural zeros"). Conversion to the signal scale: signal = 1 + 9 * strength / 5, so 0 ("silent")
+maps to the 1.0 floor and 5 to 10. Neither reported statistic depends on it: Spearman's rho is
+unchanged by an increasing linear map, and the Fisher-Rao distance uses the signature percentages.
+
 Keys read from env: ANTHROPIC_API_KEY, OPENAI_API_KEY, GOOGLE_API_KEY.
 Raw responses logged to cross_llm_run/<brand>_<model>.json for provenance.
 """

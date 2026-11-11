@@ -147,7 +147,9 @@ Every pipeline output is validated against proven mathematical bounds from eight
 | Specification | R5 (Impossibility) | Organizational spec coverage, cascade consistency |
 | Resource Allocation | R7 (Spectral Resource Allocation) | Optimal dimensional investment, alignment gap, multi-cohort efficiency |
 
-The validation module (`src/spectral_branding/validators/`) is Python + numpy/scipy with 131 unit tests. It runs automatically on pipeline output, flagging geometric violations that no amount of prompt engineering can prevent.
+**Signal scale.** Every brand signal is a real number on one scale, 1 to 10. A dimension with no detectable emission is recorded as 1.0, the floor; 0 and negative values are rejected with a message that states this rule, and no replacement value is imputed. Details: [docs/FRAMEWORK.md §3.6.1](docs/FRAMEWORK.md#361-the-brand-signal-space).
+
+The validation module (`src/spectral_branding/validators/`) is Python + numpy/scipy with 168 unit tests. It runs automatically on pipeline output, flagging geometric violations that no amount of prompt engineering can prevent.
 
 ## Repository Structure
 
@@ -177,9 +179,11 @@ sbt-framework/
 │       └── ALIBI_ANALOGY.mmd     Structural analogy: alibi finance ↔ SBT
 ├── src/spectral_branding/       Python validation module
 │   └── validators/              7 math-hardened validators (numpy/scipy)
-├── tests/                       131 unit tests for validators and prompt generator
+├── tests/                       168 unit tests for validators and prompt generator
 ├── pyproject.toml               Package config (hatchling + numpy + scipy)
+├── .github/ISSUE_TEMPLATE/       Bug report and feature request templates
 ├── CITATION.cff
+├── CONTRIBUTING.md              How to report a problem, run the checks, open a pull request
 ├── LICENSE
 └── README.md
 ```
@@ -234,13 +238,17 @@ See [CITATION.cff](CITATION.cff) for machine-readable citation.
 
 **Dmitry Zharnikov** — dmitry@spectralbranding.com
 
+## Support
+
+The project has a single maintainer, who responds on a best-effort basis. Report problems and request features through [GitHub issues](https://github.com/spectralbranding/sbt-framework/issues); [CONTRIBUTING.md](CONTRIBUTING.md) explains how to report a problem, run the tests and open a pull request.
+
 ## License
 
-[MIT](LICENSE) — use freely with attribution.
+[MIT](LICENSE) for the code: open-source; use, modify and redistribute with attribution. Data and rendered artifacts: [CC BY 4.0](LICENSE-data).
 
 ## Trademarks
 
-"Spectral Brand Theory" and "Brand Code" are trademarks of Dmitry Zharnikov. The MIT license applies to the source code only and does not grant permission to use the project trademarks. You may fork and modify the code freely, but derivative works should not use these names in ways that imply endorsement or official affiliation.
+"Spectral Brand Theory" and "Brand Code" are trademarks of Dmitry Zharnikov. The MIT license applies to the source code only and does not grant permission to use the project trademarks. You may fork and modify the code under the MIT License, but derivative works should not use these names in ways that imply endorsement or official affiliation.
 
 ---
 
@@ -254,7 +262,7 @@ cd sbt-framework
 uv sync --extra dev
 ```
 
-The project anchor is `pyproject.toml` at the repository root (`name = "sbt-framework"`, `requires-python = ">=3.14,<3.15"`). The full unit-test suite (131 tests) verifies the validator math:
+The project anchor is `pyproject.toml` at the repository root (`name = "sbt-framework"`, `requires-python = ">=3.14,<3.15"`). The full unit-test suite (168 tests) verifies the validator math:
 
 ```bash
 uv run pytest -q
@@ -275,7 +283,7 @@ sbt-framework/
 ├── data/                    ATOM_TAXONOMY.yaml and other reference data
 ├── docs/                    FRAMEWORK.md, GLOSSARY.md, architecture diagrams
 ├── src/spectral_branding/   Python validation module (7 validators)
-├── tests/                   131 unit tests
+├── tests/                   168 unit tests
 ├── output/
 │   ├── figures/             generated PNG / SVG / PDF
 │   ├── tables/              generated CSV / TeX / HTML

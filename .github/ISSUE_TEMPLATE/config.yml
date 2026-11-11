@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and support
+    url: https://github.com/spectralbranding/sbt-framework#support
+    about: >-
+      The project has a single maintainer, who responds on a best-effort basis. Read the support
+      statement and CONTRIBUTING.md before opening an issue; questions about Spectral Brand Theory
+      itself are answered best by the papers listed in the README.

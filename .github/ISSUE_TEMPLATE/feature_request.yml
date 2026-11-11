@@ -1,0 +1,25 @@
+name: Feature request
+description: A change in behaviour or a new capability.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: What you want to do
+      description: The task you are trying to carry out with the toolkit.
+    validations:
+      required: true
+  - type: textarea
+    id: gap
+    attributes:
+      label: What stops you now
+      description: Why the current toolkit does not let you do it, or does it only with a workaround.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: Optional. How the change could look, for example a function signature or an output field.
+    validations:
+      required: false
