@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased]
+
+### Changed
+- **One signal scale** (#5): every brand signal is a real number in [1, 10], stated in
+  `docs/FRAMEWORK.md` §3.6.1 ("Signal scale and structural zeros") and the README. Module 1
+  (`prompts/01_BRAND_DECOMPOSITION.md`, `templates/01_brand_decomposition.yaml`) now asks for a 1-10
+  strength instead of 0-5 stars; the template's example values are converted with
+  `signal = 1 + 9 * strength / 5`. `scripts/cross_llm_consistency.py` keeps its 0-5 rating because it
+  reproduces a recorded run, and its docstring states the conversion; its reported statistics do not
+  depend on it. The 1-10 coherence-metric scores of Modules 3, 4 and 6 are a different quantity and
+  are unchanged.
+- **Zero and negative signals** (#6): the rule is documented. A dimension with no detectable emission
+  is recorded as 1.0, the floor of the scale; a designed restriction (dark signal) is scored on its own
+  strength; no replacement value is imputed before the CLR transform. `clr_transform` and
+  `validate_signal_profile` now name the dimension and state this rule (new constant
+  `ZERO_SIGNAL_RULE` in `validators/_math.py`).
+
+### Added
+- `tests/test_signal_scale.py`: fails if a template or prompt states another range for a brand signal,
+  or a numeric template strength lies outside [1, 10]. Tests for the zero rule in `test_validators.py`.
+- `CONTRIBUTING.md` and a support statement in the README (#7).
+- Issue templates for bug reports and feature requests, with a `config.yml` that points questions to
+  the support statement (#8).
+
 ## [2.4.0] — 2026-10-21
 
 ### Fixed
