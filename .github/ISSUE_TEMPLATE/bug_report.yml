@@ -1,0 +1,44 @@
+name: Bug report
+description: A wrong result, an unexpected error, or behaviour that disagrees with the documentation.
+labels: ["bug"]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: The toolkit version (release tag or `version` in pyproject.toml) and your Python version.
+      placeholder: "sbt-framework 2.5.0, Python 3.14.0"
+    validations:
+      required: true
+  - type: textarea
+    id: input
+    attributes:
+      label: Input
+      description: >-
+        The smallest input that shows the problem: the function or script you called and the
+        arguments, for example the eight signal values. Paste code, not screenshots.
+      render: python
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected output
+      description: What you expected, and where that expectation comes from (documentation, a paper, a calculation).
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual output
+      description: What happened instead, including the full error message or traceback.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else
+      description: Operating system, how you installed the toolkit, or anything you have already tried.
+    validations:
+      required: false
