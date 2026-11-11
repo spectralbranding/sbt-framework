@@ -18,6 +18,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   reproduces a recorded run, and its docstring states the conversion; its reported statistics do not
   depend on it. The 1-10 coherence-metric scores of Modules 3, 4 and 6 are a different quantity and
   are unchanged.
+- The prompt generator takes its `<1-10>` range from `SIGNAL_MIN` and `SIGNAL_MAX` instead of a
+  hard-coded string.
+- The Patagonia example in Module 1 (prompt and template) is labelled as an illustrative output; the
+  reference profile is `CANONICAL_BRANDS["Patagonia"]`.
+- README licence lines name the licences (MIT for code, CC BY 4.0 for data and rendered artifacts).
 - **Zero and negative signals** (#6): the rule is documented. A dimension with no detectable emission
   is recorded as 1.0, the floor of the scale; a designed restriction (dark signal) is scored on its own
   strength; no replacement value is imputed before the CLR transform. `clr_transform` and

@@ -15,6 +15,10 @@
 #   - Interbrand Brand Strength model (10 factors)
 #   - See templates/FRAMEWORKS.md for alternatives
 
+# The Patagonia values below are an illustrative Module 1 output, kept to show the
+# structure. They are not the toolkit's reference profile for Patagonia, which is
+# CANONICAL_BRANDS["Patagonia"] in src/spectral_branding/validators/_math.py.
+
 brand:
   name: "Patagonia"                       # Brand being analyzed
   category: "Outdoor apparel & gear"      # Industry/category

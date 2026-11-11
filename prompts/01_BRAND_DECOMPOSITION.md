@@ -104,6 +104,8 @@ Additional context: [Any specific focus areas or concerns]
 
 ## Example (abbreviated)
 
+*Illustrative output showing the format. The strengths are not the toolkit's reference profile for Patagonia (`CANONICAL_BRANDS` in `src/spectral_branding/validators/_math.py`).*
+
 **Brand**: Patagonia
 
 **SEMIOTIC** (8.2/10)
