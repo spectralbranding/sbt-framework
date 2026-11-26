@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [Unreleased]
+## [2.5.0] — 2026-11-26
 
 ### Changed
 - **One signal scale** (#5): every brand signal is a real number in [1, 10], stated in
